@@ -136,12 +136,20 @@ h1 em{font-style:normal;color:var(--lime)}
 .side h3{font-family:var(--f-display);font-weight:400;font-size:38px;line-height:1;margin:0;letter-spacing:.02em}
 .side .when{color:var(--mute);font-size:15px;text-transform:uppercase;letter-spacing:.1em}
 .x{background:var(--ink-3);border:0;width:38px;height:38px;border-radius:50%;font-size:20px;flex:none}
-.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice{display:grid;grid-template-columns:1fr;gap:10px;justify-items:start}
+.choice .ap{width:100%;padding:18px 10px;font-size:20px}
+.choice .aj{background:transparent;border:0;padding:4px 0;font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--mute);text-decoration:underline;text-underline-offset:3px}
+.choice .aj[aria-pressed="true"]{background:transparent;color:var(--warn)}
+.fix{display:grid;gap:10px;border:1px solid var(--warn);border-radius:12px;padding:14px}
+.types{display:flex;flex-wrap:wrap;gap:8px}
+.types button{border:1px solid var(--line);background:var(--ink);border-radius:99px;padding:6px 12px;font-size:15px}
+.types button[aria-pressed="true"]{background:var(--warn);border-color:var(--warn);color:#2a1300;font-weight:700}
+.fix small{color:var(--mute);font-size:14px;line-height:1.35}
+.rule{margin:16px 0 0;max-width:46ch;color:var(--mute);font-size:15px;border-left:2px solid var(--lime);padding-left:12px}
 .choice button{border:1px solid var(--line);background:var(--ink-3);border-radius:12px;padding:14px 10px;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em}
 .choice .ap[aria-pressed="true"]{background:var(--ok);color:var(--lime-ink);border-color:var(--ok)}
-.choice .aj[aria-pressed="true"]{background:var(--warn);color:#2a1300;border-color:var(--warn)}
 label.lb{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
-textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px}
+textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px}
 .capbox{background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:15px;color:#d6d6cc;white-space:pre-wrap;overflow-wrap:anywhere;max-height:180px;overflow:auto}
 .pager{display:flex;justify-content:space-between;gap:10px;margin-top:auto}
 .pager button{flex:1;background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:15px}
@@ -182,7 +190,7 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
 <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wHello">
   <div class="w-in">
     <h2 class="hello" id="wHello">Olá,<em id="wClient">Yasmine</em></h2>
-    <p class="sub">Chegou a hora de aprovar o <b id="wPeriod">conteúdo de outubro</b>. Ele foi produzido de acordo com o planejamento que você aprovou anteriormente. Veja cada post do jeito que ele vai aparecer no seu perfil e diga o que achou.</p>
+    <p class="sub">Chegou a hora de aprovar o <b id="wPeriod">conteúdo de outubro</b>. Ele foi produzido de acordo com o planejamento que você aprovou anteriormente. Confira cada post como ele vai aparecer no seu perfil e confirme a aprovação.</p>
     <div class="w-meta"><span id="wCount">15 conteúdos</span><span>Leva poucos minutos</span></div>
     <button class="go" id="wGo">Seguir <span aria-hidden="true">→</span></button>
   </div>
@@ -198,7 +206,7 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
     </div>
     <div class="tally" aria-live="polite">
       <div class="a"><b id="nA">0</b><span>Aprovados</span></div>
-      <div class="w"><b id="nW">0</b><span>Ajustes</span></div>
+      <div class="w"><b id="nW">0</b><span>Correções</span></div>
       <div><b id="nP">0</b><span>Pendentes</span></div>
     </div>
   </header>
@@ -238,13 +246,14 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
       <h2>Como aprovar</h2>
       <ol>
         <li>Toque em cada conteúdo do perfil para ver como ele aparece no feed, com a legenda completa.</li>
-        <li>Escolha <b>Aprovar</b> ou <b>Pedir ajuste</b>. No ajuste, escreva o que deve mudar.</li>
+        <li>Toque em <b>Aprovar</b>. Se encontrar um erro de informação, como preço, horário ou texto, use <b>Apontar correção</b>.</li>
         <li>Quando terminar, toque em <b>Enviar pelo WhatsApp</b> para mandar o resumo para a nossa equipe.</li>
       </ol>
+      <p class="rule">Como os conteúdos seguem o planejamento já aprovado, esta etapa é para conferir e corrigir informações. Ideias novas de tema ou estilo entram no planejamento do próximo mês.</p>
       <div class="legend">
         <span class="pill p">Pendente</span>
         <span class="pill a">Aprovado</span>
-        <span class="pill w">Ajuste</span>
+        <span class="pill w">Correção</span>
       </div>
     </aside>
   </section>
@@ -272,11 +281,14 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
       </div>
       <div class="choice">
         <button class="ap" id="bAp" aria-pressed="false">Aprovar</button>
-        <button class="aj" id="bAj" aria-pressed="false">Pedir ajuste</button>
+        <button class="aj" id="bAj" aria-pressed="false">Apontar correção de informação</button>
       </div>
-      <div style="display:grid;gap:6px">
-        <label class="lb" for="note">O que deve mudar</label>
-        <textarea id="note" placeholder="Ex.: trocar a foto de capa, ajustar o preço na legenda"></textarea>
+      <div class="fix" id="fix" hidden>
+        <span class="lb">Qual informação está errada?</span>
+        <div class="types" id="types"></div>
+        <label class="lb" for="note">Qual é a informação correta?</label>
+        <textarea id="note" maxlength="160" placeholder="Ex.: o preço correto é R$ 39,90"></textarea>
+        <small>Correções são para informações erradas. Arte, fotos e estilo seguem o planejamento aprovado.</small>
       </div>
       <div style="display:grid;gap:6px">
         <span class="lb">Legenda</span>
@@ -295,6 +307,7 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
   <div class="in">
     <p id="dockTxt"></p>
     <div class="btns">
+      <button class="btn" id="approveAll">Aprovar todos</button>
       <button class="btn" id="copyAll">Copiar resumo</button>
       <a class="btn main-btn" id="wa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
     </div>
@@ -386,11 +399,11 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
       const p = posts[i], s = state[p.id] || {};
       const b = document.createElement('button');
       b.className = 'tile' + (s.status === 'a' ? ' done-a' : s.status === 'w' ? ' done-w' : '');
-      b.setAttribute('aria-label', 'Conteúdo ' + p.id + ', ' + (FMT[p.format] || 'Post') + ', ' + (s.status === 'a' ? 'aprovado' : s.status === 'w' ? 'ajuste pedido' : 'pendente'));
+      b.setAttribute('aria-label', 'Conteúdo ' + p.id + ', ' + (FMT[p.format] || 'Post') + ', ' + (s.status === 'a' ? 'aprovado' : s.status === 'w' ? 'correção apontada' : 'pendente'));
       b.appendChild(mediaEl((p.images || [])[0], i, p.id));
       const n = document.createElement('span'); n.className = 'num'; n.textContent = p.id; b.appendChild(n);
       if (ICON[p.format]) { const f = document.createElement('span'); f.className = 'fmt'; f.innerHTML = ICON[p.format]; b.appendChild(f); }
-      if (s.status) { const t = document.createElement('span'); t.className = 'st ' + s.status; t.textContent = s.status === 'a' ? 'Aprovado' : 'Ajuste'; b.appendChild(t); }
+      if (s.status) { const t = document.createElement('span'); t.className = 'st ' + s.status; t.textContent = s.status === 'a' ? 'Aprovado' : 'Correção'; b.appendChild(t); }
       b.addEventListener('click', () => open(i));
       g.appendChild(b);
     });
@@ -406,7 +419,7 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
     const {a, w, pend} = summary();
     let t = 'Aprovação de conteúdo · ' + D.client + ' · ' + D.period + '\n\n';
     t += 'Aprovados (' + a.length + '): ' + (a.length ? a.map(p => p.id).join(', ') : 'nenhum') + '\n\n';
-    t += 'Ajustes (' + w.length + '):' + (w.length ? '\n' + w.map(p => '• ' + p.id + ': ' + ((state[p.id].note || '').trim() || 'sem observação')).join('\n') : ' nenhum') + '\n\n';
+    t += 'Correções (' + w.length + '):' + (w.length ? '\n' + w.map(p => '• ' + p.id + (state[p.id].type ? ' (' + state[p.id].type + ')' : '') + ': ' + ((state[p.id].note || '').trim() || 'sem observação')).join('\n') : ' nenhuma') + '\n\n';
     if (pend.length) t += 'Pendentes (' + pend.length + '): ' + pend.map(p => p.id).join(', ');
     return t.trim();
   }
@@ -454,6 +467,8 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
     $('bAp').setAttribute('aria-pressed', s.status === 'a');
     $('bAj').setAttribute('aria-pressed', s.status === 'w');
     $('note').value = s.note || '';
+    $('fix').hidden = s.status !== 'w';
+    renderTypes(s.type);
     $('capbox').textContent = p.caption || '';
     caption($('cap'), p.caption);
     $('prev').disabled = cur === 0; $('next').disabled = cur === posts.length - 1;
@@ -464,15 +479,29 @@ textarea{width:100%;min-height:110px;resize:vertical;background:var(--ink);color
     const p = posts[cur], s = state[p.id] || {};
     s.status = s.status === v ? undefined : v;
     state[p.id] = s; save(); drawSide(); renderGrid();
-    if (s.status === 'w') $('note').focus();
+    if (s.status === 'w') $('types').querySelector('button').focus();
     if (s.status === 'a' && cur < posts.length - 1) setTimeout(() => { cur++; slide = 0; drawMedia(); drawSide(); }, 350);
   }
+  const TYPES = ['Preço ou valor', 'Horário ou endereço', 'Erro de digitação', 'Outra informação errada'];
+  function renderTypes(sel){
+    const box = $('types'); box.textContent = '';
+    TYPES.forEach(tp => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = tp;
+      b.setAttribute('aria-pressed', sel === tp);
+      b.onclick = () => { const p = posts[cur]; state[p.id] = state[p.id] || {}; state[p.id].type = tp; save(); renderTypes(tp); renderGrid(); $('note').focus(); };
+      box.appendChild(b);
+    });
+  }
+  $('approveAll').onclick = () => {
+    let n = 0;
+    posts.forEach(p => { const s = state[p.id] || {}; if (!s.status) { s.status = 'a'; state[p.id] = s; n++; } });
+    save(); renderGrid(); toast(n ? n + ' conteúdos aprovados' : 'Nenhum pendente');
+  };
   $('bAp').onclick = () => setStatus('a');
   $('bAj').onclick = () => setStatus('w');
   let noteT;
   $('note').addEventListener('input', e => {
     const p = posts[cur]; state[p.id] = state[p.id] || {}; state[p.id].note = e.target.value;
-    if (e.target.value.trim() && !state[p.id].status) { state[p.id].status = 'w'; $('bAj').setAttribute('aria-pressed', 'true'); }
     clearTimeout(noteT); noteT = setTimeout(() => { save(); renderGrid(); }, 300);
   });
   $('prev').onclick = () => { if (cur > 0) { cur--; slide = 0; drawMedia(); drawSide(); } };
