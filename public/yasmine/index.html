@@ -146,9 +146,6 @@ h1 em{font-style:normal;color:var(--lime)}
 .side .when{color:var(--mute);font-size:15px;text-transform:uppercase;letter-spacing:.1em}
 .x{background:var(--ink-3);border:0;width:38px;height:38px;border-radius:50%;font-size:20px;flex:none}
 .choice{display:grid;grid-template-columns:1fr;gap:10px;justify-items:start}
-.choice .ap{width:100%;padding:18px 10px;font-size:20px}
-.choice .aj{background:transparent;border:0;padding:4px 0;font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--mute);text-decoration:underline;text-underline-offset:3px}
-.choice .aj[aria-pressed="true"]{background:transparent;color:var(--warn)}
 .fix{display:grid;gap:10px;border:1px solid var(--warn);border-radius:12px;padding:14px}
 .types{display:flex;flex-wrap:wrap;gap:8px}
 .types button{border:1px solid var(--line);background:var(--ink);border-radius:99px;padding:6px 12px;font-size:15px}
@@ -156,7 +153,13 @@ h1 em{font-style:normal;color:var(--lime)}
 .fix small{color:var(--mute);font-size:14px;line-height:1.35}
 .rule{margin:16px 0 0;max-width:46ch;color:var(--mute);font-size:15px;border-left:2px solid var(--lime);padding-left:12px}
 .choice button{border:1px solid var(--line);background:var(--ink-3);border-radius:12px;padding:14px 10px;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em}
-.choice .ap[aria-pressed="true"]{background:var(--ok);color:var(--lime-ink);border-color:var(--ok)}
+.choice .ap{width:100%;padding:20px 10px;font-size:22px;background:var(--lime);color:var(--lime-ink);border-color:var(--lime);box-shadow:0 8px 24px rgba(200,242,13,.22);transition:transform .15s,box-shadow .15s}
+.choice .ap:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(200,242,13,.32)}
+.choice .ap[aria-pressed="true"]{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+.choice .ap[aria-pressed="true"]::before{content:"✓ "}
+.choice .aj{padding:10px 16px;font-size:16px;font-weight:600;letter-spacing:.06em;background:transparent;color:var(--paper);border:1px solid var(--line);border-radius:10px}
+.choice .aj:hover{border-color:var(--mute)}
+.choice .aj[aria-pressed="true"]{border-color:var(--warn);color:var(--warn)}
 label.lb{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
 textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px}
 .capbox{background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:15px;color:#d6d6cc;white-space:pre-wrap;overflow-wrap:anywhere;max-height:180px;overflow:auto}
