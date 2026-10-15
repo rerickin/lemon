@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lemon Social | Criação de Conteúdo para Instagram</title>
+<meta name="description" content="Lemon Social: agência de conteúdo para Instagram. 1 dia de gravação = 1 mês de conteúdo. Do planejamento à publicação, sem enrolação.">
+<meta property="og:title" content="Lemon Social | Conteúdo que vende">
+<meta property="og:description" content="1 dia de gravação = 1 mês de conteúdo pronto para o seu Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Raleway:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Meta Pixel / Google Tag: cole aqui os scripts de rastreamento -->
+<style>
+:root{
+  --lime:#E6F101; --ink:#1B1B1E; --black:#000; --white:#fff;
+  --lav:#BFC1D9; --purple:#4E5AC3; --foot:#2F2E2E; --pink:#E8457A;
+  --mute:#555; --line:#1B1B1E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'Raleway',system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.H{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;line-height:.92;letter-spacing:-.5px}
+.eyebrow{font-family:'Raleway';font-weight:700;font-size:12px;letter-spacing:4px;text-transform:uppercase;display:inline-block;margin-bottom:22px}
+.eyebrow::before{content:"— "}
+.btn-black{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--white);font-family:'Raleway';font-weight:700;font-size:15px;padding:14px 26px;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn-black:hover{transform:translateY(-2px);background:#000}
+.arrow{width:46px;height:52px;display:block}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid #e6e6e6}
+nav .in{max-width:1000px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Barlow Condensed';font-weight:700;font-size:30px;letter-spacing:8px;display:flex;align-items:center;gap:4px}
+.logo i{width:11px;height:11px;border-radius:50%;background:var(--lime);display:inline-block;margin-left:2px}
+nav ul{display:flex;gap:22px;list-style:none;font-size:13px;letter-spacing:.5px;text-transform:uppercase}
+nav ul a:hover{color:var(--purple)}
+
+/* SPLIT LAYOUT */
+.split{display:grid;grid-template-columns:1fr 1fr}
+.split > div{padding:80px 8vw}
+.bordered > div:first-child{border-right:1px solid var(--line)}
+.bordered{border-bottom:1px solid var(--line)}
+
+/* HERO */
+.hero > div{min-height:640px;display:flex;flex-direction:column;justify-content:center}
+.hero .left{border-right:1px solid var(--line)}
+.hero h1{font-size:clamp(72px,8.5vw,128px)}
+.hero h1 em{display:inline-block;font-style:italic;font-weight:900;background:var(--lime);padding:6px 14px 0 8px;margin-top:4px}
+.hero .left p{max-width:260px;color:var(--mute);margin-top:28px;font-size:15px}
+.hero .right{background:var(--lime)}
+.hero .right .big{font-size:clamp(90px,10vw,150px)}
+.hero .right .tag{font-weight:700;font-size:16px;margin:6px 0 30px}
+.checks{list-style:none;font-size:16px;margin-bottom:34px}
+.checks li{padding:3px 0}
+.checks li::before{content:"✓ "}
+.hero-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:440px}
+.hero-form input{border:1.5px solid var(--ink);background:rgba(255,255,255,.55);font:inherit;font-size:15px;padding:12px 12px;outline:none}
+.hero-form input:focus{background:#fff}
+.hero-form button{grid-column:1/-1}
+.small{font-size:13px;margin-top:10px}
+.small a{text-decoration:underline;font-weight:700}
+
+/* TICKER */
+.ticker{background:var(--black);color:var(--white);overflow:hidden;white-space:nowrap;padding:16px 0}
+.ticker div{display:inline-block;animation:run 28s linear infinite;font-family:'Barlow Condensed';font-weight:800;font-size:24px;text-transform:uppercase}
+.ticker b{color:var(--lime);margin:0 26px 0 6px;font-weight:800}
+@keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.hero .left p.promise-sub{max-width:380px;font-size:17px;color:var(--ink)}
+
+/* SUPER PROMESSA */
+.promise{background:var(--ink);color:#fff;padding:90px 20px;text-align:center}
+.promise .in{max-width:980px;margin:0 auto}
+.promise .eyebrow{color:var(--lime)}
+.promise h2{font-size:clamp(48px,6.4vw,96px)}
+.promise h2 span{background:var(--lime);color:var(--ink);padding:0 12px;font-style:italic;font-weight:900}
+.promise p{max-width:640px;margin:26px auto 44px;color:#cfcfcf;font-size:17px}
+.eq{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.eq div{border:1.5px solid #fff;padding:16px 24px;min-width:190px}
+.eq b{display:block;font-family:'Barlow Condensed';font-weight:800;font-size:32px;text-transform:uppercase;line-height:1}
+.eq small{font-size:13px;color:#bdbdbd}
+.eq i{font-style:normal;font-family:'Barlow Condensed';font-weight:800;font-size:44px;color:var(--lime)}
+.eq .res{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.eq .res small{color:var(--ink)}
+.guarantee{margin:44px auto 0;max-width:700px;border:1.5px dashed var(--lime);padding:18px 24px;display:flex;gap:16px;align-items:center;text-align:left}
+.guarantee strong{font-family:'Barlow Condensed';font-weight:800;font-size:24px;text-transform:uppercase;color:var(--lime);white-space:nowrap}
+.guarantee span{font-size:15px;color:#e6e6e6}
+
+/* TRÁFEGO */
+.ads .left{background:var(--lime)}
+.ads h2{font-size:clamp(52px,5.4vw,78px)}
+.ads h2 span{background:var(--ink);color:var(--lime);padding:0 10px}
+.ads .left p{margin:26px 0 30px;max-width:440px;font-size:16px}
+.ads-list{display:flex;flex-direction:column;justify-content:center;gap:0}
+.ad{border-bottom:1px solid var(--line);padding:18px 0}
+.ad:first-child{border-top:1px solid var(--line)}
+.ad .n{font-family:'Barlow Condensed';font-weight:800;font-size:30px;text-transform:uppercase;line-height:1}
+.ad .n::before{content:"→ ";color:var(--purple)}
+.ad p{font-size:14px;color:var(--mute);margin-top:4px}
+.ads .note{font-size:12px;color:var(--mute);margin-top:16px}
+
+/* PROBLEMA */
+.prob h2{font-size:clamp(52px,5.4vw,78px)}
+.xlist{list-style:none;margin-top:36px;color:var(--mute);font-size:15px;letter-spacing:.3px}
+.xlist li{padding:2px 0}
+.xlist li::before{content:"✖  ";color:var(--pink)}
+.pains{display:flex;flex-direction:column;justify-content:center;gap:28px}
+.pain{display:grid;grid-template-columns:72px 1fr;gap:26px;align-items:center}
+.pain .n{background:var(--lime);font-family:'Barlow Condensed';font-weight:800;font-size:58px;text-align:center;line-height:1;padding:10px 0 6px}
+.pain h3{font-size:15px;font-weight:700}
+.pain p{font-size:14px;color:var(--mute)}
+
+/* COMBINAÇÃO */
+.combo h2{font-size:clamp(52px,5.4vw,78px)}
+.combo ul{margin:26px 0 0 20px;font-size:15px;color:var(--mute)}
+.combo ul li:first-child{color:var(--ink);font-weight:700}
+.combo .right{background:var(--lime);display:flex;align-items:center}
+.combo .right p{font-weight:700;font-size:clamp(18px,1.6vw,22px);line-height:1.45;max-width:420px}
+.combo .right p::before{content:"";display:block;width:22px;height:9px;background:#fff;margin-bottom:14px}
+
+/* DEPOIMENTOS */
+.depo{grid-template-columns:1fr 2fr}
+.depo .left{background:var(--ink);color:#fff}
+.depo .left h2{font-size:clamp(52px,5vw,72px)}
+.depo .left h2 span{color:var(--lime)}
+.depo .right{display:flex;align-items:center;gap:40px}
+.depo .right img{width:170px;height:200px;object-fit:cover;flex:none}
+.depo blockquote{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:clamp(24px,2.2vw,32px);line-height:1.05;color:#444}
+.depo cite{display:block;font-style:normal;font-weight:700;font-size:18px;margin-top:10px}
+
+/* MÉTODO */
+.method{background:var(--lav);padding:70px 20px;position:relative;overflow:hidden}
+.method .in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.method .phone{max-width:380px;margin:0 auto}
+.method .card{background:#fff;padding:40px 36px}
+.method .card h2{font-size:24px;font-weight:700;line-height:1.35;margin-bottom:26px}
+.method .card h3{font-size:17px;font-weight:700;margin-top:18px}
+.method .card p{font-style:italic;font-size:14px;color:var(--mute)}
+.method .card hr{width:32px;border:0;border-top:1.5px solid var(--ink);margin-top:28px}
+
+/* BARRA CTA */
+.barcta{background:var(--lime);padding:0 30px 0}
+.barcta a{display:block;background:var(--ink);color:#fff;text-align:center;font-family:'Barlow Condensed';font-weight:800;font-size:clamp(26px,3vw,38px);padding:14px 20px;transition:background .15s}
+.barcta a:hover{background:#000}
+
+/* TRABALHOS */
+.works{background:var(--lime);padding:70px 20px}
+.works .in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:.75fr 1.25fr;align-items:center}
+.works .box{border:1px solid var(--ink);border-right:0;padding:90px 30px 30px;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.works .box h2{font-size:clamp(28px,2.6vw,36px)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.grid4 img{aspect-ratio:1/1;object-fit:cover;width:100%;transition:transform .25s}
+.grid4 img:hover{transform:scale(1.04)}
+.collage{background:var(--purple);padding:24px 3vw}
+.collage .in{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:4px}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage .t{grid-row:span 2}
+.collage .w{grid-column:span 2;grid-row:span 2}
+
+/* CONTATO */
+.contact{grid-template-columns:1fr 3fr}
+.contact .left{background:var(--lime);display:flex;flex-direction:column;justify-content:center;gap:40px}
+.contact .left h2{font-size:clamp(48px,4.4vw,64px)}
+.contact .left h2::before{content:"";display:block;width:10px;height:10px;background:var(--purple);margin-bottom:-4px}
+.contact .right{display:flex;flex-direction:column;justify-content:center;max-width:560px;margin:0 auto;width:100%;padding-left:20px;padding-right:20px}
+.f input,.f textarea,.f select{width:100%;border:1.5px solid var(--ink);font:inherit;font-size:15px;padding:10px 18px;margin-bottom:6px;outline:none;background:#fff;color:var(--ink)}
+.f input:focus,.f textarea:focus{border-color:var(--purple)}
+.f textarea{height:100px;resize:vertical;margin-top:12px}
+.f .row{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:8px}
+.f .row span{font-size:13px;color:var(--mute)}
+.btn-purple{background:var(--purple);color:#fff;font:700 15px 'Raleway';border:0;padding:10px 18px;cursor:pointer}
+.btn-purple:hover{filter:brightness(1.1)}
+.atend{font-weight:700;font-size:26px;line-height:1.35;margin-top:40px}
+.atend a:hover{color:var(--purple)}
+.ok{display:none;padding:30px 0}
+.ok h3{font-family:'Barlow Condensed';font-weight:800;font-size:44px;text-transform:uppercase}
+
+footer{background:var(--foot);color:#fff;font-size:13px;padding:60px 20px 90px}
+footer .in{max-width:1000px;margin:0 auto}
+
+/* WHATSAPP FLUTUANTE */
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s}
+.wa:hover{transform:scale(1.08)}
+.mobile-cta{display:none}
+
+@media (max-width:900px){
+  nav ul{display:none}
+  .split,.depo,.contact{grid-template-columns:1fr}
+  .split > div{padding:56px 22px}
+  .hero > div{min-height:auto}
+  .hero .left,.bordered > div:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .depo .right{flex-direction:column;align-items:flex-start}
+  .method .in,.works .in{grid-template-columns:1fr}
+  .works .box{border-right:1px solid var(--ink);border-bottom:0;padding:40px 24px}
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .collage .in{grid-template-columns:repeat(3,1fr);grid-auto-rows:110px}
+  .hero-form{grid-template-columns:1fr}
+  .promise{padding:64px 20px}
+  .eq{flex-direction:column}
+  .eq div{width:100%}
+  .guarantee{flex-direction:column;align-items:flex-start}
+  .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 14px;background:var(--lime);border-top:1px solid var(--ink)}
+  .mobile-cta a{width:100%}
+  .wa{bottom:82px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="in">
+    <a href="#" class="logo">LEMON<i></i></a>
+    <ul>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#trafego">Tráfego pago</a></li>
+      <li><a href="#trabalhos">Trabalhos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="split hero">
+  <div class="left">
+    <h1 class="H">Conte-<br>údo<br>que<br><em>Vende</em></h1>
+    <p class="promise-sub"><b>Seu Instagram trazendo clientes todo mês.</b> Conteúdo profissional que gera desejo e tráfego pago que coloca seu negócio na frente de quem compra. Tudo feito por nós.</p>
+  </div>
+  <div class="right">
+    <div class="H big">1<br>dia</div>
+    <div class="tag">de gravação = 1 mês de conteúdo</div>
+    <ul class="checks">
+      <li>Planejamento estratégico</li>
+      <li>Produção cinematográfica</li>
+      <li>Tráfego pago incluso</li>
+      <li>Entrega completa sem complicação</li>
+    </ul>
+    <form class="hero-form" data-lead novalidate>
+      <input name="nome" placeholder="Seu nome" required autocomplete="name">
+      <input name="whats" type="tel" inputmode="tel" placeholder="WhatsApp" required autocomplete="tel">
+      <button class="btn-black" type="submit">Quero turbinar meu Instagram</button>
+    </form>
+    <p class="small">Resposta rápida pelo WhatsApp. Sem compromisso.</p>
+  </div>
+</header>
+
+<div class="ticker"><div>
+  Você posta mas não converte<b>✕</b>Ninguém te vê no Instagram<b>✕</b>Seu concorrente aparece mais<b>✕</b>Anúncio que não traz cliente<b>✕</b>Conteúdo sem identidade<b>✕</b>
+  Você posta mas não converte<b>✕</b>Ninguém te vê no Instagram<b>✕</b>Seu concorrente aparece mais<b>✕</b>Anúncio que não traz cliente<b>✕</b>Conteúdo sem identidade<b>✕</b>
+</div></div>
+
+<!-- SUPER PROMESSA -->
+<section class="promise">
+  <div class="in">
+    <span class="eyebrow">A promessa Lemon</span>
+    <h2 class="H">Mais clientes chegando<br>pelo Instagram em <span>90 dias</span></h2>
+    <p>Em 1 dia de gravação a gente produz o mês inteiro de conteúdo. Depois, o tráfego pago leva esse conteúdo direto para quem está pronto para comprar na sua região. Você foca no seu negócio. A gente cuida de fazer o cliente chegar.</p>
+    <div class="eq">
+      <div><b>Conteúdo</b><small>que gera desejo</small></div>
+      <i>+</i>
+      <div><b>Tráfego pago</b><small>que gera alcance</small></div>
+      <i>=</i>
+      <div class="res"><b>Clientes</b><small>no seu WhatsApp</small></div>
+    </div>
+    <div class="guarantee">
+      <strong>Garantia Lemon</strong>
+      <span>Se em 90 dias você não estiver recebendo novos contatos pelo Instagram, trabalhamos o mês seguinte sem cobrar a gestão.</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="split bordered prob" id="servicos">
+  <div>
+    <span class="eyebrow">O problema</span>
+    <h2 class="H">Sem<br>estratégia,<br>ninguém<br>te vê</h2>
+    <ul class="xlist">
+      <li>Falta de tempo pra pensar no que postar</li>
+      <li>Baixo engajamento nas redes</li>
+      <li>Perfil visual bagunçado e sem padrão</li>
+      <li>Postagens sem consistência</li>
+      <li>Sem novos clientes</li>
+    </ul>
+  </div>
+  <div class="pains">
+    <div class="pain"><div class="n">01</div><div><h3>Conteúdo que não converte</h3><p>Curtidas não pagam contas. Seu Instagram precisa gerar leads e clientes reais, não só engajamento vazio.</p></div></div>
+    <div class="pain"><div class="n">02</div><div><h3>Marca que não aparece</h3><p>Sem tráfego pago, seu conteúdo fica restrito. Seu concorrente investe e domina a atenção do seu cliente.</p></div></div>
+    <div class="pain"><div class="n">03</div><div><h3>Instagram sem identidade</h3><p>A qualidade do seu negócio é muito maior do que seu perfil mostra. Falta posicionamento visual e consistência.</p></div></div>
+  </div>
+</section>
+
+<!-- COMBINAÇÃO -->
+<section class="split bordered combo">
+  <div>
+    <h2 class="H">A combinação<br>perfeita</h2>
+    <ul>
+      <li>Produção de conteúdo</li>
+      <li>Planejamento de conteúdo estratégico</li>
+      <li>Gestão de redes sociais</li>
+      <li>Design e branding digital</li>
+      <li>Gestão de tráfego pago</li>
+    </ul>
+  </div>
+  <div class="right">
+    <p>Somos uma agência de conteúdo especializada em estratégias data driven que transformam presença digital em performance real. Criamos conteúdos de alta qualidade para Redes Sociais, SEO e TikTok, e mídia paga com um só objetivo: entregar resultado.</p>
+  </div>
+</section>
+
+<!-- TRÁFEGO PAGO -->
+<section class="split bordered ads" id="trafego">
+  <div class="left">
+    <span class="eyebrow">Tráfego pago</span>
+    <h2 class="H">Post bonito<br>sem anúncio<br>é vitrine<br><span>fechada</span></h2>
+    <p>O algoritmo mostra seu conteúdo para poucos seguidores. Com tráfego pago, sua marca aparece todos os dias para pessoas novas, na sua região, com interesse real no que você vende. E cada clique vira uma conversa no seu WhatsApp.</p>
+    <a href="#contato" class="btn-black">Quero anunciar e vender mais</a>
+  </div>
+  <div class="ads-list">
+    <div class="ad"><div class="n">Meta Ads</div><p>Campanhas no Instagram e Facebook usando os vídeos que a gente produz. Conteúdo de qualidade faz o anúncio custar menos.</p></div>
+    <div class="ad"><div class="n">Google Ads</div><p>Seu negócio aparecendo para quem já está pesquisando pelo que você oferece.</p></div>
+    <div class="ad"><div class="n">Direto no WhatsApp</div><p>Anúncios que levam o cliente para conversar com você, prontos para fechar.</p></div>
+    <div class="ad"><div class="n">Público certo</div><p>Segmentação por região, interesse e comportamento, com remarketing para quem já te conhece.</p></div>
+    <div class="ad"><div class="n">Relatório claro</div><p>Todo mês você sabe quanto investiu, quantos contatos chegaram e quanto custou cada um.</p></div>
+    <p class="note">* O valor investido nos anúncios é pago direto às plataformas e definido junto com você.</p>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="split depo">
+  <div class="left">
+    <span class="eyebrow">Depoimentos</span>
+    <h2 class="H">O que<br>nossos<br><span>clientes</span><br>falam</h2>
+  </div>
+  <div class="right">
+    <img src="https://static.wixstatic.com/media/a78f10_be067d2b351241e6ac8b2c54e887e91f~mv2.jpg/v1/fill/w_340,h_400,al_c,q_85/depoi.jpg" alt="Priscila, The Seven Burguer">
+    <div>
+      <blockquote>"A Lemon transformou nossa presença nas redes. Engajamento aumentou significativamente e os resultados são reais."</blockquote>
+      <cite>Priscila @theseven.burguer</cite>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="method">
+  <div class="in">
+    <img class="phone" src="https://static.wixstatic.com/media/a78f10_29f5ae250ca2472e9b7e45437c4015d2~mv2.png/v1/fill/w_760,h_1160,al_c,q_85/phone.png" alt="Perfil de cliente produzido pela Lemon">
+    <div class="card">
+      <h2>Como funciona o método Lemon? Simples. Inteligente. E com gosto de ideia boa.</h2>
+      <h3>1. Estratégia que faz sentido</h3>
+      <p>Briefing, planejamento e calendário editorial personalizado. Nada genérico.</p>
+      <h3>2. Produção em 1 dia</h3>
+      <p>Chegamos com equipe, roteiro e câmera ligada. Gravamos todo o conteúdo do mês em 1 único dia.</p>
+      <h3>3. Entrega completa</h3>
+      <p>Receba seus vídeos prontos, legendas ajustadas, arquivos organizados e conteúdo pronto pra agendamento no seu perfil.</p>
+      <hr>
+    </div>
+  </div>
+</section>
+
+<div class="barcta"><a href="#contato">Quero turbinar meu Instagram</a></div>
+
+<!-- TRABALHOS -->
+<section class="works" id="trabalhos">
+  <div class="in">
+    <div class="box">
+      <h2 class="H">A gente<br>transforma<br>marcas comuns<br>em marcas<br>desejadas</h2>
+      <svg class="arrow" viewBox="0 0 46 52"><path d="M0 0h46v52H0z" fill="none"/><path d="M4 8h34v34l-11-11L12 46 4 38l15-15z" fill="#1B1B1E"/></svg>
+    </div>
+    <div class="grid4">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_f9b6e780018e4e2ca0406e5367a56c7af003.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_cad654949b0a4fcf82a7f034a22a282f~mv2.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_8f494fecc5a04e109d450a72dcfe5b33~mv2.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_105bbd881cbc42a2968975bcf5654f25~mv2.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_a9a973264871493e8e7ebe280400be4f~mv2.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_9539a4cebb9e4c8caa634465f03f3dc2~mv2.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_813b40d3776b44dabc5f5c1ab081b370f003.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+      <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_dc295c2269f649c68e0ade0393af766b~mv2.jpg/v1/fill/w_400,h_400,q_85/a.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="collage">
+  <div class="in">
+    <img class="w" loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_1ccac9cf045c4c8c8de61557ca6758d4~mv2.jpg/v1/fill/w_700,h_500,q_85/a.jpg">
+    <img class="t" loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_061421734e0846b398bd5375aef218a4f003.jpg/v1/fill/w_400,h_600,q_85/a.jpg">
+    <img class="t" loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_bd08369da35e47b3b47907ec1e021d73~mv2.jpg/v1/fill/w_400,h_600,q_85/a.jpg">
+    <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_d65c32f2bddd48a9a9a3da6805c72063~mv2.jpg/v1/fill/w_400,h_300,q_85/a.jpg">
+    <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_90e892d86d2a4f6f94222625caa70f2f~mv2.jpg/v1/fill/w_400,h_300,q_85/a.jpg">
+    <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_7fcdb66a36e24b38ac5158422b5f7d72~mv2.jpg/v1/fill/w_400,h_300,q_85/a.jpg">
+    <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_5d0ffcc8f54c4a608e3fc5615b4746d9~mv2.jpg/v1/fill/w_400,h_300,q_85/a.jpg">
+    <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_54756f8c3684493a985bc1dbc287853c~mv2.jpg/v1/fill/w_400,h_300,q_85/a.jpg">
+    <img loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_ddc987587e3b4abf8d6a7aa908dcbe45~mv2.jpg/v1/fill/w_400,h_300,q_85/a.jpg">
+    <img class="t" loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_c9248025253e4cc093b3f0ec2aeb84c0~mv2.jpg/v1/fill/w_400,h_600,q_85/a.jpg">
+    <img class="t" loading="lazy" alt="" src="https://static.wixstatic.com/media/a78f10_a19571e0866f484181c7f82ca8c8fa60~mv2.jpg/v1/fill/w_400,h_600,q_85/a.jpg">
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="split contact" id="contato">
+  <div class="left">
+    <h2 class="H">Vamos<br>turbinar<br>seu<br>Instagram</h2>
+    <svg class="arrow" viewBox="0 0 46 52"><path d="M4 8h34v34l-11-11L12 46 4 38l15-15z" fill="#1B1B1E"/></svg>
+  </div>
+  <div class="right">
+    <form class="f" data-lead novalidate>
+      <input name="nome" placeholder="Nome" required autocomplete="name">
+      <input name="whats" type="tel" inputmode="tel" placeholder="WhatsApp" required autocomplete="tel">
+      <input name="insta" placeholder="Seu Instagram">
+      <select name="servico">
+        <option value="">O que você precisa?</option>
+        <option>Conteúdo + Tráfego pago</option>
+        <option>Só produção de conteúdo</option>
+        <option>Só tráfego pago</option>
+        <option>Ainda não sei, quero orientação</option>
+      </select>
+      <select name="invest">
+        <option value="">Quanto pretende investir por mês?</option>
+        <option>Até R$ 2.000</option>
+        <option>R$ 2.000 a R$ 3.000</option>
+        <option>Acima de R$ 3.000</option>
+        <option>Ainda não sei</option>
+      </select>
+      <textarea name="dor" placeholder="Deixe aqui sua maior dor com suas redes sociais!"></textarea>
+      <div class="row"><span>🔒 Seus dados ficam só com a gente.</span><button class="btn-purple" type="submit">Enviar</button></div>
+    </form>
+    <div class="ok"><h3>Mensagem enviada!</h3><p>Abrimos o WhatsApp com sua mensagem. Se não abriu, <a class="wa-fallback" href="#"><b>clique aqui</b></a>.</p></div>
+    <p class="atend">Atendimento:<br><a href="https://wa.me/5561998889486" target="_blank" rel="noopener">(61) 99888 9486</a></p>
+  </div>
+</section>
+
+<footer><div class="in">© <span id="yr"></span> por Lemon Social</div></footer>
+
+<div class="mobile-cta"><a href="#contato" class="btn-black">Quero turbinar meu Instagram</a></div>
+
+<a class="wa" id="waFloat" href="https://wa.me/5561998889486" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+</a>
+
+<script>
+/* CONFIG */
+const WHATS = '5561998889486';
+const WEBHOOK_URL = ''; // opcional: Google Apps Script, Zapier, Make ou CRM para salvar cada lead
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const params = new URLSearchParams(location.search);
+const origem = ['utm_source','utm_medium','utm_campaign','utm_content']
+  .map(k => params.get(k)).filter(Boolean).join(' / ') || 'site';
+
+document.getElementById('waFloat').href =
+  `https://wa.me/${WHATS}?text=${encodeURIComponent('Olá! Vim pelo site da Lemon e quero saber mais.')}`;
+
+// Máscara de telefone
+document.querySelectorAll('input[name=whats]').forEach(w => w.addEventListener('input', () => {
+  const d = w.value.replace(/\D/g,'').slice(0,11);
+  w.value = d.length > 6 ? `(${d.slice(0,2)}) ${d.slice(2,7)} ${d.slice(7)}`
+          : d.length > 2 ? `(${d.slice(0,2)}) ${d.slice(2)}` : d;
+}));
+
+document.querySelectorAll('form[data-lead]').forEach(f => f.addEventListener('submit', async e => {
+  e.preventDefault();
+  let ok = true;
+  f.querySelectorAll('[required]').forEach(i => {
+    const bad = !i.value.trim() || (i.name === 'whats' && i.value.replace(/\D/g,'').length < 10);
+    i.style.borderColor = bad ? '#E8457A' : '';
+    if (bad) ok = false;
+  });
+  if (!ok) return;
+
+  const v = n => (f.elements[n] ? f.elements[n].value.trim() : '');
+  const lead = { nome:v('nome'), whatsapp:v('whats'), instagram:v('insta'), servico:v('servico'), investimento:v('invest'), dor:v('dor'), origem, data:new Date().toISOString() };
+
+  if (WEBHOOK_URL) {
+    try { await fetch(WEBHOOK_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(lead)}); } catch(_) {}
+  }
+  if (window.fbq) fbq('track','Lead');
+  if (window.gtag) gtag('event','generate_lead');
+
+  let msg = `Olá, Lemon! Quero turbinar meu Instagram.\n\nNome: ${lead.nome}`;
+  if (lead.instagram) msg += `\nInstagram: ${lead.instagram}`;
+  if (lead.servico) msg += `\nPreciso de: ${lead.servico}`;
+  if (lead.investimento) msg += `\nInvestimento: ${lead.investimento}`;
+  if (lead.dor) msg += `\nMinha maior dor: ${lead.dor}`;
+  const url = `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
+
+  const box = f.parentElement.querySelector('.ok');
+  if (box) { f.style.display='none'; box.style.display='block'; box.querySelector('.wa-fallback').href = url; }
+  else { f.innerHTML = `<p style="grid-column:1/-1;font-weight:700">Recebido! Abrimos o WhatsApp. <a href="${url}" target="_blank" style="text-decoration:underline">Clique aqui</a> se não abriu.</p>`; }
+  window.open(url, '_blank');
+}));
+</script>
+</body>
+</html>
