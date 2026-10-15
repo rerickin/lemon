@@ -336,7 +336,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   "posts": [
     {"id":"01","date":"","format":"carrossel","images":["img/01-1.jpg","img/01-2.jpg","img/01-3.jpg","img/01-4.jpg"],"caption":"Legenda em breve."},
     {"id":"02","date":"","format":"carrossel","images":["img/02-1.jpg","img/02-2.jpg","img/02-3.jpg"],"caption":"Legenda em breve."},
-    {"id":"03","date":"","format":"reels","images":["img/03-1.jpg"],"caption":"Legenda em breve."},
+    {"id":"03","date":"","format":"reels","video":"vid/03.mp4","images":["img/03-1.jpg"],"caption":"Legenda em breve."},
     {"id":"04","date":"","format":"reels","images":["img/04-1.jpg?v=4"],"caption":"Legenda em breve."},
     {"id":"05","date":"","format":"carrossel","images":["img/05-1.jpg?v=2","img/05-2.jpg"],"caption":"Legenda em breve."},
     {"id":"06","date":"","format":"reels","images":["img/06-1.jpg"],"caption":"Legenda em breve."},
@@ -448,11 +448,18 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   function drawMedia(){
     const p = posts[cur], imgs = (p.images && p.images.length) ? p.images : [''];
     const m = $('media'); m.textContent = ''; m.className = 'media' + (p.format === 'reels' ? ' reel' : '');
-    const el = mediaEl(imgs[slide], cur + slide, p.id + (imgs.length > 1 ? '.' + (slide + 1) : ''));
-    if (el.tagName === 'VIDEO') { el.controls = true; el.autoplay = true; }
+    let el;
+    if (p.video) {
+      el = document.createElement('video');
+      el.src = p.video; el.poster = imgs[0] || ''; el.controls = true; el.playsInline = true; el.preload = 'metadata';
+      el.setAttribute('playsinline', '');
+    } else {
+      el = mediaEl(imgs[slide], cur + slide, p.id + (imgs.length > 1 ? '.' + (slide + 1) : ''));
+      if (el.tagName === 'VIDEO') { el.controls = true; el.autoplay = true; }
+    }
     m.appendChild(el);
     $('dots').textContent = '';
-    if (imgs.length > 1) {
+    if (!p.video && imgs.length > 1) {
       const c = document.createElement('span'); c.className = 'count'; c.textContent = (slide + 1) + '/' + imgs.length; m.appendChild(c);
       if (slide > 0) { const l = document.createElement('button'); l.className = 'nav-in l'; l.textContent = '‹'; l.setAttribute('aria-label', 'Imagem anterior'); l.onclick = () => { slide--; drawMedia(); }; m.appendChild(l); }
       if (slide < imgs.length - 1) { const r = document.createElement('button'); r.className = 'nav-in r'; r.textContent = '›'; r.setAttribute('aria-label', 'Próxima imagem'); r.onclick = () => { slide++; drawMedia(); }; m.appendChild(r); }
@@ -474,7 +481,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     $('prev').disabled = cur === 0; $('next').disabled = cur === posts.length - 1;
   }
   function open(i){ lastFocus = document.activeElement; cur = i; slide = 0; drawMedia(); drawSide(); $('sheet').hidden = false; document.body.style.overflow = 'hidden'; $('close').focus(); }
-  function close(){ $('sheet').hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+  function close(){ const v = $('media').querySelector('video'); if (v) v.pause(); $('sheet').hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
   function setStatus(v){
     const p = posts[cur], s = state[p.id] || {};
     s.status = s.status === v ? undefined : v;
