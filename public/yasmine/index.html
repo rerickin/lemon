@@ -34,6 +34,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:17px;line-height:1.4;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 120px}
 button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
@@ -119,6 +120,14 @@ h1 em{font-style:normal;color:var(--lime)}
 .media.reel{aspect-ratio:9/16;max-height:70vh;margin:0 auto}
 .media img,.media video{width:100%;height:100%;object-fit:cover;display:block}
 .media .ph{font-size:56px}
+.track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x pan-y;cursor:grab}
+.track::-webkit-scrollbar{display:none}
+.track.drag{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing}
+.track>*{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;user-select:none;-webkit-user-drag:none}
+.nav-in{transition:opacity .2s}
+.nav-in[hidden]{display:none}
+.dots i{transition:background .2s,transform .2s}
+.dots i.on{transform:scale(1.15)}
 .nav-in{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#000;display:grid;place-items:center;font-size:18px;line-height:1}
 .nav-in.l{left:8px}.nav-in.r{right:8px}
 .count{position:absolute;right:10px;top:10px;background:rgba(0,0,0,.7);color:#fff;border-radius:99px;font-size:12px;padding:2px 9px}
@@ -448,23 +457,52 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   function drawMedia(){
     const p = posts[cur], imgs = (p.images && p.images.length) ? p.images : [''];
     const m = $('media'); m.textContent = ''; m.className = 'media' + (p.format === 'reels' ? ' reel' : '');
-    let el;
-    if (p.video) {
-      el = document.createElement('video');
-      el.src = p.video; el.poster = imgs[0] || ''; el.controls = true; el.playsInline = true; el.preload = 'metadata';
-      el.setAttribute('playsinline', '');
-    } else {
-      el = mediaEl(imgs[slide], cur + slide, p.id + (imgs.length > 1 ? '.' + (slide + 1) : ''));
-      if (el.tagName === 'VIDEO') { el.controls = true; el.autoplay = true; }
-    }
-    m.appendChild(el);
     $('dots').textContent = '';
-    if (!p.video && imgs.length > 1) {
-      const c = document.createElement('span'); c.className = 'count'; c.textContent = (slide + 1) + '/' + imgs.length; m.appendChild(c);
-      if (slide > 0) { const l = document.createElement('button'); l.className = 'nav-in l'; l.textContent = '‹'; l.setAttribute('aria-label', 'Imagem anterior'); l.onclick = () => { slide--; drawMedia(); }; m.appendChild(l); }
-      if (slide < imgs.length - 1) { const r = document.createElement('button'); r.className = 'nav-in r'; r.textContent = '›'; r.setAttribute('aria-label', 'Próxima imagem'); r.onclick = () => { slide++; drawMedia(); }; m.appendChild(r); }
-      imgs.forEach((_, k) => { const d = document.createElement('i'); if (k === slide) d.className = 'on'; $('dots').appendChild(d); });
+    if (p.video) {
+      const v = document.createElement('video');
+      v.src = p.video; v.poster = imgs[0] || ''; v.controls = true; v.playsInline = true; v.preload = 'metadata';
+      v.setAttribute('playsinline', '');
+      m.appendChild(v); return;
     }
+    if (imgs.length < 2) { m.appendChild(mediaEl(imgs[0], cur, p.id)); return; }
+    const track = document.createElement('div'); track.className = 'track';
+    imgs.forEach((src, k) => { const el = mediaEl(src, cur + k, p.id + '.' + (k + 1)); el.draggable = false; if (el.tagName === 'IMG') el.loading = 'eager'; track.appendChild(el); });
+    m.appendChild(track);
+    const count = document.createElement('span'); count.className = 'count'; m.appendChild(count);
+    const l = document.createElement('button'); l.className = 'nav-in l'; l.textContent = '‹'; l.setAttribute('aria-label', 'Imagem anterior');
+    const r = document.createElement('button'); r.className = 'nav-in r'; r.textContent = '›'; r.setAttribute('aria-label', 'Próxima imagem');
+    m.append(l, r);
+    const dots = imgs.map(() => { const d = document.createElement('i'); $('dots').appendChild(d); return d; });
+    const go = k => { k = Math.max(0, Math.min(imgs.length - 1, k)); track.scrollTo({left: k * track.clientWidth, behavior: 'smooth'}); };
+    const update = () => {
+      const k = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+      slide = k; count.textContent = (k + 1) + '/' + imgs.length;
+      dots.forEach((d, i) => d.classList.toggle('on', i === k));
+      l.hidden = k === 0; r.hidden = k === imgs.length - 1;
+    };
+    l.onclick = () => go(slide - 1); r.onclick = () => go(slide + 1);
+    let raf; track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, {passive: true});
+    // mouse drag (touch already swipes natively)
+    let down = false, startX = 0, startLeft = 0, lastX = 0, lastT = 0, vel = 0;
+    track.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse') return;
+      down = true; startX = lastX = e.clientX; startLeft = track.scrollLeft; lastT = performance.now(); vel = 0;
+      track.classList.add('drag'); track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', e => {
+      if (!down) return;
+      const now = performance.now(); vel = (e.clientX - lastX) / Math.max(1, now - lastT); lastX = e.clientX; lastT = now;
+      track.scrollLeft = startLeft - (e.clientX - startX);
+    });
+    const end = () => {
+      if (!down) return; down = false; track.classList.remove('drag');
+      const w = track.clientWidth, moved = track.scrollLeft - startLeft;
+      let k = Math.round(startLeft / w);
+      if (Math.abs(moved) > w * 0.18 || Math.abs(vel) > 0.4) k += (moved > 0 || vel < -0.4) && !(vel > 0.4) ? 1 : -1;
+      go(k);
+    };
+    track.addEventListener('pointerup', end); track.addEventListener('pointercancel', end);
+    requestAnimationFrame(() => { track.style.scrollBehavior = 'auto'; track.scrollLeft = slide * track.clientWidth; track.style.scrollBehavior = ''; update(); });
   }
   function drawSide(){
     const p = posts[cur], s = state[p.id] || {};
