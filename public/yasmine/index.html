@@ -211,6 +211,39 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 .thanks h2{font-family:var(--f-display);font-weight:400;font-size:clamp(56px,12vw,140px);line-height:.9;margin:0}
 .thanks h2 em{font-style:normal;color:var(--lime);display:block}
 .thanks p{font-size:clamp(18px,2.6vw,26px);color:#d6d6cc;margin:0;max-width:34ch}
+.calbtn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:transparent;color:var(--lime);border:1px solid var(--lime);border-radius:10px;padding:9px 16px;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.08em}
+.calbtn svg{width:18px;height:18px}
+.calbtn:hover{background:var(--lime);color:var(--lime-ink)}
+.cal{position:fixed;inset:0;z-index:25;background:var(--ink);overflow:auto;padding:max(20px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(40px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.cal-in{max-width:1080px;margin:0 auto;display:grid;gap:28px}
+.cal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;background:var(--ink);padding-block:6px;z-index:2}
+.cal-top h2{font-family:var(--f-display);font-weight:400;font-size:clamp(36px,6vw,56px);margin:0;line-height:1}
+.cal-top h2 em{font-style:normal;color:var(--lime)}
+.cm h3{font-family:var(--f-display);font-weight:400;font-size:32px;margin:0 0 10px;letter-spacing:.03em}
+.cg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cg .wd{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);text-align:center;padding-bottom:4px}
+.cd{min-height:110px;background:var(--ink-2);border:1px solid var(--line);border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.cd.out{background:transparent;border-color:transparent}
+.cd .n{font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+.cd.has{border-color:var(--lime)}
+.cd.has .n{color:var(--paper);font-weight:700}
+.cp{display:flex;align-items:center;gap:6px;background:var(--ink-3);border:0;border-radius:6px;padding:4px;text-align:left;width:100%;min-width:0}
+.cp img{width:34px;height:42px;object-fit:cover;border-radius:4px;flex:none}
+.cp span{display:grid;min-width:0;font-size:13px;line-height:1.15}
+.cp b{font-family:var(--f-display);font-weight:400;font-size:18px}
+.cp i{font-style:normal;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cp .dot{width:8px;height:8px;border-radius:50%;flex:none;margin-left:auto;background:var(--line)}
+.cp .dot.a{background:var(--ok)} .cp .dot.w{background:var(--warn)}
+.agenda{display:none;gap:8px}
+.ag{display:flex;align-items:center;gap:12px;background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:8px;width:100%;text-align:left}
+.ag img{width:46px;height:58px;object-fit:cover;border-radius:6px;flex:none}
+.ag .dt{font-family:var(--f-display);font-size:22px;min-width:74px;line-height:1}
+.ag .dt small{display:block;font-family:var(--f-body);font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.ag .tx{min-width:0;display:grid}
+.ag .tx b{font-weight:700}
+.ag .tx i{font-style:normal;color:var(--mute);font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nodate{color:var(--mute);font-size:15px}
+@media (max-width:720px){.cm .cg{display:none}.agenda{display:grid}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -232,6 +265,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       <div class="brand"><i></i><span id="agency">Lemon Social</span></div>
       <h1>Aprovação <em id="client">Yasmine</em></h1>
       <div class="meta" id="period">Outubro 2026</div>
+      <button class="calbtn" id="calBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>Calendário</button>
     </div>
     <div class="tally" aria-live="polite">
       <div class="a"><b id="nA">0</b><span>Aprovados</span></div>
@@ -348,6 +382,12 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
+<div class="cal" id="cal" hidden role="dialog" aria-modal="true" aria-labelledby="calTitle">
+  <div class="cal-in">
+    <div class="cal-top"><h2 id="calTitle">Calendário <em id="calMonth">outubro</em></h2><button class="x" id="calClose" aria-label="Fechar calendário">×</button></div>
+    <div id="calBody" style="display:grid;gap:28px"></div>
+  </div>
+</div>
 <div class="thanks" id="thanks" hidden>
   <div class="t-in">
     <h2>Obrigado,<em id="tClient">Yasmine</em></h2>
@@ -375,23 +415,23 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   },
   "months": [
     {"id":"2026-10","label":"Outubro","year":"2026","posts":[
-    {"id":"01","date":"","format":"carrossel","images":["img/01-1.jpg","img/01-2.jpg?v=2","img/01-3.jpg","img/01-4.jpg"],"caption":"Legenda em breve."},
-    {"id":"02","date":"","format":"carrossel","images":["img/02-1.jpg","img/02-2.jpg","img/02-3.jpg"],"caption":"Legenda em breve."},
-    {"id":"03","date":"","format":"reels","video":"vid/03.mp4","images":["img/03-1.jpg"],"caption":"Legenda em breve."},
-    {"id":"04","date":"","format":"reels","video":"vid/04.mp4?v=2","images":["img/04-1.jpg?v=4"],"caption":"Legenda em breve."},
-    {"id":"05","date":"","format":"carrossel","images":["img/05-1.jpg?v=3","img/05-2.jpg"],"caption":"Legenda em breve."},
-    {"id":"06","date":"","format":"reels","video":"vid/06.mp4","images":["img/06-1.jpg"],"caption":"Legenda em breve."},
-    {"id":"07","date":"","format":"carrossel","images":["img/07-2.jpg","img/07-1.jpg","img/07-3.jpg"],"caption":"Legenda em breve."},
-    {"id":"08","date":"","format":"reels","video":"vid/08.mp4","images":["img/08-1.jpg"],"caption":"Legenda em breve."},
-    {"id":"09","date":"","format":"reels","video":"vid/09.mp4","images":["img/09-1.jpg"],"caption":"Legenda em breve."},
-    {"id":"10","date":"","format":"reels","video":"vid/10.mp4","images":["img/10-1.jpg"],"caption":"Legenda em breve."},
-    {"id":"11","date":"","format":"carrossel","images":["img/11-1.jpg","img/11-2.jpg"],"caption":"Legenda em breve."},
-    {"id":"12","date":"","format":"reels","video":"vid/12.mp4","images":["img/12-1.jpg?v=2"],"caption":"Legenda em breve."},
-    {"id":"13","date":"","format":"carrossel","images":["img/13-1.jpg","img/13-2.jpg?v=2"],"caption":"Legenda em breve."},
-    {"id":"14","date":"","format":"post","images":["img/14-1.jpg"],"caption":"Legenda em breve."},
-    {"id":"15","date":"","format":"carrossel","images":["img/15-1.jpg","img/15-2.jpg"],"caption":"Legenda em breve."},
+    {"id":"01","date":"2026-10-18","format":"carrossel","images":["img/01-1.jpg","img/01-2.jpg?v=2","img/01-3.jpg","img/01-4.jpg"],"caption":"Já sabe onde encontrar o Yasmine?\nEstamos no Sudoeste, no Ed. Antares Center, com uma mesa esperando por você.\nCCSW 5, Ed. Antares Center\nBloco 1, Loja 09 — Sudoeste, Brasília/DF\n\nSegunda a sábado: 17h às 22h\nDomingo: 17h às 21h\n\nSalve este post para consultar quando vier nos visitar.\nAhlan wa Sahlan. Seja bem-vindo ao Yasmine."},
+    {"id":"02","date":"2026-10-22","format":"carrossel","images":["img/02-1.jpg","img/02-2.jpg","img/02-3.jpg"],"caption":"Vai reunir a família, encontrar os amigos ou simplesmente está com vontade de comida árabe?\nReserve sua mesa no Yasmine pelo WhatsApp.\n\nNa mensagem, informe:\n• nome da reserva;\n• dia e horário desejados;\n• número de pessoas.\n\nNossa equipe confirma a disponibilidade e retorna com a confirmação da sua reserva.\nDepois é só chegar. A mesa e os sabores ficam por nossa conta."},
+    {"id":"03","date":"2026-10-20","format":"reels","video":"vid/03.mp4","images":["img/03-1.jpg"],"caption":"Quando olhamos para o Yasmine hoje, com o restaurante aberto e as pessoas chegando para sentar à nossa mesa, a gente lembra que tudo começou de um jeito muito diferente.\n\nEu conheci o Mohamad aqui em Brasília. Nós dois trabalhávamos em restaurantes e compartilhávamos a mesma vontade: construir algo nosso.\nComeçamos na casa dele, em Valparaíso, produzindo doces árabes para vender. Aos poucos, chegaram mais encomendas, eventos, outros restaurantes e a produção foi crescendo.\n\nAté que alugamos uma pequena loja no Sudoeste. A ideia era ter mais espaço para produzir e trabalhar também com delivery.\nMas os clientes começaram a aparecer por lá. E, mesmo sem termos estrutura para receber ninguém, ficavam na porta comendo.\nFoi quando percebemos que talvez estivesse na hora de dar um passo maior.\n\nHoje, aquela produção que começou dentro de casa ganhou um restaurante, um cardápio maior e, finalmente, um espaço para receber vocês.\nAinda temos muito para construir, mas poder olhar para trás e ver até onde chegamos é muito especial para nós."},
+    {"id":"04","date":"2026-11-20","format":"reels","video":"vid/04.mp4?v=2","images":["img/04-1.jpg?v=4"],"caption":"Agora queremos saber de quem já passou por aqui: já experimentou os nossos doces?\nConta pra gente qual você escolheria de novo. A gente quer saber."},
+    {"id":"05","date":"2026-11-18","format":"carrossel","images":["img/05-1.jpg?v=3","img/05-2.jpg"],"caption":"Aqui, um kibe tradicional, bem temperado, crocante por fora e com o sabor da culinária árabe que a gente tanto gosta.\nPode confessar: depois que provar, vai ser difícil comer um só."},
+    {"id":"06","date":"2026-11-16","format":"reels","video":"vid/06.mp4","images":["img/06-1.jpg"],"caption":"Shawarma pra gente é coisa séria.\n\nNa Síria, eu comia muito e é uma comida que você encontra em todo lugar. Quando a gente colocou no cardápio daqui, claro que tinha que ter o nosso jeito de fazer.\n\nE quando você vier, conta pra gente qual você quer pedir: carne, frango ou misto?"},
+    {"id":"07","date":"2026-11-13","format":"carrossel","images":["img/07-2.jpg","img/07-1.jpg","img/07-3.jpg"],"caption":"Temperada com alho, limão, ervas frescas e aquele toque de pimenta.\nÉ assim que a gente faz a nossa batata libanesa.\nJá pediu pra experimentar?"},
+    {"id":"08","date":"2026-11-10","format":"reels","video":"vid/08.mp4","images":["img/08-1.jpg"],"caption":"Quem disse que comida vegana não pode ser cheia de sabor?\nNosso falafel é feito com grão-de-bico, ervas frescas e especiarias árabes. Crocante por fora e cheio de sabor!"},
+    {"id":"09","date":"2026-11-08","format":"reels","video":"vid/09.mp4","images":["img/09-1.jpg"],"caption":"Eu sei que dá vontade de pedir tudo. Mas, pra primeira vez, eu começaria assim.\nO restante a gente prova junto nas próximas."},
+    {"id":"10","date":"","format":"reels","video":"vid/10.mp4","images":["img/10-1.jpg"],"caption":"Tem pratos que não podem faltar numa mesa de comida árabe. E o charuto de folha de uva é um deles!\nPor aqui, a gente prepara do jeito tradicional, com arroz, carne e especiarias que dão aquele sabor tão característico.\n\nVolta aqui e conta pra gente o que achou!"},
+    {"id":"11","date":"2026-11-06","format":"carrossel","images":["img/11-1.jpg","img/11-2.jpg"],"caption":"Tem gente que não resiste a um doce de pistache. E a gente entende perfeitamente.\nO nosso ninho de pistache tem aquele aroma que dá vontade de experimentar na hora.\nInclusive, se você é dessas pessoas, a gente nem vai tentar te convencer a dividir, tá?"},
+    {"id":"12","date":"2026-11-04","format":"reels","video":"vid/12.mp4","images":["img/12-1.jpg?v=2"],"caption":"Legenda em breve."},
+    {"id":"13","date":"2026-11-01","format":"carrossel","images":["img/13-1.jpg","img/13-2.jpg?v=2"],"caption":"O baklawa de nozes é daqueles doces que a gente começa a comer e já fica pensando na próxima mordida.\nSão várias camadas fininhas de massa, bastante nozes e uma calda suave de água de rosas pra finalizar.\nE olha… se você gosta de doce fora do convencional, esse aqui merece toda a sua atenção."},
+    {"id":"14","date":"2026-10-30","format":"post","images":["img/14-1.jpg"],"caption":"Mais uma fornada de doces saindo por aqui!\nE olha… pena que vocês não conseguem sentir o cheiro que está na nossa cozinha agora.\nMelhor passar no Yasmine e garantir o seu!"},
+    {"id":"15","date":"2026-10-28","format":"carrossel","images":["img/15-1.jpg","img/15-2.jpg"],"caption":"Kibe cru é daqueles pratos que não precisam de muita apresentação.\nUm clássico da culinária árabe, pra comer com pão sírio, um fio de azeite e sem pressa.\nSe a gente disser que ama, somos suspeitos, né? Então vamos deixar essa com vocês: quem já provou o nosso kibe cru, conta aqui o que achou!"},
     {"id":"16","date":"","format":"post","images":["img/11-3.jpg?v=2"],"caption":"Legenda em breve."},
-    {"id":"17","date":"","format":"reels","video":"vid/16.mp4","images":["img/16-1.jpg"],"caption":"Legenda em breve."}
+    {"id":"17","date":"2026-10-25","format":"reels","video":"vid/16.mp4","images":["img/16-1.jpg"],"caption":"Temperada com alho, limão, ervas frescas e aquele toque de pimenta.\nÉ assim que a gente faz a nossa batata libanesa.\nJá pediu pra experimentar?"}
     ]}
   ]
 }
@@ -555,7 +595,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   function drawSide(){
     const p = posts[cur], s = state[p.id] || {};
     $('sTitle').textContent = 'Conteúdo ' + p.id;
-    $('sWhen').textContent = (FMT[p.format] || 'Post') + (p.date ? ' · ' + p.date : '');
+    $('sWhen').textContent = (FMT[p.format] || 'Post') + (p.date ? ' · ' + fmtDay(p.date) : '');
     $('pFmt').textContent = FMT[p.format] || 'Post';
     $('bAp').setAttribute('aria-pressed', s.status === 'a');
     $('bAj').setAttribute('aria-pressed', s.status === 'w');
@@ -627,6 +667,65 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     }
   }
   $('copyCap').onclick = () => copy(posts[cur].caption || '', 'Legenda copiada', $('capbox'));
+
+  // calendário
+  const WD = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const MN = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const parseD = iso => { const [y,m,d] = iso.split('-').map(Number); return new Date(y, m-1, d); };
+  function fmtDay(iso){ const d = parseD(iso); return WD[d.getDay()] + ', ' + String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0'); }
+  const TITLE = p => { const c = (p.caption || '').split('\n')[0]; return c && c !== 'Legenda em breve.' ? c : (FMT[p.format] || 'Post'); };
+  function calItem(p, i, cls){
+    const s = state[p.id] || {};
+    const b = document.createElement('button'); b.className = cls;
+    const im = document.createElement('img'); im.src = (p.images || [])[0] || ''; im.alt = ''; im.loading = 'lazy';
+    b.onclick = () => { $('cal').hidden = true; open(i); };
+    return [b, im, s];
+  }
+  function renderCal(){
+    const body = $('calBody'); body.textContent = '';
+    $('calMonth').textContent = M.label.toLowerCase();
+    const dated = posts.map((p, i) => ({p, i})).filter(x => x.p.date).sort((a, b) => a.p.date.localeCompare(b.p.date));
+    const months = [...new Set(dated.map(x => x.p.date.slice(0, 7)))];
+    months.forEach(ym => {
+      const [y, m] = ym.split('-').map(Number);
+      const sec = document.createElement('section'); sec.className = 'cm';
+      const h = document.createElement('h3'); h.textContent = MN[m-1].charAt(0).toUpperCase() + MN[m-1].slice(1) + ' ' + y; sec.appendChild(h);
+      const g = document.createElement('div'); g.className = 'cg';
+      WD.forEach(w => { const d = document.createElement('div'); d.className = 'wd'; d.textContent = w; g.appendChild(d); });
+      const first = new Date(y, m-1, 1).getDay(), days = new Date(y, m, 0).getDate();
+      for (let k = 0; k < first; k++) { const e = document.createElement('div'); e.className = 'cd out'; g.appendChild(e); }
+      for (let day = 1; day <= days; day++) {
+        const iso = ym + '-' + String(day).padStart(2, '0');
+        const cell = document.createElement('div'); cell.className = 'cd';
+        const n = document.createElement('span'); n.className = 'n'; n.textContent = day; cell.appendChild(n);
+        dated.filter(x => x.p.date === iso).forEach(x => {
+          cell.classList.add('has');
+          const [b, im, st] = calItem(x.p, x.i, 'cp');
+          const t = document.createElement('span'); const bb = document.createElement('b'); bb.textContent = x.p.id; const ii = document.createElement('i'); ii.textContent = FMT[x.p.format] || 'Post'; t.append(bb, ii);
+          const dot = document.createElement('span'); dot.className = 'dot' + (st.status ? ' ' + st.status : '');
+          b.append(im, t, dot); b.setAttribute('aria-label', 'Conteúdo ' + x.p.id + ', ' + fmtDay(iso)); cell.appendChild(b);
+        });
+        g.appendChild(cell);
+      }
+      sec.appendChild(g);
+      const ag = document.createElement('div'); ag.className = 'agenda';
+      dated.filter(x => x.p.date.startsWith(ym)).forEach(x => {
+        const [b, im] = calItem(x.p, x.i, 'ag');
+        const d = parseD(x.p.date);
+        const dt = document.createElement('span'); dt.className = 'dt'; dt.textContent = String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0');
+        const sm = document.createElement('small'); sm.textContent = WD[d.getDay()]; dt.appendChild(sm);
+        const tx = document.createElement('span'); tx.className = 'tx'; const bb = document.createElement('b'); bb.textContent = 'Conteúdo ' + x.p.id + ' · ' + (FMT[x.p.format] || 'Post'); const ii = document.createElement('i'); ii.textContent = TITLE(x.p); tx.append(bb, ii);
+        b.append(dt, im, tx); ag.appendChild(b);
+      });
+      sec.appendChild(ag);
+      body.appendChild(sec);
+    });
+    const nd = posts.filter(p => !p.date);
+    if (nd.length) { const q = document.createElement('p'); q.className = 'nodate'; q.textContent = 'Sem data definida ainda: ' + nd.map(p => p.id).join(', ') + '.'; body.appendChild(q); }
+  }
+  $('calBtn').onclick = () => { renderCal(); $('cal').hidden = false; $('calClose').focus(); };
+  $('calClose').onclick = () => { $('cal').hidden = true; $('calBtn').focus(); };
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('cal').hidden) $('cal').hidden = true; });
 
   // finalizar
   function showConfirm(on){ $('confirm').hidden = !on; $('dockBtns').hidden = on; }
