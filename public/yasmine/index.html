@@ -693,8 +693,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }
     $('period').textContent = periodOf(m) + ' · ' + posts.length + ' conteúdos';
     let rec = recs[m.id];
-    if (rec && rec.state && Object.keys(rec.state).length) state = rec.state;
-    else if (Object.keys(state).length) push();
+    if (rec) { state = rec.state || {}; try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
     applyRecord(rec || {});
     setSync(rec ? 'Salvo' : '');
     $('welcome').classList.add('out');
