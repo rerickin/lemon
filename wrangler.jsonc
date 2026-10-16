@@ -1,11 +1,21 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "lemon",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-13",
   "workers_dev": true,
   "preview_urls": true,
   "assets": {
     "directory": "./public/",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "kv_namespaces": [
+    { "binding": "APROVA", "id": "c48f428ee6b244f4906fe227285a8fb0" }
+  ],
+  "vars": {
+    // SHA-256 da senha do painel de aprovações
+    "PAINEL_SENHA_SHA256": "f464d7d71c06e47a535ce441aa202aa717cddeab902a45b0c283aac7a9a090d7"
   }
 }

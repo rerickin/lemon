@@ -193,6 +193,24 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 .welcome .go:hover span{transform:translateX(4px)}
 .welcome .w-foot{max-width:1080px;width:100%;margin:0 auto;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:20px;letter-spacing:.06em;color:var(--mute)}
 .welcome .w-foot i{width:12px;height:12px;border-radius:50%;background:var(--lime);display:block}
+.months{display:grid;gap:10px;max-width:520px}
+.mbtn{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;text-align:left;background:var(--lime);color:var(--lime-ink);border:0;border-radius:14px;padding:16px 22px;cursor:pointer}
+.mbtn .ml{font-family:var(--f-display);font-size:clamp(28px,5vw,40px);letter-spacing:.04em;line-height:1}
+.mbtn .ms{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.75}
+.mbtn .ar{font-size:28px;transition:transform .2s}
+.mbtn:hover .ar{transform:translateX(4px)}
+.mbtn.done{background:var(--ink-3);color:var(--paper);border:1px solid var(--line)}
+.mbtn.done .ms{color:var(--lime);opacity:1}
+.sync{font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;margin-left:10px}
+.confirm{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.confirm p{margin:0;font-size:16px;max-width:52ch}
+.lock{margin-top:18px;border:1px solid var(--lime);color:var(--lime);padding:12px 16px;border-radius:10px;font-size:16px}
+.ro .choice,.ro #approveAll,.ro #fix{opacity:.45;pointer-events:none}
+.thanks{position:fixed;inset:0;z-index:45;background:var(--ink);display:flex;align-items:center;padding-inline:max(24px,env(safe-area-inset-left,0px)) max(24px,env(safe-area-inset-right,0px))}
+.thanks .t-in{max-width:1080px;width:100%;margin:0 auto;display:grid;gap:20px}
+.thanks h2{font-family:var(--f-display);font-weight:400;font-size:clamp(56px,12vw,140px);line-height:.9;margin:0}
+.thanks h2 em{font-style:normal;color:var(--lime);display:block}
+.thanks p{font-size:clamp(18px,2.6vw,26px);color:#d6d6cc;margin:0;max-width:34ch}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -202,9 +220,8 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wHello">
   <div class="w-in">
     <h2 class="hello" id="wHello">Olá,<em id="wClient">Yasmine</em></h2>
-    <p class="sub">Chegou a hora de aprovar o <b id="wPeriod">conteúdo de outubro</b>. Ele foi produzido de acordo com o planejamento que você aprovou anteriormente. Confira cada post como ele vai aparecer no seu perfil e confirme a aprovação.</p>
-    <div class="w-meta"><span id="wCount">15 conteúdos</span><span>Leva poucos minutos</span></div>
-    <button class="go" id="wGo">Seguir <span aria-hidden="true">→</span></button>
+    <p class="sub">Todo mês, os conteúdos são produzidos de acordo com o <b>planejamento que você aprovou anteriormente</b>. Escolha o mês para conferir cada post como ele vai aparecer no seu perfil e confirmar a aprovação.</p>
+    <div class="months" id="wMonths"></div>
   </div>
   <div class="w-foot"><i></i><span id="wAgency">Lemon Social</span></div>
 </div>
@@ -223,6 +240,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     </div>
   </header>
   <div class="bar" aria-hidden="true"><i class="ba" id="barA"></i><i class="bw" id="barW"></i></div>
+  <div class="lock" id="lock" hidden></div>
   <div class="example" id="example" hidden>Alguns conteúdos ainda são exemplo. As artes e legendas reais entram aqui assim que forem enviadas.</div>
 
   <section class="main">
@@ -259,7 +277,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       <ol>
         <li>Toque em cada conteúdo do perfil para ver como ele aparece no feed, com a legenda completa.</li>
         <li>Toque em <b>Aprovar</b>. Se encontrar um erro de informação, como preço, horário ou texto, use <b>Apontar correção</b>.</li>
-        <li>Quando terminar, toque em <b>Enviar pelo WhatsApp</b> para mandar o resumo para a nossa equipe.</li>
+        <li>Tudo fica salvo automaticamente. Quando terminar, toque em <b>Finalizar aprovação</b> para enviar para a nossa equipe.</li>
       </ol>
       <p class="rule">Como os conteúdos seguem o planejamento já aprovado, esta etapa é para conferir e corrigir informações. Ideias novas de tema ou estilo entram no planejamento do próximo mês.</p>
       <div class="legend">
@@ -317,23 +335,33 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 
 <div class="dock">
   <div class="in">
-    <p id="dockTxt"></p>
-    <div class="btns">
+    <p><span id="dockTxt"></span><span class="sync" id="sync"></span></p>
+    <div class="btns" id="dockBtns">
       <button class="btn" id="approveAll">Aprovar todos</button>
-      <button class="btn" id="copyAll">Copiar resumo</button>
-      <a class="btn main-btn" id="wa" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+      <button class="btn main-btn" id="finish">Finalizar aprovação</button>
+    </div>
+    <div class="confirm" id="confirm" hidden>
+      <p id="confirmTxt"></p>
+      <button class="btn" id="cBack">Voltar</button>
+      <button class="btn main-btn" id="cSend">Enviar aprovação</button>
     </div>
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
+<div class="thanks" id="thanks" hidden>
+  <div class="t-in">
+    <h2>Obrigado,<em id="tClient">Yasmine</em></h2>
+    <p id="tTxt">Sua aprovação foi enviada para a equipe da Lemon.</p>
+    <button class="btn" id="tBack" style="justify-self:start">Ver conteúdos</button>
+  </div>
+</div>
 
 <script type="application/json" id="data">
 {
   "example": false,
   "agency": "Lemon Social",
   "client": "Yasmine",
-  "period": "Outubro 2026",
-  "whatsapp": "5561998889486",
+  "slug": "yasmine",
   "profile": {
     "handle": "yasmineculinariaarabe",
     "name": "Yasmine",
@@ -345,7 +373,8 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     "following": "57",
     "highlights": []
   },
-  "posts": [
+  "months": [
+    {"id":"2026-10","label":"Outubro","year":"2026","posts":[
     {"id":"01","date":"","format":"carrossel","images":["img/01-1.jpg","img/01-2.jpg","img/01-3.jpg","img/01-4.jpg"],"caption":"Legenda em breve."},
     {"id":"02","date":"","format":"carrossel","images":["img/02-1.jpg","img/02-2.jpg","img/02-3.jpg"],"caption":"Legenda em breve."},
     {"id":"03","date":"","format":"reels","video":"vid/03.mp4","images":["img/03-1.jpg"],"caption":"Legenda em breve."},
@@ -361,6 +390,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     {"id":"13","date":"","format":"carrossel","images":["img/13-1.jpg","img/13-2.jpg"],"caption":"Legenda em breve."},
     {"id":"14","date":"","format":"post","images":["img/14-1.jpg"],"caption":"Legenda em breve."},
     {"id":"15","date":"","format":"carrossel","images":["img/15-1.jpg","img/15-2.jpg"],"caption":"Legenda em breve."}
+    ]}
   ]
 }
 </script>
@@ -369,11 +399,27 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 (function(){
   const D = JSON.parse(document.getElementById('data').textContent);
   const P = D.profile;
-  const posts = D.posts;
-  const KEY = 'lemon-aprova:' + D.client + ':' + D.period;
-  let state = {};
-  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} };
+  let M = D.months[0], posts = M.posts, KEY = '', state = {}, readOnly = false, finalizedAt = null;
+  const api = m => '/api/aprova/' + D.slug + '/' + m;
+  const periodOf = m => m.label + ' ' + m.year;
+  let pushT, pushing = Promise.resolve();
+  const setSync = t => { const el = document.getElementById('sync'); if (el) el.textContent = t; };
+  function push(){
+    clearTimeout(pushT);
+    pushT = setTimeout(() => {
+      setSync('Salvando…');
+      pushing = fetch(api(M.id), {method:'PUT', headers:{'content-type':'application/json'}, body: JSON.stringify({state})})
+        .then(r => r.ok ? r.json() : Promise.reject(r))
+        .then(() => setSync('Salvo'))
+        .catch(() => setSync('Salvo neste aparelho'));
+    }, 600);
+  }
+  const save = () => {
+    if (readOnly) return;
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {}
+    push();
+  };
+  function stamp(id){ state[id] = state[id] || {}; state[id].at = new Date().toISOString(); }
   const $ = id => document.getElementById(id);
   const FMT = {post:'Post', carrossel:'Carrossel', reels:'Reels'};
   const ICON = {
@@ -392,7 +438,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   // header + profile
   $('agency').textContent = D.agency;
   $('client').textContent = D.client;
-  $('period').textContent = D.period + ' · ' + posts.length + ' conteúdos';
+
   $('example').hidden = !D.example;
   $('igHandleTop').textContent = P.handle;
   const setAv = el => { if (P.avatar) { el.style.backgroundImage = 'url("' + P.avatar + '")'; el.textContent = ''; } else { el.textContent = (D.client || '?').charAt(0); } };
@@ -404,10 +450,9 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   $('pHandle').textContent = P.handle;
 
   // grid: ascending order, 01 top-left
-  const order = posts.map((p, i) => i);
   function renderGrid(){
     const g = $('grid'); g.textContent = '';
-    order.forEach(i => {
+    posts.forEach((_, i) => {
       const p = posts[i], s = state[p.id] || {};
       const b = document.createElement('button');
       b.className = 'tile' + (s.status === 'a' ? ' done-a' : s.status === 'w' ? ' done-w' : '');
@@ -429,7 +474,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   }
   function summaryText(){
     const {a, w, pend} = summary();
-    let t = 'Aprovação de conteúdo · ' + D.client + ' · ' + D.period + '\n\n';
+    let t = 'Aprovação de conteúdo · ' + D.client + ' · ' + periodOf(M) + '\n\n';
     t += 'Aprovados (' + a.length + '): ' + (a.length ? a.map(p => p.id).join(', ') : 'nenhum') + '\n\n';
     t += 'Correções (' + w.length + '):' + (w.length ? '\n' + w.map(p => '• ' + p.id + (state[p.id].type ? ' (' + state[p.id].type + ')' : '') + ': ' + ((state[p.id].note || '').trim() || 'sem observação')).join('\n') : ' nenhuma') + '\n\n';
     if (pend.length) t += 'Pendentes (' + pend.length + '): ' + pend.map(p => p.id).join(', ');
@@ -441,9 +486,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     $('barA').style.width = (a.length / n * 100) + '%'; $('barW').style.width = (w.length / n * 100) + '%';
     $('dockTxt').innerHTML = '';
     const b = document.createElement('b'); b.textContent = (a.length + w.length) + ' de ' + posts.length;
-    $('dockTxt').append(b, document.createTextNode(pend.length ? ' revisados. Faltam ' + pend.length + '.' : ' revisados. Pode enviar!'));
-    const num = (D.whatsapp || '').replace(/\D/g, '');
-    $('wa').href = 'https://wa.me/' + num + '?text=' + encodeURIComponent(summaryText());
+    $('dockTxt').append(b, document.createTextNode(readOnly ? ' revisados. Aprovação enviada.' : pend.length ? ' revisados. Faltam ' + pend.length + '.' : ' revisados. Pode finalizar!'));
   }
 
   // sheet
@@ -524,9 +567,10 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   function open(i){ lastFocus = document.activeElement; cur = i; slide = 0; drawMedia(); drawSide(); $('sheet').hidden = false; document.body.style.overflow = 'hidden'; $('close').focus(); }
   function close(){ const v = $('media').querySelector('video'); if (v) v.pause(); $('sheet').hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
   function setStatus(v){
+    if (readOnly) return;
     const p = posts[cur], s = state[p.id] || {};
     s.status = s.status === v ? undefined : v;
-    state[p.id] = s; save(); drawSide(); renderGrid();
+    state[p.id] = s; stamp(p.id); save(); drawSide(); renderGrid();
     if (s.status === 'w') $('types').querySelector('button').focus();
     if (s.status === 'a' && cur < posts.length - 1) setTimeout(() => { cur++; slide = 0; drawMedia(); drawSide(); }, 350);
   }
@@ -536,20 +580,26 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     TYPES.forEach(tp => {
       const b = document.createElement('button'); b.type = 'button'; b.textContent = tp;
       b.setAttribute('aria-pressed', sel === tp);
-      b.onclick = () => { const p = posts[cur]; state[p.id] = state[p.id] || {}; state[p.id].type = tp; save(); renderTypes(tp); renderGrid(); $('note').focus(); };
+      b.onclick = () => { if (readOnly) return; const p = posts[cur]; state[p.id] = state[p.id] || {}; state[p.id].type = tp; stamp(p.id); save(); renderTypes(tp); renderGrid(); $('note').focus(); };
       box.appendChild(b);
     });
   }
-  $('approveAll').onclick = () => {
+  function approvePending(){
     let n = 0;
-    posts.forEach(p => { const s = state[p.id] || {}; if (!s.status) { s.status = 'a'; state[p.id] = s; n++; } });
+    posts.forEach(p => { const s = state[p.id] || {}; if (!s.status) { s.status = 'a'; state[p.id] = s; stamp(p.id); n++; } });
+    return n;
+  }
+  $('approveAll').onclick = () => {
+    if (readOnly) return;
+    const n = approvePending();
     save(); renderGrid(); toast(n ? n + ' conteúdos aprovados' : 'Nenhum pendente');
   };
   $('bAp').onclick = () => setStatus('a');
   $('bAj').onclick = () => setStatus('w');
   let noteT;
   $('note').addEventListener('input', e => {
-    const p = posts[cur]; state[p.id] = state[p.id] || {}; state[p.id].note = e.target.value;
+    if (readOnly) return;
+    const p = posts[cur]; state[p.id] = state[p.id] || {}; state[p.id].note = e.target.value; stamp(p.id);
     clearTimeout(noteT); noteT = setTimeout(() => { save(); renderGrid(); }, 300);
   });
   $('prev').onclick = () => { if (cur > 0) { cur--; slide = 0; drawMedia(); drawSide(); } };
@@ -575,21 +625,84 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     }
   }
   $('copyCap').onclick = () => copy(posts[cur].caption || '', 'Legenda copiada', $('capbox'));
-  $('copyAll').onclick = () => copy(summaryText(), 'Resumo copiado', null);
 
-  // welcome
-  const month = (D.period || '').split(' ')[0].toLowerCase();
-  $('wClient').textContent = D.client;
-  $('wPeriod').textContent = 'conteúdo de ' + month;
-  $('wCount').textContent = posts.length + ' conteúdos';
+  // finalizar
+  function showConfirm(on){ $('confirm').hidden = !on; $('dockBtns').hidden = on; }
+  $('finish').onclick = () => {
+    if (readOnly) return;
+    const {a, w, pend} = summary();
+    $('confirmTxt').textContent = pend.length
+      ? 'Faltam ' + pend.length + ' conteúdos sem resposta. Ao enviar, eles serão aprovados. Confirmar?'
+      : 'Enviar aprovação de ' + M.label.toLowerCase() + '? ' + a.length + ' aprovados' + (w.length ? ' e ' + w.length + ' com correção.' : '.');
+    $('cSend').textContent = pend.length ? 'Aprovar pendentes e enviar' : 'Enviar aprovação';
+    showConfirm(true);
+  };
+  $('cBack').onclick = () => showConfirm(false);
+  $('cSend').onclick = async () => {
+    approvePending(); renderGrid();
+    $('cSend').disabled = true; $('cSend').textContent = 'Enviando…';
+    try {
+      clearTimeout(pushT);
+      const r = await fetch(api(M.id) + '/finalizar', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({state})});
+      if (!r.ok) throw r;
+      const rec = await r.json();
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {}
+      applyRecord(rec); showConfirm(false);
+      $('tTxt').textContent = 'Sua aprovação de ' + M.label.toLowerCase() + ' foi enviada para a equipe da Lemon. Agora é com a gente!';
+      $('thanks').hidden = false;
+    } catch(e) {
+      toast('Não foi possível enviar. Verifique a internet e tente de novo.');
+    } finally { $('cSend').disabled = false; }
+  };
+  $('tBack').onclick = () => { $('thanks').hidden = true; };
+
+  function fmtDate(iso){ try { return new Date(iso).toLocaleString('pt-BR', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'}); } catch(e) { return ''; } }
+  function applyRecord(rec){
+    finalizedAt = rec && rec.finalizedAt || null;
+    readOnly = !!finalizedAt;
+    document.body.classList.toggle('ro', readOnly);
+    $('lock').hidden = !readOnly;
+    if (readOnly) $('lock').textContent = '✓ Aprovação de ' + M.label.toLowerCase() + ' enviada em ' + fmtDate(finalizedAt) + '. Se precisar mudar algo, fale com a Lemon.';
+    $('finish').hidden = readOnly; $('approveAll').hidden = readOnly;
+    renderGrid();
+  }
+
+  // welcome: month picker
+  $('wClient').textContent = D.client; $('tClient').textContent = D.client;
   $('wAgency').textContent = D.agency;
   document.body.style.overflow = 'hidden';
-  $('wGo').focus();
-  $('wGo').onclick = () => {
+  const recs = {};
+  function monthButtons(){
+    const box = $('wMonths'); box.textContent = '';
+    D.months.slice().reverse().forEach(m => {
+      const r = recs[m.id], done = r && r.finalizedAt;
+      const b = document.createElement('button'); b.className = 'mbtn' + (done ? ' done' : '');
+      const l = document.createElement('span'); const t = document.createElement('span'); t.className = 'ml'; t.textContent = 'Mês de ' + m.label.toLowerCase();
+      const st = document.createElement('span'); st.className = 'ms'; st.style.display = 'block';
+      st.textContent = done ? '✓ Aprovação enviada' : m.posts.length + ' conteúdos para aprovar';
+      l.append(t, st);
+      const ar = document.createElement('span'); ar.className = 'ar'; ar.textContent = '→';
+      b.append(l, ar); b.onclick = () => enter(m);
+      box.appendChild(b);
+    });
+    const first = box.querySelector('button'); if (first) first.focus();
+  }
+  async function enter(m){
+    M = m; posts = m.posts; KEY = 'lemon-aprova:' + D.client + ':' + periodOf(m);
+    try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }
+    $('period').textContent = periodOf(m) + ' · ' + posts.length + ' conteúdos';
+    let rec = recs[m.id];
+    if (rec && rec.state && Object.keys(rec.state).length) state = rec.state;
+    else if (Object.keys(state).length) push();
+    applyRecord(rec || {});
+    setSync(rec ? 'Salvo' : '');
     $('welcome').classList.add('out');
     document.body.style.overflow = '';
     setTimeout(() => { $('welcome').hidden = true; }, 420);
-  };
+  }
+  monthButtons();
+  Promise.all(D.months.map(m => fetch(api(m.id)).then(r => r.ok ? r.json() : null).catch(() => null)
+    .then(r => { if (r) recs[m.id] = r; }))).then(monthButtons);
 
   renderGrid();
 })();
