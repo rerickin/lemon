@@ -5,6 +5,7 @@
 //   POST /api/aprova/:cliente/:mes/finalizar   marca como finalizado
 //   GET  /api/painel/:cliente                  (senha) todas as aprovações do cliente
 //   POST /api/painel/:cliente/:mes/reabrir     (senha) libera de novo para o cliente
+//   POST /api/painel/:cliente/:mes/zerar       (senha) apaga todas as respostas do mês
 
 const SLUG = /^[a-z0-9-]{1,40}$/;
 const json = (data, status = 200) =>
@@ -72,6 +73,10 @@ async function api(request, env, parts) {
       const meses = {};
       for (const { name } of list.keys) meses[name.split(':')[2]] = await env.APROVA.get(name, 'json');
       return json({ cliente: parts[1], meses });
+    }
+    if (parts.length === 4 && parts[3] === 'zerar' && method === 'POST' && SLUG.test(parts[2] || '')) {
+      await env.APROVA.delete(key(parts[1], parts[2]));
+      return json({ state: {} });
     }
     if (parts.length === 4 && parts[3] === 'reabrir' && method === 'POST' && SLUG.test(parts[2] || '')) {
       const k = key(parts[1], parts[2]);

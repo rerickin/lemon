@@ -165,6 +165,16 @@ h1 em{font-style:normal;color:var(--lime)}
         };
         foot.appendChild(b);
       }
+      if (rec.startedAt || rec.finalizedAt) {
+        const z = el('button', 'btn', 'Zerar respostas');
+        z.onclick = async () => {
+          if (z.dataset.sure !== '1') { z.dataset.sure = '1'; z.textContent = 'Confirmar: apagar tudo de ' + m.label.toLowerCase(); z.style.borderColor = 'var(--warn)'; z.style.color = 'var(--warn)'; return; }
+          z.disabled = true;
+          const r = await fetch('/api/painel/' + CLIENT + '/' + m.id + '/zerar', {method:'POST', headers:{'x-senha': senha}});
+          if (r.ok) load(); else { z.disabled = false; z.textContent = 'Erro, tente de novo'; }
+        };
+        foot.appendChild(z);
+      }
       const copyB = el('button', 'btn', 'Copiar correções');
       copyB.onclick = () => {
         const txt = m.posts.filter(p => (st[p.id]||{}).status === 'w').map(p => '• ' + p.id + ' (' + ((st[p.id].type)||'correção') + '): ' + ((st[p.id].note||'').trim() || 'sem descrição')).join('\n') || 'Nenhuma correção.';
