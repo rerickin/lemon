@@ -800,8 +800,11 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     setTimeout(() => { $('welcome').hidden = true; }, 420);
   }
   monthButtons();
-  Promise.all(D.months.map(m => fetch(api(m.id)).then(r => r.ok ? r.json() : null).catch(() => null)
-    .then(r => { if (r) recs[m.id] = r; }))).then(monthButtons);
+  Promise.all(D.months.map(m => Promise.all([
+    fetch(api(m.id)).then(r => r.ok ? r.json() : null).catch(() => null).then(r => { if (r) recs[m.id] = r; }),
+    fetch('/api/datas/' + D.slug + '/' + m.id, {cache:'no-store'}).then(r => r.ok ? r.json() : null).catch(() => null)
+      .then(r => { const ov = (r && r.dates) || {}; m.posts.forEach(p => { if (p.id in ov) p.date = ov[p.id]; }); })
+  ]))).then(monthButtons);
 
   renderGrid();
 })();

@@ -6,6 +6,8 @@
 //   GET  /api/painel/:cliente                  (senha) todas as aprovações do cliente
 //   POST /api/painel/:cliente/:mes/reabrir     (senha) libera de novo para o cliente
 //   POST /api/painel/:cliente/:mes/zerar       (senha) apaga todas as respostas do mês
+//   GET  /api/datas/:cliente/:mes              datas de publicação definidas pela equipe
+//   PUT  /api/painel/:cliente/:mes/data        (senha) {id, date} define ou limpa a data de um post
 
 const SLUG = /^[a-z0-9-]{1,40}$/;
 const json = (data, status = 200) =>
@@ -66,6 +68,10 @@ async function api(request, env, parts) {
     }
   }
 
+  if (parts[0] === 'datas' && SLUG.test(parts[1] || '') && SLUG.test(parts[2] || '') && parts.length === 3 && method === 'GET') {
+    return json({ dates: (await env.APROVA.get(`datas:${parts[1]}:${parts[2]}`, 'json')) || {} });
+  }
+
   if (parts[0] === 'painel' && SLUG.test(parts[1] || '')) {
     if (!(await authorized(request, env))) return json({ error: 'senha incorreta' }, 401);
     if (parts.length === 2 && method === 'GET') {
@@ -73,6 +79,17 @@ async function api(request, env, parts) {
       const meses = {};
       for (const { name } of list.keys) meses[name.split(':')[2]] = await env.APROVA.get(name, 'json');
       return json({ cliente: parts[1], meses });
+    }
+    if (parts.length === 4 && parts[3] === 'data' && method === 'PUT' && SLUG.test(parts[2] || '')) {
+      const body = await request.json().catch(() => null);
+      if (!body || !/^[0-9a-z]{1,6}$/i.test(body.id || '')) return json({ error: 'post inválido' }, 400);
+      const dk = `datas:${parts[1]}:${parts[2]}`;
+      const dates = (await env.APROVA.get(dk, 'json')) || {};
+      if (body.date === '' || body.date == null) dates[body.id] = '';
+      else if (/^\d{4}-\d{2}-\d{2}$/.test(body.date)) dates[body.id] = body.date;
+      else return json({ error: 'data inválida' }, 400);
+      await env.APROVA.put(dk, JSON.stringify(dates));
+      return json({ dates });
     }
     if (parts.length === 4 && parts[3] === 'zerar' && method === 'POST' && SLUG.test(parts[2] || '')) {
       await env.APROVA.delete(key(parts[1], parts[2]));

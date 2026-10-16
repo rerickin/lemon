@@ -47,7 +47,7 @@ h1 em{font-style:normal;color:var(--lime)}
 .nums span{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
 .nums .a b{color:var(--lime)} .nums .w b{color:var(--warn)}
 .rows{display:grid}
-.row{display:grid;grid-template-columns:56px 52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 20px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:56px 52px minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:10px 20px;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
 .row img{width:56px;height:70px;object-fit:cover;border-radius:6px;background:var(--ink-3);display:block}
 .row .id{font-family:var(--f-display);font-size:26px}
@@ -58,7 +58,15 @@ h1 em{font-style:normal;color:var(--lime)}
 .row.w{background:rgba(255,155,74,.07)}
 .foot{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line)}
 .empty{color:var(--mute);padding:20px}
-@media (max-width:600px){.row{grid-template-columns:48px 40px minmax(0,1fr)}.row .when{grid-column:3;text-align:left}.row img{width:48px;height:60px}}
+.pub{display:grid;gap:4px;justify-items:start}
+.pub span{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+.pub label{display:flex;align-items:center;gap:8px;border:1px solid var(--lime);border-radius:10px;padding:6px 10px;cursor:pointer;color:var(--lime)}
+.pub label svg{width:18px;height:18px;flex:none}
+.pub input{background:transparent;border:0;color:var(--paper);font:inherit;font-size:16px;font-variant-numeric:tabular-nums;color-scheme:dark;cursor:pointer}
+.pub small{font-size:13px;color:var(--mute);min-height:1.2em}
+.pub small.ok{color:var(--lime)} .pub small.bad{color:var(--warn)}
+.pub.none label{border-color:var(--warn);color:var(--warn)}
+@media (max-width:700px){.row{grid-template-columns:48px 40px minmax(0,1fr)}.row .when{grid-column:3;text-align:left}.row .pub{grid-column:1 / -1}.row img{width:48px;height:60px}}
 </style>
 </head>
 <body>
@@ -109,14 +117,42 @@ h1 em{font-style:normal;color:var(--lime)}
     const res = await r.json();
     try { sessionStorage.setItem('lemon-painel', senha); } catch(e) {}
     const page = await loadPage();
-    render(page, res.meses || {});
+    const dates = {};
+    await Promise.all(page.months.map(m => fetch('/api/datas/' + CLIENT + '/' + m.id, {cache:'no-store'}).then(r => r.ok ? r.json() : {dates:{}}).catch(() => ({dates:{}})).then(r => { dates[m.id] = r.dates || {}; })));
+    render(page, res.meses || {}, dates);
     show(true);
   }
   function show(on){ $('login').hidden = on; $('list').hidden = !on; $('actions').hidden = !on; }
 
   function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
-  function render(page, meses){
+  const WD = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  const wday = iso => { if (!iso) return ''; const [y,mo,d] = iso.split('-').map(Number); return WD[new Date(y, mo-1, d).getDay()]; };
+  const CAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>';
+  function dateControl(m, p, value){
+    const box = el('div', 'pub' + (value ? '' : ' none'));
+    box.appendChild(el('span', null, 'Programar publicação'));
+    const lab = el('label'); lab.innerHTML = CAL;
+    const inp = el('input'); inp.type = 'date'; inp.value = value || ''; inp.id = 'd-' + m.id + '-' + p.id;
+    inp.setAttribute('aria-label', 'Data de publicação do conteúdo ' + p.id);
+    lab.appendChild(inp);
+    lab.addEventListener('click', () => { try { inp.showPicker(); } catch(e) {} });
+    const msg = el('small', null, value ? wday(value) : 'Sem data');
+    box.append(lab, msg);
+    inp.addEventListener('change', async () => {
+      msg.className = ''; msg.textContent = 'Salvando…';
+      try {
+        const r = await fetch('/api/painel/' + CLIENT + '/' + m.id + '/data', {method:'PUT', headers:{'x-senha': senha, 'content-type':'application/json'}, body: JSON.stringify({id: p.id, date: inp.value})});
+        if (!r.ok) throw r;
+        msg.className = 'ok'; msg.textContent = '✓ Salvo' + (inp.value ? ' · ' + wday(inp.value) : '');
+        box.classList.toggle('none', !inp.value);
+      } catch(e) { msg.className = 'bad'; msg.textContent = 'Não salvou. Tente de novo.'; }
+    });
+    return box;
+  }
+
+  function render(page, meses, dates){
+    dates = dates || {};
     const list = $('list'); list.textContent = '';
     page.months.slice().reverse().forEach(m => {
       const rec = meses[m.id] || {state:{}}, st = rec.state || {};
@@ -137,7 +173,9 @@ h1 em{font-style:normal;color:var(--lime)}
       box.appendChild(mh);
 
       const rows = el('div', 'rows');
-      const ordered = m.posts.slice().sort((x, y) => ((st[y.id]||{}).status === 'w') - ((st[x.id]||{}).status === 'w'));
+      const ov = dates[m.id] || {};
+      const dateOf = p => (p.id in ov) ? ov[p.id] : (p.date || '');
+      const ordered = m.posts.slice().sort((x, y) => (((st[y.id]||{}).status === 'w') - ((st[x.id]||{}).status === 'w')) || (dateOf(x) || '9').localeCompare(dateOf(y) || '9'));
       ordered.forEach(p => {
         const s = st[p.id] || {};
         const row = el('div', 'row' + (s.status === 'w' ? ' w' : ''));
@@ -149,7 +187,7 @@ h1 em{font-style:normal;color:var(--lime)}
           d.appendChild(el('small', null, s.type || 'Tipo não informado'));
           d.appendChild(el('div', 'note', (s.note || '').trim() || 'Sem descrição.'));
         } else d.appendChild(el('small', null, FMT[p.format] || 'Post'));
-        row.append(img, el('div', 'id', p.id), d, el('div', 'when', s.at ? fmt(s.at) : ''));
+        row.append(img, el('div', 'id', p.id), d, dateControl(m, p, dateOf(p)), el('div', 'when', s.at ? fmt(s.at) : ''));
         rows.appendChild(row);
       });
       const foot = el('div', 'foot');
