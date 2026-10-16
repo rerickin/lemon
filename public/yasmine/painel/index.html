@@ -56,7 +56,7 @@ h1 em{font-style:normal;color:var(--lime)}
 .row .note{color:var(--paper);overflow-wrap:anywhere}
 .row .when{color:var(--mute);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
 .row.w{background:rgba(255,155,74,.07)}
-.foot{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px;border-top:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line)}
 .empty{color:var(--mute);padding:20px}
 @media (max-width:600px){.row{grid-template-columns:48px 40px minmax(0,1fr)}.row .when{grid-column:3;text-align:left}.row img{width:48px;height:60px}}
 </style>
@@ -152,8 +152,6 @@ h1 em{font-style:normal;color:var(--lime)}
         row.append(img, el('div', 'id', p.id), d, el('div', 'when', s.at ? fmt(s.at) : ''));
         rows.appendChild(row);
       });
-      box.appendChild(rows);
-
       const foot = el('div', 'foot');
       if (rec.finalizedAt) {
         const b = el('button', 'btn', 'Reabrir para o cliente');
@@ -165,7 +163,7 @@ h1 em{font-style:normal;color:var(--lime)}
         };
         foot.appendChild(b);
       }
-      if (rec.startedAt || rec.finalizedAt) {
+      {
         const z = el('button', 'btn', 'Zerar respostas');
         z.onclick = async () => {
           if (z.dataset.sure !== '1') { z.dataset.sure = '1'; z.textContent = 'Confirmar: apagar tudo de ' + m.label.toLowerCase(); z.style.borderColor = 'var(--warn)'; z.style.color = 'var(--warn)'; return; }
@@ -182,6 +180,7 @@ h1 em{font-style:normal;color:var(--lime)}
       };
       foot.appendChild(copyB);
       box.appendChild(foot);
+      box.appendChild(rows);
       list.appendChild(box);
     });
   }
