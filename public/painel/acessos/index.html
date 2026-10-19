@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel · Acessos · Lemon Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#0d0d0b;--ink-2:#171714;--ink-3:#24241f;--line:#34342c;
+  --lime:#c8f20d;--lime-ink:#141a00;--paper:#f4f4ef;--mute:#a3a394;--warn:#ff9b4a;
+  --f-display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --f-body:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:17px;line-height:1.4;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 60px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto}
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding-block:28px 20px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:22px;letter-spacing:.06em}
+.brand i{width:14px;height:14px;border-radius:50%;background:var(--lime);display:block}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,7vw,68px);line-height:.9;margin:8px 0 0}
+h1 em{font-style:normal;color:var(--lime)}
+.btn{border:1px solid var(--line);background:var(--ink-3);border-radius:10px;padding:10px 16px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px}
+.btn.main{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.login{max-width:380px;margin:12vh auto 0;display:grid;gap:14px}
+.login input{background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:18px}
+.err{color:var(--warn);min-height:1.4em;margin:0}
+
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{background:transparent;border:0;padding:9px 14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--mute)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--lime);color:var(--lime-ink)}
+
+.client{margin-top:26px;border:1px solid var(--line);border-radius:16px;background:var(--ink-2);overflow:hidden}
+.ch{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.ch h2{font-family:var(--f-display);font-weight:400;font-size:36px;margin:0;line-height:1}
+.ch a{color:var(--mute);font-size:15px;text-decoration:none;border-bottom:1px solid var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.kpi{padding:16px 20px;border-left:1px solid var(--line)}
+.kpi:first-child{border-left:0}
+.kpi b{display:block;font-family:var(--f-display);font-weight:400;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.kpi small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+.kpi.hl b{color:var(--lime)}
+@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--line)}}
+
+.panels{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+.panel{padding:18px 20px;min-width:0}
+.panel+.panel{border-left:1px solid var(--line)}
+@media (max-width:800px){.panels{grid-template-columns:1fr}.panel+.panel{border-left:0;border-top:1px solid var(--line)}}
+.panel h3{margin:0 0 12px;font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);font-weight:600}
+
+/* gráfico de colunas: acessos por dia */
+.cols{position:relative;display:flex;align-items:flex-end;gap:2px;height:150px;border-bottom:1px solid var(--line)}
+.col{flex:1;min-width:0;height:100%;display:flex;align-items:flex-end;position:relative}
+.col i{display:block;width:100%;background:var(--lime);border-radius:4px 4px 0 0;min-height:0}
+.col:hover i,.col:focus i{background:#e3ff6b}
+.col .tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:14px;line-height:1.25;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .1s;z-index:2}
+.col:hover .tip,.col:focus .tip{opacity:1}
+.col .tip b{font-weight:700}
+.axis{display:flex;justify-content:space-between;color:var(--mute);font-size:13px;margin-top:6px;font-variant-numeric:tabular-nums}
+
+/* barras: cliques por botão */
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline}
+.bar .n{font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .v{font-variant-numeric:tabular-nums;font-weight:700}
+.bar .track{grid-column:1 / -1;height:8px;background:var(--ink-3);border-radius:4px;overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--lime);border-radius:0 4px 4px 0}
+.empty{color:var(--mute);padding:6px 0}
+.note{color:var(--mute);font-size:14px;margin-top:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand"><i></i><span>Lemon Social · Painel</span></div>
+      <h1>Acessos das <em>páginas de links</em></h1>
+    </div>
+    <div id="actions" hidden style="display:flex;gap:8px">
+      <button class="btn" id="refresh">Atualizar</button>
+      <button class="btn" id="logout">Sair</button>
+    </div>
+  </header>
+
+  <form class="login" id="login">
+    <label for="pw" style="font-family:var(--f-display);font-size:28px;letter-spacing:.04em">Senha do painel</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <button class="btn main" type="submit">Entrar</button>
+    <p class="err" id="err"></p>
+  </form>
+
+  <main id="main" hidden>
+    <div class="filters">
+      <div class="seg" id="range" role="group" aria-label="Período">
+        <button data-d="1">Hoje</button>
+        <button data-d="7">7 dias</button>
+        <button data-d="30" aria-pressed="true">30 dias</button>
+        <button data-d="90">90 dias</button>
+        <button data-d="3650">Tudo</button>
+      </div>
+    </div>
+    <div id="list"></div>
+    <p class="note">Contagem desde 19/10/2026. "Pessoas" conta cada aparelho uma vez por dia. Robôs e prévias de link (WhatsApp, Instagram) não entram na conta.</p>
+  </main>
+</div>
+
+<script>
+(function(){
+  /* Clientes com página de links em lmon.cc. Para incluir um novo, adicione aqui. */
+  const CLIENTS = [
+    { slug:'theseven', name:'The Seven', url:'https://lmon.cc/theseven' },
+    { slug:'yasmine',  name:'Yasmine',   url:'https://lmon.cc/yasmine' },
+  ];
+  const LABELS = { // nomes bonitos dos botões (o rótulo vem do título do botão, sem acento)
+    'cardapio':'Cardápio', '99-food':'99 Food', 'ifood':'iFood', 'peca-pelo-ifood':'Peça pelo iFood',
+    'ceilandia':'Reserva Ceilândia', 'vicente-pires':'Reserva Vicente Pires',
+    'unidade-ceilandia':'Mapa Ceilândia', 'unidade-vicente-pires':'Mapa Vicente Pires',
+    'reserve-sua-mesa':'Reserve sua mesa', 'encomende-doces-arabes':'Encomenda de doces',
+    'como-chegar':'Como chegar', 'trabalhe-conosco':'Trabalhe conosco',
+    'pedir-delivery-ou-reservar':'Botão pedir/reservar (cardápio)',
+  };
+
+  const $ = id => document.getElementById(id);
+  let senha = '';
+  try { senha = sessionStorage.getItem('lemon-painel') || ''; } catch(e) {}
+  let dias = 30;
+  try { const q = new URLSearchParams(location.search); if (q.get('dias')) dias = +q.get('dias') || 30; } catch(e) {}
+
+  const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
+  const nf = n => n.toLocaleString('pt-BR');
+  const fmtDia = iso => { const [y,m,d] = iso.split('-'); return d + '/' + m; };
+  const pretty = s => LABELS[s] || s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+  function show(on){ $('login').hidden = on; $('main').hidden = !on; $('actions').hidden = !on; }
+
+  async function fetchClient(c){
+    const r = await fetch('/api/painel/' + c.slug + '/acessos?dias=' + dias, { headers:{'x-senha': senha}, cache:'no-store' });
+    if (r.status === 401) throw 401;
+    if (!r.ok) throw r.status;
+    return r.json();
+  }
+
+  async function load(){
+    $('err').textContent = '';
+    let res;
+    try { res = await Promise.all(CLIENTS.map(fetchClient)); }
+    catch(e){ if (e === 401) { $('err').textContent = 'Senha incorreta.'; show(false); } else { $('err').textContent = 'Não foi possível carregar agora.'; } return; }
+    try { sessionStorage.setItem('lemon-painel', senha); } catch(e) {}
+    document.querySelectorAll('#range button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.d === dias)));
+    const list = $('list'); list.textContent = '';
+    res.forEach((r, i) => list.appendChild(card(CLIENTS[i], r)));
+    show(true);
+  }
+
+  function card(c, r){
+    const rows = r.linhas || [];
+    const sum = (t, f) => rows.filter(x => x.tipo === t).reduce((a, x) => a + (x[f] || 0), 0);
+    const views = sum('view', 'total'), pessoas = sum('view', 'unicos');
+    const menu = sum('cardapio', 'total'), menuP = sum('cardapio', 'unicos');
+    const clicks = sum('click', 'total');
+    const taxa = pessoas ? Math.round(menuP / pessoas * 100) : 0;
+
+    const box = el('section', 'client');
+    const ch = el('div', 'ch');
+    ch.appendChild(el('h2', null, c.name));
+    const a = el('a', null, c.url.replace('https://', '')); a.href = c.url; a.target = '_blank'; a.rel = 'noopener';
+    ch.appendChild(a);
+    box.appendChild(ch);
+
+    const k = el('div', 'kpis');
+    [
+      ['hl', views, 'Acessos', 'à página de links'],
+      ['', pessoas, 'Pessoas', 'únicas por dia'],
+      ['', menu, 'Cardápio', nf(menuP) + ' pessoas' + (taxa ? ' · ' + taxa + '% de quem entrou' : '')],
+      ['', clicks, 'Cliques', 'nos botões da página'],
+    ].forEach(([cls, n, l, s]) => { const d = el('div', 'kpi ' + cls); d.append(el('b', null, nf(n)), el('span', null, l), el('small', null, s)); k.appendChild(d); });
+    box.appendChild(k);
+
+    const panels = el('div', 'panels');
+    // acessos por dia
+    const p1 = el('div', 'panel'); p1.appendChild(el('h3', null, 'Acessos por dia'));
+    const n = Math.min(dias, 90);
+    const days = [];
+    const hoje = r.hoje;
+    for (let i = n - 1; i >= 0; i--) { const d = new Date(hoje + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() - i); days.push(d.toISOString().slice(0, 10)); }
+    const byDay = {}; rows.forEach(x => { if (x.tipo === 'view') byDay[x.dia] = x; });
+    const menuDay = {}; rows.forEach(x => { if (x.tipo === 'cardapio') menuDay[x.dia] = x.total; });
+    const max = Math.max(1, ...days.map(d => (byDay[d] || {}).total || 0));
+    if (!views) p1.appendChild(el('p', 'empty', 'Ainda sem acessos neste período.'));
+    else {
+      const cols = el('div', 'cols');
+      days.forEach(d => {
+        const v = (byDay[d] || {}).total || 0, u = (byDay[d] || {}).unicos || 0;
+        const col = el('div', 'col'); col.tabIndex = 0;
+        col.setAttribute('aria-label', fmtDia(d) + ': ' + v + ' acessos');
+        const bar = el('i'); bar.style.height = (v / max * 100) + '%';
+        const tip = el('div', 'tip'); tip.innerHTML = '<b>' + fmtDia(d) + '</b><br>' + nf(v) + ' acessos · ' + nf(u) + ' pessoas<br>' + nf(menuDay[d] || 0) + ' no cardápio';
+        col.append(bar, tip); cols.appendChild(col);
+      });
+      p1.appendChild(cols);
+      const ax = el('div', 'axis'); ax.append(el('span', null, fmtDia(days[0])), el('span', null, 'máx. ' + nf(max) + '/dia'), el('span', null, fmtDia(days[days.length - 1])));
+      p1.appendChild(ax);
+    }
+    // cliques por botão
+    const p2 = el('div', 'panel'); p2.appendChild(el('h3', null, 'Cliques por botão'));
+    const byLabel = {}; rows.filter(x => x.tipo === 'click').forEach(x => { byLabel[x.rotulo] = (byLabel[x.rotulo] || 0) + x.total; });
+    const ranked = Object.entries(byLabel).sort((a, b) => b[1] - a[1]);
+    if (!ranked.length) p2.appendChild(el('p', 'empty', 'Nenhum clique ainda.'));
+    else {
+      const bars = el('div', 'bars'); const top = ranked[0][1];
+      ranked.forEach(([l, v]) => {
+        const b = el('div', 'bar'); b.append(el('span', 'n', pretty(l)), el('span', 'v', nf(v)));
+        const t = el('div', 'track'); const i = el('i'); i.style.width = (v / top * 100) + '%'; t.appendChild(i); b.appendChild(t);
+        bars.appendChild(b);
+      });
+      p2.appendChild(bars);
+    }
+    panels.append(p1, p2);
+    box.appendChild(panels);
+    return box;
+  }
+
+  $('range').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; dias = +b.dataset.d; load(); });
+  $('login').addEventListener('submit', e => { e.preventDefault(); senha = $('pw').value; load(); });
+  $('refresh').onclick = load;
+  $('logout').onclick = () => { senha = ''; try { sessionStorage.removeItem('lemon-painel'); } catch(e) {} show(false); $('pw').value = ''; };
+  if (senha) load();
+})();
+</script>
+</body>
+</html>

@@ -11,4 +11,5 @@ Landing page da Lemon Social para captação de leads.
 * Página do cliente: `public/<cliente>/index.html` (ex.: `/yasmine/`). Os meses ficam no JSON `months` dentro da página.
 * Painel da Lemon: `public/<cliente>/painel/` (ex.: `/yasmine/painel/`), protegido por senha.
 * API e armazenamento: `src/worker.js`, com as respostas salvas no KV `lemon-aprovacoes` (binding `APROVA`).
+* Acessos das páginas de links (lmon.cc): `/painel/acessos/`, mesma senha. Contagem via `POST /api/hit` (script `t.js` no repo lmon-cc), gravada no D1 `lemon-acessos` (binding `ACESSOS`).
 * A senha do painel fica como hash SHA-256 em `PAINEL_SENHA_SHA256` no `wrangler.jsonc`.

@@ -8,6 +8,8 @@
 //   POST /api/painel/:cliente/:mes/zerar       (senha) apaga todas as respostas do mês
 //   GET  /api/datas/:cliente/:mes              datas de publicação definidas pela equipe
 //   PUT  /api/painel/:cliente/:mes/data        (senha) {id, date} define ou limpa a data de um post
+//   POST /api/hit                              contador público das páginas de links (lmon.cc)
+//   GET  /api/painel/:cliente/acessos?dias=N   (senha) acessos e cliques por dia
 
 const SLUG = /^[a-z0-9-]{1,40}$/;
 const json = (data, status = 200) =>
@@ -39,6 +41,26 @@ function cleanState(input) {
     out[id] = s;
   }
   return out;
+}
+
+// Data no fuso de Brasília, formato AAAA-MM-DD
+const diaBR = (d = new Date()) => new Date(d.getTime() - 3 * 3600e3).toISOString().slice(0, 10);
+const TIPOS = new Set(['view', 'cardapio', 'click']);
+const CORS = { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'POST, OPTIONS', 'access-control-allow-headers': 'content-type' };
+
+async function hit(request, env) {
+  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
+  if (request.method !== 'POST') return json({ error: 'método' }, 405);
+  const body = await request.json().catch(() => null) || JSON.parse(await request.text().catch(() => '{}') || '{}');
+  const c = String(body.c || ''), t = String(body.t || ''), l = String(body.l || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40);
+  if (!SLUG.test(c) || !TIPOS.has(t)) return new Response(null, { status: 204, headers: CORS });
+  const ua = request.headers.get('user-agent') || '';
+  if (/bot|crawl|spider|preview|facebookexternalhit|whatsapp/i.test(ua)) return new Response(null, { status: 204, headers: CORS });
+  await env.ACESSOS.prepare(
+    `INSERT INTO acessos (dia, cliente, tipo, rotulo, total, unicos) VALUES (?1, ?2, ?3, ?4, 1, ?5)
+     ON CONFLICT (dia, cliente, tipo, rotulo) DO UPDATE SET total = total + 1, unicos = unicos + ?5`
+  ).bind(diaBR(), c, t, t === 'click' ? l : '', body.u ? 1 : 0).run();
+  return new Response(null, { status: 204, headers: CORS });
 }
 
 async function api(request, env, parts) {
@@ -74,6 +96,14 @@ async function api(request, env, parts) {
 
   if (parts[0] === 'painel' && SLUG.test(parts[1] || '')) {
     if (!(await authorized(request, env))) return json({ error: 'senha incorreta' }, 401);
+    if (parts.length === 3 && parts[2] === 'acessos' && method === 'GET') {
+      const dias = Math.min(Math.max(parseInt(new URL(request.url).searchParams.get('dias') || '30', 10) || 30, 1), 3650);
+      const desde = diaBR(new Date(Date.now() - (dias - 1) * 864e5));
+      const { results } = await env.ACESSOS.prepare(
+        'SELECT dia, tipo, rotulo, total, unicos FROM acessos WHERE cliente = ?1 AND dia >= ?2 ORDER BY dia'
+      ).bind(parts[1], desde).all();
+      return json({ cliente: parts[1], desde, hoje: diaBR(), linhas: results });
+    }
     if (parts.length === 2 && method === 'GET') {
       const list = await env.APROVA.list({ prefix: `aprova:${parts[1]}:` });
       const meses = {};
@@ -110,6 +140,9 @@ async function api(request, env, parts) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/api/hit') {
+      try { return await hit(request, env); } catch (e) { return new Response(null, { status: 204, headers: CORS }); }
+    }
     if (url.pathname.startsWith('/api/')) {
       try {
         return await api(request, env, url.pathname.slice(5).split('/').filter(Boolean));
