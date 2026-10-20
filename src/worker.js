@@ -10,6 +10,10 @@
 //   PUT  /api/painel/:cliente/:mes/data        (senha) {id, date} define ou limpa a data de um post
 //   POST /api/hit                              contador público das páginas de links (lmon.cc)
 //   GET  /api/painel/:cliente/acessos?dias=N   (senha) acessos e cliques por dia
+//   /api/av/... e /api/painel/:cliente/(avaliacoes|clientes|av-config|garcons)  ver src/avaliacoes.js
+//   GET  /a/:token                             página de avaliação do cliente (serve /avaliar/)
+
+import { avaliacoesApi, painelAvaliacoes } from './avaliacoes.js';
 
 const SLUG = /^[a-z0-9-]{1,40}$/;
 const json = (data, status = 200) =>
@@ -96,6 +100,10 @@ async function api(request, env, parts) {
 
   if (parts[0] === 'painel' && SLUG.test(parts[1] || '')) {
     if (!(await authorized(request, env))) return json({ error: 'senha incorreta' }, 401);
+    if (['avaliacoes', 'clientes', 'av-config', 'garcons'].includes(parts[2])) {
+      const r = await painelAvaliacoes(request, env, parts[1], parts.slice(2));
+      if (r) return r;
+    }
     if (parts.length === 3 && parts[2] === 'acessos' && method === 'GET') {
       const dias = Math.min(Math.max(parseInt(new URL(request.url).searchParams.get('dias') || '30', 10) || 30, 1), 3650);
       const desde = diaBR(new Date(Date.now() - (dias - 1) * 864e5));
@@ -142,6 +150,16 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === '/api/hit') {
       try { return await hit(request, env); } catch (e) { return new Response(null, { status: 204, headers: CORS }); }
+    }
+    if (/^\/a\/[A-Za-z0-9]{10}\/?$/.test(url.pathname)) {
+      return env.ASSETS.fetch(new Request(new URL('/avaliar/', url), request));
+    }
+    if (url.pathname.startsWith('/api/av/')) {
+      try {
+        return await avaliacoesApi(request, env, url.pathname.slice(8).split('/').filter(Boolean));
+      } catch (e) {
+        return json({ error: 'erro interno' }, 500);
+      }
     }
     if (url.pathname.startsWith('/api/')) {
       try {

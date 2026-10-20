@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Avaliações">
+<title>Garçom · Avaliações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#111;--bg-2:#1b1b1b;--bg-3:#262626;--line:#333;--txt:#fff6ec;--mute:#a8a29a;
+  --acc:#ff5b14;--acc-ink:#1a0800;--ok:#3ddc84;--warn:#ffb020;
+  --f-display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --f-body:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--f-body);font-size:19px;line-height:1.35;-webkit-tap-highlight-color:transparent}
+body{padding:0 max(16px,env(safe-area-inset-right)) calc(32px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));min-height:100dvh}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:480px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 0 16px;border-bottom:1px solid var(--line)}
+.logo{font-family:var(--f-display);font-size:30px;letter-spacing:.04em;line-height:1}
+.logo small{display:block;font-family:var(--f-body);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);font-weight:700}
+.who{display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 14px;font-weight:600}
+.who button{background:var(--bg-3);border:0;border-radius:999px;padding:4px 10px;font-size:15px;color:var(--mute)}
+h1{font-family:var(--f-display);font-weight:400;font-size:44px;line-height:.95;margin:24px 0 6px}
+h1 em{font-style:normal;color:var(--acc)}
+.sub{color:var(--mute);margin:0 0 20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:1px solid var(--line);background:var(--bg-3);border-radius:14px;padding:16px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:18px;text-decoration:none;color:var(--txt)}
+.btn.main{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.btn.wa{background:#25d366;border-color:#25d366;color:#04210f}
+.btn:disabled{opacity:.5}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-size:15px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);font-weight:600}
+.field input{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:22px;width:100%}
+.field input:focus{border-color:var(--acc);outline:none}
+.pin input{text-align:center;letter-spacing:.5em;font-size:32px}
+.err{color:var(--warn);min-height:1.4em;margin:8px 0 0}
+.names{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.names button{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:22px 10px;font-size:22px;font-weight:700}
+.names button:active{background:var(--acc);color:var(--acc-ink)}
+.date{display:flex;align-items:center;justify-content:space-between;background:var(--bg-2);border:1px dashed var(--line);border-radius:14px;padding:12px 16px;margin-bottom:20px;color:var(--mute)}
+.date b{color:var(--txt);font-weight:700}
+.done{text-align:center;padding-top:24px}
+.done .ic{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font-size:44px;background:var(--ok);color:#03210f}
+.done.manual .ic{background:var(--warn);color:#2a1a00}
+.done p{color:var(--mute);margin:6px 0 22px}
+.stack{display:grid;gap:10px}
+.count{text-align:center;color:var(--mute);font-size:16px;margin-top:22px}
+.count b{color:var(--acc)}
+.link{color:var(--mute);background:none;border:0;text-decoration:underline;font-size:16px;padding:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><small>Avaliações</small><span id="rest">Restaurante</span></div>
+    <div class="who" id="who" hidden><span id="whoName"></span><button id="trocar" type="button">trocar</button></div>
+  </header>
+
+  <!-- 1. PIN -->
+  <form id="sPin" hidden>
+    <h1>Acesso da <em>equipe</em></h1>
+    <p class="sub">Digite o PIN que o gerente passou.</p>
+    <div class="field pin"><label for="pin">PIN</label><input id="pin" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="8" required></div>
+    <button class="btn main" type="submit">Entrar</button>
+    <p class="err" id="pinErr"></p>
+  </form>
+
+  <!-- 2. Escolher garçom -->
+  <section id="sNome" hidden>
+    <h1>Quem é <em>você?</em></h1>
+    <p class="sub">Toque no seu nome. O celular lembra da próxima vez.</p>
+    <div class="names" id="names"></div>
+    <p class="err" id="nomeErr"></p>
+  </section>
+
+  <!-- 3. Cadastrar cliente -->
+  <form id="sForm" hidden novalidate>
+    <h1>Pedir <em>avaliação</em></h1>
+    <p class="sub">Depois que a conta fechar, cadastre o cliente. Ele recebe o link no WhatsApp.</p>
+    <div class="field"><label for="cNome">Nome do cliente</label><input id="cNome" autocomplete="off" autocapitalize="words" maxlength="80" placeholder="Ex.: Marina"></div>
+    <div class="field"><label for="cWhats">WhatsApp com DDD</label><input id="cWhats" type="tel" inputmode="tel" autocomplete="off" placeholder="(61) 99999-9999" maxlength="16"></div>
+    <div class="date"><span>Data da visita</span><b id="hoje"></b></div>
+    <button class="btn main" id="enviar" type="submit">Enviar avaliação</button>
+    <p class="err" id="formErr"></p>
+    <p class="count" id="count"></p>
+  </form>
+
+  <!-- 4. Resultado -->
+  <section id="sDone" class="done" hidden>
+    <div class="ic" id="doneIc">✓</div>
+    <h1 id="doneTitle">Enviado!</h1>
+    <p id="doneText"></p>
+    <div class="stack">
+      <a class="btn wa" id="waBtn" target="_blank" rel="noopener" hidden>Enviar pelo meu WhatsApp</a>
+      <button class="btn main" id="proximo" type="button">Próximo cliente</button>
+      <button class="link" id="copiar" type="button" hidden>Copiar link da avaliação</button>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const CLIENTE = location.pathname.split('/').filter(Boolean)[0];
+  const K = 'av-' + CLIENTE;
+  const $ = id => document.getElementById(id);
+  const store = {
+    get(k){ try { return localStorage.getItem(K + k) || ''; } catch(e){ return ''; } },
+    set(k, v){ try { v ? localStorage.setItem(K + k, v) : localStorage.removeItem(K + k); } catch(e){} },
+  };
+  let pin = store.get('-pin'), garcom = store.get('-garcom'), ultimoLink = '';
+  const hojeISO = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+  const fmtData = iso => iso.split('-').reverse().join('/');
+
+  function tela(id){
+    ['sPin', 'sNome', 'sForm', 'sDone'].forEach(s => $(s).hidden = s !== id);
+    $('who').hidden = !(garcom && (id === 'sForm' || id === 'sDone'));
+    $('whoName').textContent = garcom;
+    window.scrollTo(0, 0);
+  }
+
+  async function api(path, opts = {}){
+    const r = await fetch('/api/av/' + CLIENTE + path, { ...opts, headers: { 'content-type': 'application/json', 'x-pin': pin }, cache: 'no-store' });
+    const data = await r.json().catch(() => ({}));
+    if (r.status === 401) { pin = ''; store.set('-pin', ''); tela('sPin'); $('pinErr').textContent = 'PIN incorreto.'; throw 401; }
+    if (!r.ok) throw data.error || 'Não deu certo agora. Tente de novo.';
+    return data;
+  }
+
+  async function carregaNomes(){
+    const d = await api('/garcons');
+    $('rest').textContent = d.restaurante;
+    document.title = 'Garçom · ' + d.restaurante;
+    if (garcom && d.garcons.includes(garcom)) return mostraForm();
+    garcom = ''; store.set('-garcom', '');
+    const box = $('names'); box.textContent = '';
+    if (!d.garcons.length) $('nomeErr').textContent = 'Nenhum garçom cadastrado ainda. Peça para o gerente cadastrar no painel.';
+    d.garcons.forEach(n => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = n;
+      b.onclick = () => { garcom = n; store.set('-garcom', n); mostraForm(); };
+      box.appendChild(b);
+    });
+    tela('sNome');
+  }
+
+  function contador(){
+    const n = +store.get('-n-' + hojeISO()) || 0;
+    $('count').innerHTML = n ? 'Hoje você já pediu <b>' + n + '</b> ' + (n === 1 ? 'avaliação' : 'avaliações') : '';
+  }
+
+  function mostraForm(){
+    $('cNome').value = ''; $('cWhats').value = ''; $('formErr').textContent = '';
+    $('hoje').textContent = fmtData(hojeISO());
+    contador();
+    tela('sForm');
+    setTimeout(() => $('cNome').focus(), 50);
+  }
+
+  // Máscara (61) 99999-9999
+  $('cWhats').addEventListener('input', e => {
+    let d = e.target.value.replace(/\D/g, '');
+    if (d.length > 11 && d.startsWith('55')) d = d.slice(2);
+    d = d.slice(0, 11);
+    let s = d;
+    if (d.length > 2) s = '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length > 7) s = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+    e.target.value = s;
+  });
+
+  $('sPin').addEventListener('submit', async e => {
+    e.preventDefault();
+    pin = $('pin').value.trim(); $('pinErr').textContent = '';
+    try { await carregaNomes(); store.set('-pin', pin); $('pin').value = ''; }
+    catch(err){ if (err !== 401) $('pinErr').textContent = err; }
+  });
+
+  $('sForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const nome = $('cNome').value.trim(), whats = $('cWhats').value.replace(/\D/g, '');
+    if (whats.length < 10) { $('formErr').textContent = 'Confira o WhatsApp: DDD + número.'; $('cWhats').focus(); return; }
+    $('enviar').disabled = true; $('enviar').textContent = 'Enviando…'; $('formErr').textContent = '';
+    try {
+      const d = await api('/enviar', { method: 'POST', body: JSON.stringify({ garcom, nome, whatsapp: whats }) });
+      const k = '-n-' + hojeISO(); store.set(k, String((+store.get(k) || 0) + 1));
+      ultimoLink = d.link;
+      const primeiro = nome.split(' ')[0];
+      $('sDone').classList.toggle('manual', !d.enviado);
+      $('waBtn').hidden = d.enviado; $('copiar').hidden = d.enviado;
+      if (d.enviado) {
+        $('doneIc').textContent = '✓';
+        $('doneTitle').textContent = 'Enviado!';
+        $('doneText').textContent = (primeiro || 'O cliente') + ' recebe o link no WhatsApp agora. Avise que a mensagem é do restaurante.';
+      } else {
+        $('doneIc').textContent = '!';
+        $('doneTitle').textContent = 'Falta um toque';
+        $('doneText').textContent = 'Toque no botão verde para mandar o link pelo seu WhatsApp. A mensagem já vai pronta.';
+        $('waBtn').href = d.wa_link;
+      }
+      tela('sDone');
+    } catch(err){ if (err !== 401) $('formErr').textContent = err; }
+    finally { $('enviar').disabled = false; $('enviar').textContent = 'Enviar avaliação'; }
+  });
+
+  $('proximo').onclick = mostraForm;
+  $('trocar').onclick = () => { garcom = ''; store.set('-garcom', ''); carregaNomes().catch(() => {}); };
+  $('copiar').onclick = async () => {
+    try { await navigator.clipboard.writeText(ultimoLink); $('copiar').textContent = 'Link copiado'; }
+    catch(e){ prompt('Copie o link:', ultimoLink); }
+    setTimeout(() => $('copiar').textContent = 'Copiar link da avaliação', 2000);
+  };
+
+  if (pin) carregaNomes().catch(err => { if (err !== 401) { tela('sPin'); $('pinErr').textContent = err; } });
+  else tela('sPin');
+})();
+</script>
+</body>
+</html>

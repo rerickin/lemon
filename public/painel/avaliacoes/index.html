@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel · Avaliações · Lemon Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#0d0d0b;--ink-2:#171714;--ink-3:#24241f;--line:#34342c;
+  --lime:#c8f20d;--lime-ink:#141a00;--paper:#f4f4ef;--mute:#a3a394;--warn:#ff9b4a;--bad:#ff5d5d;--star:#ffb020;
+  --f-display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --f-body:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:17px;line-height:1.4;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 60px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto}
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding-block:28px 20px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:22px;letter-spacing:.06em}
+.brand i{width:14px;height:14px;border-radius:50%;background:var(--lime);display:block}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,7vw,68px);line-height:.9;margin:8px 0 0}
+h1 em{font-style:normal;color:var(--lime)}
+.btn{border:1px solid var(--line);background:var(--ink-3);border-radius:10px;padding:10px 16px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.main{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.btn.sm{padding:6px 10px;font-size:13px}
+.login{max-width:380px;margin:12vh auto 0;display:grid;gap:14px}
+.login input,.in{background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:18px;width:100%}
+.err{color:var(--warn);min-height:1.4em;margin:0}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:22px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+.seg button{background:transparent;border:0;padding:9px 14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--mute)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--lime);color:var(--lime-ink)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:22px;overflow-x:auto}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:12px 14px;font-family:var(--f-display);font-size:24px;letter-spacing:.04em;color:var(--mute);white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--paper);border-color:var(--lime)}
+
+.card{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:var(--ink-2);overflow:hidden}
+.card>h3,.ph{margin:0;padding:16px 20px 0;font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);font-weight:600}
+.pad{padding:14px 20px 18px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpi{padding:16px 20px;border-left:1px solid var(--line)}
+.kpi:first-child{border-left:0}
+.kpi b{display:block;font-family:var(--f-display);font-weight:400;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.kpi small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+.kpi.hl b{color:var(--lime)}
+@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--line)}}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+
+.dist{display:grid;gap:8px}
+.dist div{display:grid;grid-template-columns:44px minmax(0,1fr) 40px;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
+.dist .tr{height:10px;background:var(--ink-3);border-radius:5px;overflow:hidden}
+.dist .tr i{display:block;height:100%;background:var(--star)}
+.dist div:nth-child(n+3) .tr i{background:var(--bad)}
+.dist b{color:var(--star);font-weight:700}
+.dist span:last-child{text-align:right;color:var(--mute)}
+
+.tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.tbl th{text-align:left;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .r{text-align:right}
+.scroll{overflow-x:auto}
+.empty{color:var(--mute);padding:6px 0}
+.stars{color:var(--star);letter-spacing:1px;white-space:nowrap}
+.stars s{color:var(--ink-3);text-decoration:none}
+.com{display:grid;gap:10px}
+.c{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--ink)}
+.c.low{border-color:color-mix(in srgb,var(--bad) 60%,var(--line))}
+.c header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;align-items:baseline}
+.c header b{font-size:18px}
+.c .meta{color:var(--mute);font-size:15px}
+.c p{margin:6px 0 0}
+.c .det{color:var(--mute);font-size:15px;margin-top:4px}
+.c .det span+span::before{content:" · "}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:13px;color:var(--mute)}
+.pill.ok{border-color:var(--lime);color:var(--lime)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line)}
+.tools .in{max-width:320px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+@media (max-width:700px){.grid2{grid-template-columns:1fr}}
+.f{display:grid;gap:6px}
+.f label{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);font-weight:600}
+.hint{color:var(--mute);font-size:15px;margin:4px 0 0}
+.status{display:flex;gap:10px;align-items:center;font-weight:600}
+.status i{width:12px;height:12px;border-radius:50%;background:var(--warn)}
+.status.ok i{background:var(--lime)}
+.gl{display:flex;flex-wrap:wrap;gap:8px}
+.gl .g{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:4px 4px 4px 14px;background:var(--ink)}
+.gl .g.off{opacity:.45}
+.gl .g button{border:0;background:var(--ink-3);border-radius:999px;padding:4px 10px;font-size:13px;color:var(--mute)}
+code{background:var(--ink);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:15px}
+ol.steps{margin:8px 0 0;padding-left:20px;color:var(--mute)}
+ol.steps li{margin-bottom:6px}
+ol.steps b{color:var(--paper)}
+.saved{color:var(--lime);font-weight:600;min-height:1.4em;margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand"><i></i><span>Lemon Social · Painel</span></div>
+      <h1>Avaliações <em id="nomeCli">dos clientes</em></h1>
+    </div>
+    <div id="actions" hidden style="display:flex;gap:8px;flex-wrap:wrap">
+      <select class="btn" id="cli" aria-label="Restaurante"></select>
+      <button class="btn" id="refresh">Atualizar</button>
+      <button class="btn" id="logout">Sair</button>
+    </div>
+  </header>
+
+  <form class="login" id="login">
+    <label for="pw" style="font-family:var(--f-display);font-size:28px;letter-spacing:.04em">Senha do painel</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <button class="btn main" type="submit" style="justify-content:center">Entrar</button>
+    <p class="err" id="err"></p>
+  </form>
+
+  <main id="main" hidden>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-t="notas" aria-selected="true">Notas</button>
+      <button role="tab" data-t="clientes">Clientes</button>
+      <button role="tab" data-t="aniv">Aniversariantes</button>
+      <button role="tab" data-t="config">Configurações</button>
+    </nav>
+
+    <!-- NOTAS -->
+    <section id="t-notas">
+      <div class="bar">
+        <div class="seg" id="range" role="group" aria-label="Período">
+          <button data-d="1">Hoje</button><button data-d="7">7 dias</button><button data-d="30" aria-pressed="true">30 dias</button><button data-d="90">90 dias</button><button data-d="3650">Tudo</button>
+        </div>
+      </div>
+      <div class="card"><div class="kpis" id="kpis"></div></div>
+      <div class="two">
+        <div class="card"><h3>Distribuição da nota geral</h3><div class="pad"><div class="dist" id="dist"></div></div></div>
+        <div class="card"><h3>Por garçom</h3><div class="pad scroll"><table class="tbl" id="porGarcom"></table></div></div>
+      </div>
+      <div class="card"><h3>Avaliações recentes</h3><div class="pad">
+        <div class="seg" id="filtroCom" style="margin-bottom:12px"><button data-f="todas" aria-pressed="true">Todas</button><button data-f="baixas">Notas 1 a 3</button><button data-f="texto">Com comentário</button></div>
+        <div class="com" id="com"></div>
+      </div></div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="t-clientes" hidden>
+      <div class="card">
+        <div class="tools">
+          <input class="in" id="busca" type="search" placeholder="Buscar nome ou número">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn sm" id="csvTodos">Exportar todos (CSV)</button>
+            <button class="btn sm main" id="csvOptin">Exportar quem aceitou ofertas</button>
+          </div>
+        </div>
+        <div class="kpis" id="kpisCli"></div>
+        <div class="pad scroll" style="border-top:1px solid var(--line)"><table class="tbl" id="tblCli"></table></div>
+      </div>
+    </section>
+
+    <!-- ANIVERSARIANTES -->
+    <section id="t-aniv" hidden>
+      <div class="bar"><div class="seg" id="meses" role="group" aria-label="Mês"></div></div>
+      <div class="card"><div class="pad scroll"><table class="tbl" id="tblAniv"></table>
+        <p class="hint">Só aparece o botão de parabéns para quem marcou que aceita receber mensagens. Quem não aceitou fica na lista apenas para consulta.</p>
+      </div></div>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section id="t-config" hidden>
+      <div class="card"><h3>Garçons</h3><div class="pad">
+        <div class="gl" id="gl"></div>
+        <form id="addG" style="display:flex;gap:8px;margin-top:14px;max-width:420px">
+          <input class="in" id="novoG" placeholder="Nome do garçom" maxlength="60" required>
+          <button class="btn main" type="submit">Adicionar</button>
+        </form>
+        <p class="hint">Desativar tira o nome da tela do garçom, mas mantém o histórico de avaliações.</p>
+      </div></div>
+
+      <form class="card" id="cfgForm"><h3>Acesso e links</h3><div class="pad">
+        <div class="grid2">
+          <div class="f"><label for="cfgNome">Nome exibido</label><input class="in" id="cfgNome" maxlength="60"></div>
+          <div class="f"><label for="cfgPin">PIN dos garçons</label><input class="in" id="cfgPin" inputmode="numeric" maxlength="8" placeholder="Deixe vazio para manter"><p class="hint" id="pinInfo"></p></div>
+          <div class="f" style="grid-column:1/-1"><label for="cfgGoogle">Link para avaliar no Google</label><input class="in" id="cfgGoogle" placeholder="https://g.page/r/.../review"><p class="hint">Aparece só para quem dá nota 4 ou 5.</p></div>
+        </div>
+        <div class="f" style="margin-top:14px">
+          <label>Página do garçom</label>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><code id="garcomUrl"></code><button class="btn sm" type="button" id="copiaUrl">Copiar</button></div>
+          <p class="hint">Mande esse link para os garçons e peça para adicionar à tela inicial do celular.</p>
+        </div>
+      </div>
+
+      <h3 class="ph" style="border-top:1px solid var(--line);padding-top:16px">WhatsApp oficial (envio automático)</h3><div class="pad">
+        <div class="status" id="waStatus"><i></i><span></span></div>
+        <div class="grid2" style="margin-top:14px">
+          <div class="f"><label for="cfgTpl">Nome do modelo aprovado</label><input class="in" id="cfgTpl" placeholder="avaliacao_visita"></div>
+          <div class="f"><label for="cfgLang">Idioma do modelo</label><input class="in" id="cfgLang" placeholder="pt_BR"></div>
+        </div>
+        <ol class="steps" id="waSteps"></ol>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:16px"><button class="btn main" type="submit">Salvar</button><p class="saved" id="saved"></p></div>
+      </div></form>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  /* Restaurantes com sistema de avaliação. Para incluir um novo, adicione aqui. */
+  const CLIENTS = [ { slug:'theseven', name:'The Seven' } ];
+  const MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+  const $ = id => document.getElementById(id);
+  const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
+  const nf = n => (n || 0).toLocaleString('pt-BR');
+  const med = (arr, k) => { const v = arr.map(x => x[k]).filter(Boolean); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; };
+  const f1 = n => n ? n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : '·';
+  const dataBR = iso => iso ? iso.slice(0, 10).split('-').reverse().join('/') : '';
+  const fmtW = w => { const d = String(w || '').replace(/^55/, ''); return d.length >= 10 ? '(' + d.slice(0, 2) + ') ' + d.slice(2, -4) + '-' + d.slice(-4) : w; };
+  const estrelas = n => { const s = el('span', 'stars'); s.append('★'.repeat(n || 0)); const o = el('s', null, '★'.repeat(5 - (n || 0))); s.appendChild(o); s.title = (n || 0) + ' de 5'; return s; };
+
+  let senha = '';
+  try { senha = sessionStorage.getItem('lemon-painel') || ''; } catch(e) {}
+  let cli = CLIENTS[0].slug, dias = 30, aba = 'notas', filtro = 'todas', mesSel = new Date().getMonth() + 1;
+  let dados = null, clientes = null, cfg = null;
+
+  CLIENTS.forEach(c => $('cli').add(new Option(c.name, c.slug)));
+  if (CLIENTS.length < 2) $('cli').hidden = true;
+
+  function show(on){ $('login').hidden = on; $('main').hidden = !on; $('actions').hidden = !on; }
+
+  async function api(path, opts = {}){
+    const r = await fetch('/api/painel/' + cli + path, { ...opts, headers: { 'x-senha': senha, 'content-type': 'application/json' }, cache: 'no-store' });
+    const d = await r.json().catch(() => ({}));
+    if (r.status === 401) throw 401;
+    if (!r.ok) throw d.error || 'Erro ' + r.status;
+    return d;
+  }
+
+  async function load(){
+    $('err').textContent = '';
+    try {
+      [dados, clientes, cfg] = await Promise.all([api('/avaliacoes?dias=' + dias), api('/clientes'), api('/av-config')]);
+    } catch(e) {
+      if (e === 401) { $('err').textContent = 'Senha incorreta.'; show(false); }
+      else $('err').textContent = 'Não foi possível carregar agora.';
+      return;
+    }
+    try { sessionStorage.setItem('lemon-painel', senha); } catch(e) {}
+    $('nomeCli').textContent = 'do ' + (cfg.nome || CLIENTS.find(c => c.slug === cli).name);
+    show(true);
+    render();
+  }
+
+  function render(){
+    document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.t === aba)));
+    ['notas', 'clientes', 'aniv', 'config'].forEach(t => $('t-' + t).hidden = t !== aba);
+    ({ notas: rNotas, clientes: rClientes, aniv: rAniv, config: rConfig })[aba]();
+  }
+
+  /* ---------- Notas ---------- */
+  function rNotas(){
+    document.querySelectorAll('#range button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.d === dias)));
+    const R = dados.respostas, P = dados.pedidos;
+    const pedidos = P.reduce((a, x) => a + x.pedidos, 0), resp = R.length;
+    const taxa = pedidos ? Math.round(resp / pedidos * 100) : 0;
+    const k = $('kpis'); k.textContent = '';
+    [
+      ['hl', f1(med(R, 'geral')), 'Nota geral', 'média de 1 a 5'],
+      ['', nf(resp), 'Avaliações', 'de ' + nf(pedidos) + ' pedidas'],
+      ['', taxa + '%', 'Taxa de resposta', nf(P.reduce((a, x) => a + (x.abertos || 0), 0)) + ' abriram o link'],
+      ['', f1(med(R, 'comida')) + ' / ' + f1(med(R, 'atendimento')), 'Comida / Atend.', 'médias de 1 a 5'],
+    ].forEach(([c, n, l, s]) => { const d = el('div', 'kpi ' + c); d.append(el('b', null, n), el('span', null, l), el('small', null, s)); k.appendChild(d); });
+
+    const dist = $('dist'); dist.textContent = '';
+    const cont = [5, 4, 3, 2, 1].map(n => [n, R.filter(x => x.geral === n).length]);
+    const mx = Math.max(1, ...cont.map(c => c[1]));
+    cont.forEach(([n, v]) => {
+      const row = el('div'); row.append(el('b', null, n + ' ★'));
+      const tr = el('div', 'tr'); const i = el('i'); i.style.width = (v / mx * 100) + '%'; tr.appendChild(i);
+      row.append(tr, el('span', null, nf(v))); dist.appendChild(row);
+    });
+
+    const t = $('porGarcom'); t.textContent = '';
+    if (!P.length) t.appendChild(el('caption', 'empty', 'Nenhum pedido neste período.'));
+    else {
+      const h = t.createTHead().insertRow();
+      ['Garçom', 'Pedidos', 'Respostas', 'Taxa', 'Atend.', 'Geral'].forEach((x, i) => { const th = el('th', i ? 'r' : '', x); h.appendChild(th); });
+      const b = t.createTBody();
+      P.sort((a, b) => b.pedidos - a.pedidos).forEach(g => {
+        const rr = R.filter(x => x.garcom === g.garcom);
+        const tr = b.insertRow();
+        [g.garcom, nf(g.pedidos), nf(g.respondidos), (g.pedidos ? Math.round(g.respondidos / g.pedidos * 100) : 0) + '%', f1(med(rr, 'atendimento')), f1(med(rr, 'geral'))]
+          .forEach((v, i) => { const td = tr.insertCell(); td.textContent = v; if (i) td.className = 'r'; });
+      });
+    }
+
+    document.querySelectorAll('#filtroCom button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === filtro)));
+    const com = $('com'); com.textContent = '';
+    const lista = R.filter(x => filtro === 'baixas' ? x.geral <= 3 : filtro === 'texto' ? !!x.comentario : true);
+    if (!lista.length) com.appendChild(el('p', 'empty', R.length ? 'Nada neste filtro.' : 'Ainda sem avaliações neste período.'));
+    lista.slice(0, 200).forEach(x => {
+      const c = el('article', 'c' + (x.geral <= 3 ? ' low' : ''));
+      const hd = el('header'); const l = el('div'); l.append(el('b', null, x.nome || 'Cliente'), ' ', estrelas(x.geral));
+      const meta = el('span', 'meta', dataBR(x.dia) + ' · ' + x.garcom);
+      hd.append(l, meta); c.appendChild(hd);
+      const det = el('div', 'det');
+      det.append(el('span', null, 'Comida ' + (x.comida || 'sem nota')), el('span', null, 'Atendimento ' + (x.atendimento || 'sem nota')));
+      if (x.whatsapp) { const a = el('a', null, fmtW(x.whatsapp)); a.href = 'https://wa.me/' + x.whatsapp; a.target = '_blank'; a.rel = 'noopener'; const s = el('span'); s.appendChild(a); det.appendChild(s); }
+      c.appendChild(det);
+      if (x.comentario) c.appendChild(el('p', null, x.comentario));
+      com.appendChild(c);
+    });
+  }
+
+  /* ---------- Clientes ---------- */
+  function rClientes(){
+    const C = clientes.clientes, q = $('busca').value.trim().toLowerCase(), qd = q.replace(/\D/g, '');
+    const k = $('kpisCli'); k.textContent = '';
+    const comAniv = C.filter(c => c.aniversario).length, opt = C.filter(c => c.ofertas).length, volta = C.filter(c => c.avaliacoes > 1).length;
+    [['hl', nf(C.length), 'Clientes', 'na base'], ['', nf(opt), 'Aceitaram ofertas', C.length ? Math.round(opt / C.length * 100) + '% da base' : ''],
+     ['', nf(comAniv), 'Com aniversário', 'informado'], ['', nf(volta), 'Voltaram', 'avaliaram mais de uma vez']]
+      .forEach(([c, n, l, s]) => { const d = el('div', 'kpi ' + c); d.append(el('b', null, n), el('span', null, l), el('small', null, s)); k.appendChild(d); });
+
+    const lista = C.filter(c => !q || (c.nome || '').toLowerCase().includes(q) || (qd && c.whatsapp.includes(qd)));
+    const t = $('tblCli'); t.textContent = '';
+    if (!lista.length) { t.appendChild(el('caption', 'empty', C.length ? 'Ninguém encontrado.' : 'A base começa a encher quando os clientes responderem.')); return; }
+    const h = t.createTHead().insertRow();
+    ['Nome', 'WhatsApp', 'Aniversário', 'Visitas', 'Última', 'Ofertas'].forEach((x, i) => h.appendChild(el('th', i === 3 ? 'r' : '', x)));
+    const b = t.createTBody();
+    lista.forEach(c => {
+      const tr = b.insertRow();
+      tr.insertCell().textContent = c.nome || '';
+      const w = tr.insertCell(); const a = el('a', null, fmtW(c.whatsapp)); a.href = 'https://wa.me/' + c.whatsapp; a.target = '_blank'; a.rel = 'noopener'; w.appendChild(a);
+      tr.insertCell().textContent = c.aniversario ? c.aniversario.split('-').reverse().join('/') : '';
+      const v = tr.insertCell(); v.className = 'r'; v.textContent = nf(c.avaliacoes);
+      tr.insertCell().textContent = dataBR(c.ultima_vez);
+      tr.insertCell().appendChild(el('span', 'pill' + (c.ofertas ? ' ok' : ''), c.ofertas ? 'Sim' : 'Não'));
+    });
+  }
+
+  function csv(soOpt){
+    const rows = clientes.clientes.filter(c => !soOpt || c.ofertas);
+    const esc = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+    const linhas = [['Nome', 'WhatsApp', 'Aniversario', 'Aceita ofertas', 'Avaliacoes', 'Primeira visita', 'Ultima visita']]
+      .concat(rows.map(c => [c.nome, c.whatsapp, c.aniversario ? c.aniversario.split('-').reverse().join('/') : '', c.ofertas ? 'Sim' : 'Nao', c.avaliacoes, dataBR(c.primeira_vez), dataBR(c.ultima_vez)]));
+    const blob = new Blob(['﻿' + linhas.map(l => l.map(esc).join(';')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    const a = el('a'); a.href = URL.createObjectURL(blob); a.download = cli + '-clientes' + (soOpt ? '-ofertas' : '') + '.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  /* ---------- Aniversariantes ---------- */
+  function rAniv(){
+    const seg = $('meses'); seg.textContent = '';
+    MESES.forEach((m, i) => { const b = el('button', null, m); b.dataset.m = i + 1; b.setAttribute('aria-pressed', String(i + 1 === mesSel)); seg.appendChild(b); });
+    const mm = String(mesSel).padStart(2, '0');
+    const lista = clientes.clientes.filter(c => c.aniversario && c.aniversario.startsWith(mm + '-')).sort((a, b) => a.aniversario.localeCompare(b.aniversario));
+    const t = $('tblAniv'); t.textContent = '';
+    if (!lista.length) { t.appendChild(el('caption', 'empty', 'Ninguém da base faz aniversário em ' + MESES[mesSel - 1].toLowerCase() + '.')); return; }
+    const h = t.createTHead().insertRow();
+    ['Dia', 'Nome', 'WhatsApp', 'Visitas', ''].forEach(x => h.appendChild(el('th', null, x)));
+    const b = t.createTBody();
+    const rest = cfg.nome || 'restaurante';
+    lista.forEach(c => {
+      const tr = b.insertRow();
+      tr.insertCell().textContent = c.aniversario.slice(3) + '/' + mm;
+      tr.insertCell().textContent = c.nome || '';
+      tr.insertCell().textContent = fmtW(c.whatsapp);
+      tr.insertCell().textContent = nf(c.avaliacoes);
+      const td = tr.insertCell();
+      if (c.ofertas) {
+        const msg = 'Oi, ' + (c.nome || '').split(' ')[0] + '! Aqui é do ' + rest + '. Seu aniversário está chegando e preparamos um presente pra você. Vem comemorar com a gente!';
+        const a = el('a', 'btn sm main', 'Mandar parabéns'); a.href = 'https://wa.me/' + c.whatsapp + '?text=' + encodeURIComponent(msg); a.target = '_blank'; a.rel = 'noopener';
+        td.appendChild(a);
+      } else td.appendChild(el('span', 'pill', 'não aceitou ofertas'));
+    });
+  }
+
+  /* ---------- Configurações ---------- */
+  function rConfig(){
+    const gl = $('gl'); gl.textContent = '';
+    if (!cfg.garcons.length) gl.appendChild(el('p', 'empty', 'Nenhum garçom cadastrado.'));
+    cfg.garcons.forEach(g => {
+      const d = el('div', 'g' + (g.ativo ? '' : ' off')); d.appendChild(el('span', null, g.nome));
+      const b = el('button', null, g.ativo ? 'desativar' : 'reativar'); b.type = 'button';
+      b.onclick = async () => { await api('/garcons/' + g.id, { method: 'PUT', body: JSON.stringify({ ativo: !g.ativo }) }); cfg = await api('/av-config'); rConfig(); };
+      d.appendChild(b); gl.appendChild(d);
+    });
+    $('cfgNome').value = cfg.nome; $('cfgGoogle').value = cfg.google_url; $('cfgTpl').value = cfg.wa_template; $('cfgLang').value = cfg.wa_idioma;
+    $('cfgPin').value = '';
+    $('pinInfo').textContent = cfg.tem_pin ? 'Já existe um PIN. Digite um novo só se quiser trocar.' : 'Defina um PIN para liberar a página dos garçons.';
+    $('garcomUrl').textContent = cfg.av_base + '/' + cli + '/garcom/';
+
+    const ativo = cfg.wa_segredos && cfg.wa_template;
+    $('waStatus').className = 'status' + (ativo ? ' ok' : '');
+    $('waStatus').querySelector('span').textContent = ativo
+      ? 'Ativo: as mensagens saem do número oficial do restaurante.'
+      : 'Ainda não ativo: por enquanto o garçom envia pelo WhatsApp dele com um toque.';
+    const s = $('waSteps'); s.textContent = '';
+    const passos = [
+      ['Conta Meta Business verificada e número do restaurante cadastrado no WhatsApp Business Platform (Cloud API).', cfg.wa_segredos],
+      ['Modelo de mensagem categoria Utilidade, com {{1}} = primeiro nome do cliente e botão de URL dinâmica: ' + cfg.av_base + '/a/{{1}}', !!cfg.wa_template],
+      ['Na Cloudflare, Worker "lemon", Settings, Variables and Secrets: criar os segredos ' + cfg.wa_nomes.join(' e ') + '.', cfg.wa_segredos],
+    ];
+    passos.forEach(([txt, ok]) => { const li = el('li'); const b = el('b', null, ok ? '✓ ' : ''); li.append(b, txt); s.appendChild(li); });
+  }
+
+  $('cfgForm').addEventListener('submit', async e => {
+    e.preventDefault(); $('saved').textContent = '';
+    try {
+      cfg = await api('/av-config', { method: 'PUT', body: JSON.stringify({
+        nome: $('cfgNome').value, pin: $('cfgPin').value.trim(), google_url: $('cfgGoogle').value.trim(),
+        wa_template: $('cfgTpl').value.trim(), wa_idioma: $('cfgLang').value.trim() || 'pt_BR' }) });
+      rConfig(); $('saved').textContent = 'Salvo.'; setTimeout(() => $('saved').textContent = '', 2500);
+    } catch(x) { $('saved').textContent = ''; alert(x === 401 ? 'Sessão expirada, entre de novo.' : x); }
+  });
+  $('addG').addEventListener('submit', async e => {
+    e.preventDefault();
+    try { await api('/garcons', { method: 'POST', body: JSON.stringify({ nome: $('novoG').value }) }); $('novoG').value = ''; cfg = await api('/av-config'); rConfig(); }
+    catch(x) { alert(x); }
+  });
+  $('copiaUrl').onclick = async () => { try { await navigator.clipboard.writeText($('garcomUrl').textContent); $('copiaUrl').textContent = 'Copiado'; setTimeout(() => $('copiaUrl').textContent = 'Copiar', 2000); } catch(e) {} };
+
+  document.querySelector('.tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { aba = b.dataset.t; render(); } });
+  $('range').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; dias = +b.dataset.d; load(); });
+  $('filtroCom').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; filtro = b.dataset.f; rNotas(); });
+  $('meses').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; mesSel = +b.dataset.m; rAniv(); });
+  $('busca').addEventListener('input', rClientes);
+  $('csvTodos').onclick = () => csv(false);
+  $('csvOptin').onclick = () => csv(true);
+  $('cli').onchange = () => { cli = $('cli').value; load(); };
+  $('login').addEventListener('submit', e => { e.preventDefault(); senha = $('pw').value; load(); });
+  $('refresh').onclick = load;
+  $('logout').onclick = () => { senha = ''; try { sessionStorage.removeItem('lemon-painel'); } catch(e) {} show(false); $('pw').value = ''; };
+  if (senha) load();
+})();
+</script>
+</body>
+</html>

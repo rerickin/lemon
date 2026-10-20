@@ -9,16 +9,18 @@
     "directory": "./public/",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": ["/api/*", "/a/*"]
   },
   "kv_namespaces": [
     { "binding": "APROVA", "id": "c48f428ee6b244f4906fe227285a8fb0" }
   ],
   "d1_databases": [
-    { "binding": "ACESSOS", "database_name": "lemon-acessos", "database_id": "57ae40f2-021d-48f7-be21-279a6a326878" }
+    { "binding": "ACESSOS", "database_name": "lemon-acessos", "database_id": "57ae40f2-021d-48f7-be21-279a6a326878", "migrations_dir": "migrations" }
   ],
   "vars": {
     // SHA-256 da senha do painel de aprovações
-    "PAINEL_SENHA_SHA256": "f464d7d71c06e47a535ce441aa202aa717cddeab902a45b0c283aac7a9a090d7"
+    "PAINEL_SENHA_SHA256": "f464d7d71c06e47a535ce441aa202aa717cddeab902a45b0c283aac7a9a090d7",
+    // Domínio usado nos links de avaliação enviados por WhatsApp
+    "AV_BASE_URL": "https://agencialemonsocial.com.br"
   }
 }
