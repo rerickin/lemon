@@ -21,6 +21,6 @@
     // SHA-256 da senha do painel de aprovações
     "PAINEL_SENHA_SHA256": "f464d7d71c06e47a535ce441aa202aa717cddeab902a45b0c283aac7a9a090d7",
     // Domínio usado nos links de avaliação enviados por WhatsApp
-    "AV_BASE_URL": "https://agencialemonsocial.com.br"
+    "AV_BASE_URL": "https://lmon.cc"
   }
 }
