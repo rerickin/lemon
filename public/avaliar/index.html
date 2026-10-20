@@ -2,134 +2,249 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#FF4D0D">
 <title>Como foi sua visita?</title>
 <meta property="og:title" content="Como foi sua visita?">
 <meta property="og:description" content="Leva menos de 1 minuto. Sua opinião ajuda a gente a melhorar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/avaliar/goshen.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{
-  --bg:#111;--bg-2:#1b1b1b;--bg-3:#262626;--line:#333;--txt:#fff6ec;--mute:#a8a29a;
-  --acc:#ff5b14;--acc-ink:#1a0800;--star:#ffb020;--warn:#ffb020;
-  --f-display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
-  --f-body:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--f-body);font-size:19px;line-height:1.4;-webkit-tap-highlight-color:transparent}
-body{padding:0 max(16px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));min-height:100dvh}
-body::before{content:"";position:fixed;inset:0 0 auto 0;height:220px;pointer-events:none;z-index:-1;
-  background:radial-gradient(circle,var(--acc) 1.4px,transparent 1.6px) 0 0/10px 10px;
-  -webkit-mask:linear-gradient(#000,transparent);mask:linear-gradient(#000,transparent);opacity:.35}
-button,input,select,textarea{font:inherit;color:inherit}
-button{cursor:pointer}
-:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.wrap{max-width:480px;margin:0 auto}
-.logo{padding:28px 0 0;font-family:var(--f-display);font-size:24px;letter-spacing:.08em;color:var(--acc)}
-h1{font-family:var(--f-display);font-weight:400;font-size:52px;line-height:.92;margin:10px 0 8px}
-.sub{color:var(--mute);margin:0 0 26px}
-.q{background:var(--bg-2);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}
-.q h2{margin:0 0 10px;font-size:20px;font-weight:700;letter-spacing:.02em}
-.q h2 small{display:block;font-weight:500;color:var(--mute);font-size:16px}
-.stars{display:flex;gap:6px}
-.stars button{flex:1;aspect-ratio:1;max-width:60px;background:var(--bg-3);border:1px solid var(--line);border-radius:14px;padding:0;display:grid;place-items:center;transition:transform .08s}
-.stars button svg{width:62%;height:62%;fill:none;stroke:var(--mute);stroke-width:1.6}
-.stars button.on{background:color-mix(in srgb,var(--star) 18%,var(--bg-3));border-color:var(--star)}
-.stars button.on svg{fill:var(--star);stroke:var(--star)}
-.stars button:active{transform:scale(.92)}
-.big .stars button{max-width:none}
-.lbl{min-height:1.3em;margin:8px 0 0;color:var(--star);font-weight:600;font-size:17px}
-textarea{width:100%;min-height:90px;resize:vertical;background:var(--bg-3);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:18px}
-h3{font-family:var(--f-display);font-weight:400;font-size:32px;margin:28px 0 12px}
-.field{display:grid;gap:6px;margin-bottom:14px}
-.field label{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);font-weight:600}
-.field input,.field select{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:15px;font-size:20px;width:100%;appearance:none}
-.field input:focus,.field select:focus,textarea:focus{border-color:var(--acc);outline:none}
-.row{display:grid;grid-template-columns:1fr 1.6fr;gap:10px}
-.check{display:flex;gap:12px;align-items:flex-start;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;margin:6px 0 10px;font-size:17px}
-.check input{width:24px;height:24px;margin:1px 0 0;accent-color:var(--acc);flex:none}
-.priv{color:var(--mute);font-size:14px;margin:0 0 20px}
-.btn{display:flex;align-items:center;justify-content:center;width:100%;border:1px solid var(--acc);background:var(--acc);color:var(--acc-ink);border-radius:16px;padding:18px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:19px;text-decoration:none}
-.btn.ghost{background:transparent;color:var(--txt);border-color:var(--line)}
-.btn:disabled{opacity:.5}
-.err{color:var(--warn);min-height:1.4em;margin:10px 0 0;text-align:center}
-.end{text-align:center;padding-top:12vh}
-.end .ic{font-size:64px;line-height:1;margin-bottom:8px}
-.end p{color:var(--mute)}
-.end .btn{margin-top:22px}
+  :root{
+    --orange:#FF4D0D;--orange-deep:#E03C00;--cream:#F4EADB;--ink:#161210;--ink-soft:#4a3d35;--light:#FCF0C8;--warn:#FCF0C8;
+  }
+  @font-face{font-family:'Goshen';src:url(/avaliar/goshen.woff2) format('woff2');font-display:swap}
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
+  html,body{background:var(--orange);color:var(--ink);height:100%}
+  body{font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;-webkit-tap-highlight-color:transparent}
+  button,input,select,textarea{font:inherit;color:inherit}
+  button{background:none;border:0;cursor:pointer}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .app{position:relative;height:100%;max-width:480px;margin:0 auto;display:flex;flex-direction:column;
+    padding:calc(14px + env(safe-area-inset-top)) 18px calc(20px + env(safe-area-inset-bottom))}
+  .watermark{position:fixed;top:44%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);font-family:'Anton',sans-serif;font-size:min(46vw,230px);line-height:.85;
+    color:transparent;-webkit-text-stroke:2px var(--orange-deep);pointer-events:none;user-select:none;white-space:nowrap;z-index:0}
+
+  /* topo: voltar, logo, progresso */
+  .head{position:relative;z-index:2;display:grid;grid-template-columns:44px 1fr 44px;align-items:center}
+  .back{width:44px;height:44px;border-radius:50%;background:var(--cream);border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;transition:transform .12s,box-shadow .12s,opacity .2s}
+  .back:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+  .back svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .back.hide{opacity:0;pointer-events:none}
+  .logo{height:44px;width:auto;justify-self:center;filter:drop-shadow(3px 3px 0 rgba(22,18,16,.35))}
+  .nome{justify-self:center;font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase}
+  .prog{position:relative;z-index:2;display:flex;gap:6px;margin-top:16px}
+  .prog i{flex:1;height:7px;border-radius:9px;background:rgba(22,18,16,.18);overflow:hidden;position:relative}
+  .prog i::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+  .prog i.on::after{transform:scaleX(1)}
+
+  /* telas */
+  .stage{position:relative;z-index:1;flex:1;min-height:0}
+  .step{position:absolute;inset:0;display:flex;flex-direction:column;padding:7vh 7px 8px 0;overflow-y:auto}
+  .step.go{animation:inR .42s cubic-bezier(.2,.9,.3,1) both}
+  .step.goBack{animation:inL .42s cubic-bezier(.2,.9,.3,1) both}
+  .step.leave{animation:outL .3s ease-in both;pointer-events:none}
+  .step.leaveBack{animation:outR .3s ease-in both;pointer-events:none}
+  @keyframes inR{from{opacity:0;transform:translateX(60px)}}
+  @keyframes inL{from{opacity:0;transform:translateX(-60px)}}
+  @keyframes outL{to{opacity:0;transform:translateX(-60px)}}
+  @keyframes outR{to{opacity:0;transform:translateX(60px)}}
+
+  .tag{align-self:flex-start;display:inline-block;padding:6px 12px 5px;background:var(--ink);color:var(--cream);font-family:'Anton',sans-serif;font-size:19px;text-transform:uppercase;letter-spacing:.02em;line-height:1;transform:rotate(-2deg)}
+  h1{font-family:'Goshen','Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;font-size:clamp(46px,14vw,74px);color:var(--light);margin-top:16px;
+    text-shadow:3px 3px 0 var(--ink)}
+  .sub{margin-top:12px;font-size:17px;font-weight:600;color:var(--ink)}
+
+  .stars{display:flex;gap:8px;margin-top:30px}
+  .stars button{flex:1;aspect-ratio:1;background:var(--cream);border:2.5px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;transition:transform .12s,box-shadow .12s,background .15s}
+  .stars button svg{width:62%;height:62%;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round;transition:transform .2s}
+  .stars button.on{background:var(--ink)}
+  .stars button.on svg{fill:var(--light);stroke:var(--light)}
+  .stars button.pop svg{animation:pop .35s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes pop{40%{transform:scale(1.35) rotate(-8deg)}}
+  .stars button:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+  .lbl{margin-top:16px;min-height:1.2em;font-family:'Anton',sans-serif;font-size:26px;text-transform:uppercase;color:var(--ink)}
+
+  .box{margin-top:26px;display:grid;gap:14px}
+  .field{display:grid;gap:6px}
+  .field label{font-family:'Anton',sans-serif;font-size:16px;text-transform:uppercase;letter-spacing:.03em}
+  .in,textarea,select{width:100%;background:var(--cream);border:2.5px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);padding:14px 15px;font-size:19px;font-weight:600;appearance:none;color:var(--ink)}
+  .in:focus,textarea:focus,select:focus{outline:none;box-shadow:6px 6px 0 var(--ink);transform:translate(-2px,-2px)}
+  textarea{min-height:150px;resize:none;font-weight:500}
+  ::placeholder{color:#8b7c70;font-weight:500}
+  .row{display:grid;grid-template-columns:1fr 1.6fr;gap:12px}
+  .sel{position:relative}
+  .sel::after{content:"";position:absolute;right:16px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+  .check{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border:2.5px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);padding:14px;font-size:16px;font-weight:600;line-height:1.35;cursor:pointer}
+  .check input{appearance:none;flex:none;width:26px;height:26px;border:2.5px solid var(--ink);border-radius:7px;background:#fff;display:grid;place-items:center;margin-top:-1px}
+  .check input:checked{background:var(--ink)}
+  .check input:checked::after{content:"";width:7px;height:13px;border-right:3px solid var(--light);border-bottom:3px solid var(--light);transform:translateY(-2px) rotate(45deg)}
+  .priv{font-size:13px;font-weight:600;color:var(--ink-soft);margin-top:2px}
+
+  .foot{margin-top:auto;padding-top:22px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--ink);color:var(--cream);border:2.5px solid var(--ink);border-radius:14px;
+    padding:17px;font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;box-shadow:5px 5px 0 rgba(22,18,16,.35);transition:transform .12s,box-shadow .12s}
+  .btn:active{transform:translate(5px,5px);box-shadow:0 0 0 transparent}
+  .btn.light{background:var(--cream);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+  .btn:disabled{opacity:.6}
+  .btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .err{min-height:1.3em;margin-top:12px;text-align:center;font-weight:700;color:var(--ink)}
+  .err:not(:empty)::before{content:"⚠ "}
+
+  /* final */
+  .end{text-align:left}
+  .end .big{font-size:64px;line-height:1;margin-top:4px}
+  .end .btn{margin-top:26px}
+
+  .loading{position:absolute;inset:0;display:grid;place-items:center;font-family:'Anton',sans-serif;font-size:26px;text-transform:uppercase}
+  @media (prefers-reduced-motion: reduce){.step.go,.step.goBack,.step.leave,.step.leaveBack,.stars button.pop svg{animation:none}}
+  @media (max-height:640px){.step{padding-top:3vh}h1{font-size:clamp(40px,12vw,60px)}textarea{min-height:110px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="logo" id="logo"></div>
+<div class="grain"></div>
+<div class="watermark" aria-hidden="true">7</div>
 
-  <p class="sub" id="loading" style="padding-top:20vh;text-align:center">Carregando…</p>
+<div class="app">
+  <div class="head">
+    <button class="back hide" id="back" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img class="logo" id="logo" alt="" hidden>
+    <span class="nome" id="nomeRest" hidden></span>
+    <span></span>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"></div>
 
-  <form id="form" hidden novalidate>
-    <h1 id="titulo">Como foi sua visita?</h1>
-    <p class="sub">Leva menos de 1 minuto. Sua opinião vai direto para o dono.</p>
+  <div class="stage" id="stage">
+    <div class="loading" id="loading">Carregando…</div>
 
-    <div class="q big"><h2>Nota geral</h2><div class="stars" data-k="geral"></div><p class="lbl" id="lbl-geral"></p></div>
-    <div class="q"><h2>Comida</h2><div class="stars" data-k="comida"></div></div>
-    <div class="q"><h2 id="qAtend">Atendimento</h2><div class="stars" data-k="atendimento"></div></div>
-    <div class="q"><h2>Quer contar algo? <small>Opcional: elogio, sugestão, o que pode melhorar</small></h2><textarea id="comentario" maxlength="600"></textarea></div>
+    <!-- 1 nota geral -->
+    <section class="step" data-s="geral" hidden>
+      <span class="tag">1 de 3 · rapidinho</span>
+      <h1 id="t-geral">Como foi sua visita?</h1>
+      <p class="sub">Toque nas estrelas. De 1 a 5.</p>
+      <div class="stars" data-k="geral"></div>
+      <p class="lbl" id="lbl-geral"></p>
+    </section>
 
-    <h3>Seus dados</h3>
-    <div class="field"><label for="nome">Nome</label><input id="nome" autocomplete="name" autocapitalize="words" maxlength="80" required></div>
-    <div class="field"><label for="whats">WhatsApp</label><input id="whats" type="tel" inputmode="tel" autocomplete="tel" maxlength="16"></div>
-    <div class="field">
-      <label>Aniversário</label>
-      <div class="row">
-        <select id="dia" aria-label="Dia"><option value="">Dia</option></select>
-        <select id="mes" aria-label="Mês"><option value="">Mês</option></select>
+    <!-- 2 comida -->
+    <section class="step" data-s="comida" hidden>
+      <span class="tag">2 de 3</span>
+      <h1>E o burger?</h1>
+      <p class="sub">Sabor, ponto, temperatura.</p>
+      <div class="stars" data-k="comida"></div>
+      <p class="lbl" id="lbl-comida"></p>
+    </section>
+
+    <!-- 3 atendimento -->
+    <section class="step" data-s="atendimento" hidden>
+      <span class="tag">3 de 3</span>
+      <h1>E o atendimento?</h1>
+      <p class="sub" id="sub-atend">Simpatia, agilidade, cuidado.</p>
+      <div class="stars" data-k="atendimento"></div>
+      <p class="lbl" id="lbl-atendimento"></p>
+    </section>
+
+    <!-- 4 comentário -->
+    <section class="step" data-s="comentario" hidden>
+      <span class="tag">Opcional</span>
+      <h1 id="t-com">Quer contar algo?</h1>
+      <p class="sub" id="sub-com">Elogio, sugestão, o que for. Vai direto pro dono.</p>
+      <div class="box"><textarea id="comentario" maxlength="600" placeholder="Escreva aqui…"></textarea></div>
+      <div class="foot"><button class="btn" id="b-com" type="button">Pular</button></div>
+    </section>
+
+    <!-- 5 dados -->
+    <form class="step" data-s="dados" hidden novalidate>
+      <span class="tag">Quase lá</span>
+      <h1>Quem é você?</h1>
+      <div class="box">
+        <div class="field"><label for="nome">Seu nome</label><input class="in" id="nome" autocomplete="name" autocapitalize="words" maxlength="80" enterkeyhint="next"></div>
+        <div class="field"><label for="whats">WhatsApp</label><input class="in" id="whats" type="tel" inputmode="tel" autocomplete="tel" maxlength="16" enterkeyhint="done"></div>
       </div>
-    </div>
-    <label class="check"><input type="checkbox" id="ofertas"><span id="ofertasTxt">Quero receber novidades e um mimo no meu aniversário pelo WhatsApp.</span></label>
-    <p class="priv" id="priv">Seus dados ficam só com o restaurante e não são repassados. Você pode pedir para sair quando quiser.</p>
+      <p class="err" id="err-dados"></p>
+      <div class="foot"><button class="btn" type="submit">Continuar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </form>
 
-    <button class="btn" id="enviar" type="submit">Enviar avaliação</button>
-    <p class="err" id="err"></p>
-  </form>
+    <!-- 6 aniversário -->
+    <form class="step" data-s="aniv" hidden novalidate>
+      <span class="tag">Última</span>
+      <h1>Quando é seu aniver?</h1>
+      <p class="sub">Tem mimo esperando por você.</p>
+      <div class="box">
+        <div class="row">
+          <div class="sel"><select id="dia" aria-label="Dia"><option value="">Dia</option></select></div>
+          <div class="sel"><select id="mes" aria-label="Mês"><option value="">Mês</option></select></div>
+        </div>
+        <label class="check"><input type="checkbox" id="ofertas"><span id="ofertasTxt">Quero receber novidades e o mimo de aniversário pelo WhatsApp.</span></label>
+        <p class="priv" id="priv">Seus dados ficam só com o restaurante e não são repassados. Você pode pedir para sair quando quiser.</p>
+      </div>
+      <p class="err" id="err-aniv"></p>
+      <div class="foot"><button class="btn" id="enviar" type="submit">Enviar avaliação</button></div>
+    </form>
 
-  <section class="end" id="fim" hidden>
-    <div class="ic" id="fimIc">🧡</div>
-    <h1 id="fimTitulo">Valeu demais!</h1>
-    <p id="fimTexto">Sua avaliação chegou. Até a próxima visita!</p>
-    <a class="btn" id="google" target="_blank" rel="noopener" hidden>Avaliar no Google também</a>
-  </section>
+    <!-- fim -->
+    <section class="step end" data-s="fim" hidden>
+      <div class="big" id="fimIc">🧡</div>
+      <h1 id="fimTitulo">Valeu demais!</h1>
+      <p class="sub" id="fimTexto">Sua avaliação chegou. Até a próxima!</p>
+      <a class="btn light" id="google" target="_blank" rel="noopener" hidden>Avaliar no Google também</a>
+    </section>
+  </div>
 </div>
 
 <script>
 (function(){
-  /* Visual por restaurante. Para um novo cliente, acrescente aqui. */
-  const TEMAS = {
-    theseven: { acc:'#ff5b14', ink:'#1a0800', star:'#ffb020' },
-  };
+  const ORDEM = ['geral', 'comida', 'atendimento', 'comentario', 'dados', 'aniv'];
+  const LOGOS = { theseven: '/avaliar/theseven-logo.png' };
   const ROTULOS = ['', 'Muito ruim', 'Ruim', 'Ok', 'Muito bom', 'Perfeito!'];
+  const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.5 1.2 6.4L12 17.3l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"/></svg>';
   const $ = id => document.getElementById(id);
   const token = location.pathname.split('/').filter(Boolean)[1] || new URLSearchParams(location.search).get('t') || '';
   const notas = { geral: 0, comida: 0, atendimento: 0 };
-  const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.5 1.2 6.4L12 17.3l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z" stroke-linejoin="round"/></svg>';
+  let atual = null, enviando = false, timer = 0;
+  const tela = s => document.querySelector('.step[data-s="' + s + '"]');
 
-  function fim(titulo, texto, ic){
-    $('form').hidden = true; $('loading').hidden = true; $('fim').hidden = false;
-    if (titulo) $('fimTitulo').textContent = titulo;
-    if (texto) $('fimTexto').textContent = texto;
-    if (ic) $('fimIc').textContent = ic;
-    window.scrollTo(0, 0);
+  // progresso
+  ORDEM.forEach(() => $('prog').appendChild(document.createElement('i')));
+  function progresso(s){
+    const n = s === 'fim' ? ORDEM.length : ORDEM.indexOf(s);
+    [...$('prog').children].forEach((i, k) => i.classList.toggle('on', k < n));
+    $('prog').style.visibility = s === 'fim' ? 'hidden' : '';
   }
 
-  function fmtWhats(d){
-    d = String(d || '').replace(/\D/g, '');
-    if (d.startsWith('55') && d.length > 11) d = d.slice(2);
-    if (d.length < 10) return d;
-    return '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+  function ir(s, voltando){
+    clearTimeout(timer);
+    if (s === atual) return;
+    const de = atual && tela(atual), para = tela(s);
+    if (de) {
+      de.classList.remove('go', 'goBack');
+      de.classList.add(voltando ? 'leaveBack' : 'leave');
+      setTimeout(() => { de.hidden = true; de.classList.remove('leave', 'leaveBack'); }, 300);
+    }
+    $('loading').hidden = true;
+    para.hidden = false; para.scrollTop = 0;
+    para.classList.remove('go', 'goBack'); void para.offsetWidth;
+    para.classList.add(voltando ? 'goBack' : 'go');
+    atual = s; progresso(s);
+    $('back').classList.toggle('hide', !atual || ORDEM.indexOf(s) <= 0);
+    if (!voltando) try { history.pushState({ s }, '', ''); } catch(e) {}
+    const foco = { dados: $('nome').value ? null : 'nome' }[s];
+    if (foco) setTimeout(() => $(foco).focus(), 450);
   }
+  function anterior(){ const i = ORDEM.indexOf(atual); if (i > 0) ir(ORDEM[i - 1], true); }
+  function proxima(){ const i = ORDEM.indexOf(atual); if (i < ORDEM.length - 1) ir(ORDEM[i + 1]); }
+  $('back').onclick = anterior;
+  window.addEventListener('popstate', () => { if (atual && atual !== 'fim' && ORDEM.indexOf(atual) > 0) anterior(); });
 
+  // estrelas: tocou, marca e passa sozinho
   document.querySelectorAll('.stars').forEach(box => {
     const k = box.dataset.k;
     for (let i = 1; i <= 5; i++) {
@@ -137,59 +252,64 @@ h3{font-family:var(--f-display);font-weight:400;font-size:32px;margin:28px 0 12p
       b.type = 'button'; b.innerHTML = STAR; b.setAttribute('aria-label', i + (i === 1 ? ' estrela' : ' estrelas'));
       b.onclick = () => {
         notas[k] = i;
-        box.querySelectorAll('button').forEach((x, j) => { x.classList.toggle('on', j < i); x.setAttribute('aria-pressed', String(j < i)); });
-        if (k === 'geral') { $('lbl-geral').textContent = ROTULOS[i]; $('err').textContent = ''; }
+        box.querySelectorAll('button').forEach((x, j) => { x.classList.toggle('on', j < i); x.classList.remove('pop'); x.setAttribute('aria-pressed', String(j < i)); });
+        b.classList.add('pop');
+        $('lbl-' + k).textContent = ROTULOS[i];
+        if (k === 'geral') ajustaComentario();
+        if (navigator.vibrate) try { navigator.vibrate(12); } catch(e) {}
+        clearTimeout(timer); timer = setTimeout(proxima, 480);
       };
       box.appendChild(b);
     }
+  });
+
+  function ajustaComentario(){
+    const baixa = notas.geral && notas.geral <= 3;
+    $('t-com').textContent = baixa ? 'O que pegou?' : 'Quer contar algo?';
+    $('sub-com').textContent = baixa ? 'Conta pra gente o que podemos melhorar. Vai direto pro dono.' : 'Elogio, sugestão, o que for. Vai direto pro dono.';
+  }
+  $('comentario').addEventListener('input', () => { $('b-com').textContent = $('comentario').value.trim() ? 'Continuar' : 'Pular'; });
+  $('b-com').onclick = proxima;
+
+  // dados
+  function fmtWhats(d){
+    d = String(d || '').replace(/\D/g, '');
+    if (d.startsWith('55') && d.length > 11) d = d.slice(2);
+    d = d.slice(0, 11);
+    if (d.length <= 2) return d;
+    if (d.length <= 6) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4);
+  }
+  $('whats').addEventListener('input', e => { e.target.value = fmtWhats(e.target.value); });
+  $('nome').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('whats').focus(); } });
+  tela('dados').addEventListener('submit', e => {
+    e.preventDefault();
+    const er = $('err-dados');
+    if ($('nome').value.trim().length < 2) { er.textContent = 'Coloca seu nome.'; $('nome').focus(); return; }
+    if ($('whats').value.replace(/\D/g, '').length < 10) { er.textContent = 'Confere o WhatsApp com DDD.'; $('whats').focus(); return; }
+    er.textContent = ''; document.activeElement && document.activeElement.blur(); proxima();
   });
 
   for (let d = 1; d <= 31; d++) $('dia').add(new Option(d, String(d).padStart(2, '0')));
   ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
     .forEach((m, i) => $('mes').add(new Option(m, String(i + 1).padStart(2, '0'))));
 
-  $('whats').addEventListener('input', e => { e.target.value = fmtWhats(e.target.value.replace(/\D/g, '').slice(0, 13)); });
-
-  async function carrega(){
-    if (!/^[A-Za-z0-9]{10}$/.test(token)) return fim('Link inválido', 'Confira se o link chegou completo.', '🤔');
-    let d;
-    try {
-      const r = await fetch('/api/av/r/' + token, { cache: 'no-store' });
-      d = await r.json();
-      if (!r.ok) return fim('Link inválido', d.error || 'Esse link não existe mais.', '🤔');
-    } catch(e) { return fim('Sem conexão', 'Não conseguimos carregar agora. Tente de novo em instantes.', '📶'); }
-
-    const t = TEMAS[d.cliente];
-    if (t) {
-      const s = document.documentElement.style;
-      s.setProperty('--acc', t.acc); s.setProperty('--acc-ink', t.ink); s.setProperty('--star', t.star);
-    }
-    $('logo').textContent = d.restaurante;
-    document.title = 'Como foi no ' + d.restaurante + '?';
-    $('ofertasTxt').textContent = 'Quero receber novidades do ' + d.restaurante + ' e um mimo no meu aniversário pelo WhatsApp.';
-    $('priv').textContent = 'Seus dados ficam só com o ' + d.restaurante + ' e não são repassados. Você pode pedir para sair quando quiser.';
-    if (d.respondido) return fim('Já recebemos!', 'Sua avaliação já foi enviada. Obrigado pela visita!', '🧡');
-
-    const primeiro = (d.nome || '').split(' ')[0];
-    $('titulo').textContent = primeiro ? primeiro + ', como foi sua visita?' : 'Como foi sua visita?';
-    if (d.garcom) {
-      const sm = document.createElement('small'); sm.textContent = 'Você foi atendido por ' + d.garcom;
-      $('qAtend').appendChild(sm);
-    }
-    $('nome').value = d.nome || '';
-    $('whats').value = fmtWhats(d.whatsapp);
-    if (d.aniversario) { const [m, dd] = d.aniversario.split('-'); $('mes').value = m; $('dia').value = dd; }
-    $('loading').hidden = true; $('form').hidden = false;
+  function fim(titulo, texto, ic, google){
+    if (titulo) $('fimTitulo').textContent = titulo;
+    if (texto) $('fimTexto').textContent = texto;
+    if (ic) $('fimIc').textContent = ic;
+    if (google) { $('google').href = google; $('google').hidden = false; }
+    ir('fim');
+    $('back').classList.add('hide');
   }
 
-  $('form').addEventListener('submit', async e => {
+  tela('aniv').addEventListener('submit', async e => {
     e.preventDefault();
-    const err = $('err');
-    if (!notas.geral) { err.textContent = 'Toque nas estrelas da nota geral.'; document.querySelector('[data-k=geral]').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    if ($('nome').value.trim().length < 2) { err.textContent = 'Coloque seu nome.'; $('nome').focus(); return; }
-    const dia = $('dia').value, mes = $('mes').value;
-    if ((dia && !mes) || (!dia && mes)) { err.textContent = 'Complete o dia e o mês do aniversário.'; return; }
-    err.textContent = ''; $('enviar').disabled = true; $('enviar').textContent = 'Enviando…';
+    if (enviando) return;
+    const er = $('err-aniv'), dia = $('dia').value, mes = $('mes').value;
+    if ((dia && !mes) || (!dia && mes)) { er.textContent = 'Completa o dia e o mês.'; return; }
+    for (const k of ['geral']) if (!notas[k]) { ir(k, true); return; }
+    er.textContent = ''; enviando = true; $('enviar').disabled = true; $('enviar').textContent = 'Enviando…';
     try {
       const r = await fetch('/api/av/r/' + token, {
         method: 'POST', headers: { 'content-type': 'application/json' },
@@ -199,18 +319,40 @@ h3{font-family:var(--f-display);font-weight:400;font-size:32px;margin:28px 0 12p
         }),
       });
       const d = await r.json().catch(() => ({}));
-      if (r.status === 409) return fim('Já recebemos!', 'Sua avaliação já foi enviada. Obrigado pela visita!');
-      if (!r.ok) throw d.error || 'Não deu certo. Tente de novo.';
-      if (notas.geral >= 4) {
-        fim('Valeu demais!', d.google_url ? 'Que bom que curtiu! Ajuda muito a gente se deixar essa nota no Google também. É rapidinho.' : 'Que bom que curtiu! Até a próxima visita.', '🧡');
-        if (d.google_url) { $('google').href = d.google_url; $('google').hidden = false; }
-      } else {
-        fim('Obrigado pela sinceridade', 'Sua avaliação chegou direto para o dono. Vamos olhar com carinho e melhorar.', '🙏');
-      }
-    } catch(x) { err.textContent = typeof x === 'string' ? x : 'Sem conexão. Tente de novo.'; }
-    finally { $('enviar').disabled = false; $('enviar').textContent = 'Enviar avaliação'; }
+      if (r.status === 409) return fim('Já recebemos!', 'Sua avaliação já tinha chegado. Valeu pela visita!', '🧡');
+      if (!r.ok) throw d.error || 'Não deu certo. Tenta de novo.';
+      const primeiro = $('nome').value.trim().split(' ')[0];
+      if (notas.geral >= 4) fim('Valeu, ' + primeiro + '!', d.google_url ? 'Que bom que curtiu! Deixa essa nota no Google também? Ajuda demais a gente.' : 'Que bom que curtiu! Até a próxima.', '🧡', d.google_url);
+      else fim('Valeu pela sinceridade', 'Chegou direto pro dono. A gente vai olhar com carinho e melhorar.', '🙏');
+    } catch(x) { er.textContent = typeof x === 'string' ? x : 'Sem conexão. Tenta de novo.'; }
+    finally { enviando = false; $('enviar').disabled = false; $('enviar').textContent = 'Enviar avaliação'; }
   });
 
+  async function carrega(){
+    const erro = (t, x, ic) => { $('loading').hidden = true; $('prog').style.visibility = 'hidden'; fim(t, x, ic); };
+    if (!/^[A-Za-z0-9]{10}$/.test(token)) return erro('Link inválido', 'Confere se o link chegou completo.', '🤔');
+    let d;
+    try {
+      const r = await fetch('/api/av/r/' + token, { cache: 'no-store' });
+      d = await r.json();
+      if (!r.ok) return erro('Link inválido', d.error || 'Esse link não existe mais.', '🤔');
+    } catch(e) { return erro('Sem conexão', 'Não deu para carregar agora. Tenta de novo em instantes.', '📶'); }
+
+    if (LOGOS[d.cliente]) { $('logo').src = LOGOS[d.cliente]; $('logo').alt = d.restaurante; $('logo').hidden = false; }
+    else { $('nomeRest').textContent = d.restaurante; $('nomeRest').hidden = false; }
+    document.title = 'Como foi no ' + d.restaurante + '?';
+    $('ofertasTxt').textContent = 'Quero receber novidades do ' + d.restaurante + ' e o mimo de aniversário pelo WhatsApp.';
+    $('priv').textContent = 'Seus dados ficam só com o ' + d.restaurante + ' e não são repassados. Você pode pedir para sair quando quiser.';
+    if (d.respondido) return fim('Já recebemos!', 'Sua avaliação já foi enviada. Valeu pela visita!', '🧡');
+
+    const primeiro = (d.nome || '').split(' ')[0];
+    if (primeiro) $('t-geral').textContent = 'Fala, ' + primeiro + '! Como foi?';
+    if (d.garcom) $('sub-atend').textContent = 'Quem te atendeu foi ' + d.garcom + '.';
+    $('nome').value = d.nome || '';
+    $('whats').value = fmtWhats(d.whatsapp);
+    if (d.aniversario) { const [m, dd] = d.aniversario.split('-'); $('mes').value = m; $('dia').value = dd; }
+    ir('geral');
+  }
   carrega();
 })();
 </script>
