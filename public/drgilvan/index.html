@@ -335,11 +335,11 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   const DASH = '<g stroke="#fff" stroke-width="4.5" stroke-linecap="round"><path d="M4 30 Q18 22 36 26"/><path d="M10 14 L24 10"/></g>';
   const DOT = '<circle cx="20" cy="20" r="9" fill="#fff36b"/>';
   const BLOB = '<circle cx="20" cy="20" r="18" fill="rgba(140,185,0,.28)"/>';
-  [[7,10],[88,22],[4,46],[92,62],[10,82],[78,86],[34,12],[60,48]].forEach(([x,y],k) => mk('rg', x, y, 22 + (k % 3) * 8, RING, k * 30, k * .15));
-  [[18,30,-20],[80,36,40],[28,74,10],[86,12,-30],[58,90,20]].forEach(([x,y,r],k) => mk('ln', x, y, 34, ARC, r, k * .2));
-  [[84,48,0],[6,64,-10],[46,30,15]].forEach(([x,y,r],k) => mk('ln', x, y, 40, k % 2 ? DASH : TRI, r, k * .3));
-  [[30,40],[66,22],[52,62],[40,86],[72,72],[20,52],[90,80],[14,20]].forEach(([x,y]) => mk('', x, y, 10 + Math.round(Math.random() * 8), DOT));
-  [[36,52],[70,40],[24,92],[62,76],[44,20]].forEach(([x,y]) => mk('', x, y, 40 + Math.round(Math.random() * 30), BLOB));
+  [[8,12],[88,30],[10,78],[82,84]].forEach(([x,y],k) => mk('rg', x, y, 22 + (k % 3) * 8, RING, k * 30, k * .15));
+  [[16,34,-20],[78,62,30]].forEach(([x,y,r],k) => mk('ln', x, y, 34, ARC, r, k * .2));
+  [[84,46,0]].forEach(([x,y,r],k) => mk('ln', x, y, 40, k % 2 ? DASH : TRI, r, k * .3));
+  [[30,40],[66,22],[40,86],[72,72]].forEach(([x,y]) => mk('', x, y, 10 + Math.round(Math.random() * 8), DOT));
+  [[36,56],[66,36]].forEach(([x,y]) => mk('', x, y, 40 + Math.round(Math.random() * 30), BLOB));
   const end = () => { if (done) return; done = true; j.classList.add('gone'); setTimeout(() => j.remove(), 220); };
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { j.remove(); return; }
   j.querySelector('.jl').addEventListener('animationend', e => { if (e.animationName === 'jDrain') { j.classList.add('splash'); j.style.pointerEvents = 'none'; setTimeout(end, 650); } });
