@@ -184,8 +184,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   <div class="done-box" id="doneBox" hidden><b>Planejamento enviado.</b> Obrigado! Vamos seguir com a produção conforme suas respostas. Você ainda pode ler e imprimir tudo por aqui.</div>
 
   <div class="tools">
-    <button class="tbtn main" id="prRBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>Imprimir roteiros de gravação</button>
-    <button class="tbtn" id="prFBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>Imprimir planejamento completo</button>
+    <button class="tbtn main" id="prRBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>Imprimir roteiros</button>
   </div>
 
   <section class="sec">
@@ -397,16 +396,11 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   const stTxt = i => { const s = state[i.id]; return s && s.status === 'a' ? 'Aprovado' : s && s.status === 'w' ? 'Ajuste pedido' : 'Pendente'; };
   function buildRoteiros() {
     const box = $('prR'); box.textContent = '';
-    items.filter(i => i.record).forEach((i, k, arr) => {
+    items.filter(i => i.record).forEach(i => {
       const pg = el('section', 'pg');
-      pg.appendChild(head('Roteiro de gravação ' + (k + 1) + '/' + arr.length));
-      const t = el('div', 'pt', name(i) + ' · ' + i.title); pg.appendChild(t);
-      pg.appendChild(el('div', 'pm', when(i) + ' · status: ' + stTxt(i)));
-      const ck = el('div', 'pchk'); ck.append(el('span', '', 'Gravado'), el('span', '', 'Regravar'), el('span', '', 'Take extra')); pg.appendChild(ck);
+      pg.appendChild(el('div', 'pm', name(i) + ' · ' + when(i)));
+      pg.appendChild(el('div', 'pt', i.title));
       i.blocks.forEach(b => { const x = el('div', 'pb'); x.append(el('div', 'lb', b.label), el('p', '', b.text)); pg.appendChild(x); });
-      const s = state[i.id]; if (s && s.status === 'w' && s.note) { const x = el('div', 'pb'); x.append(el('div', 'lb', 'Ajuste pedido pelo cliente'), el('p', '', s.note)); pg.appendChild(x); }
-      if (i.ref) pg.appendChild(el('div', 'pref', 'Referência: ' + i.ref));
-      const ln = el('div', 'lines'); ln.appendChild(el('div', 'lb', 'Anotações do dia')); for (let j = 0; j < 5; j++) ln.appendChild(el('i')); pg.appendChild(ln);
       box.appendChild(pg);
     });
   }
@@ -449,8 +443,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
     setTimeout(() => window.print(), 50);
   }
   $('prRBtn').onclick = () => doPrint('r');
-  $('prFBtn').onclick = () => doPrint('f');
-  addEventListener('beforeprint', () => { if (!document.body.classList.contains('p-r') && !document.body.classList.contains('p-f')) { buildFull(); document.body.classList.add('p-f'); } });
+    addEventListener('beforeprint', () => { if (!document.body.classList.contains('p-r')) { buildRoteiros(); document.body.classList.add('p-r'); } });
   addEventListener('afterprint', () => document.body.classList.remove('p-r', 'p-f'));
 
   renderFilt(); renderAll();
