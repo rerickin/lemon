@@ -248,7 +248,8 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   try { const r = await fetch('plan-' + MID + '.json', {cache:'no-store'}); if (!r.ok) throw 0; P = await r.json(); document.title = P.client + ' · Planejamento ' + P.label + ' · Lemon Social'; }
   catch (e) { $('list').textContent = 'Planejamento ainda não disponível. Volte em breve.'; return; }
 
-  const items = P.items.slice().sort((a, b) => (a.date || '9999') < (b.date || '9999') ? -1 : (a.date || '9999') > (b.date || '9999') ? 1 : 0);
+  const ORD = {carrossel:0, reels:1, youtube:2};
+  const items = P.items.slice().sort((a, b) => ((ORD[a.format] ?? 9) - (ORD[b.format] ?? 9)) || (a.date || '9999').localeCompare(b.date || '9999') || (a.n - b.n));
   const byId = Object.fromEntries(items.map(i => [i.id, i]));
   const API = '/api/aprova/' + P.slug + '/' + P.id;
   const KEY = 'lemon-plano:' + P.slug + ':' + P.id;
@@ -323,7 +324,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   let filter = 'all';
   function renderFilt() {
     const f = $('filt'); f.textContent = '';
-    [['all','Todas'], ...Object.entries(FMT).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
+    [['all','Todas'], ...Object.entries({carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'}).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
       const n = k === 'all' ? items.length : items.filter(i => i.format === k).length;
       const b = el('button', '', l + ' (' + n + ')'); b.type = 'button'; b.setAttribute('aria-pressed', filter === k);
       b.onclick = () => { filter = k; renderFilt(); renderList(); }; f.appendChild(b);
