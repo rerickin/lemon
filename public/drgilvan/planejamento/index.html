@@ -10,7 +10,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Planejamento de conteúdo · Lemon Social</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap">
 <style>
 :root{--ink:#0d0d0b;--ink-2:#171714;--ink-3:#22221e;--line:#2e2e29;--paper:#f3f1e8;--mute:#9b9a90;--lime:#c8f20d;--lime-ink:#141a00;--warn:#ff9b4a;--f-display:'Bebas Neue',Impact,sans-serif;--f-body:'Barlow Condensed','Arial Narrow',sans-serif}
 *{box-sizing:border-box}
@@ -68,10 +68,16 @@ button.chip:hover{outline:1px solid var(--lime)}
 .agenda .dt small{display:block;font-family:var(--f-body);font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
 .agenda .its{display:grid;gap:4px;min-width:0;flex:1}
 .agenda .chip{white-space:normal}
-.calx{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px 6px}
-.calx .cal{min-width:720px}
-.calhint{display:none;color:var(--mute);font-size:14px;margin:0 0 8px}
-@media (max-width:720px){.calhint{display:block}}
+.chip .cn{font-weight:inherit}
+@media (max-width:720px){
+  .cal{gap:2px}
+  .cal .wd{font-size:10px;padding:0 2px;letter-spacing:.04em}
+  .cal .d{min-height:54px;padding:3px;border-radius:5px;gap:2px}
+  .cal .n{font-family:var(--f-body);font-weight:300;font-size:12px}
+  .chip{font-weight:300;font-size:10px;line-height:1.1;padding:2px 3px;border-radius:3px;-webkit-line-clamp:2}
+  .chip .ct{display:none}
+  .chip.ok::after,.chip.wn::after{font-size:9px}
+}
 /* filter */
 .filt{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .filt button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:600}
@@ -197,8 +203,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
 
   <section class="sec">
     <h2>Calendário</h2>
-    <p class="calhint">Arraste para o lado para ver a semana inteira →</p>
-    <div class="calx"><div class="cal" id="cal"></div></div>
+    <div class="cal" id="cal"></div>
     <div class="agenda" id="agenda" hidden></div>
   </section>
 
@@ -289,10 +294,10 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
       const chips = [];
       items.filter(i => i.date === iso).forEach(i => {
         const s = state[i.id] && state[i.id].status;
-        const b = el('button', 'chip ' + i.format + (s === 'a' ? ' ok' : s === 'w' ? ' wn' : ''), name(i) + ' · ' + i.title);
+        const b = el('button', 'chip ' + i.format + (s === 'a' ? ' ok' : s === 'w' ? ' wn' : '')); b.append(el('b', 'cn', name(i)), el('span', 'ct', ' · ' + i.title));
         b.type = 'button'; b.title = i.title; b.onclick = () => go(i.id); chips.push(b);
       });
-      (P.agenda || []).filter(a => a.date === iso).forEach(a => chips.push(el('span', 'chip ag', a.label)));
+      (P.agenda || []).filter(a => a.date === iso).forEach(a => chips.push(el('span', 'chip ag', a.label.replace('Foto/Vídeo pessoal', 'Foto/Vídeo'))));
       chips.forEach(c => cell.appendChild(c));
       cal.appendChild(cell);
       if (chips.length) {
