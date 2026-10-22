@@ -111,7 +111,16 @@ h1 em{font-style:normal;color:var(--lime)}
     if (data) return data;
     const html = await (await fetch('/aepit/', {cache:'no-store'})).text();
     const m = html.match(/<script type="application\/json" id="data">([\s\S]*?)<\/script>/);
-    data = JSON.parse(m[1]); return data;
+    data = JSON.parse(m[1]);
+    const FN = {reels:'Reels', carrossel:'Carrossel', youtube:'YouTube'};
+    for (const mo of data.months.slice()) {
+      if (!mo.plan) continue;
+      try {
+        const P = await (await fetch('/aepit/planejamento/plan-' + mo.id + '.json', {cache:'no-store'})).json();
+        data.months.push({id: P.id, isPlan: true, label: 'Planejamento ' + P.label, year: P.year, posts: P.items.map(i => ({id: i.id, format: i.format, date: i.date, title: FN[i.format] + ' ' + String(i.n).padStart(2, '0') + ' · ' + i.title}))});
+      } catch(e) {}
+    }
+    return data;
   }
 
   async function load(){
@@ -123,7 +132,7 @@ h1 em{font-style:normal;color:var(--lime)}
     try { sessionStorage.setItem('lemon-painel', senha); } catch(e) {}
     const page = await loadPage();
     const dates = {};
-    await Promise.all(page.months.map(m => fetch('/api/datas/' + CLIENT + '/' + m.id, {cache:'no-store'}).then(r => r.ok ? r.json() : {dates:{}}).catch(() => ({dates:{}})).then(r => { dates[m.id] = r.dates || {}; })));
+    await Promise.all(page.months.filter(m => !m.isPlan).map(m => fetch('/api/datas/' + CLIENT + '/' + m.id, {cache:'no-store'}).then(r => r.ok ? r.json() : {dates:{}}).catch(() => ({dates:{}})).then(r => { dates[m.id] = r.dates || {}; })));
     render(page, res.meses || {}, dates);
     show(true);
   }
@@ -184,15 +193,16 @@ h1 em{font-style:normal;color:var(--lime)}
       ordered.forEach(p => {
         const s = st[p.id] || {};
         const row = el('div', 'row' + (s.status === 'w' ? ' w' : ''));
-        const img = el('img'); img.alt = ''; img.loading = 'lazy'; img.src = '/aepit/' + ((p.images || [])[0] || '');
+        const img = m.isPlan ? el('div') : el('img'); if (!m.isPlan) { img.alt = ''; img.loading = 'lazy'; img.src = '/aepit/' + ((p.images || [])[0] || ''); }
         const d = el('div', 'd');
         const chipS = s.status === 'a' ? el('span', 'chip ok', 'Aprovado') : s.status === 'w' ? el('span', 'chip w', 'Correção') : el('span', 'chip open', 'Pendente');
         d.appendChild(chipS);
         if (s.status === 'w') {
           d.appendChild(el('small', null, s.type || 'Tipo não informado'));
           d.appendChild(el('div', 'note', (s.note || '').trim() || 'Sem descrição.'));
-        } else d.appendChild(el('small', null, FMT[p.format] || 'Post'));
-        row.append(img, el('div', 'id', p.id), d, dateControl(m, p, dateOf(p)), el('div', 'when', s.at ? fmt(s.at) : ''));
+        } else d.appendChild(el('small', null, m.isPlan ? '' : (FMT[p.format] || 'Post')));
+        if (m.isPlan) d.insertBefore(el('div', null, p.title), d.firstChild);
+        row.append(img, el('div', 'id', p.id), d, m.isPlan ? el('div', 'when', p.date ? p.date.slice(8) + '/' + p.date.slice(5, 7) : 'sem data') : dateControl(m, p, dateOf(p)), el('div', 'when', s.at ? fmt(s.at) : ''));
         rows.appendChild(row);
       });
       const foot = el('div', 'foot');
@@ -218,8 +228,8 @@ h1 em{font-style:normal;color:var(--lime)}
       }
       const copyB = el('button', 'btn', 'Copiar correções');
       copyB.onclick = () => {
-        const txt = m.posts.filter(p => (st[p.id]||{}).status === 'w').map(p => '• ' + p.id + ' (' + ((st[p.id].type)||'correção') + '): ' + ((st[p.id].note||'').trim() || 'sem descrição')).join('\n') || 'Nenhuma correção.';
-        try { navigator.clipboard.writeText('Correções ' + m.label + ' · Clínica AEPIT\n' + txt).then(() => copyB.textContent = 'Copiado', () => {}); } catch(e) {}
+        const txt = m.posts.filter(p => (st[p.id]||{}).status === 'w').map(p => '• ' + (p.title || p.id) + ' (' + ((st[p.id].type)||'correção') + '): ' + ((st[p.id].note||'').trim() || 'sem descrição')).join('\n') || 'Nenhuma correção.';
+        try { navigator.clipboard.writeText((m.isPlan ? 'Ajustes ' : 'Correções ') + m.label + ' · Clínica AEPIT\n' + txt).then(() => copyB.textContent = 'Copiado', () => {}); } catch(e) {}
       };
       foot.appendChild(copyB);
       box.appendChild(foot);

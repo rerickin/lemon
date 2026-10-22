@@ -286,6 +286,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       <h1>Aprovação <em id="client">Dr. Gilvan</em></h1>
       <div class="meta" id="period">Outubro 2026</div>
       <button class="calbtn" id="calBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>Calendário</button>
+      <a class="calbtn" id="planBtn" hidden href="#" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>Planejamento</a>
     </div>
     <div class="tally" aria-live="polite">
       <div class="a"><b id="nA">0</b><span>Aprovados</span></div>
@@ -423,13 +424,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   "client": "Dr. Gilvan",
   "slug": "drgilvan",
   "drive": "",
-  "plans": [
-    {
-      "label": "Agosto",
-      "href": "/drgilvan/planejamento/",
-      "sub": "Roteiros e pautas do mês para pré aprovar"
-    }
-  ],
+  "plans": [],
   "profile": {
     "handle": "drgilvanalves",
     "name": "Dr. Gilvan Alves",
@@ -441,7 +436,15 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     "following": "0",
     "highlights": []
   },
-  "months": []
+  "months": [
+    {
+      "id": "2026-11",
+      "label": "Novembro",
+      "year": "2026",
+      "plan": true,
+      "posts": []
+    }
+  ]
 }
 </script>
 
@@ -791,16 +794,19 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       const l = document.createElement('span'); const t = document.createElement('span'); t.className = 'ml'; t.textContent = 'Mês de ' + m.label.toLowerCase();
       const st = document.createElement('span'); st.className = 'ms'; st.style.display = 'block';
       const empty = !m.posts.length;
-      st.textContent = done ? '✓ Aprovação enviada' : empty ? 'Conteúdos em produção' : m.posts.length + ' conteúdos para aprovar';
-      if (empty && !done) { b.disabled = true; b.classList.add('done'); b.style.opacity = '.65'; b.style.cursor = 'default'; }
+      const pr = recs['plano-' + m.id], pdone = pr && pr.finalizedAt;
+      st.textContent = done ? '✓ Aprovação enviada' : !empty ? m.posts.length + ' conteúdos para aprovar' : m.plan ? (pdone ? '✓ Planejamento enviado' : 'Planejamento para aprovar') : 'Conteúdos em produção';
+      if (empty && m.plan) { if (pdone) b.classList.add('done'); }
+      else if (empty && !done) { b.disabled = true; b.classList.add('done'); b.style.opacity = '.65'; b.style.cursor = 'default'; }
       l.append(t, st);
       const ar = document.createElement('span'); ar.className = 'ar'; ar.textContent = '→';
-      b.append(l, ar); b.onclick = () => { if (!b.disabled) enter(m); };
+      b.append(l, ar); b.onclick = () => { if (b.disabled) return; if (empty && m.plan) location.href = '/' + D.slug + '/planejamento/?m=' + m.id; else enter(m); };
       box.appendChild(b);
     });
     const first = box.querySelector('button'); if (first) first.focus();
   }
   async function enter(m){
+    $('planBtn').hidden = !m.plan; $('planBtn').href = '/' + D.slug + '/planejamento/?m=' + m.id;
     M = m; posts = m.posts; KEY = 'lemon-aprova:' + D.client + ':' + periodOf(m);
     try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }
     $('period').textContent = periodOf(m) + ' · ' + posts.length + ' conteúdos';
@@ -826,6 +832,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   }
   Promise.all(D.months.map(m => Promise.all([
     fetch(api(m.id)).then(r => r.ok ? r.json() : null).catch(() => null).then(r => { if (r) recs[m.id] = r; }),
+    m.plan ? fetch(api('plano-' + m.id), {cache:'no-store'}).then(r => r.ok ? r.json() : null).catch(() => null).then(r => { if (r) recs['plano-' + m.id] = r; }) : null,
     fetch('/api/datas/' + D.slug + '/' + m.id, {cache:'no-store'}).then(r => r.ok ? r.json() : null).catch(() => null)
       .then(r => { const ov = (r && r.dates) || {}; m.posts.forEach(p => { if (p.id in ov) p.date = ov[p.id]; }); })
   ]))).then(monthButtons);

@@ -113,9 +113,10 @@ h1 em{font-style:normal;color:var(--lime)}
     const m = html.match(/<script type="application\/json" id="data">([\s\S]*?)<\/script>/);
     data = JSON.parse(m[1]);
     const FN = {reels:'Reels', carrossel:'Carrossel', youtube:'YouTube'};
-    for (const pl of (data.plans || [])) {
+    for (const mo of data.months.slice()) {
+      if (!mo.plan) continue;
       try {
-        const P = await (await fetch(pl.href + 'plan.json', {cache:'no-store'})).json();
+        const P = await (await fetch('/drgilvan/planejamento/plan-' + mo.id + '.json', {cache:'no-store'})).json();
         data.months.push({id: P.id, isPlan: true, label: 'Planejamento ' + P.label, year: P.year, posts: P.items.map(i => ({id: i.id, format: i.format, date: i.date, title: FN[i.format] + ' ' + String(i.n).padStart(2, '0') + ' · ' + i.title}))});
       } catch(e) {}
     }
