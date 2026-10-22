@@ -265,7 +265,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 
 <style>
 #juice{position:fixed;inset:0;z-index:999;overflow:hidden;pointer-events:auto;cursor:pointer}
-#juice .jl{position:absolute;left:0;right:0;top:-46px;height:calc(100% + 140px);animation:jDrain 1.15s cubic-bezier(.55,.05,.65,1) .35s forwards}
+#juice .jl{position:absolute;left:0;right:0;top:-46px;height:calc(100% + 140px);animation:jDrain 1.1s cubic-bezier(.55,.05,.65,1) 1s forwards}
 #juice .wv{position:absolute;left:0;width:200%;height:46px;display:block}
 #juice .wv1{top:0;animation:jWave 1.1s linear infinite}
 #juice .wv2{top:-10px;animation:jWave 1.6s linear infinite reverse;opacity:.9}
@@ -277,6 +277,10 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 #juice .i3{left:72%;width:clamp(42px,8vw,70px);--r:-6deg;animation-delay:-.8s}
 #juice .lm{left:52%;top:-6px;width:clamp(70px,13vw,118px);--r:8deg;animation-delay:-.2s}
 #juice .bb{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.55);animation:jRise 1.4s ease-in infinite}
+#juice .sp{position:absolute;left:0;right:0;bottom:0;height:0;pointer-events:none}
+#juice .sp i{position:absolute;bottom:-8px;width:var(--s);height:var(--s);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:#c8f20d;opacity:0}
+#juice.splash .sp i{animation:jDrop .7s cubic-bezier(.2,.7,.4,1) forwards;animation-delay:var(--d,0s)}
+@keyframes jDrop{0%{opacity:1;transform:translate(0,0) scale(.6)}45%{opacity:1;transform:translate(calc(var(--x) * .7),calc(var(--y) * -1)) scale(1)}100%{opacity:0;transform:translate(var(--x),10px) scale(.7)}}
 @keyframes jDrain{to{transform:translateY(calc(100vh + 120px))}}
 @keyframes jWave{to{transform:translateX(-50%)}}
 @keyframes jBob{from{transform:translateY(0) rotate(var(--r))}to{transform:translateY(7px) rotate(calc(var(--r) * -1))}}
@@ -300,6 +304,13 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     <div class="fl i3"><svg viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="12" fill="rgba(255,255,255,.55)" stroke="#fff" stroke-width="3"/><path d="M14 18 Q14 13 19 13 H30" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M50 40 V46 Q50 50 46 50" stroke="rgba(255,255,255,.8)" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
     <div class="fl lm"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ffd400" stroke="#f2a900" stroke-width="5"/><circle cx="50" cy="50" r="37" fill="#ffe96b"/><g fill="#ffc400" stroke="#ffe96b" stroke-width="3"><path d="M50 50 L50 16 A34 34 0 0 1 79.4 33Z"/><path d="M50 50 L79.4 33 A34 34 0 0 1 79.4 67Z"/><path d="M50 50 L79.4 67 A34 34 0 0 1 50 84Z"/><path d="M50 50 L50 84 A34 34 0 0 1 20.6 67Z"/><path d="M50 50 L20.6 67 A34 34 0 0 1 20.6 33Z"/><path d="M50 50 L20.6 33 A34 34 0 0 1 50 16Z"/></g><circle cx="50" cy="50" r="5" fill="#fff3b0"/></svg></div>
   </div>
+  <div class="sp">
+    <i style="left:8%;--s:14px;--x:-26px;--y:120px"></i><i style="left:17%;--s:10px;--x:-8px;--y:180px;--d:.04s"></i>
+    <i style="left:27%;--s:18px;--x:-14px;--y:95px;--d:.02s"></i><i style="left:38%;--s:9px;--x:6px;--y:210px"></i>
+    <i style="left:47%;--s:16px;--x:-4px;--y:150px;--d:.05s"></i><i style="left:55%;--s:12px;--x:12px;--y:240px;--d:.01s"></i>
+    <i style="left:64%;--s:20px;--x:18px;--y:110px"></i><i style="left:73%;--s:10px;--x:10px;--y:190px;--d:.03s"></i>
+    <i style="left:82%;--s:15px;--x:24px;--y:135px;--d:.06s"></i><i style="left:91%;--s:11px;--x:30px;--y:170px;--d:.02s"></i>
+  </div>
 </div>
 <script>
 (function(){
@@ -307,9 +318,9 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   let done = false;
   const end = () => { if (done) return; done = true; j.classList.add('gone'); setTimeout(() => j.remove(), 220); };
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { j.remove(); return; }
-  j.querySelector('.jl').addEventListener('animationend', e => { if (e.animationName === 'jDrain') end(); });
+  j.querySelector('.jl').addEventListener('animationend', e => { if (e.animationName === 'jDrain') { j.classList.add('splash'); j.style.pointerEvents = 'none'; setTimeout(end, 650); } });
   j.addEventListener('click', end);
-  setTimeout(end, 2200);
+  setTimeout(end, 3500);
 })();
 </script>
 
