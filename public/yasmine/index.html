@@ -184,7 +184,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 .welcome .w-in{max-width:1080px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:22px;flex:1;justify-content:center}
 .welcome .hello{font-family:var(--f-display);font-weight:400;font-size:clamp(64px,15vw,170px);line-height:.86;margin:0;letter-spacing:.01em}
 .welcome .hello em{font-style:normal;color:var(--lime);display:block}
-.welcome .sub{font-size:clamp(20px,3.2vw,30px);max-width:30ch;color:#d6d6cc;margin:0;line-height:1.25}
+.welcome .sub{font-size:clamp(17px,2.2vw,21px);max-width:38ch;color:#d6d6cc;margin:0;line-height:1.25}
 .welcome .sub b{color:var(--paper);font-weight:600}
 .welcome .w-meta{display:flex;flex-wrap:wrap;gap:10px}
 .welcome .w-meta span{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:15px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
@@ -194,6 +194,15 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 .welcome .w-foot{max-width:1080px;width:100%;margin:0 auto;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:20px;letter-spacing:.06em;color:var(--mute)}
 .welcome .w-foot i{width:12px;height:12px;border-radius:50%;background:var(--lime);display:block}
 .months{display:grid;gap:10px;max-width:520px}
+.w-sec{display:grid;gap:10px;max-width:520px}
+.w-lb{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--mute)}
+.dbtn{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;text-decoration:none;border:1px solid var(--lime);color:var(--paper);background:transparent;border-radius:14px;padding:14px 22px}
+.dbtn .ml{font-family:var(--f-display);font-size:clamp(26px,4.4vw,34px);letter-spacing:.04em;line-height:1}
+.dbtn .ms{display:block;font-size:14px;color:var(--mute);margin-top:4px}
+.dbtn svg{width:30px;height:30px;color:var(--lime);flex:none}
+.dbtn:hover{background:var(--lime);color:var(--lime-ink)}
+.dbtn:hover .ms,.dbtn:hover svg{color:var(--lime-ink)}
+.dbtn.off{border-color:var(--line);opacity:.6;pointer-events:none}
 .mbtn{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;text-align:left;background:var(--lime);color:var(--lime-ink);border:0;border-radius:14px;padding:16px 22px;cursor:pointer}
 .mbtn .ml{font-family:var(--f-display);font-size:clamp(28px,5vw,40px);letter-spacing:.04em;line-height:1}
 .mbtn .ms{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.75}
@@ -253,8 +262,14 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wHello">
   <div class="w-in">
     <h2 class="hello" id="wHello">Olá,<em id="wClient">Yasmine</em></h2>
-    <p class="sub">Todo mês, os conteúdos são produzidos de acordo com o <b>planejamento que você aprovou anteriormente</b>. Escolha o mês para conferir cada post como ele vai aparecer no seu perfil e confirmar a aprovação.</p>
-    <div class="months" id="wMonths"></div>
+    <p class="sub">Seu espaço com a Lemon. Os conteúdos seguem o <b>planejamento que você aprovou</b>.</p>
+    <div class="w-sec"><span class="w-lb">Aprovação de conteúdo</span><div class="months" id="wMonths"></div></div>
+    <div class="w-sec"><span class="w-lb">Arquivos</span>
+      <a class="dbtn off" id="wDrive" href="#" target="_blank" rel="noopener">
+        <span><span class="ml">Drive da <span id="wDriveName">Yasmine</span></span><span class="ms" id="wDriveSub">Link em breve</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </a>
+    </div>
   </div>
   <div class="w-foot"><i></i><span id="wAgency">Lemon Social</span></div>
 </div>
@@ -402,6 +417,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   "agency": "Lemon Social",
   "client": "Yasmine",
   "slug": "yasmine",
+  "drive": "",
   "profile": {
     "handle": "yasmineculinariaarabe",
     "name": "Yasmine",
@@ -770,6 +786,8 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   // welcome: month picker
   $('wClient').textContent = D.client; $('tClient').textContent = D.client;
   $('wAgency').textContent = D.agency;
+  $('wDriveName').textContent = D.client;
+  if (D.drive) { $('wDrive').href = D.drive; $('wDrive').classList.remove('off'); $('wDriveSub').textContent = 'Fotos para iFood, conteúdos, contrato e todos os arquivos'; }
   document.body.style.overflow = 'hidden';
   const recs = {};
   function monthButtons(){
