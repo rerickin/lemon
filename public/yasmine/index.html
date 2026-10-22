@@ -797,10 +797,12 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       const b = document.createElement('button'); b.className = 'mbtn' + (done ? ' done' : '');
       const l = document.createElement('span'); const t = document.createElement('span'); t.className = 'ml'; t.textContent = 'Mês de ' + m.label.toLowerCase();
       const st = document.createElement('span'); st.className = 'ms'; st.style.display = 'block';
-      st.textContent = done ? '✓ Aprovação enviada' : m.posts.length + ' conteúdos para aprovar';
+      const empty = !m.posts.length;
+      st.textContent = done ? '✓ Aprovação enviada' : empty ? 'Conteúdos em produção' : m.posts.length + ' conteúdos para aprovar';
+      if (empty && !done) { b.disabled = true; b.classList.add('done'); b.style.opacity = '.65'; b.style.cursor = 'default'; }
       l.append(t, st);
       const ar = document.createElement('span'); ar.className = 'ar'; ar.textContent = '→';
-      b.append(l, ar); b.onclick = () => enter(m);
+      b.append(l, ar); b.onclick = () => { if (!b.disabled) enter(m); };
       box.appendChild(b);
     });
     const first = box.querySelector('button'); if (first) first.focus();
