@@ -14,7 +14,7 @@
  ],
  "items": [
   {
-   "id": "r1",
+   "id": "r1v2",
    "format": "reels",
    "n": 1,
    "title": "Coisas óbvias para mim, que sou dermatologista, mas que talvez sejam novidade para você",
@@ -27,17 +27,38 @@
     },
     {
      "label": "Desenvolvimento",
-     "text": "1. A pele oleosa também pode ficar desidratada.\nÉ uma confusão muito comum. Produção de sebo e hidratação são coisas diferentes.\n\n2. A caspa também pode aparecer nas sobrancelhas e ao redor do nariz.\n(Explicar brevemente a dermatite seborreica)\n\n3. Lavar o rosto várias vezes ao dia pode piorar a irritação, mesmo em quem tem pele oleosa.\nA limpeza excessiva pode comprometer a barreira cutânea."
+     "text": "1. Uma pinta que você tem há anos também pode se tornar suspeita.\nO Dr. pode complementar brevemente que mudanças na cor, no formato ou no tamanho merecem avaliação.\n\n2. Seu pescoço pode apresentar sinais de envelhecimento antes do seu rosto.\n(Explicar brevemente a dermatite seborreica)\n\n3. Aquela feridinha que nunca cicatriza pode ser um sinal de câncer de pele.\nAqui, vale explicar que uma ferida persistente não significa necessariamente câncer, mas precisa ser examinada."
     },
     {
      "label": "Fechamento",
      "text": "E aí, qual dessas você ainda não sabia?"
     }
    ],
-   "caption": "Depois de tantos anos na dermatologia, algumas informações acabam fazendo parte do meu dia a dia. Mas, no consultório, percebo que muitas delas ainda surpreendem os pacientes. E é justamente por isso que gosto de compartilhar esse conhecimento por aqui.\n\nQual dessas foi novidade para você?"
+   "caption": "Esses são alguns sinais que vejo pacientes deixarem passar no dia a dia.\nPercebeu alguma mudança na sua pele ou tem uma lesão que não cicatriza? Agende sua avaliação dermatológica. Identificar alterações precocemente pode fazer diferença no diagnóstico e no tratamento.",
+   "prev": {
+    "v": 1,
+    "id": "r1",
+    "title": "Coisas óbvias para mim, que sou dermatologista, mas que talvez sejam novidade para você",
+    "blocks": [
+     {
+      "label": "Abertura",
+      "text": "Coisas óbvias para mim, que sou dermatologista, mas que talvez sejam novidade para você."
+     },
+     {
+      "label": "Desenvolvimento",
+      "text": "1. A pele oleosa também pode ficar desidratada.\nÉ uma confusão muito comum. Produção de sebo e hidratação são coisas diferentes.\n\n2. A caspa também pode aparecer nas sobrancelhas e ao redor do nariz.\n(Explicar brevemente a dermatite seborreica)\n\n3. Lavar o rosto várias vezes ao dia pode piorar a irritação, mesmo em quem tem pele oleosa.\nA limpeza excessiva pode comprometer a barreira cutânea."
+     },
+     {
+      "label": "Fechamento",
+      "text": "E aí, qual dessas você ainda não sabia?"
+     }
+    ],
+    "caption": "Depois de tantos anos na dermatologia, algumas informações acabam fazendo parte do meu dia a dia. Mas, no consultório, percebo que muitas delas ainda surpreendem os pacientes. E é justamente por isso que gosto de compartilhar esse conhecimento por aqui.\n\nQual dessas foi novidade para você?"
+   },
+   "v": 2
   },
   {
-   "id": "r2",
+   "id": "r2v2",
    "format": "reels",
    "n": 2,
    "title": "React: O bronzeado não é sinal de pele saudável",
@@ -46,19 +67,44 @@
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Uma influenciadora britânica morreu aos 30 anos após enfrentar um câncer de pele. E, mesmo com as câmaras de bronzeamento proibidas no Brasil, esse alerta também vale para nós."
+     "text": "Uma mulher de apenas 30 anos morreu após enfrentar um câncer de pele. Ela relatou ter usado câmaras de bronzeamento por cerca de dez anos."
+    },
+    {
+     "label": "Cena",
+     "text": "Inserir rapidamente a manchete da notícia."
     },
     {
      "label": "Desenvolvimento",
-     "text": "Ela relatou ter utilizado câmaras de bronzeamento durante cerca de dez anos. Esses equipamentos são proibidos no Brasil porque a exposição intensa à radiação ultravioleta aumenta o risco de câncer de pele.\n\nMas o sol também emite essa radiação. E no Brasil, o índice UV pode atingir níveis muito elevados. Mesmo na sombra, parte dessa radiação chega à nossa pele.\nE tem uma coisa que muita gente ainda não entende: o bronzeado não é um sinal de saúde da pele.\n\nQuando a pele bronzeia pela exposição UV, ela está reagindo a uma agressão que pode danificar o DNA das células. Com o tempo, esses danos podem aumentar o risco de câncer de pele e contribuir para manchas, rugas e flacidez."
+     "text": "As câmaras de bronzeamento artificial são proibidas no Brasil para fins estéticos porque a radiação ultravioleta aumenta o risco de câncer de pele.\n\nMas existe outro alerta: o sol também emite essa radiação. Quando a pele bronzeia pela exposição UV, ela está reagindo a uma agressão que pode danificar o DNA das células. E esses danos podem se acumular ao longo dos anos."
     },
     {
      "label": "Fechamento",
-     "text": "O bronzeado pode desaparecer em algumas semanas, mas parte dos danos permanece por muitos anos.\nTem dúvidas sobre bronzeamento, radiação solar ou saúde da pele? Deixe aqui nos comentários."
+     "text": "O bronzeado pode desaparecer em algumas semanas, mas parte dos danos permanece por muitos anos.\nProteja sua pele e mantenha suas avaliações dermatológicas em dia."
     }
    ],
    "caption": "O bronzeado ainda é associado por muitas pessoas a uma aparência saudável. Mas a nossa pele entende dessa forma.\n\nO bronzeamento provocado pela radiação UV é uma resposta da pele a uma agressão que pode causar danos ao DNA das células. Com o passar dos anos, esses danos podem se acumular, aumentando o risco de câncer de pele e contribuindo para o envelhecimento precoce.\n\nVocê tem dúvidas sobre bronzeamento, radiação solar ou cuidados com a pele? Deixe nos comentários.",
-   "ref": "https://www.terra.com.br/diversao/gente/famosa-morre-aos-30-anos-de-cancer-de-pele-apos-passar-10-anos-fazendo-bronzeamento-artificial,d90cbf61de80da3f68085aeeed1d97fd3zvm2wfr.html"
+   "ref": "https://www.terra.com.br/diversao/gente/famosa-morre-aos-30-anos-de-cancer-de-pele-apos-passar-10-anos-fazendo-bronzeamento-artificial,d90cbf61de80da3f68085aeeed1d97fd3zvm2wfr.html",
+   "prev": {
+    "v": 1,
+    "id": "r2",
+    "title": "React: O bronzeado não é sinal de pele saudável",
+    "blocks": [
+     {
+      "label": "Abertura",
+      "text": "Uma influenciadora britânica morreu aos 30 anos após enfrentar um câncer de pele. E, mesmo com as câmaras de bronzeamento proibidas no Brasil, esse alerta também vale para nós."
+     },
+     {
+      "label": "Desenvolvimento",
+      "text": "Ela relatou ter utilizado câmaras de bronzeamento durante cerca de dez anos. Esses equipamentos são proibidos no Brasil porque a exposição intensa à radiação ultravioleta aumenta o risco de câncer de pele.\n\nMas o sol também emite essa radiação. E no Brasil, o índice UV pode atingir níveis muito elevados. Mesmo na sombra, parte dessa radiação chega à nossa pele.\nE tem uma coisa que muita gente ainda não entende: o bronzeado não é um sinal de saúde da pele.\n\nQuando a pele bronzeia pela exposição UV, ela está reagindo a uma agressão que pode danificar o DNA das células. Com o tempo, esses danos podem aumentar o risco de câncer de pele e contribuir para manchas, rugas e flacidez."
+     },
+     {
+      "label": "Fechamento",
+      "text": "O bronzeado pode desaparecer em algumas semanas, mas parte dos danos permanece por muitos anos.\nTem dúvidas sobre bronzeamento, radiação solar ou saúde da pele? Deixe aqui nos comentários."
+     }
+    ],
+    "caption": "O bronzeado ainda é associado por muitas pessoas a uma aparência saudável. Mas a nossa pele entende dessa forma.\n\nO bronzeamento provocado pela radiação UV é uma resposta da pele a uma agressão que pode causar danos ao DNA das células. Com o passar dos anos, esses danos podem se acumular, aumentando o risco de câncer de pele e contribuindo para o envelhecimento precoce.\n\nVocê tem dúvidas sobre bronzeamento, radiação solar ou cuidados com a pele? Deixe nos comentários."
+   },
+   "v": 2
   },
   {
    "id": "r3",
@@ -130,33 +176,54 @@
    "caption": "Será que o laser pode deixar os lábios mais volumosos?\n\nEssa é uma dúvida interessante, principalmente porque existem diferentes tecnologias e objetivos quando falamos em tratamentos para a região dos lábios.\n\nAssista até o final porque eu explico o que devemos considerar antes de escolher um procedimento."
   },
   {
-   "id": "r6",
+   "id": "r6v2",
    "format": "reels",
    "n": 6,
-   "title": "Você tem 50 anos. De quanto em quanto tempo precisa fazer bioestimulador de colágeno?",
+   "title": "Passou dos 50? Uma aplicação de bioestimulador de colágeno não garante resultados para sempre!",
    "date": "2026-11-17",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Você tem 50 anos. De quanto em quanto tempo precisa fazer bioestimulador de colágeno?"
+     "text": "Passou dos 50? Uma aplicação de bioestimulador de colágeno não garante resultados para sempre!"
     },
     {
      "label": "Desenvolvimento",
-     "text": "1. Uma mulher de 50 anos não necessariamente precisa do mesmo protocolo que outra da mesma idade.\n\n2. Existem diferentes bioestimuladores, com características e protocolos próprios. O número de sessões iniciais e os intervalos de manutenção podem variar.\n\n3. E a manutenção? (O Dr. pode comentar quais intervalos costuma considerar na prática clínica)"
+     "text": "Com o passar dos anos, nossa pele produz menos colágeno, e isso influencia a firmeza e a sustentação. Os bioestimuladores ajudam a estimular essa produção, mas o resultado não dura para sempre. Por isso, quando indicamos esse tratamento, também pensamos no acompanhamento e na manutenção dos resultados. E é durante a consulta que vamos avaliar os resultados e definir a frequência ideal de manutenção para a sua pele."
     },
     {
      "label": "Fechamento",
-     "text": "E é por isso que eu sempre avalio cada paciente antes de definir quando será a próxima aplicação. E você já sente a necessidade de estimular colágeno?"
+     "text": "Agende sua avaliação e vamos planejar juntos os próximos passos do seu tratamento."
     }
    ],
-   "caption": "De quanto em quanto tempo uma mulher de 50 anos deve fazer bioestimulador de colágeno?\nEssa é uma dúvida frequente no consultório, mas a idade, sozinha, não define a necessidade de novas aplicações.\n\nO produto utilizado, as características da pele, os tratamentos anteriores e a resposta individual precisam ser considerados na hora de planejar a manutenção.\nPor isso, o acompanhamento dermatológico é importante para avaliar os resultados e definir o momento adequado para uma nova sessão."
+   "caption": "Passou dos 50? Seu colágeno precisa de atenção!\n\nCom o passar dos anos, a produção natural de colágeno diminui, e a pele começa a apresentar mudanças na firmeza e na sustentação.\nOs bioestimuladores de colágeno são uma das opções que utilizamos para estimular essa produção e melhorar gradualmente a qualidade da pele. Mas existe um detalhe importante: os resultados não duram para sempre. Por isso, o planejamento do tratamento também envolve acompanhamento e manutenção.\n\nDurante a consulta, avaliamos as características da sua pele, os resultados das aplicações anteriores e definimos a frequência de manutenção mais adequada para o seu caso.\nQuer cuidar da firmeza da sua pele? Agende sua avaliação e vamos planejar os próximos passos do seu tratamento.",
+   "prev": {
+    "v": 1,
+    "id": "r6",
+    "title": "Você tem 50 anos. De quanto em quanto tempo precisa fazer bioestimulador de colágeno?",
+    "blocks": [
+     {
+      "label": "Abertura",
+      "text": "Você tem 50 anos. De quanto em quanto tempo precisa fazer bioestimulador de colágeno?"
+     },
+     {
+      "label": "Desenvolvimento",
+      "text": "1. Uma mulher de 50 anos não necessariamente precisa do mesmo protocolo que outra da mesma idade.\n\n2. Existem diferentes bioestimuladores, com características e protocolos próprios. O número de sessões iniciais e os intervalos de manutenção podem variar.\n\n3. E a manutenção? (O Dr. pode comentar quais intervalos costuma considerar na prática clínica)"
+     },
+     {
+      "label": "Fechamento",
+      "text": "E é por isso que eu sempre avalio cada paciente antes de definir quando será a próxima aplicação. E você já sente a necessidade de estimular colágeno?"
+     }
+    ],
+    "caption": "De quanto em quanto tempo uma mulher de 50 anos deve fazer bioestimulador de colágeno?\nEssa é uma dúvida frequente no consultório, mas a idade, sozinha, não define a necessidade de novas aplicações.\n\nO produto utilizado, as características da pele, os tratamentos anteriores e a resposta individual precisam ser considerados na hora de planejar a manutenção.\nPor isso, o acompanhamento dermatológico é importante para avaliar os resultados e definir o momento adequado para uma nova sessão."
+   },
+   "v": 2
   },
   {
-   "id": "r7",
+   "id": "r7v2",
    "format": "reels",
    "n": 7,
-   "title": "Existem tratamentos para pés de galinha além do botox?",
+   "title": "Os pés de galinha são sinais do envelhecimento da pele. Mas quem disse que não podemos tratar essas linhas?",
    "date": "2026-11-26",
    "record": true,
    "blocks": [
@@ -166,41 +233,91 @@
     },
     {
      "label": "Abertura",
-     "text": "Você sabia que existem outros tratamentos para os pés de galinha além da toxina botulínica?"
+     "text": "Os pés de galinha são sinais do envelhecimento da pele. Mas quem disse que não podemos tratar essas linhas?"
     },
     {
      "label": "Desenvolvimento",
-     "text": "Dr. Gilvan explica que a toxina botulínica é uma das principais opções para tratar as linhas provocadas pela contração muscular, mas que existem outras abordagens, dependendo das características da pele."
+     "text": "Hoje temos tecnologias que ajudam a melhorar a aparência dessas rugas. Uma das que utilizo aqui na clínica é o laser de CO₂ fracionado.\nEle estimula a renovação da pele e a remodelação do colágeno, ajudando a suavizar linhas finas e melhorar a textura da região ao redor dos olhos.\nE tem uma diferença importante: enquanto a toxina botulínica atua nas rugas relacionadas ao movimento muscular, o laser trabalha a qualidade da pele.\nPor isso, os dois tratamentos podem ter indicações diferentes e, em alguns casos, complementares."
     },
     {
-     "label": "Pontos para abordar",
-     "text": "• Lasers: podem ajudar a melhorar linhas finas, textura e qualidade da pele ao redor dos olhos, conforme a tecnologia utilizada.\n• Bioestimuladores de colágeno: algumas abordagens podem ser consideradas para melhorar a qualidade da pele na região periocular, respeitando as indicações e os cuidados específicos dessa área.\n• Skincare: ativos bem indicados e fotoproteção ajudam na prevenção e no cuidado das linhas finas."
+     "label": "Fechamento",
+     "text": "Quer melhorar a aparência dos pés de galinha? Agende sua avaliação e vamos definir qual tratamento é indicado para a sua pele."
     }
    ],
-   "caption": "Quando falamos em pés de galinha, a toxina botulínica costuma ser uma das primeiras opções que vêm à mente. Mas será que é a única?\nDependendo do tipo de ruga e das características da pele, outros tratamentos também podem ajudar a melhorar a aparência dessa região.\n\nO importante é avaliar se as linhas aparecem apenas durante as expressões ou se já estão presentes mesmo com o rosto em repouso. Essa diferença ajuda a orientar a escolha do tratamento.\n\nNo vídeo, explico algumas das possibilidades que temos disponíveis."
+   "caption": "Botox não é a única opção para tratar os pés de galinha.\nAs linhas ao redor dos olhos podem ter características diferentes. Algumas aparecem principalmente quando sorrimos; outras continuam visíveis mesmo com o rosto em repouso.\nE essa diferença importa na hora de escolher o tratamento.\nUma das tecnologias que utilizo na clínica é o laser de CO₂ fracionado, que estimula a renovação da pele e a remodelação do colágeno, ajudando a suavizar linhas finas e melhorar a textura da região.\nEnquanto a toxina botulínica atua sobre a contração muscular, o laser trabalha características da própria pele. Dependendo da avaliação, esses tratamentos podem até ser complementares.\nQuer melhorar a aparência dos pés de galinha? Agende sua avaliação e vamos definir a melhor estratégia para o seu caso.",
+   "prev": {
+    "v": 1,
+    "id": "r7",
+    "title": "Existem tratamentos para pés de galinha além do botox?",
+    "blocks": [
+     {
+      "label": "Cena",
+      "text": "Close bem fechado na região lateral dos olhos da paciente, com o Dr. Gilvan demarcando delicadamente os pés de galinha com um lápis dermatográfico. A paciente pode sorrir para evidenciar as linhas de expressão."
+     },
+     {
+      "label": "Abertura",
+      "text": "Você sabia que existem outros tratamentos para os pés de galinha além da toxina botulínica?"
+     },
+     {
+      "label": "Desenvolvimento",
+      "text": "Dr. Gilvan explica que a toxina botulínica é uma das principais opções para tratar as linhas provocadas pela contração muscular, mas que existem outras abordagens, dependendo das características da pele."
+     },
+     {
+      "label": "Pontos para abordar",
+      "text": "• Lasers: podem ajudar a melhorar linhas finas, textura e qualidade da pele ao redor dos olhos, conforme a tecnologia utilizada.\n• Bioestimuladores de colágeno: algumas abordagens podem ser consideradas para melhorar a qualidade da pele na região periocular, respeitando as indicações e os cuidados específicos dessa área.\n• Skincare: ativos bem indicados e fotoproteção ajudam na prevenção e no cuidado das linhas finas."
+     }
+    ],
+    "caption": "Quando falamos em pés de galinha, a toxina botulínica costuma ser uma das primeiras opções que vêm à mente. Mas será que é a única?\nDependendo do tipo de ruga e das características da pele, outros tratamentos também podem ajudar a melhorar a aparência dessa região.\n\nO importante é avaliar se as linhas aparecem apenas durante as expressões ou se já estão presentes mesmo com o rosto em repouso. Essa diferença ajuda a orientar a escolha do tratamento.\n\nNo vídeo, explico algumas das possibilidades que temos disponíveis."
+   },
+   "v": 2
   },
   {
-   "id": "r8",
+   "id": "r8v2",
    "format": "reels",
    "n": 8,
-   "title": "Tem pele oleosa e não sabe qual hidratante escolher?",
+   "title": "LinearZ: análise de caso real",
    "date": "2026-11-14",
    "record": true,
    "blocks": [
     {
-     "label": "Abertura",
-     "text": "Tem pele oleosa e não sabe qual hidratante escolher? Separei três opções que eu gosto de recomendar."
+     "label": "Cena",
+     "text": "Dr. Gilvan sentado em frente ao computador, com as imagens do antes e depois lado a lado. A câmera começa enquadrando a tela e depois mostra o Dr. explicando."
     },
     {
-     "label": "Direção do vídeo",
-     "text": "O Dr. Gilvan aparece com os três produtos em mãos ou dispostos sobre a bancada.\nEle apresenta cada um individualmente, mostrando a embalagem para a câmera e explicando em uma ou duas frases o principal diferencial, a textura e em quais situações costuma recomendá-lo."
+     "label": "Abertura",
+     "text": "Olha esse antes e depois de um tratamento que realizamos com o LinearZ. Vou explicar o que fizemos para chegar a esse resultado."
+    },
+    {
+     "label": "Desenvolvimento",
+     "text": "Dr. Gilvan apresenta o caso de forma espontânea, seguindo três pontos:\n1. Qual era a queixa?\n2. Por que o LinearZ?\n3. O resultado"
     },
     {
      "label": "Fechamento",
-     "text": "Esses são três hidratantes que eu gosto, mas a escolha depende das necessidades da sua pele."
+     "text": "Esse é um dos resultados que podemos buscar com o LinearZ, mas a indicação depende de uma avaliação individualizada. Quer saber se essa tecnologia é indicada para você? Agende uma avaliação aqui na clínica."
     }
    ],
-   "caption": "Quem tem pele oleosa também precisa de hidratação. E escolher o produto certo pode fazer toda a diferença no conforto e na rotina de cuidados.\nSeparei três hidratantes que gosto de recomendar, considerando suas texturas, formulações e as diferentes necessidades da pele oleosa.\nGosto de lembrar que mesmo entre pessoas com pele oleosa, nem sempre o mesmo produto será a melhor escolha.\n\nAgora me conta: qual hidratante você usa atualmente?"
+   "caption": "O que foi feito para alcançar esse resultado?\nUtilizamos o LinearZ, uma tecnologia de ultrassom que pode ser indicada para tratar a flacidez e melhorar o contorno facial ou corporal, conforme a região e os objetivos do tratamento.\n\nNo vídeo, explico qual era a queixa inicial, por que escolhemos essa tecnologia e quais mudanças observamos. Vale lembrar que cada paciente responde de uma maneira, e os resultados podem variar.\n\nQuer saber se o LinearZ é indicado para o seu caso? Agende uma avaliação na clínica.",
+   "prev": {
+    "v": 1,
+    "id": "r8",
+    "title": "Tem pele oleosa e não sabe qual hidratante escolher?",
+    "blocks": [
+     {
+      "label": "Abertura",
+      "text": "Tem pele oleosa e não sabe qual hidratante escolher? Separei três opções que eu gosto de recomendar."
+     },
+     {
+      "label": "Direção do vídeo",
+      "text": "O Dr. Gilvan aparece com os três produtos em mãos ou dispostos sobre a bancada.\nEle apresenta cada um individualmente, mostrando a embalagem para a câmera e explicando em uma ou duas frases o principal diferencial, a textura e em quais situações costuma recomendá-lo."
+     },
+     {
+      "label": "Fechamento",
+      "text": "Esses são três hidratantes que eu gosto, mas a escolha depende das necessidades da sua pele."
+     }
+    ],
+    "caption": "Quem tem pele oleosa também precisa de hidratação. E escolher o produto certo pode fazer toda a diferença no conforto e na rotina de cuidados.\nSeparei três hidratantes que gosto de recomendar, considerando suas texturas, formulações e as diferentes necessidades da pele oleosa.\nGosto de lembrar que mesmo entre pessoas com pele oleosa, nem sempre o mesmo produto será a melhor escolha.\n\nAgora me conta: qual hidratante você usa atualmente?"
+   },
+   "v": 2
   },
   {
    "id": "r9",
@@ -226,50 +343,100 @@
    "caption": "As ruguinhas abaixo dos olhos costumam incomodar bastante, mas nem sempre os tratamentos mais conhecidos são as melhores escolhas para essa região.\nA pele ao redor dos olhos é delicada, e fatores como hidratação, flacidez e movimentação muscular podem influenciar a aparência dessas linhas.\nPor isso, é importante avaliar as características da pele antes de indicar qualquer procedimento.\n\nE você, já tentou algum tratamento para melhorar essas linhas finas?"
   },
   {
-   "id": "r10",
+   "id": "r10v2",
    "format": "reels",
    "n": 10,
-   "title": "Dúvidas que você provavelmente tem sobre remoção de tatuagem",
+   "title": "Remoção de tatuagem",
    "date": "2026-11-12",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Dúvidas que você provavelmente tem sobre remoção de tatuagem."
+     "text": "Olha a diferença entre essas duas imagens. Esse é um caso de remoção de tatuagem que realizamos aqui na clínica."
     },
     {
      "label": "Desenvolvimento",
-     "text": "1. É possível remover completamente uma tatuagem?\n(Aqui o Dr. vai explicar que muitas tatuagens podem apresentar um clareamento bastante significativo e as imagens dos pacientes da clínica vão surgindo)\n\n2. Quantas sessões são necessárias?\n(Explicar que depende da profundidade, das cores, do tipo de pigmento, da localização e da resposta individual e mostrar um caso e quantas sessões aquele caso levou)\n\n3. Remover tatuagem dói?\n(Comentar que pode haver desconforto durante a aplicação e que existem medidas para torná-la mais tolerável)"
+     "text": "Para esse tipo de tratamento, utilizamos o Discovery Pico Laser, uma tecnologia que atua fragmentando os pigmentos da tatuagem para que o organismo possa eliminá-los gradualmente.\n\nE aqui entram duas dúvidas que recebo muito: a tatuagem sai em uma sessão? E toda tatuagem pode ser removida completamente?\nA resposta é que normalmente precisamos de várias sessões, e o resultado depende de fatores como as cores, a profundidade do pigmento e as características da pele.\n\nNesse caso, já conseguimos observar uma evolução importante após [inserir número de sessões]."
     },
     {
      "label": "Fechamento",
-     "text": "E você, tem alguma tatuagem que gostaria de remover? Deixe sua dúvida aqui nos comentários que posso trazer uma parte 2 desse vídeo."
+     "text": "Se você tem uma tatuagem que deseja remover, agende uma avaliação. Vamos analisar as características dela e conversar sobre as possibilidades de tratamento."
     }
    ],
-   "caption": "Aqui na clínica, utilizamos o Discovery Pico Laser, uma tecnologia que permite atuar sobre os pigmentos da tatuagem, promovendo seu clareamento progressivo ao longo das sessões.\n\nDecidi responder às principais perguntas sobre o tratamento e compartilho alguns resultados reais que obtivemos na clínica.\nVale lembrar que cada tatuagem apresenta características diferentes, e os resultados dependem de fatores como cor, profundidade do pigmento e resposta individual.\n\nFicou com alguma dúvida sobre remoção de tatuagens? Deixe nos comentários."
+   "caption": "Aqui na clínica, utilizamos o Discovery Pico Laser, uma tecnologia que permite atuar sobre os pigmentos da tatuagem, promovendo seu clareamento progressivo ao longo das sessões.\n\nVale lembrar que cada tatuagem apresenta características diferentes, e os resultados dependem de fatores como cor, profundidade do pigmento e resposta individual.\n\nFicou com alguma dúvida sobre remoção de tatuagens? Deixe nos comentários.",
+   "prev": {
+    "v": 1,
+    "id": "r10",
+    "title": "Dúvidas que você provavelmente tem sobre remoção de tatuagem",
+    "blocks": [
+     {
+      "label": "Abertura",
+      "text": "Dúvidas que você provavelmente tem sobre remoção de tatuagem."
+     },
+     {
+      "label": "Desenvolvimento",
+      "text": "1. É possível remover completamente uma tatuagem?\n(Aqui o Dr. vai explicar que muitas tatuagens podem apresentar um clareamento bastante significativo e as imagens dos pacientes da clínica vão surgindo)\n\n2. Quantas sessões são necessárias?\n(Explicar que depende da profundidade, das cores, do tipo de pigmento, da localização e da resposta individual e mostrar um caso e quantas sessões aquele caso levou)\n\n3. Remover tatuagem dói?\n(Comentar que pode haver desconforto durante a aplicação e que existem medidas para torná-la mais tolerável)"
+     },
+     {
+      "label": "Fechamento",
+      "text": "E você, tem alguma tatuagem que gostaria de remover? Deixe sua dúvida aqui nos comentários que posso trazer uma parte 2 desse vídeo."
+     }
+    ],
+    "caption": "Aqui na clínica, utilizamos o Discovery Pico Laser, uma tecnologia que permite atuar sobre os pigmentos da tatuagem, promovendo seu clareamento progressivo ao longo das sessões.\n\nDecidi responder às principais perguntas sobre o tratamento e compartilho alguns resultados reais que obtivemos na clínica.\nVale lembrar que cada tatuagem apresenta características diferentes, e os resultados dependem de fatores como cor, profundidade do pigmento e resposta individual.\n\nFicou com alguma dúvida sobre remoção de tatuagens? Deixe nos comentários."
+   },
+   "v": 2
   },
   {
-   "id": "r11",
+   "id": "r11v2",
    "format": "reels",
    "n": 11,
-   "title": "Mitos e verdades sobre procedimento estético",
+   "title": "Tem uma cicatriz de cirurgia plástica que você gostaria de melhorar? Presta atenção nesse laser.",
    "date": "2026-11-21",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Mitos e verdades sobre procedimento estético."
+     "text": "Tem uma cicatriz de cirurgia plástica que você gostaria de melhorar? Presta atenção nesse laser."
     },
     {
-     "label": "Afirmações",
-     "text": "1. Bioestimulador de colágeno deixa o rosto mais cheio?\n2. Quem faz botox fica com o rosto sem expressão?\n3. O laser pode estimular a produção de colágeno.\n4. Fazer vários procedimentos na mesma sessão traz resultados melhores?\n5. O ultrassom microfocado pode ser utilizado em regiões além do rosto."
+     "label": "Cena",
+     "text": "Cena em green screen."
+    },
+    {
+     "label": "Desenvolvimento",
+     "text": "Esse é o laser de CO₂ fracionado, uma tecnologia que utilizamos para tratar diferentes tipos de cicatrizes, inclusive as de cirurgias plásticas.\nEle estimula a renovação da pele e a remodelação do colágeno, ajudando a melhorar a textura, o relevo e a aparência da cicatriz.\nE olha que interessante: mesmo cicatrizes antigas podem ser avaliadas para esse tipo de tratamento.\nClaro que a indicação depende das características da cicatriz e da condição da pele. Nem toda cicatriz deve ser tratada da mesma forma."
     },
     {
      "label": "Fechamento",
-     "text": "E você, qual dessas afirmações já ouviu por aí?"
+     "text": "Tem uma cicatriz que gostaria de melhorar? Agende sua avaliação aqui na clínica e vamos analisar as possibilidades de tratamento para o seu caso."
+    },
+    {
+     "label": "Sugestão de edição",
+     "text": "Manter o vídeo do laser em movimento durante toda a explicação, com cortes aproximando a área tratada nos momentos em que o Dr. fala sobre textura e relevo. Isso ajuda a sustentar a atenção sem precisar alongar a fala."
     }
    ],
-   "caption": "Separei alguns mitos e verdades para esclarecer dúvidas frequentes e mostrar por que a indicação e as características de cada paciente fazem diferença nos resultados.\nAgora me conta: qual dessas informações mais te surpreendeu?"
+   "caption": "Cicatriz de cirurgia plástica também pode ser tratada com laser de CO₂.\n\nO laser de CO₂ fracionado é uma das tecnologias que utilizamos para melhorar a aparência de cicatrizes, inclusive aquelas que ficaram após procedimentos cirúrgicos.\nEle estimula a renovação da pele e a remodelação do colágeno, ajudando a melhorar a textura, o relevo e algumas irregularidades da cicatriz.\nE mesmo cicatrizes antigas podem ser avaliadas para tratamento. O que define a indicação são as características da cicatriz, o tempo de cicatrização e as condições da pele.\nO objetivo é buscar uma melhora da aparência, respeitando as possibilidades e as particularidades de cada caso.\nTem uma cicatriz que gostaria de melhorar? Agende sua avaliação aqui na clínica e vamos analisar se o laser de CO₂ é indicado para você.",
+   "prev": {
+    "v": 1,
+    "id": "r11",
+    "title": "Mitos e verdades sobre procedimento estético",
+    "blocks": [
+     {
+      "label": "Abertura",
+      "text": "Mitos e verdades sobre procedimento estético."
+     },
+     {
+      "label": "Afirmações",
+      "text": "1. Bioestimulador de colágeno deixa o rosto mais cheio?\n2. Quem faz botox fica com o rosto sem expressão?\n3. O laser pode estimular a produção de colágeno.\n4. Fazer vários procedimentos na mesma sessão traz resultados melhores?\n5. O ultrassom microfocado pode ser utilizado em regiões além do rosto."
+     },
+     {
+      "label": "Fechamento",
+      "text": "E você, qual dessas afirmações já ouviu por aí?"
+     }
+    ],
+    "caption": "Separei alguns mitos e verdades para esclarecer dúvidas frequentes e mostrar por que a indicação e as características de cada paciente fazem diferença nos resultados.\nAgora me conta: qual dessas informações mais te surpreendeu?"
+   },
+   "v": 2
   },
   {
    "id": "r12",

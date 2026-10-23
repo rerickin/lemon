@@ -197,6 +197,22 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
 .card .btn-wn[aria-pressed=true]{border-color:#e98a3a;color:#c45a00}
 .card .note textarea{background:#fff;color:#1d1d16;border-color:#e98a3a}
 .card .note small{color:#7a7663}
+.vtag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:6px;padding:3px 8px;background:#ff9b4a;color:#2a1300}
+.card.v2:not(.ok):not(.wn){border-color:#ff9b4a;box-shadow:inset 0 0 0 1px #ff9b4a}
+.v2box{margin:-8px 28px 26px;background:#fff1e3;border:1px solid #f5c79c;border-radius:12px;padding:12px 14px;display:grid;gap:6px;color:#5a2c00;font-size:16px}
+.v2box b{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#b65000}
+.v2box q{font-style:italic;white-space:pre-wrap;quotes:"“" "”"}
+details.v1{margin:20px 28px 0;border:1px dashed #d8d2a6;border-radius:12px;padding:0 14px;background:#f6f3dc}
+details.v1 summary{cursor:pointer;padding:12px 0;font-weight:700;color:#6d6a55}
+details.v1 h4{font-family:var(--f-display);font-weight:400;font-size:24px;margin:4px 0 14px;color:#8a866f;text-decoration:line-through;text-decoration-thickness:1px}
+details.v1 .blk{border-left:2px solid #e2dcab;padding-left:14px;margin-bottom:16px}
+details.v1 .lb{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8a866f}
+details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
+.v2note{margin-top:22px;border:1px solid #ff9b4a;background:rgba(255,155,74,.1);border-radius:14px;padding:16px 18px;display:grid;gap:8px;color:#e8e6dc;max-width:680px}
+.v2note b{color:#ff9b4a;font-size:19px}
+.v2note button{justify-self:start;background:#ff9b4a;color:#2a1300;border:0;border-radius:10px;padding:9px 16px;font-weight:700}
+@media (max-width:720px){.v2box,details.v1{margin-left:18px;margin-right:18px}}
+@media print{.v2note{display:none!important}}
 </style>
 </head>
 <body>
@@ -219,6 +235,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   </header>
 
   <p class="intro" id="intro">Antes de gravar e produzir, leia cada conteúdo. Se estiver de acordo, toque em <b>Aprovar</b>. Se quiser mudar algo, toque em <b>Pedir ajuste</b> e escreva o que mudar. Suas respostas ficam salvas automaticamente.</p>
+  <div class="v2note" id="v2note" hidden><b id="v2t"></b><span>Eles estão marcados como <i>V2 · Ajustado</i>, com a versão anterior logo abaixo para comparar. Os outros conteúdos continuam com a sua resposta.</span><button type="button" id="v2go">Ver só os ajustados</button></div>
   <div class="done-box" id="doneBox" hidden><b>Planejamento enviado.</b> Obrigado! Vamos seguir com a produção conforme suas respostas. Você ainda pode ler e imprimir tudo por aqui.</div>
 
   <div class="tools">
@@ -351,10 +368,11 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
 
   // ---- filter ----
   let filter = 'all';
+  const match = (i, k) => k === 'all' || (k === 'v2' ? !!i.v : i.format === k);
   function renderFilt() {
     const f = $('filt'); f.textContent = '';
-    [['all','Todos'], ...Object.entries({carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'}).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
-      const n = k === 'all' ? items.length : items.filter(i => i.format === k).length;
+    [['all','Todos'], ...(items.some(i => i.v) ? [['v2','Ajustados V2']] : []), ...Object.entries({carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'}).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
+      const n = k === 'all' ? items.length : items.filter(i => match(i, k)).length;
       const b = el('button', '', l + ' (' + n + ')'); b.type = 'button'; b.setAttribute('aria-pressed', filter === k);
       b.onclick = () => { filter = k; renderFilt(); renderList(); }; f.appendChild(b);
     });
@@ -363,13 +381,19 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   // ---- cards ----
   function renderList() {
     const list = $('list'); list.textContent = '';
-    items.filter(i => filter === 'all' || i.format === filter).forEach(i => {
+    items.filter(i => match(i, filter)).forEach(i => {
       const s = state[i.id] || {};
-      const card = el('article', 'card' + (s.status === 'a' ? ' ok' : s.status === 'w' ? ' wn' : '') + (finalized ? ' ro' : '')); card.id = 'c-' + i.id;
-      const h = el('div', 'ch'); h.append(el('span', 'tag ' + i.format, name(i)), el('span', 'when', when(i)));
+      const card = el('article', 'card' + (s.status === 'a' ? ' ok' : s.status === 'w' ? ' wn' : '') + (finalized ? ' ro' : '') + (i.v ? ' v2' : '')); card.id = 'c-' + i.id;
+      const h = el('div', 'ch'); h.append(el('span', 'tag ' + i.format, name(i))); if (i.v) h.appendChild(el('span', 'vtag', 'V' + i.v + ' · Ajustado')); h.appendChild(el('span', 'when', when(i)));
       if (i.record) h.appendChild(el('span', 'when', '· gravação'));
       h.appendChild(el('span', 'st ' + (s.status === 'a' ? 'ok' : s.status === 'w' ? 'wn' : ''), s.status === 'a' ? '✓ Aprovado' : s.status === 'w' ? 'Ajuste pedido' : ''));
       card.append(h, el('h3', '', i.title));
+      if (i.v && i.prev) {
+        const ps = state[i.prev.id] || {};
+        const vb = el('div', 'v2box'); vb.appendChild(el('b', '', 'Ajustado conforme o seu pedido'));
+        if ((ps.note || '').trim()) vb.appendChild(el('q', '', ps.note.trim()));
+        card.appendChild(vb);
+      }
       const bl = el('div', 'blocks');
       i.blocks.forEach(b => { const x = el('div', 'blk'); x.appendChild(el('div', 'lb', b.label)); b.text.split(/\n\s*\n/).forEach(t => { const pp = el('p'); t.split(/(\[[^\]]+\])/).forEach((part, k) => pp.appendChild(k % 2 ? el('mark', 'fill', part.slice(1, -1)) : document.createTextNode(part))); x.appendChild(pp); }); bl.appendChild(x); });
       card.appendChild(bl);
@@ -378,6 +402,13 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
         const d = el('details', 'cap'); d.appendChild(el('summary', '', i.captionLabel || 'Legenda'));
         d.appendChild(el('p', '', i.caption + (i.format !== 'youtube' && P.signature ? '\n\n' + P.signature : ''))); card.appendChild(d);
       }
+      if (i.v && i.prev) {
+        const o = el('details', 'v1'); o.appendChild(el('summary', '', 'Ver versão anterior (V1) para comparar'));
+        o.appendChild(el('h4', '', i.prev.title));
+        i.prev.blocks.forEach(b => { const x = el('div', 'blk'); x.appendChild(el('div', 'lb', b.label)); b.text.split(/\n\s*\n/).forEach(t => x.appendChild(el('p', '', t))); o.appendChild(x); });
+        if (i.prev.caption) { const x = el('div', 'blk'); x.append(el('div', 'lb', 'Legenda V1'), el('p', '', i.prev.caption)); o.appendChild(x); }
+        card.appendChild(o);
+      }
       const acts = el('div', 'acts');
       const ok = el('button', 'btn-ok', s.status === 'a' ? '✓ Aprovado' : 'Aprovar'); ok.type = 'button'; ok.setAttribute('aria-pressed', s.status === 'a');
       const wn = el('button', 'btn-wn', 'Pedir ajuste'); wn.type = 'button'; wn.setAttribute('aria-pressed', s.status === 'w');
@@ -385,9 +416,9 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
       wn.onclick = () => { if (finalized) return; state[i.id] = s.status === 'w' ? {} : {status:'w', type:'Ajuste no planejamento', note: s.note || '', at: new Date().toISOString()}; save(); renderAll(); setTimeout(() => { const t = $('n-' + i.id); if (t) t.focus(); }, 30); };
       acts.append(ok, wn); card.appendChild(acts);
       if (s.status === 'w') {
-        const n = el('div', 'note'); const t = el('textarea'); t.id = 'n-' + i.id; t.maxLength = 300; t.placeholder = 'Escreva o que gostaria de mudar neste conteúdo'; t.value = s.note || ''; t.readOnly = finalized;
+        const n = el('div', 'note'); const t = el('textarea'); t.id = 'n-' + i.id; t.maxLength = 1500; t.placeholder = 'Escreva o que gostaria de mudar neste conteúdo'; t.value = s.note || ''; t.readOnly = finalized;
         t.oninput = () => { state[i.id].note = t.value; save(); updateBar(); };
-        n.append(t, el('small', '', finalized ? '' : 'Salvo automaticamente · até 300 caracteres')); card.appendChild(n);
+        n.append(t, el('small', '', finalized ? '' : 'Salvo automaticamente · até 1.500 caracteres')); card.appendChild(n);
       }
       list.appendChild(card);
     });
@@ -409,7 +440,13 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
     else if (c.p) { const b = el('b', '', c.p + (c.p === 1 ? ' conteúdo' : ' conteúdos')); m.append(b, ' ainda sem resposta'); }
     else m.append('Tudo respondido. Agora é só enviar.');
   }
-  function renderAll() { if (hasCal) renderCal(); renderList(); updateBar(); }
+  function renderV2note() {
+    const pend = items.filter(i => i.v && !(state[i.id] || {}).status).length, tot = items.filter(i => i.v).length;
+    $('v2note').hidden = finalized || !pend;
+    $('v2t').textContent = 'Ajustamos ' + tot + (tot === 1 ? ' conteúdo' : ' conteúdos') + ' conforme os seus pedidos.';
+  }
+  $('v2go').onclick = () => { filter = 'v2'; renderFilt(); renderList(); $('filt').scrollIntoView({behavior:'smooth', block:'start'}); };
+  function renderAll() { renderV2note(); if (hasCal) renderCal(); renderList(); updateBar(); }
 
   $('approveAll').onclick = () => {
     if (finalized) return; const now = new Date().toISOString();

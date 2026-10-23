@@ -40,7 +40,7 @@ function cleanState(input) {
     const s = {};
     if (v.status === 'a' || v.status === 'w') s.status = v.status;
     if (typeof v.type === 'string') s.type = v.type.slice(0, 60);
-    if (typeof v.note === 'string') s.note = v.note.slice(0, 300);
+    if (typeof v.note === 'string') s.note = v.note.slice(0, 1500);
     if (typeof v.at === 'string') s.at = v.at.slice(0, 40);
     out[id] = s;
   }
