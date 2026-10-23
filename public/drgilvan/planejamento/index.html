@@ -138,15 +138,17 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
 
 /* ===== impressão ===== */
 @media print{
-  @page{size:A4;margin:14mm 14mm 16mm}
+  @page{size:A4;margin:12mm}
   body{background:#fff;color:#111;font-size:12pt}
   .wrap,.bar,.modal{display:none!important}
   body.p-r #prR{display:block}
   body.p-f #prF{display:block}
-  .pg{break-after:page;page-break-after:always}
+  .pg{break-after:page;page-break-after:always;padding:10mm 14mm;box-sizing:border-box}
+  body{margin:0!important;padding:0!important}
   .pg:last-child{break-after:auto;page-break-after:auto}
   .ph{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #111;padding-bottom:6px;margin-bottom:12px;font-size:10pt;text-transform:uppercase;letter-spacing:.08em}
-  .pt{font-family:var(--f-display);font-weight:400;font-size:30pt;line-height:1;margin:6px 0 4px}
+  .pt{font-family:var(--f-display);font-weight:400;font-size:30pt;line-height:1;margin:6px 0 8mm}
+  .pb{margin-bottom:6mm!important}
   .pm{font-size:12pt;color:#444;margin-bottom:12px}
   .pchk{display:flex;gap:22px;font-size:12pt;margin:0 0 14px}
   .pchk span::before{content:'';display:inline-block;width:12pt;height:12pt;border:1.5pt solid #111;margin-right:6px;vertical-align:-2pt}
@@ -474,7 +476,7 @@ details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
   const stTxt = i => { const s = state[i.id]; return s && s.status === 'a' ? 'Aprovado' : s && s.status === 'w' ? 'Ajuste pedido' : 'Pendente'; };
   function buildRoteiros() {
     const box = $('prR'); box.textContent = '';
-    items.filter(i => i.record).forEach(i => {
+    items.filter(i => i.record).sort((a, b) => ((ORD[a.format] ?? 9) - (ORD[b.format] ?? 9)) || (a.n - b.n)).forEach(i => {
       const pg = el('section', 'pg');
       pg.appendChild(el('div', 'pm', name(i) + (when(i) ? ' · ' + when(i) : '')));
       pg.appendChild(el('div', 'pt', i.title));
