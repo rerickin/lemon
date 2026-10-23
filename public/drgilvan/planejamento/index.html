@@ -225,7 +225,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
     <button class="tbtn main" id="prRBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>Imprimir roteiros</button>
   </div>
 
-  <section class="sec" id="secFreq">
+  <section class="sec" id="secFreq" hidden>
     <h2>Frequência</h2>
     <div class="freq" id="freq"></div>
   </section>
@@ -291,7 +291,6 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   $('hClient').textContent = P.client;
   $('hMeta').textContent = P.label + ' ' + P.year + ' · ' + items.length + ' conteúdos';
   (P.frequency || []).forEach(f => $('freq').appendChild(el('span', '', f)));
-  if (!(P.frequency || []).length) $('secFreq').hidden = true;
   const hasCal = !!P.month && P.items.some(i => i.date);
   if (!hasCal) $('secCal').hidden = true;
 
