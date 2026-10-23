@@ -186,13 +186,13 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
       <div class="tally" aria-live="polite">
         <div class="ok"><b id="tOk">0</b><span>Aprovados</span></div>
         <div class="wn"><b id="tWn">0</b><span>Ajustes</span></div>
-        <div><b id="tAll">0</b><span>Pautas</span></div>
+        <div><b id="tAll">0</b><span>Conteúdos</span></div>
       </div>
       <div class="sync" id="sync"></div>
     </div>
   </header>
 
-  <p class="intro" id="intro">Antes de gravar e produzir, leia cada pauta. Se estiver de acordo, toque em <b>Aprovar</b>. Se quiser mudar algo, toque em <b>Pedir ajuste</b> e escreva o que mudar. Suas respostas ficam salvas automaticamente.</p>
+  <p class="intro" id="intro">Antes de gravar e produzir, leia cada conteúdo. Se estiver de acordo, toque em <b>Aprovar</b>. Se quiser mudar algo, toque em <b>Pedir ajuste</b> e escreva o que mudar. Suas respostas ficam salvas automaticamente.</p>
   <div class="done-box" id="doneBox" hidden><b>Planejamento enviado.</b> Obrigado! Vamos seguir com a produção conforme suas respostas. Você ainda pode ler e imprimir tudo por aqui.</div>
 
   <div class="tools">
@@ -211,7 +211,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   </section>
 
   <section class="sec">
-    <h2>Pautas</h2>
+    <h2>Conteúdos</h2>
     <div class="filt" id="filt"></div>
     <div class="list" id="list"></div>
   </section>
@@ -220,7 +220,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
 <div class="bar" id="bar">
   <div class="in">
     <div class="msg" id="barMsg"></div>
-    <button id="approveAll" type="button">Aprovar todas</button>
+    <button id="approveAll" type="button">Aprovar todos</button>
     <button id="finish" type="button">Enviar planejamento</button>
   </div>
 </div>
@@ -263,7 +263,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
 
   $('hClient').textContent = P.client;
-  $('hMeta').textContent = P.label + ' ' + P.year + ' · ' + items.length + ' pautas';
+  $('hMeta').textContent = P.label + ' ' + P.year + ' · ' + items.length + ' conteúdos';
   (P.frequency || []).forEach(f => $('freq').appendChild(el('span', '', f)));
   if (!(P.frequency || []).length) $('secFreq').hidden = true;
   const hasCal = !!P.month && P.items.some(i => i.date);
@@ -328,7 +328,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   let filter = 'all';
   function renderFilt() {
     const f = $('filt'); f.textContent = '';
-    [['all','Todas'], ...Object.entries({carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'}).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
+    [['all','Todos'], ...Object.entries({carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'}).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
       const n = k === 'all' ? items.length : items.filter(i => i.format === k).length;
       const b = el('button', '', l + ' (' + n + ')'); b.type = 'button'; b.setAttribute('aria-pressed', filter === k);
       b.onclick = () => { filter = k; renderFilt(); renderList(); }; f.appendChild(b);
@@ -360,7 +360,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
       wn.onclick = () => { if (finalized) return; state[i.id] = s.status === 'w' ? {} : {status:'w', type:'Ajuste no planejamento', note: s.note || '', at: new Date().toISOString()}; save(); renderAll(); setTimeout(() => { const t = $('n-' + i.id); if (t) t.focus(); }, 30); };
       acts.append(ok, wn); card.appendChild(acts);
       if (s.status === 'w') {
-        const n = el('div', 'note'); const t = el('textarea'); t.id = 'n-' + i.id; t.maxLength = 300; t.placeholder = 'Escreva o que gostaria de mudar nesta pauta'; t.value = s.note || ''; t.readOnly = finalized;
+        const n = el('div', 'note'); const t = el('textarea'); t.id = 'n-' + i.id; t.maxLength = 300; t.placeholder = 'Escreva o que gostaria de mudar neste conteúdo'; t.value = s.note || ''; t.readOnly = finalized;
         t.oninput = () => { state[i.id].note = t.value; save(); updateBar(); };
         n.append(t, el('small', '', finalized ? '' : 'Salvo automaticamente · até 300 caracteres')); card.appendChild(n);
       }
@@ -381,7 +381,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
     $('barMsg').innerHTML = '';
     const m = $('barMsg');
     if (finalized) { m.append('Planejamento enviado. '); const b = el('b', '', c.a + ' aprovadas, ' + c.w + ' com ajuste.'); m.appendChild(b); }
-    else if (c.p) { const b = el('b', '', c.p + (c.p === 1 ? ' pauta' : ' pautas')); m.append(b, ' ainda sem resposta'); }
+    else if (c.p) { const b = el('b', '', c.p + (c.p === 1 ? ' conteúdo' : ' conteúdos')); m.append(b, ' ainda sem resposta'); }
     else m.append('Tudo respondido. Agora é só enviar.');
   }
   function renderAll() { if (hasCal) renderCal(); renderList(); updateBar(); }
@@ -393,7 +393,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
   };
   $('finish').onclick = () => {
     const c = counts();
-    $('mP').textContent = c.a + ' pautas aprovadas e ' + c.w + ' com pedido de ajuste. Depois de enviar, a equipe Lemon recebe tudo e as respostas ficam travadas.';
+    $('mP').textContent = c.a + ' conteúdos aprovados e ' + c.w + ' com pedido de ajuste. Depois de enviar, a equipe Lemon recebe tudo e as respostas ficam travadas.';
     $('modal').hidden = false; $('mGo').focus();
   };
   $('mNo').onclick = () => { $('modal').hidden = true; };
@@ -437,7 +437,7 @@ details.cap p{white-space:pre-wrap;margin:0 0 12px;color:#d8d6cc}
     if (tr.children.length) { while (tr.children.length < 7) tr.appendChild(el('td')); tb.appendChild(tr); }
     cover.appendChild(tb);
     const idx = el('table', 'pidx'); idx.style.marginTop = '10px';
-    const h = el('tr'); ['Data','Conteúdo','Pauta','Status'].forEach(x => h.appendChild(el('th', '', x))); idx.appendChild(h);
+    const h = el('tr'); ['Data','Formato','Conteúdo','Status'].forEach(x => h.appendChild(el('th', '', x))); idx.appendChild(h);
     items.forEach(i => { const r = el('tr'); [i.date ? i.date.slice(8) + '/' + i.date.slice(5, 7) : 'a definir', name(i), i.title, stTxt(i)].forEach(x => r.appendChild(el('td', '', x))); idx.appendChild(r); });
     cover.appendChild(idx); box.appendChild(cover);
     const body = el('section', 'pg');
