@@ -95,6 +95,8 @@ a.btn{color:var(--paper)}
 .opt b{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1;letter-spacing:.03em}
 .opt .onums{font-size:15px;color:var(--mute)}
 .opt.lk b{font-size:26px;color:var(--lime)}
+.voltar{display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;padding:9px 16px;border:1px solid var(--lime);border-radius:10px;color:var(--lime)!important;text-decoration:none;font-weight:700;letter-spacing:.04em;font-size:17px}
+.voltar:hover{background:var(--lime);color:var(--lime-ink)!important}
 </style>
 </head>
 <body>
@@ -179,6 +181,7 @@ a.btn{color:var(--paper)}
   }
   function crumbs(last){
     const c = $('crumb'); c.textContent = ''; c.hidden = false;
+    const back = el('a', 'voltar', '← Voltar'); back.href = last ? '#' + CLIENT : '#'; c.append(back, el('br'));
     const a = el('a', null, '← Clientes'); a.href = '#'; c.appendChild(a);
     if (CLIENT) { c.append(' / '); if (last) { const b = el('a', null, nameOf(CLIENT)); b.href = '#' + CLIENT; c.appendChild(b); c.append(' / '); c.appendChild(el('span', null, last)); } else c.appendChild(el('span', null, nameOf(CLIENT))); }
   }
