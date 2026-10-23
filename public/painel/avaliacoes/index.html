@@ -234,7 +234,7 @@ ol.steps b{color:var(--paper)}
   const estrelas = n => { const s = el('span', 'stars'); s.append('★'.repeat(n || 0)); const o = el('s', null, '★'.repeat(5 - (n || 0))); s.appendChild(o); s.title = (n || 0) + ' de 5'; return s; };
 
   let senha = '';
-  try { senha = sessionStorage.getItem('lemon-painel') || ''; } catch(e) {}
+  try { senha = sessionStorage.getItem('lemon-painel') || localStorage.getItem('lemon-painel') || ''; } catch(e) {}
   let cli = CLIENTS[0].slug, dias = 30, aba = 'notas', filtro = 'todas', mesSel = new Date().getMonth() + 1;
   let dados = null, clientes = null, cfg = null;
 

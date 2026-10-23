@@ -136,7 +136,7 @@ h1 em{font-style:normal;color:var(--lime)}
 
   const $ = id => document.getElementById(id);
   let senha = '';
-  try { senha = sessionStorage.getItem('lemon-painel') || ''; } catch(e) {}
+  try { senha = sessionStorage.getItem('lemon-painel') || localStorage.getItem('lemon-painel') || ''; } catch(e) {}
   let dias = 30;
   try { const q = new URLSearchParams(location.search); if (q.get('dias')) dias = +q.get('dias') || 30; } catch(e) {}
 

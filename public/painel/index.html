@@ -5,7 +5,12 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="manifest" href="/painel/painel.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lemon Painel">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#0d0d0b">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Painel · Lemon Social</title>
@@ -110,12 +115,12 @@ a.btn{color:var(--paper)}
     { slug:'yasmine', name:'Yasmine' }
   ];
   let CLIENT = (location.hash.slice(1) && CLIENTS.some(c => c.slug === location.hash.slice(1))) ? location.hash.slice(1) : '';
-  if (!CLIENT) { try { CLIENT = sessionStorage.getItem('lemon-painel-cli') || ''; } catch(e) {} }
+  if (!CLIENT) { try { CLIENT = localStorage.getItem('lemon-painel-cli') || ''; } catch(e) {} }
   if (!CLIENTS.some(c => c.slug === CLIENT)) CLIENT = CLIENTS[0].slug;
   const nameOf = s => (CLIENTS.find(c => c.slug === s) || {}).name || s;
   const $ = id => document.getElementById(id);
   let senha = '';
-  try { senha = sessionStorage.getItem('lemon-painel') || ''; } catch(e) {}
+  try { senha = localStorage.getItem('lemon-painel') || ''; } catch(e) {}
   const cache = {};
   const FMT = {post:'Post', carrossel:'Carrossel', reels:'Reels'};
   const fmt = iso => iso ? new Date(iso).toLocaleString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'}) : '';
@@ -142,7 +147,7 @@ a.btn{color:var(--paper)}
     if (r.status === 401) { $('err').textContent = 'Senha incorreta.'; show(false); return; }
     if (!r.ok) { $('err').textContent = 'Não foi possível carregar agora. Tente de novo.'; return; }
     const res = await r.json();
-    try { sessionStorage.setItem('lemon-painel', senha); } catch(e) {}
+    try { localStorage.setItem('lemon-painel', senha); } catch(e) {}
     const want = CLIENT;
     const page = await loadPage();
     const dates = {};
@@ -158,7 +163,7 @@ a.btn{color:var(--paper)}
     const nav = $('clis'); nav.textContent = '';
     CLIENTS.forEach(c => {
       const b = el('button', null, c.name); b.type = 'button'; b.setAttribute('aria-pressed', c.slug === CLIENT);
-      b.onclick = () => { if (c.slug === CLIENT) return; CLIENT = c.slug; try { sessionStorage.setItem('lemon-painel-cli', CLIENT); } catch(e) {} history.replaceState(null, '', '#' + CLIENT); renderClis(); $('list').textContent = ''; load(); };
+      b.onclick = () => { if (c.slug === CLIENT) return; CLIENT = c.slug; try { localStorage.setItem('lemon-painel-cli', CLIENT); } catch(e) {} history.replaceState(null, '', '#' + CLIENT); renderClis(); $('list').textContent = ''; load(); };
       nav.appendChild(b);
     });
   }
@@ -265,7 +270,7 @@ a.btn{color:var(--paper)}
 
   $('login').addEventListener('submit', e => { e.preventDefault(); senha = $('pw').value; load(); });
   $('refresh').onclick = load;
-  $('logout').onclick = () => { senha = ''; try { sessionStorage.removeItem('lemon-painel'); } catch(e) {} show(false); $('pw').value = ''; };
+  $('logout').onclick = () => { senha = ''; try { localStorage.removeItem('lemon-painel'); } catch(e) {} show(false); $('pw').value = ''; };
   renderClis();
   if (senha) load();
 })();
