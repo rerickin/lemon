@@ -80,6 +80,21 @@ a.btn{color:var(--paper)}
 .clis{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .clis button{border:1px solid var(--line);background:var(--ink-2);border-radius:99px;padding:8px 18px;font-weight:700;font-size:16px;letter-spacing:.04em}
 .clis button[aria-pressed=true]{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.crumb{margin-top:18px;color:var(--mute);font-size:17px}
+.crumb a{color:var(--lime);text-decoration:none;font-weight:600}
+.crumb span{color:var(--paper)}
+.pick{display:grid;gap:12px;max-width:560px;margin-top:30px}
+.pbtn{display:flex;justify-content:space-between;align-items:center;background:var(--lime);color:var(--lime-ink);text-decoration:none;border-radius:14px;padding:18px 24px;font-family:var(--f-display);font-size:clamp(30px,6vw,42px);letter-spacing:.04em;line-height:1}
+.pbtn i{font-style:normal}
+.pbtn:hover{filter:brightness(1.06)}
+.mlead{font-family:var(--f-display);font-size:30px;letter-spacing:.04em;margin:26px 0 12px}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.opt{display:grid;gap:6px;align-content:start;justify-items:start;background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:18px 20px;text-decoration:none;color:var(--paper)}
+.opt:hover{border-color:var(--lime)}
+.opt small{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.opt b{font-family:var(--f-display);font-weight:400;font-size:34px;line-height:1;letter-spacing:.03em}
+.opt .onums{font-size:15px;color:var(--mute)}
+.opt.lk b{font-size:26px;color:var(--lime)}
 </style>
 </head>
 <body>
@@ -87,7 +102,7 @@ a.btn{color:var(--paper)}
   <header class="top">
     <div>
       <div class="brand"><i></i><span>Lemon Social · Painel</span></div>
-      <h1>Aprovações <em id="cliName"></em></h1>
+      <h1><span id="h1t">Aprovações</span> <em id="cliName"></em></h1>
     </div>
     <div id="actions" hidden style="display:flex;gap:8px;flex-wrap:wrap">
       <a class="btn" href="/painel/acessos/" style="text-decoration:none">Acessos</a>
@@ -104,7 +119,9 @@ a.btn{color:var(--paper)}
     <p class="err" id="err"></p>
   </form>
 
-  <nav class="clis" id="clis" hidden aria-label="Clientes"></nav>
+  <nav class="crumb" id="crumb" hidden aria-label="Navegação"></nav>
+  <section class="pick" id="pick" hidden></section>
+  <section class="menu" id="menu" hidden></section>
   <main id="list" hidden></main>
 </div>
 
@@ -115,9 +132,9 @@ a.btn{color:var(--paper)}
     { slug:'premiumgrass', name:'Premium Grass' },
     { slug:'yasmine', name:'Yasmine' }
   ];
-  let CLIENT = (location.hash.slice(1) && CLIENTS.some(c => c.slug === location.hash.slice(1))) ? location.hash.slice(1) : '';
-  if (!CLIENT) { try { CLIENT = localStorage.getItem('lemon-painel-cli') || ''; } catch(e) {} }
-  if (!CLIENTS.some(c => c.slug === CLIENT)) CLIENT = CLIENTS[0].slug;
+  let CLIENT = '', SEC = '';
+  const parseHash = () => { const [c, m] = decodeURIComponent(location.hash.slice(1)).split('/'); CLIENT = CLIENTS.some(x => x.slug === c) ? c : ''; SEC = CLIENT ? (m || '') : ''; };
+  parseHash();
   const nameOf = s => (CLIENTS.find(c => c.slug === s) || {}).name || s;
   const $ = id => document.getElementById(id);
   let senha = '';
@@ -136,7 +153,7 @@ a.btn{color:var(--paper)}
       if (!mo.plan) continue;
       try {
         const P = await (await fetch('/' + CLIENT + '/planejamento/plan-' + mo.id + '.json', {cache:'no-store'})).json();
-        data.months.push({id: P.id, isPlan: true, label: 'Planejamento ' + P.label, year: P.year, posts: P.items.map(i => ({id: i.id, format: i.format, date: i.date, title: FN[i.format] + ' ' + String(i.n).padStart(2, '0') + ' · ' + i.title}))});
+        data.months.push({id: P.id, isPlan: true, label: 'Planejamento ' + P.label, year: P.year, posts: P.items.map(i => ({id: i.id, format: i.format, date: i.date, title: FN[i.format] + ' ' + String(i.n).padStart(2, '0') + (i.v ? ' (V' + i.v + ')' : '') + ' · ' + i.title}))});
       } catch(e) {}
     }
     return data;
@@ -154,20 +171,63 @@ a.btn{color:var(--paper)}
     const dates = {};
     await Promise.all(page.months.filter(m => !m.isPlan).map(m => fetch('/api/datas/' + CLIENT + '/' + m.id, {cache:'no-store'}).then(r => r.ok ? r.json() : {dates:{}}).catch(() => ({dates:{}})).then(r => { dates[m.id] = r.dates || {}; })));
     if (want !== CLIENT) return;
-    render(page, res.meses || {}, dates);
     show(true);
+    const meses = res.meses || {};
+    const cur = page.months.find(m => m.id === SEC);
+    if (cur) { $('menu').hidden = true; $('list').hidden = false; render(Object.assign({}, page, {months: [cur]}), meses, dates); crumbs(cur.label + ' ' + cur.year); }
+    else { $('list').hidden = true; renderMenu(page, meses); crumbs(''); }
   }
-  function show(on){ $('login').hidden = on; $('list').hidden = !on; $('actions').hidden = !on; $('clis').hidden = !on; }
-  function renderClis(){
-    $('cliName').textContent = nameOf(CLIENT);
-    document.title = 'Painel · ' + nameOf(CLIENT) + ' · Lemon Social';
-    const nav = $('clis'); nav.textContent = '';
-    CLIENTS.forEach(c => {
-      const b = el('button', null, c.name); b.type = 'button'; b.setAttribute('aria-pressed', c.slug === CLIENT);
-      b.onclick = () => { if (c.slug === CLIENT) return; CLIENT = c.slug; try { localStorage.setItem('lemon-painel-cli', CLIENT); } catch(e) {} history.replaceState(null, '', '#' + CLIENT); renderClis(); $('list').textContent = ''; load(); };
-      nav.appendChild(b);
+  function crumbs(last){
+    const c = $('crumb'); c.textContent = ''; c.hidden = false;
+    const a = el('a', null, '← Clientes'); a.href = '#'; c.appendChild(a);
+    if (CLIENT) { c.append(' / '); if (last) { const b = el('a', null, nameOf(CLIENT)); b.href = '#' + CLIENT; c.appendChild(b); c.append(' / '); c.appendChild(el('span', null, last)); } else c.appendChild(el('span', null, nameOf(CLIENT))); }
+  }
+  function renderPick(){
+    $('menu').hidden = true; $('list').hidden = true; $('crumb').hidden = true;
+    $('cliName').textContent = ''; $('h1t').textContent = 'Qual cliente?';
+    document.title = 'Painel · Lemon Social';
+    const box = $('pick'); box.textContent = ''; box.hidden = false;
+    CLIENTS.forEach(c => { const a = el('a', 'pbtn'); a.href = '#' + c.slug; a.append(el('span', null, c.name), el('i', null, '→')); box.appendChild(a); });
+  }
+  function renderMenu(page, meses){
+    const box = $('menu'); box.textContent = ''; box.hidden = false;
+    box.appendChild(el('p', 'mlead', 'O que você quer ver?'));
+    const grid = el('div', 'mgrid');
+    page.months.slice().reverse().forEach(m => {
+      const rec = meses[m.id] || {}, st = rec.state || {};
+      let a = 0, w = 0; m.posts.forEach(p => { const s = st[p.id] || {}; if (s.status === 'a') a++; else if (s.status === 'w') w++; });
+      const pend = m.posts.length - a - w;
+      const o = el('a', 'opt'); o.href = '#' + CLIENT + '/' + m.id;
+      o.appendChild(el('small', null, m.isPlan ? 'Planejamento' : 'Aprovação de posts'));
+      o.appendChild(el('b', null, m.label.replace(/^Planejamento /, '') + ' ' + m.year));
+      const chip = !m.posts.length ? el('span', 'chip open', 'Em produção') : rec.finalizedAt ? el('span', 'chip ok', '✓ Enviado') : rec.startedAt ? el('span', 'chip open', 'Em andamento') : el('span', 'chip open', 'Não iniciado');
+      o.appendChild(chip);
+      if (m.posts.length) o.appendChild(el('span', 'onums', a + ' aprovados · ' + w + ' ajustes · ' + pend + ' pendentes'));
+      grid.appendChild(o);
     });
+    const lp = el('a', 'opt lk'); lp.href = '/' + CLIENT + '/'; lp.target = '_blank'; lp.rel = 'noopener'; lp.append(el('small', null, 'Link'), el('b', null, 'Página do cliente ↗')); grid.appendChild(lp);
+    if (page.drive) { const dv = el('a', 'opt lk'); dv.href = page.drive; dv.target = '_blank'; dv.rel = 'noopener'; dv.append(el('small', null, 'Arquivos'), el('b', null, 'Drive ↗')); grid.appendChild(dv); }
+    box.appendChild(grid);
   }
+  function route(){
+    parseHash();
+    if (!senha) return;
+    if (!CLIENT) {
+      $('err').textContent = '';
+      fetch('/api/painel/' + CLIENTS[0].slug, {headers:{'x-senha': senha}, cache:'no-store'}).then(r => {
+        if (r.status === 401) { $('err').textContent = 'Senha incorreta.'; try { localStorage.removeItem('lemon-painel'); } catch(e) {} senha = ''; show(false); return; }
+        show(true); renderPick();
+      }).catch(() => { $('err').textContent = 'Sem conexão. Tente de novo.'; });
+      return;
+    }
+    $('pick').hidden = true; $('h1t').textContent = 'Aprovações';
+    $('cliName').textContent = nameOf(CLIENT); document.title = 'Painel · ' + nameOf(CLIENT) + ' · Lemon Social';
+    $('list').textContent = ''; $('menu').textContent = '';
+    load();
+  }
+  addEventListener('hashchange', route);
+  function show(on){ $('login').hidden = on; $('actions').hidden = !on; if (!on) { $('list').hidden = true; $('menu').hidden = true; $('pick').hidden = true; $('crumb').hidden = true; } }
+
 
   function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
@@ -269,11 +329,10 @@ a.btn{color:var(--paper)}
     });
   }
 
-  $('login').addEventListener('submit', e => { e.preventDefault(); senha = $('pw').value; load(); });
-  $('refresh').onclick = load;
+  $('login').addEventListener('submit', e => { e.preventDefault(); senha = $('pw').value; try { localStorage.setItem('lemon-painel', senha); } catch(e) {} route(); });
+  $('refresh').onclick = () => CLIENT ? load() : renderPick();
   $('logout').onclick = () => { senha = ''; try { localStorage.removeItem('lemon-painel'); } catch(e) {} show(false); $('pw').value = ''; };
-  renderClis();
-  if (senha) load();
+  if (senha) route();
 })();
 </script>
 </body>
