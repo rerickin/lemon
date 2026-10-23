@@ -9,6 +9,7 @@
 //   GET  /api/datas/:cliente/:mes              datas de publicação definidas pela equipe
 //   PUT  /api/painel/:cliente/:mes/data        (senha) {id, date} define ou limpa a data de um post
 //   POST /api/hit                              contador público das páginas de links (lmon.cc)
+//   GET|PUT /api/painel/:cliente/producao      (senha) datas de gravação e prazos de produção
 //   GET  /api/painel/:cliente/acessos?dias=N   (senha) acessos e cliques por dia
 //   /api/av/... e /api/painel/:cliente/(avaliacoes|clientes|av-config|garcons)  ver src/avaliacoes.js
 //   GET  /a/:token                             página de avaliação do cliente (serve /avaliar/)
@@ -111,6 +112,19 @@ async function api(request, env, parts) {
         'SELECT dia, tipo, rotulo, total, unicos FROM acessos WHERE cliente = ?1 AND dia >= ?2 ORDER BY dia'
       ).bind(parts[1], desde).all();
       return json({ cliente: parts[1], desde, hoje: diaBR(), linhas: results });
+    }
+    if (parts.length === 3 && parts[2] === 'producao') {
+      const pk = `producao:${parts[1]}`;
+      if (method === 'GET') return json((await env.APROVA.get(pk, 'json')) || {});
+      if (method === 'PUT') {
+        const b = await request.json().catch(() => null);
+        if (!b || typeof b !== 'object') return json({ error: 'corpo inválido' }, 400);
+        const D = v => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v)) ? v : '';
+        const N = (v, d) => { const n = parseInt(v, 10); return Number.isFinite(n) && n >= 0 && n <= 60 ? n : d; };
+        const out = { gravacao: D(b.gravacao), proxima: D(b.proxima), edicao: N(b.edicao, 5), aprovacao: N(b.aprovacao, 2), folga: N(b.folga, 2), updatedAt: new Date().toISOString() };
+        await env.APROVA.put(pk, JSON.stringify(out));
+        return json(out);
+      }
     }
     if (parts.length === 2 && method === 'GET') {
       const list = await env.APROVA.list({ prefix: `aprova:${parts[1]}:` });

@@ -97,6 +97,30 @@ a.btn{color:var(--paper)}
 .opt.lk b{font-size:26px;color:var(--lime)}
 .voltar{display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;padding:9px 16px;border:1px solid var(--lime);border-radius:10px;color:var(--lime)!important;text-decoration:none;font-weight:700;letter-spacing:.04em;font-size:17px}
 .voltar:hover{background:var(--lime);color:var(--lime-ink)!important}
+.prod{border:1px solid var(--lime);border-radius:18px;background:linear-gradient(180deg,rgba(200,242,13,.07),rgba(200,242,13,.02));padding:20px 22px;margin-top:22px;display:grid;gap:16px}
+.prod .pl{color:var(--mute);margin:0}
+.prod .ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px}
+.prod .ph small{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.prod .ph b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(32px,5vw,46px);line-height:1;letter-spacing:.03em;margin-top:6px}
+.pbadge{font-weight:700;font-size:16px;border-radius:99px;padding:7px 14px;letter-spacing:.03em}
+.pbadge.g{background:var(--lime);color:var(--lime-ink)} .pbadge.y{background:#ffd23f;color:#2a2000} .pbadge.r{background:#ff5a4a;color:#fff}
+.pwarn{margin:0;color:var(--warn);font-weight:600}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pc{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.pcl{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.pc b{font-size:22px}
+.pc small{color:var(--mute);font-size:14px}
+.pc input[type=date]{background:transparent;border:1px solid var(--lime);border-radius:8px;color:var(--paper);padding:6px 8px;font:inherit;font-size:17px;color-scheme:dark;justify-self:start}
+.psug{display:grid;gap:8px}
+.prow{display:flex;flex-wrap:wrap;gap:10px}
+.pchip{display:grid;gap:2px;text-align:left;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.pchip b{font-size:19px} .pchip small{font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.pchip:hover{border-color:var(--lime)}
+.pchip.lim{border-color:#ff5a4a} .pchip.past{opacity:.45}
+.pprazos{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.pprazos label{display:flex;align-items:center;gap:6px;color:var(--mute)}
+.pprazos input{width:58px;background:var(--ink-2);border:1px solid var(--line);border-radius:8px;color:var(--paper);padding:5px 8px;font:inherit;font-size:17px;text-align:center}
+.pnote{margin:0;color:var(--mute);font-size:14px}
 </style>
 </head>
 <body>
@@ -176,6 +200,9 @@ a.btn{color:var(--paper)}
     show(true);
     const meses = res.meses || {};
     const cur = page.months.find(m => m.id === SEC);
+    let fim = '';
+    page.months.forEach(m => { const ov = dates[m.id] || {}; m.posts.forEach(p => { const d = (!m.isPlan && p.id in ov) ? ov[p.id] : p.date; if (d && d > fim) fim = d; }); });
+    page.fim = fim;
     if (cur) { $('menu').hidden = true; $('list').hidden = false; render(Object.assign({}, page, {months: [cur]}), meses, dates); crumbs(cur.label + ' ' + cur.year); }
     else { $('list').hidden = true; renderMenu(page, meses); crumbs(''); }
   }
@@ -194,6 +221,8 @@ a.btn{color:var(--paper)}
   }
   function renderMenu(page, meses){
     const box = $('menu'); box.textContent = ''; box.hidden = false;
+    const prod = el('section', 'prod'); prod.appendChild(el('p', 'pl', 'Carregando produção…')); box.appendChild(prod);
+    loadProd(prod, page.fim);
     box.appendChild(el('p', 'mlead', 'O que você quer ver?'));
     const grid = el('div', 'mgrid');
     page.months.slice().reverse().forEach(m => {
@@ -212,6 +241,77 @@ a.btn{color:var(--paper)}
     if (page.drive) { const dv = el('a', 'opt lk'); dv.href = page.drive; dv.target = '_blank'; dv.rel = 'noopener'; dv.append(el('small', null, 'Arquivos'), el('b', null, 'Drive ↗')); grid.appendChild(dv); }
     box.appendChild(grid);
   }
+  // ---- produção: próxima gravação ----
+  const FER = new Set(['2026-01-01','2026-02-16','2026-02-17','2026-04-03','2026-04-21','2026-05-01','2026-06-04','2026-09-07','2026-10-12','2026-11-02','2026-11-15','2026-11-20','2026-12-25',
+    '2027-01-01','2027-02-08','2027-02-09','2027-03-26','2027-04-21','2027-05-01','2027-05-27','2027-09-07','2027-10-12','2027-11-02','2027-11-15','2027-11-20','2027-12-25']);
+  const pad = n => String(n).padStart(2, '0');
+  const isoD = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  const parseD = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+  const isBD = d => d.getDay() !== 0 && d.getDay() !== 6 && !FER.has(isoD(d));
+  const stepBD = (d, n, dir) => { d = new Date(d); let k = 0; while (k < n) { d.setDate(d.getDate() + dir); if (isBD(d)) k++; } return d; };
+  const today = () => { const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); };
+  const daysTo = d => Math.round((d - today()) / 864e5);
+  const WDS = ['dom','seg','ter','qua','qui','sex','sáb'];
+  const fd = d => WDS[d.getDay()] + ', ' + pad(d.getDate()) + '/' + pad(d.getMonth() + 1);
+  const bdBetween = (a, b) => { let n = 0, d = new Date(a); while (d < b) { d.setDate(d.getDate() + 1); if (isBD(d)) n++; } return n; };
+  async function loadProd(box, fim){
+    let cfg = {};
+    try { const r = await fetch('/api/painel/' + CLIENT + '/producao', {headers:{'x-senha': senha}, cache:'no-store'}); if (r.ok) cfg = await r.json(); } catch(e) {}
+    cfg = Object.assign({gravacao:'', proxima:'', edicao:5, aprovacao:2, folga:2}, cfg);
+    const cli = CLIENT;
+    const save = async () => {
+      if (cli !== CLIENT) return;
+      try { await fetch('/api/painel/' + cli + '/producao', {method:'PUT', headers:{'x-senha': senha, 'content-type':'application/json'}, body: JSON.stringify(cfg)}); } catch(e) {}
+    };
+    const draw = () => {
+      box.textContent = '';
+      const head = el('div', 'ph');
+      const left = el('div'); left.appendChild(el('small', null, 'Produção · próxima gravação'));
+      const ttl = el('b'); left.appendChild(ttl); head.appendChild(left);
+      const badge = el('span', 'pbadge'); head.appendChild(badge);
+      box.appendChild(head);
+      const total = cfg.edicao + cfg.aprovacao + cfg.folga;
+      let limite = null;
+      if (fim) limite = stepBD(stepBD(parseD(fim), 1, 1), total, -1);
+      const prox = cfg.proxima ? parseD(cfg.proxima) : null;
+      if (!limite) { ttl.textContent = 'Sem datas de publicação'; badge.textContent = 'Defina as datas'; badge.className = 'pbadge y'; }
+      else if (prox && prox <= limite) { ttl.textContent = 'Gravação agendada: ' + fd(prox); const n = daysTo(prox); badge.textContent = n > 0 ? '✓ No prazo · em ' + n + (n === 1 ? ' dia' : ' dias') : n === 0 ? '✓ É hoje' : '✓ Gravado?'; badge.className = 'pbadge g'; }
+      else {
+        const n = daysTo(limite);
+        ttl.textContent = 'Gravar até ' + fd(limite);
+        if (n < 0) { badge.textContent = '⚠ Atrasado ' + (-n) + (n === -1 ? ' dia' : ' dias'); badge.className = 'pbadge r'; }
+        else { badge.textContent = (n === 0 ? 'É hoje' : 'Faltam ' + n + (n === 1 ? ' dia' : ' dias')); badge.className = 'pbadge ' + (n <= 7 ? 'r' : n <= 14 ? 'y' : 'g'); }
+        if (prox) { const w = el('p', 'pwarn', '⚠ A gravação agendada (' + fd(prox) + ') fica depois da data limite. O conteúdo pode acabar antes da entrega.'); box.appendChild(w); }
+      }
+      const grid = el('div', 'pgrid');
+      const cell = (lb, val, sub) => { const c = el('div', 'pc'); c.appendChild(el('span', 'pcl', lb)); if (val instanceof Node) c.appendChild(val); else c.appendChild(el('b', null, val)); if (sub) c.appendChild(el('small', null, sub)); grid.appendChild(c); return c; };
+      cell('Conteúdo programado até', fim ? fd(parseD(fim)) : 'Sem datas', fim ? (daysTo(parseD(fim)) >= 0 ? 'faltam ' + daysTo(parseD(fim)) + ' dias' : 'já acabou') : 'coloque as datas no planejamento');
+      const dIn = (key) => { const i = el('input'); i.type = 'date'; i.value = cfg[key] || ''; i.onchange = () => { cfg[key] = i.value; save(); draw(); }; return i; };
+      let sub = '';
+      if (cfg.gravacao) { const ent = stepBD(parseD(cfg.gravacao), cfg.edicao, 1); const k = bdBetween(today(), ent); sub = 'Entrega para aprovação: ' + fd(ent) + (ent >= today() ? ' (' + k + (k === 1 ? ' dia útil)' : ' dias úteis)') : ' (prazo passou)'); }
+      cell('Última gravação', dIn('gravacao'), sub || 'Coloque a data para calcular a entrega');
+      cell('Próxima gravação agendada', dIn('proxima'), cfg.proxima ? (limite && parseD(cfg.proxima) <= limite ? 'Dentro do prazo' : 'Depois da data limite') : 'Ainda não agendada');
+      box.appendChild(grid);
+      if (limite) {
+        const sg = el('div', 'psug'); sg.appendChild(el('span', 'pcl', 'Datas sugeridas para gravar'));
+        const row = el('div', 'prow');
+        [[stepBD(limite, 5, -1), 'Com folga'], [stepBD(limite, 2, -1), 'Recomendada'], [limite, 'Data limite']].forEach(([d, l], k) => {
+          const b = el('button', 'pchip' + (k === 2 ? ' lim' : '') + (d < today() ? ' past' : '')); b.type = 'button';
+          b.append(el('b', null, fd(d)), el('small', null, l)); b.title = 'Agendar gravação nesta data';
+          b.onclick = () => { cfg.proxima = isoD(d); save(); draw(); };
+          row.appendChild(b);
+        });
+        sg.appendChild(row); box.appendChild(sg);
+      }
+      const pz = el('div', 'pprazos');
+      const nIn = (key, lb) => { const w = el('label'); const i = el('input'); i.type = 'number'; i.min = 0; i.max = 60; i.value = cfg[key]; i.onchange = () => { cfg[key] = Math.max(0, Math.min(60, parseInt(i.value, 10) || 0)); save(); draw(); }; w.append(i, el('span', null, lb)); return w; };
+      pz.append(el('span', 'pcl', 'Prazos em dias úteis'), nIn('edicao', 'edição'), nIn('aprovacao', 'aprovação do cliente'), nIn('folga', 'folga'));
+      box.appendChild(pz);
+      box.appendChild(el('p', 'pnote', 'Data limite = ' + total + ' dias úteis (edição ' + cfg.edicao + ' + aprovação ' + cfg.aprovacao + ' + folga ' + cfg.folga + ') antes do dia em que o conteúdo acaba. Fins de semana e feriados nacionais não contam.'));
+    };
+    draw();
+  }
+
   function route(){
     parseHash();
     if (!senha) return;
