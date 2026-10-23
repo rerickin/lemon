@@ -14,399 +14,368 @@
  ],
  "items": [
   {
-   "id": "r11",
+   "id": "r1",
    "format": "reels",
-   "n": 11,
-   "title": "Trend: Se preparando para uma entrevista da Netflix",
-   "date": "2026-11-28",
-   "record": true,
-   "blocks": [
-    {
-     "label": "Texto na tela",
-     "text": "Eu me preparando para a entrevista do documentário da Netflix que finalmente vai provar que a maioria das pessoas precisa de um bom hidratante, e não de copiar uma rotina coreana de 10 passos."
-    }
-   ],
-   "caption": "A rotina ideal de skincare não é a que tem mais etapas. É a que faz sentido para a sua pele.\nMuitas pessoas acabam comprando vários produtos porque viram uma tendência nas redes sociais, quando, na prática, uma rotina simples, com limpeza, hidratação e proteção solar, já pode atender muito bem às necessidades da maioria.\n\nIsso não significa que rotinas mais completas não tenham seu lugar. Elas podem ser indicadas em situações específicas, desde que façam sentido para o tipo de pele e para os objetivos de cada paciente.\nAntes de seguir uma rotina pronta, vale a pena entender o que a sua pele realmente precisa."
-  },
-  {
-   "id": "r3",
-   "format": "reels",
-   "n": 3,
-   "title": "Espinhas inflamadas",
+   "n": 1,
+   "title": "Coisas óbvias para mim, que sou dermatologista, mas que talvez sejam novidade para você",
    "date": "2026-11-03",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Se as suas espinhas vivem inflamadas, antes de comprar mais um produto, assista esse vídeo."
+     "text": "Coisas óbvias para mim, que sou dermatologista, mas que talvez sejam novidade para você."
     },
     {
      "label": "Desenvolvimento",
-     "text": "Muita gente acha que a espinha começa quando aparece o pus.\nMas a inflamação costuma começar dias antes.\n\nÀs vezes você sente apenas uma dor ou um pequeno caroço na pele. Esse já é um sinal de que o processo inflamatório começou.\nE é justamente nessa fase que faz mais sentido iniciar o tratamento.\n\nEsperar a espinha crescer ou tentar espremer só aumenta o risco de manchas e cicatrizes.\nDependendo do caso, ativos como o ácido salicílico podem ajudar a desobstruir os poros e controlar essa fase inicial da inflamação.\n\nTemos também o peróxido de benzoíla, que tem ação antimicrobiana e também ajuda a reduzir o processo inflamatório.\nQuando a acne é mais persistente ou intensa, podemos associar medicamentos como o adapaleno e, em alguns casos, até a isotretinoína.\nMas a escolha do tratamento depende da avaliação de cada paciente."
+     "text": "1. A pele oleosa também pode ficar desidratada.\nÉ uma confusão muito comum. Produção de sebo e hidratação são coisas diferentes.\n\n2. A caspa também pode aparecer nas sobrancelhas e ao redor do nariz.\n(Explicar brevemente a dermatite seborreica)\n\n3. Lavar o rosto várias vezes ao dia pode piorar a irritação, mesmo em quem tem pele oleosa.\nA limpeza excessiva pode comprometer a barreira cutânea."
     },
     {
      "label": "Fechamento",
-     "text": "Não espere a espinha inflamar completamente para começar a cuidar.\nQuanto mais cedo a acne é controlada, menor a chance de ela deixar marcas na pele."
+     "text": "E aí, qual dessas você ainda não sabia?"
     }
    ],
-   "caption": "Você também sente aquela dor na pele antes da espinha aparecer?\nIsso pode ser um sinal de que a inflamação já começou. No vídeo, explico por que esse momento é importante e como ele influencia o tratamento da acne."
-  },
-  {
-   "id": "r1",
-   "format": "reels",
-   "n": 1,
-   "title": "React: Uso do ATA a 30% sem acompanhamento",
-   "date": "2026-11-05",
-   "record": true,
-   "blocks": [
-    {
-     "label": "Abertura",
-     "text": "Mais de 68 milhões de pessoas assistiram a um homem fazendo um peeling químico em casa. E é exatamente por isso que esse vídeo merece um alerta."
-    },
-    {
-     "label": "Desenvolvimento",
-     "text": "Ele aplicou sozinho um peeling de ATA a 30%. E a primeira coisa que eu preciso dizer é: isso não deve ser feito em casa.\nUm peeling químico não é apenas aplicar um ácido na pele. Ele exige indicação, avaliação da pele, preparo e acompanhamento."
-    },
-    {
-     "label": "Segundo ponto",
-     "text": "Outra questão é que ele é um paciente jovem, com uma pele aparentemente saudável. E isso levanta uma pergunta importante: será que havia indicação para um peeling tão profundo?"
-    },
-    {
-     "label": "Terceiro ponto",
-     "text": "Existe ainda o fototipo. Em peles mais escuras, um peeling profundo com ATA pode aumentar significativamente o risco de manchas e outras complicações.\n\nE isso acontece também no consultório. Não é raro encontrar pacientes jovens, com uma pele bonita, querendo procedimentos cada vez mais agressivos porque viram um resultado na internet."
-    },
-    {
-     "label": "Fechamento",
-     "text": "No pós-procedimento, ele mostrou a pele escurecendo e descamando, o que faz parte da resposta a esse tipo de queimadura química.\nMas imagine passar por todo esse processo sem acompanhamento, sem saber identificar uma complicação e sem orientação para recuperar a barreira da pele."
-    }
-   ],
-   "caption": "Mais de 68 milhões de pessoas assistiram a esse vídeo. Isso não significa que ele deva ser reproduzido.\nProcedimentos como o peeling de ATA exigem indicação, técnica e acompanhamento profissional. Na dermatologia, segurança sempre vem antes do resultado.",
-   "ref": "https://vt.tiktok.com/ZSXpFEmGY/"
-  },
-  {
-   "id": "c2",
-   "format": "carrossel",
-   "n": 2,
-   "title": "Manchas na pele: quando é hora de se preocupar?",
-   "date": "2026-11-06",
-   "record": false,
-   "blocks": [
-    {
-     "label": "Capa",
-     "text": "Manchas na pele: quando é hora de se preocupar?"
-    },
-    {
-     "label": "Lâmina 2",
-     "text": "Nem toda mancha é perigosa.\nMuitas manchas surgem naturalmente ao longo da vida e são benignas.\nMas algumas merecem atenção."
-    },
-    {
-     "label": "Lâmina 3",
-     "text": "Observe se ela mudou. Uma pinta ou mancha que:\n• Cresceu rapidamente\n• Mudou de cor\n• Mudou de formato\nMerece avaliação."
-    },
-    {
-     "label": "Lâmina 4",
-     "text": "Atenção aos limites\nManchas com bordas irregulares ou assimétricas devem ser examinadas por um dermatologista."
-    },
-    {
-     "label": "Lâmina 5",
-     "text": "Coceira, dor ou sangramento\nNem sempre esses sinais indicam algo grave.\nMas também são motivos suficientes para procurar avaliação."
-    },
-    {
-     "label": "Lâmina 6",
-     "text": "O histórico também importa. Pessoas com:\n• Pele muito clara\n• Histórico familiar de câncer de pele\n• Exposição solar intensa ao longo da vida\nPrecisam de acompanhamento regular."
-    },
-    {
-     "label": "Lâmina final",
-     "text": "Se uma mancha chamou sua atenção, não espere meses para mostrar a um especialista. Diagnóstico precoce faz diferença."
-    }
-   ],
-   "caption": "Muitas manchas que aparecem na pele ao longo da vida são benignas.\nMas mudanças de cor, formato, tamanho ou sintomas como coceira e sangramento devem ser avaliados.\nQuando o assunto é pele, observar as mudanças é tão importante quanto tratar."
-  },
-  {
-   "id": "r5",
-   "format": "reels",
-   "n": 5,
-   "title": "Todo dia, 1x por semana, 1x por mês: Skincare",
-   "date": "2026-11-07",
-   "record": true,
-   "blocks": [
-    {
-     "label": "Ideia",
-     "text": "Aqui, o doutor vai indicar uma seleção de produtos e/ou procedimentos de skincare e os produtos aparecerão na tela.\n• Produtos para todo dia\n• Produtos para uma vez por semana\n• Produtos e procedimentos uma vez por mês"
-    }
-   ],
-   "caption": "Tá aí uma dica de ouro para organizar a sua rotina de skincare."
+   "caption": "Depois de tantos anos na dermatologia, algumas informações acabam fazendo parte do meu dia a dia. Mas, no consultório, percebo que muitas delas ainda surpreendem os pacientes. E é justamente por isso que gosto de compartilhar esse conhecimento por aqui.\n\nQual dessas foi novidade para você?"
   },
   {
    "id": "r2",
    "format": "reels",
    "n": 2,
-   "title": "Caixinha de pergunta: bioestimulador facial",
+   "title": "React: O bronzeado não é sinal de pele saudável",
+   "date": "2026-11-05",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Abertura",
+     "text": "Uma influenciadora britânica morreu aos 30 anos após enfrentar um câncer de pele. E, mesmo com as câmaras de bronzeamento proibidas no Brasil, esse alerta também vale para nós."
+    },
+    {
+     "label": "Desenvolvimento",
+     "text": "Ela relatou ter utilizado câmaras de bronzeamento durante cerca de dez anos. Esses equipamentos são proibidos no Brasil porque a exposição intensa à radiação ultravioleta aumenta o risco de câncer de pele.\n\nMas o sol também emite essa radiação. E no Brasil, o índice UV pode atingir níveis muito elevados. Mesmo na sombra, parte dessa radiação chega à nossa pele.\nE tem uma coisa que muita gente ainda não entende: o bronzeado não é um sinal de saúde da pele.\n\nQuando a pele bronzeia pela exposição UV, ela está reagindo a uma agressão que pode danificar o DNA das células. Com o tempo, esses danos podem aumentar o risco de câncer de pele e contribuir para manchas, rugas e flacidez."
+    },
+    {
+     "label": "Fechamento",
+     "text": "O bronzeado pode desaparecer em algumas semanas, mas parte dos danos permanece por muitos anos.\nTem dúvidas sobre bronzeamento, radiação solar ou saúde da pele? Deixe aqui nos comentários."
+    }
+   ],
+   "caption": "O bronzeado ainda é associado por muitas pessoas a uma aparência saudável. Mas a nossa pele entende dessa forma.\n\nO bronzeamento provocado pela radiação UV é uma resposta da pele a uma agressão que pode causar danos ao DNA das células. Com o passar dos anos, esses danos podem se acumular, aumentando o risco de câncer de pele e contribuindo para o envelhecimento precoce.\n\nVocê tem dúvidas sobre bronzeamento, radiação solar ou cuidados com a pele? Deixe nos comentários.",
+   "ref": "https://www.terra.com.br/diversao/gente/famosa-morre-aos-30-anos-de-cancer-de-pele-apos-passar-10-anos-fazendo-bronzeamento-artificial,d90cbf61de80da3f68085aeeed1d97fd3zvm2wfr.html"
+  },
+  {
+   "id": "r3",
+   "format": "reels",
+   "n": 3,
+   "title": "Verdades difíceis de engolir, mas que ficam mais fáceis com um café",
    "date": "2026-11-10",
    "record": true,
    "blocks": [
     {
-     "label": "Pergunta",
-     "text": "O bioestimulador facial deve ser feito de quanto em quanto tempo?"
+     "label": "Abertura",
+     "text": "Verdades difíceis de engolir, mas que ficam mais fáceis com um café."
+    },
+    {
+     "label": "Verdade 1",
+     "text": "O efeito da toxina botulínica não é permanente. Geralmente dura de 3 a 6 meses, e a necessidade de reaplicação varia de pessoa para pessoa."
+    },
+    {
+     "label": "Verdade 2",
+     "text": "O lifting facial também não interrompe o envelhecimento. Os cuidados com a pele continuam importantes depois da cirurgia."
+    },
+    {
+     "label": "Verdade 3",
+     "text": "Não adianta ter dez produtos na rotina e esquecer de um dos mais importantes: o protetor solar."
     }
    ],
-   "caption": "Na dermatologia, dificilmente existe uma resposta única para todos os pacientes.\nCom o bioestimulador facial, não é diferente."
+   "caption": "Duas opções e uma regra: tinha que escolher uma.\nO problema é pedir para um dermatologista escolher sem responder “depende”.\nE vocês, em qual dessas escolheriam diferente de mim?"
   },
   {
    "id": "r4",
    "format": "reels",
    "n": 4,
-   "title": "Como prevenir rugas no colo?",
-   "date": "2026-11-12",
+   "title": "Produtos essenciais para uma pele 40+",
+   "date": "2026-11-07",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Como prevenir rugas no colo?"
+     "text": "Produtos essenciais para uma pele 40+"
     },
     {
-     "label": "Desenvolvimento",
-     "text": "O colo costuma ser uma das regiões mais esquecidas na rotina de cuidados. E isso faz diferença ao longo dos anos.\n\nA principal forma de prevenir as rugas é proteger essa região do sol e manter uma rotina de cuidados para preservar a qualidade da pele.\nAlém do protetor solar, muitos ativos que você já usa no rosto também podem ser aplicados no colo. Hidratantes, vitamina C, niacinamida... ativos que ajudam a manter a pele mais saudável e estimulam a produção de colágeno.\n\nOutro detalhe que pouca gente lembra é a posição em que você dorme.\nQuem dorme de lado ou de bruços mantém a pele do colo comprimida por muitas horas, noite após noite. Com o passar dos anos, essa repetição pode favorecer a formação das chamadas rugas do sono.\n\nSe você consegue dormir de barriga para cima, essa compressão tende a ser menor. Mas esse é apenas um dos fatores.\nO mais importante continua sendo proteger a região do sol e manter uma rotina de cuidados adequada."
+     "label": "Direção do vídeo",
+     "text": "O Dr. Gilvan apresenta de 3 a 4 categorias de produtos que costuma recomendar para pacientes acima dos 40 anos, como hidratante diurno, protetor solar, creme para a área dos olhos e creme noturno. Para cada categoria, ele pode indicar um produto de sua preferência, explicando brevemente seus benefícios e para quais necessidades da pele costuma recomendá-lo."
     },
     {
      "label": "Fechamento",
-     "text": "E quando os sinais já começaram a aparecer, existem tratamentos que ajudam a melhorar a qualidade da pele, como lasers, bioestimuladores e outras tecnologias. A escolha vai depender da avaliação de cada paciente."
+     "text": "Aqui é claro que eu trouxe produtos que eu gosto de recomendar, mas, o ideal é na consulta individualizarmos as escolhas para cada paciente."
     }
    ],
-   "caption": "O rosto costuma receber toda a atenção na rotina de skincare. Já o colo, muitas vezes, é esquecido.\n\nE essa é uma das regiões que mais pode revelar os sinais do envelhecimento. Então, vamos mudar isso, né?"
+   "caption": "Depois dos 40, é comum que a pele apresente novas necessidades. E alguns produtos podem fazer bastante diferença na rotina de cuidados.\nSeparei algumas opções que gosto de recomendar no consultório, considerando os benefícios que podem oferecer nessa fase.\n\nMas vale lembrar: a idade, sozinha, não determina o que a sua pele precisa. O tipo de pele, as queixas e os objetivos de cada paciente também devem orientar essas escolhas.\n\nAgora me conta: qual desses produtos já faz parte da sua rotina?"
   },
   {
-   "id": "r7",
+   "id": "r5",
    "format": "reels",
-   "n": 7,
-   "title": "Dicas de hidratantes corporais",
-   "date": "2026-11-14",
+   "n": 5,
+   "title": "Caixinha de pergunta: laser na boca aumenta o volume dos lábios?",
+   "date": "2026-11-28",
    "record": true,
    "blocks": [
     {
-     "label": "Abertura",
-     "text": "Se você mora no Centro-Oeste, provavelmente já percebeu que a pele muda completamente nessa época do ano."
+     "label": "Pergunta",
+     "text": "Doutor, laser na boca aumenta o volume dos lábios?"
     },
     {
-     "label": "Desenvolvimento",
-     "text": "Nessa época do ano, a umidade do ar costuma cair bastante aqui no Centro-Oeste.\nE isso favorece o ressecamento da pele, principalmente nas pernas, braços, mãos e pés.\n\nAlém de beber água, alguns hábitos ajudam muito: evitar banhos muito quentes e demorados e aplicar o hidratante logo após o banho, quando a pele ainda está levemente úmida.\n\n(Nesse momento entram os produtos na tela.)\n\nNa hora de escolher um hidratante corporal, procure fórmulas com ativos que ajudam a restaurar a barreira da pele, como ureia em concentrações adequadas, ceramidas, glicerina e pantenol.\nEssas opções costumam oferecer uma hidratação mais duradoura, especialmente para quem sofre com o ressecamento nessa época do ano."
+     "label": "Direção do vídeo",
+     "text": "O Dr. Gilvan responde diretamente para a câmera, de forma simples e objetiva, em aproximadamente 30 a 40 segundos."
     }
    ],
-   "caption": "No Centro-Oeste, o clima seco de agosto costuma exigir um cuidado extra com a pele.\nAlém de manter uma boa rotina de hidratação, escolher o produto certo faz diferença para ajudar a preservar a barreira cutânea e reduzir o ressecamento.\nNo vídeo, compartilho alguns cuidados importantes e opções de hidratantes corporais que costumo recomendar de acordo com a necessidade de cada pele."
+   "caption": "Será que o laser pode deixar os lábios mais volumosos?\n\nEssa é uma dúvida interessante, principalmente porque existem diferentes tecnologias e objetivos quando falamos em tratamentos para a região dos lábios.\n\nAssista até o final porque eu explico o que devemos considerar antes de escolher um procedimento."
   },
   {
    "id": "r6",
    "format": "reels",
    "n": 6,
-   "title": "Faria ou não faria? Versão dermatologia",
+   "title": "Você tem 50 anos. De quanto em quanto tempo precisa fazer bioestimulador de colágeno?",
    "date": "2026-11-17",
    "record": true,
    "blocks": [
     {
-     "label": "Procedimentos",
-     "text": "• Microagulhamento\n• Procedimentos com exossomos\n• Ultrassom microfocado\n• Fios de tração\n• Skinbooster"
+     "label": "Abertura",
+     "text": "Você tem 50 anos. De quanto em quanto tempo precisa fazer bioestimulador de colágeno?"
+    },
+    {
+     "label": "Desenvolvimento",
+     "text": "1. Uma mulher de 50 anos não necessariamente precisa do mesmo protocolo que outra da mesma idade.\n\n2. Existem diferentes bioestimuladores, com características e protocolos próprios. O número de sessões iniciais e os intervalos de manutenção podem variar.\n\n3. E a manutenção? (O Dr. pode comentar quais intervalos costuma considerar na prática clínica)"
+    },
+    {
+     "label": "Fechamento",
+     "text": "E é por isso que eu sempre avalio cada paciente antes de definir quando será a próxima aplicação. E você já sente a necessidade de estimular colágeno?"
     }
    ],
-   "caption": "Quais procedimentos eu faria e quais eu não faria na pele?\nE você? Qual deles faria ou não faria? Conta aqui nos comentários."
+   "caption": "De quanto em quanto tempo uma mulher de 50 anos deve fazer bioestimulador de colágeno?\nEssa é uma dúvida frequente no consultório, mas a idade, sozinha, não define a necessidade de novas aplicações.\n\nO produto utilizado, as características da pele, os tratamentos anteriores e a resposta individual precisam ser considerados na hora de planejar a manutenção.\nPor isso, o acompanhamento dermatológico é importante para avaliar os resultados e definir o momento adequado para uma nova sessão."
+  },
+  {
+   "id": "r7",
+   "format": "reels",
+   "n": 7,
+   "title": "Existem tratamentos para pés de galinha além do botox?",
+   "date": "2026-11-26",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena",
+     "text": "Close bem fechado na região lateral dos olhos da paciente, com o Dr. Gilvan demarcando delicadamente os pés de galinha com um lápis dermatográfico. A paciente pode sorrir para evidenciar as linhas de expressão."
+    },
+    {
+     "label": "Abertura",
+     "text": "Você sabia que existem outros tratamentos para os pés de galinha além da toxina botulínica?"
+    },
+    {
+     "label": "Desenvolvimento",
+     "text": "Dr. Gilvan explica que a toxina botulínica é uma das principais opções para tratar as linhas provocadas pela contração muscular, mas que existem outras abordagens, dependendo das características da pele."
+    },
+    {
+     "label": "Pontos para abordar",
+     "text": "• Lasers: podem ajudar a melhorar linhas finas, textura e qualidade da pele ao redor dos olhos, conforme a tecnologia utilizada.\n• Bioestimuladores de colágeno: algumas abordagens podem ser consideradas para melhorar a qualidade da pele na região periocular, respeitando as indicações e os cuidados específicos dessa área.\n• Skincare: ativos bem indicados e fotoproteção ajudam na prevenção e no cuidado das linhas finas."
+    }
+   ],
+   "caption": "Quando falamos em pés de galinha, a toxina botulínica costuma ser uma das primeiras opções que vêm à mente. Mas será que é a única?\nDependendo do tipo de ruga e das características da pele, outros tratamentos também podem ajudar a melhorar a aparência dessa região.\n\nO importante é avaliar se as linhas aparecem apenas durante as expressões ou se já estão presentes mesmo com o rosto em repouso. Essa diferença ajuda a orientar a escolha do tratamento.\n\nNo vídeo, explico algumas das possibilidades que temos disponíveis."
   },
   {
    "id": "r8",
    "format": "reels",
    "n": 8,
-   "title": "Ácido azelaico",
-   "date": "2026-11-19",
+   "title": "Tem pele oleosa e não sabe qual hidratante escolher?",
+   "date": "2026-11-14",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Se eu tivesse que escolher um dos ativos mais versáteis da dermatologia, o ácido azelaico certamente estaria nessa lista."
+     "text": "Tem pele oleosa e não sabe qual hidratante escolher? Separei três opções que eu gosto de recomendar."
     },
     {
-     "label": "Desenvolvimento",
-     "text": "Ele é utilizado há décadas e continua sendo uma excelente opção porque pode ajudar em diferentes condições da pele.\nO ácido azelaico tem ação anti-inflamatória, ajuda a regular a obstrução dos poros, auxilia no controle da pigmentação e ainda contribui para melhorar a qualidade da pele.\n\nPor isso, é um ativo que costuma aparecer no tratamento da acne, da rosácea, do melasma, das manchas que ficam depois das espinhas e também da oleosidade.\nE uma das grandes vantagens é que, em muitos casos, ele pode ser associado a outros tratamentos, potencializando os resultados."
+     "label": "Direção do vídeo",
+     "text": "O Dr. Gilvan aparece com os três produtos em mãos ou dispostos sobre a bancada.\nEle apresenta cada um individualmente, mostrando a embalagem para a câmera e explicando em uma ou duas frases o principal diferencial, a textura e em quais situações costuma recomendá-lo."
     },
     {
      "label": "Fechamento",
-     "text": "Nem sempre o ativo mais comentado nas redes sociais é o mais versátil. O ácido azelaico é um bom exemplo de que a dermatologia também valoriza aquilo que tem tempo de uso, evidência científica e boas indicações."
+     "text": "Esses são três hidratantes que eu gosto, mas a escolha depende das necessidades da sua pele."
     }
    ],
-   "caption": "O ácido azelaico é um dos ativos mais versáteis da dermatologia porque pode atuar em diferentes alterações da pele, como acne, rosácea, melasma, manchas pós-inflamatórias e oleosidade.\nAlém disso, costuma ser um excelente aliado em tratamentos combinados, sempre de acordo com a avaliação e a necessidade de cada paciente.\n\nJá usou ele na sua rotina? Me conta aqui o que achou!"
-  },
-  {
-   "id": "c1",
-   "format": "carrossel",
-   "n": 1,
-   "title": "Outros cuidados que fazem tanta diferença quanto cuidar da pele",
-   "date": "2026-11-20",
-   "record": false,
-   "blocks": [
-    {
-     "label": "Capa",
-     "text": "Outros cuidados que fazem tanta diferença quanto cuidar da pele\n(Usaria fotos do dia a dia do doutor nas lâminas)"
-    },
-    {
-     "label": "Lâmina 2",
-     "text": "Faça atividade física regularmente.\nNão pense apenas no físico. Pense na sua autonomia. Precisamos de massa muscular para envelhecer bem."
-    },
-    {
-     "label": "Lâmina 3",
-     "text": "Nunca pare de aprender.\nInvista na sua formação, desenvolva novas habilidades e mantenha a mente ativa."
-    },
-    {
-     "label": "Lâmina 4",
-     "text": "Passe tempo de qualidade com a sua família.\nEstar presente vale mais do que apenas estar junto."
-    },
-    {
-     "label": "Lâmina 5",
-     "text": "Viaje.\nConheça novos lugares, novas culturas e novas formas de enxergar o mundo."
-    },
-    {
-     "label": "Lâmina 6",
-     "text": "Receba amigos em casa.\nBoas conversas, risadas e momentos compartilhados fazem bem para a saúde."
-    },
-    {
-     "label": "Lâmina 7",
-     "text": "Leia livros e revistas.\nNão deixe que as redes sociais sejam sua única fonte de informação."
-    },
-    {
-     "label": "Lâmina 8",
-     "text": "Comemore a vida.\nNão espere uma grande ocasião para celebrar. Valorize as pequenas conquistas e os bons momentos."
-    }
-   ],
-   "caption": "Cuidar da pele é importante. Mas uma vida saudável vai muito além disso.\nMovimente o corpo. Aprenda coisas novas. Viaje. Cultive suas relações. Leia mais. Comemore a vida.\nNo fim, alguns dos melhores investimentos que você pode fazer por si mesmo não estão em um frasco.\nQual conselho você acrescentaria à lista?"
-  },
-  {
-   "id": "r12",
-   "format": "reels",
-   "n": 12,
-   "title": "Ah, mas você tem facilidade de gravar, né?",
-   "date": "2026-11-21",
-   "record": true,
-   "blocks": [
-    {
-     "label": "Texto na tela",
-     "text": "Ah, mas você tem facilidade de gravar, né?"
-    },
-    {
-     "label": "Ideia",
-     "text": "Cortes dos erros de gravação.\nNo final, entra o take perfeito ou o Dr. Gilvan dizendo: \"Por hoje é só, né meninos?\""
-    }
-   ],
-   "caption": "No final dá tudo certo 😅"
+   "caption": "Quem tem pele oleosa também precisa de hidratação. E escolher o produto certo pode fazer toda a diferença no conforto e na rotina de cuidados.\nSeparei três hidratantes que gosto de recomendar, considerando suas texturas, formulações e as diferentes necessidades da pele oleosa.\nGosto de lembrar que mesmo entre pessoas com pele oleosa, nem sempre o mesmo produto será a melhor escolha.\n\nAgora me conta: qual hidratante você usa atualmente?"
   },
   {
    "id": "r9",
    "format": "reels",
    "n": 9,
-   "title": "Café com o Doutor: um conselho para envelhecer bem",
-   "date": "2026-11-24",
+   "title": "Coisas que eu jamais faria se tivesse ruguinhas abaixo dos olhos",
+   "date": "2026-11-19",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Se pudesse dar apenas um conselho para quem quer envelhecer bem, qual seria?"
+     "text": "Coisas que eu jamais faria se tivesse ruguinhas abaixo dos olhos."
     },
     {
      "label": "Desenvolvimento",
-     "text": "Envelhecer bem é um privilégio. Nem todos têm essa oportunidade.\nTalvez o maior conselho seja entender que a forma como vivemos hoje influencia a maneira como vamos chegar aos próximos anos.\n\nCuidar da pele é importante, mas ela faz parte de um contexto muito maior. Alimentação, atividade física, sono de qualidade, manejo do estresse, boas relações e momentos de descanso também fazem parte desse processo.\nNa dermatologia, existem procedimentos que ajudam a preservar a qualidade da pele e podem trazer excelentes resultados. Mas nenhum deles substitui uma vida construída com equilíbrio.\nNo fim, envelhecer bem não significa lutar contra o tempo. Significa chegar a cada fase da vida com saúde, autonomia e bem-estar."
+     "text": "1. Aplicar botox nessa região. Ele, nessa região específica, pode piorar essas linhas finas.\n\n2. Deixar de hidratar a região.\n\n3. Fazer preenchimento apenas para corrigir essas ruguinhas."
+    },
+    {
+     "label": "Fechamento",
+     "text": "E você, já tentou algum tratamento para melhorar essas linhas finas?"
     }
    ],
-   "caption": "Quando falamos em envelhecer bem, é comum pensar primeiro em cremes e procedimentos. Mas eles representam apenas uma parte da história.\nA forma como nos alimentamos, a qualidade do sono, a prática de atividade física, o controle do estresse e os cuidados diários com a pele influenciam não apenas a aparência, mas também a saúde ao longo dos anos.\n\nOs procedimentos podem ser excelentes aliados quando bem indicados, mas nenhum deles substitui uma rotina de hábitos saudáveis.\nEnvelhecer bem é um processo construído todos os dias."
+   "caption": "As ruguinhas abaixo dos olhos costumam incomodar bastante, mas nem sempre os tratamentos mais conhecidos são as melhores escolhas para essa região.\nA pele ao redor dos olhos é delicada, e fatores como hidratação, flacidez e movimentação muscular podem influenciar a aparência dessas linhas.\nPor isso, é importante avaliar as características da pele antes de indicar qualquer procedimento.\n\nE você, já tentou algum tratamento para melhorar essas linhas finas?"
   },
   {
    "id": "r10",
    "format": "reels",
    "n": 10,
-   "title": "Rotina de cuidados do doutor com o couro cabeludo",
-   "date": "2026-11-26",
+   "title": "Dúvidas que você provavelmente tem sobre remoção de tatuagem",
+   "date": "2026-11-12",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Muita gente pergunta quais produtos eu uso no meu couro cabeludo. Então hoje eu vou mostrar alguns deles."
+     "text": "Dúvidas que você provavelmente tem sobre remoção de tatuagem."
     },
     {
      "label": "Desenvolvimento",
-     "text": "É importante lembrar que nem sempre o melhor produto é o mais caro ou o que está viralizando. A escolha depende da necessidade de cada couro cabeludo.\n\n(A partir daqui ele mostra os produtos.)"
+     "text": "1. É possível remover completamente uma tatuagem?\n(Aqui o Dr. vai explicar que muitas tatuagens podem apresentar um clareamento bastante significativo e as imagens dos pacientes da clínica vão surgindo)\n\n2. Quantas sessões são necessárias?\n(Explicar que depende da profundidade, das cores, do tipo de pigmento, da localização e da resposta individual e mostrar um caso e quantas sessões aquele caso levou)\n\n3. Remover tatuagem dói?\n(Comentar que pode haver desconforto durante a aplicação e que existem medidas para torná-la mais tolerável)"
+    },
+    {
+     "label": "Fechamento",
+     "text": "E você, tem alguma tatuagem que gostaria de remover? Deixe sua dúvida aqui nos comentários que posso trazer uma parte 2 desse vídeo."
     }
    ],
-   "caption": "Assim como acontece com a pele, os cuidados com o couro cabeludo também devem ser individualizados.\nExistem ótimos produtos disponíveis, mas a escolha depende de fatores como oleosidade, sensibilidade, caspa, queda de cabelo e outras condições que precisam ser avaliadas."
+   "caption": "Aqui na clínica, utilizamos o Discovery Pico Laser, uma tecnologia que permite atuar sobre os pigmentos da tatuagem, promovendo seu clareamento progressivo ao longo das sessões.\n\nDecidi responder às principais perguntas sobre o tratamento e compartilho alguns resultados reais que obtivemos na clínica.\nVale lembrar que cada tatuagem apresenta características diferentes, e os resultados dependem de fatores como cor, profundidade do pigmento e resposta individual.\n\nFicou com alguma dúvida sobre remoção de tatuagens? Deixe nos comentários."
+  },
+  {
+   "id": "r11",
+   "format": "reels",
+   "n": 11,
+   "title": "Mitos e verdades sobre procedimento estético",
+   "date": "2026-11-21",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Abertura",
+     "text": "Mitos e verdades sobre procedimento estético."
+    },
+    {
+     "label": "Afirmações",
+     "text": "1. Bioestimulador de colágeno deixa o rosto mais cheio?\n2. Quem faz botox fica com o rosto sem expressão?\n3. O laser pode estimular a produção de colágeno.\n4. Fazer vários procedimentos na mesma sessão traz resultados melhores?\n5. O ultrassom microfocado pode ser utilizado em regiões além do rosto."
+    },
+    {
+     "label": "Fechamento",
+     "text": "E você, qual dessas afirmações já ouviu por aí?"
+    }
+   ],
+   "caption": "Separei alguns mitos e verdades para esclarecer dúvidas frequentes e mostrar por que a indicação e as características de cada paciente fazem diferença nos resultados.\nAgora me conta: qual dessas informações mais te surpreendeu?"
+  },
+  {
+   "id": "r12",
+   "format": "reels",
+   "n": 12,
+   "title": "Análise de caso",
+   "date": "2026-11-24",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena",
+     "text": "Dr. Gilvan sentado em frente ao computador, com as imagens do antes e depois lado a lado. A câmera começa enquadrando a tela e depois mostra o Dr. explicando."
+    },
+    {
+     "label": "Abertura",
+     "text": "Vou mostrar para vocês um caso que tratamos aqui na clínica e explicar o que fizemos para chegar a esse resultado."
+    },
+    {
+     "label": "Desenvolvimento",
+     "text": "Dr. Gilvan apresenta o caso de forma espontânea, seguindo três pontos:\n1. Qual era a queixa do paciente?\n2. O que foi proposto?\n3. Como ficou o resultado?"
+    },
+    {
+     "label": "Fechamento",
+     "text": "Esse foi o resultado que conseguimos para essa paciente, que ficou linda. Mas cada paciente precisa de uma avaliação para definir o tratamento mais adequado."
+    }
+   ],
+   "caption": "Por trás de cada antes e depois, existe uma queixa, uma avaliação e uma escolha de tratamento.\n\nHoje, trouxe um caso realizado aqui na clínica para mostrar o que o paciente desejava melhorar, qual foi a nossa proposta e o resultado que conseguimos alcançar.\nGosto de compartilhar esses casos porque ajudam a entender como pensamos cada indicação e quais mudanças podemos buscar com os procedimentos.\n\nVale lembrar que os resultados são individuais e podem variar de acordo com as características de cada paciente."
   },
   {
    "id": "y1",
    "format": "youtube",
    "n": 1,
-   "title": "REAGINDO ao vídeo da Maíra Cardi sobre PMMA | Afinal, o PMMA é tão perigoso assim?",
-   "date": "",
+   "title": "Quem tem pele sensível pode fazer laser?",
+   "date": "2026-11-09",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Nos últimos dias, a Maíra Cardi voltou a falar sobre as complicações que teve após um preenchimento com PMMA. Como dermatologista, eu assisti ao vídeo e quero explicar o que está acontecendo do ponto de vista médico.\nJá deixo claro: não estou aqui para julgar o caso, nem para comentar a vida da Maíra. Quero usar esse relato para explicar um procedimento que ainda gera muitas dúvidas."
+     "text": "Quem tem pele sensível pode fazer laser?"
     },
     {
-     "label": "Bloco 1",
-     "text": "Primeiro trecho do vídeo da Maíra (ela mostrando o rosto).\nO Dr. Gilvan pausa e explica:\n• o que é PMMA\n• por que ele voltou ao assunto\n• por que muita gente ainda tem PMMA"
+     "label": "Bloco 1: O que significa ter pele sensível?",
+     "text": "Explicar que “pele sensível” é uma descrição ampla. Algumas pessoas apresentam ardência e vermelhidão com facilidade, enquanto outras podem ter condições como rosácea, dermatite ou uma barreira cutânea temporariamente comprometida."
     },
     {
-     "label": "Bloco 2",
-     "text": "Ela fala: \"Nunca me falaram que era PMMA.\"\nIndependentemente do procedimento, o paciente precisa saber exatamente o que está sendo aplicado."
+     "label": "Bloco 2: Quem tem pele sensível pode fazer laser?",
+     "text": "Aqui entra a resposta central do vídeo. Pode explicar que existem tecnologias com diferentes mecanismos de ação, intensidades e tempos de recuperação. Portanto, não faz sentido tratar todos os lasers como se fossem iguais."
     },
     {
-     "label": "Bloco 3",
-     "text": "Ela mostra as bolinhas. O Dr. Gilvan explica:\n• granulomas\n• inflamação\n• nem toda pessoa desenvolve isso\n• não significa que acontecerá com todos"
+     "label": "Bloco 3: Quando é melhor adiar o procedimento?",
+     "text": "Abordar situações que exigem mais cautela, como:\n• Pele com irritação ou inflamação ativa.\n• Dermatite em crise.\n• Barreira cutânea comprometida.\n• Bronzeamento recente, dependendo do equipamento e do protocolo.\n• Uso recente de produtos ou tratamentos que aumentem a irritação da pele."
     },
     {
-     "label": "Bloco 4",
-     "text": "Ela fala da cirurgia.\n• por que retirar PMMA é difícil\n• por que nem sempre é possível remover completamente"
+     "label": "Bloco 4: Como tornar o tratamento mais seguro?",
+     "text": "Explicar o que considera antes de indicar um laser: histórico de reações, diagnóstico da condição de pele, fototipo, medicamentos, tecnologia disponível, parâmetros utilizados e cuidados antes e depois da sessão."
     },
     {
      "label": "Fechamento",
-     "text": "Casos como esse chamam atenção porque envolvem pessoas conhecidas, mas existem milhares de pessoas que fizeram PMMA há muitos anos e têm dúvidas semelhantes. Se esse é o seu caso, não entre em pânico. Nem toda pessoa que recebeu PMMA vai desenvolver complicações, mas é importante saber exatamente qual material foi utilizado e manter um acompanhamento adequado quando necessário. Hoje, diante das complicações graves já descritas na literatura e na prática clínica, o Conselho Federal de Medicina proibiu que médicos utilizem o PMMA para fins estéticos. Isso reforça uma lição importante: quando falamos em procedimentos estéticos, segurança deve vir sempre antes da promessa de um resultado permanente. Informação e acompanhamento médico são as melhores ferramentas para tomar decisões conscientes."
+     "text": "Ter pele sensível não significa que você precisa abrir mão de todos os tratamentos a laser. O mais importante é entender a condição da sua pele e escolher a tecnologia e o protocolo adequados para ela."
     }
    ],
-   "caption": "Você provavelmente viu o caso da Maíra Cardi falando sobre as complicações do PMMA. Mas afinal, o que é esse material? Por que ele ainda gera tantas dúvidas? E por que tantos especialistas deixaram de utilizá-lo?\n\nNeste vídeo, eu reajo ao relato da influenciadora e explico, do ponto de vista da dermatologia, o que é o PMMA, como ele age no organismo e por que um material permanente pode representar desafios muitos anos após a aplicação.\n\nAo longo do vídeo, você vai entender:\n• O que é o PMMA e por que ele foi tão utilizado durante anos;\n• Quais complicações podem surgir a curto e longo prazo;\n• Por que o PMMA pode migrar e causar reações inflamatórias;\n• Por que sua remoção pode ser tão complexa;\n• O que mudou nos últimos anos em relação ao uso desse material;\n• E por que o Conselho Federal de Medicina proibiu seu uso para fins estéticos pelos médicos.\n\nO objetivo deste vídeo não é julgar pacientes ou profissionais, mas levar informação baseada em evidências para que você possa tomar decisões mais conscientes sobre sua saúde e seus procedimentos estéticos.\nSe este conteúdo foi útil para você, inscreva-se no canal, deixe seu like e compartilhe este vídeo com quem também tem dúvidas sobre o PMMA.\n\n👉 E se quiser acompanhar conteúdos diários e bastidores, me siga também no Instagram: @drgilvanalves",
-   "ref": "https://vt.tiktok.com/ZSXp9baqS/",
+   "caption": "Quem tem pele sensível pode fazer laser?\n\nSe a sua pele fica vermelha com facilidade, apresenta ardência ou costuma reagir a determinados produtos, talvez você já tenha se perguntado se os tratamentos a laser são seguros para você.\n\nA resposta depende de alguns fatores. Existem diferentes tecnologias a laser, e cada uma possui indicações, características e cuidados específicos.\n\nNeste vídeo, explico o que precisamos avaliar antes de indicar um procedimento, quais situações exigem mais cautela e por que condições como rosácea e dermatite merecem atenção especial.\n\nTambém falo sobre a importância de preparar a pele e individualizar os parâmetros do tratamento para reduzir os riscos de reações indesejadas.\n\nVocê tem pele sensível e gostaria de fazer algum tratamento a laser? Deixe sua dúvida nos comentários.\n\nInscreva-se no canal para acompanhar mais conteúdos sobre dermatologia, cuidados com a pele e tratamentos estéticos.\n\n👉 E se quiser acompanhar conteúdos diários e bastidores, me siga também no Instagram: @drgilvanalves\n\nDr. Gilvan Alves – Médico Dermatologista\nCRM: 7940-DF | RQE 2879 | CBOS: 225135",
    "captionLabel": "Descrição do vídeo"
   },
   {
    "id": "y2",
    "format": "youtube",
    "n": 2,
-   "title": "Herpes: tudo o que você precisa saber",
-   "date": "",
+   "title": "Botox: 5 coisas que você precisa saber antes de aplicar",
+   "date": "2026-11-23",
    "record": true,
    "blocks": [
     {
      "label": "Abertura",
-     "text": "Se você já teve aquelas bolinhas dolorosas nos lábios, provavelmente já ouviu alguém dizer que herpes aparece quando a imunidade cai. Mas será que é só isso? Afinal, herpes tem cura? É contagioso o tempo todo? E existe alguma forma de evitar novas crises? Hoje eu vou responder as principais dúvidas sobre esse assunto."
+     "text": "Você já ouviu alguém dizer que fez botox e ficou com a sobrancelha estranha, que o resultado durou pouco ou que o rosto perdeu a expressão?\nExistem alguns detalhes sobre a toxina botulínica que ajudam a entender por que isso acontece."
     },
     {
-     "label": "Blocos",
-     "text": "• Bloco 1: O que é herpes?\n• Bloco 2: Como acontece a transmissão?\n• Bloco 3: Por que ele volta?\n• Bloco 4: Quais são os primeiros sinais e como prevenir?\n• Bloco 5: Como tratar?"
+     "label": "Bloco 1",
+     "text": "A avaliação da musculatura e das expressões é essencial para definir os pontos e as doses de aplicação."
+    },
+    {
+     "label": "Bloco 2: Botox não corrige todos os tipos de rugas",
+     "text": "Explicar a diferença entre rugas que aparecem durante as expressões e linhas que continuam visíveis mesmo com o rosto em repouso."
+    },
+    {
+     "label": "Bloco 3: O botox pode alterar a posição das sobrancelhas e a expressão?",
+     "text": "Abordar as queixas de pacientes que ficaram insatisfeitos com a aparência das sobrancelhas ou com mudanças no sorriso."
+    },
+    {
+     "label": "Bloco 4: A marca do botox faz diferença?",
+     "text": "Existem diferentes formulações, com características e doses que não podem ser comparadas diretamente entre as marcas. Por isso, a escolha do produto e a técnica de aplicação precisam ser adequadas a cada situação."
+    },
+    {
+     "label": "Bloco 5",
+     "text": "Por que o botox dura menos em algumas pessoas?"
     },
     {
      "label": "Fechamento",
-     "text": "Herpes é uma condição muito comum e, na maioria das vezes, pode ser controlada com orientação adequada. O mais importante é reconhecer os sinais precocemente, evitar a automedicação e procurar um dermatologista quando as crises forem frequentes, intensas ou diferentes do habitual."
+     "text": "Você já fez botox e teve alguma dúvida sobre o resultado ou a duração? Deixe sua pergunta aqui nos comentários."
     }
    ],
-   "caption": "Herpes é uma condição muito comum, mas ainda cercada de dúvidas e informações equivocadas. Afinal, herpes tem cura? Como acontece a transmissão? O que faz o vírus voltar? E existe alguma forma de prevenir novas crises?\n\nNeste vídeo, eu respondo às principais dúvidas sobre herpes labial e explico, de forma clara e baseada em evidências, o que você realmente precisa saber sobre essa infecção.\n\nAo longo do vídeo, você vai entender:\n• O que é o herpes e como o vírus permanece no organismo;\n• Como ocorre a transmissão;\n• Quais fatores podem desencadear uma nova crise;\n• Como reconhecer os primeiros sintomas;\n• Quais são as opções de tratamento;\n• Quando é importante procurar um dermatologista;\n• E os principais mitos e verdades sobre o herpes.\n\nA informação correta é a melhor forma de cuidar da sua saúde. Se este vídeo foi útil para você, deixe seu like, inscreva-se no canal e compartilhe com quem também pode se beneficiar deste conteúdo.\n\n👉 E se quiser acompanhar conteúdos diários e bastidores, me siga também no Instagram: @drgilvanalves",
+   "caption": "A toxina botulínica é um dos procedimentos mais conhecidos da dermatologia estética, mas existem detalhes importantes sobre seu funcionamento que muitos pacientes ainda desconhecem.\n\nNeste vídeo, explico cinco pontos que você precisa saber antes de fazer botox: a importância da avaliação da musculatura facial, as diferenças entre os tipos de rugas, as possíveis alterações na expressão, os fatores que influenciam a duração do resultado e o que considerar na escolha do produto.\n\nTambém esclareço por que a mesma técnica nem sempre produz resultados iguais em pessoas diferentes e como o planejamento individualizado ajuda a alcançar resultados alinhados às expectativas de cada paciente.\n\nVocê já fez botox ou tem alguma dúvida sobre o procedimento? Deixe sua pergunta nos comentários.\n\nInscreva-se no canal para acompanhar mais conteúdos sobre dermatologia, cuidados com a pele e procedimentos estéticos.\n\n👉 E se quiser acompanhar conteúdos diários e bastidores, me siga também no Instagram: @drgilvanalves\n\nDr. Gilvan Alves – Médico Dermatologista\nCRM: 7940-DF | RQE 2879 | CBOS: 225135",
    "captionLabel": "Descrição do vídeo"
   }
  ],
  "agenda": [
-  {
-   "date": "2026-11-02",
-   "label": "Aviso de Live"
-  },
-  {
-   "date": "2026-11-09",
-   "label": "Aviso de Live"
-  },
-  {
-   "date": "2026-11-16",
-   "label": "Aviso de Live"
-  },
   {
    "date": "2026-11-04",
    "label": "Live"
@@ -422,14 +391,6 @@
   {
    "date": "2026-11-25",
    "label": "Live"
-  },
-  {
-   "date": "2026-11-13",
-   "label": "Foto/Vídeo pessoal"
-  },
-  {
-   "date": "2026-11-27",
-   "label": "Foto/Vídeo pessoal"
   }
  ]
 }
