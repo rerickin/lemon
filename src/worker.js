@@ -50,7 +50,7 @@ function cleanState(input) {
 
 // Data no fuso de Brasília, formato AAAA-MM-DD
 const diaBR = (d = new Date()) => new Date(d.getTime() - 3 * 3600e3).toISOString().slice(0, 10);
-const TIPOS = new Set(['view', 'cardapio', 'click']);
+const TIPOS = new Set(['view', 'cardapio', 'click', 'fotos']);
 const CORS = { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'POST, OPTIONS', 'access-control-allow-headers': 'content-type' };
 
 async function hit(request, env) {

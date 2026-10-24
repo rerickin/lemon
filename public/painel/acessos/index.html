@@ -47,14 +47,14 @@ h1 em{font-style:normal;color:var(--lime)}
 .ch{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px;border-bottom:1px solid var(--line)}
 .ch h2{font-family:var(--f-display);font-weight:400;font-size:36px;margin:0;line-height:1}
 .ch a{color:var(--mute);font-size:15px;text-decoration:none;border-bottom:1px solid var(--line)}
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-bottom:1px solid var(--line)}
 .kpi{padding:16px 20px;border-left:1px solid var(--line)}
 .kpi:first-child{border-left:0}
 .kpi b{display:block;font-family:var(--f-display);font-weight:400;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
 .kpi span{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
 .kpi small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
 .kpi.hl b{color:var(--lime)}
-@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi:nth-child(odd){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--line)}}
 
 .panels{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
 .panel{padding:18px 20px;min-width:0}
@@ -173,6 +173,7 @@ h1 em{font-style:normal;color:var(--lime)}
     const views = sum('view', 'total'), pessoas = sum('view', 'unicos');
     const menu = sum('cardapio', 'total'), menuP = sum('cardapio', 'unicos');
     const clicks = sum('click', 'total');
+    const fotos = sum('fotos', 'total'), fotosP = sum('fotos', 'unicos');
     const taxa = pessoas ? Math.round(menuP / pessoas * 100) : 0;
 
     const box = el('section', 'client');
@@ -188,6 +189,7 @@ h1 em{font-style:normal;color:var(--lime)}
       ['', pessoas, 'Pessoas', 'únicas por dia'],
       ['', menu, 'Cardápio', nf(menuP) + ' pessoas' + (taxa ? ' · ' + taxa + '% de quem entrou' : '')],
       ['', clicks, 'Cliques', 'nos botões da página'],
+      ['', fotos, 'Tag NFC', nf(fotosP) + ' pessoas na página de fotos'],
     ].forEach(([cls, n, l, s]) => { const d = el('div', 'kpi ' + cls); d.append(el('b', null, nf(n)), el('span', null, l), el('small', null, s)); k.appendChild(d); });
     box.appendChild(k);
 
