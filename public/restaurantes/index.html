@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lemon Social para Restaurantes | Case The Seven</title>
+<meta name="description" content="De menos de 100 para 70 mil seguidores. Veja como a Lemon Social transformou o Instagram da The Seven Burger.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --lime:#C8F20D;
+    --ink:#0A0A0A;
+    --white:#FFFFFF;
+    --gray:#F2F2F2;
+    --muted:#5C5C5C;
+    --border:rgba(0,0,0,0.10);
+  }
+
+  body{background:var(--white);font-family:'DM Sans',sans-serif;color:var(--ink);overflow-x:hidden;}
+
+  h2{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:clamp(40px,5vw,60px);
+    font-weight:900;line-height:.95;letter-spacing:-1.5px;
+    text-transform:uppercase;margin-bottom:0;
+  }
+  .section-kicker{
+    font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--muted);display:flex;align-items:center;gap:8px;margin-bottom:28px;
+  }
+  .section-kicker::before{content:'';width:24px;height:1.5px;background:var(--ink);}
+
+  /* NAV */
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 48px;height:64px;
+    border-bottom:1.5px solid var(--ink);
+    background:var(--white);
+    position:sticky;top:0;z-index:100;
+  }
+  .nav-logo{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:26px;letter-spacing:2px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:var(--lime);display:inline-block;margin-left:2px;}
+  .nav-tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+  .nav-cta{
+    background:var(--lime);color:var(--ink);border:none;
+    padding:10px 22px;font-size:12px;font-weight:700;
+    letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+    font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-block;
+  }
+
+  /* HERO */
+  .hero{padding:72px 48px 64px;border-bottom:1.5px solid var(--ink);display:flex;flex-direction:column;align-items:center;text-align:center;}
+  .hero-tag{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;}
+  .hero-headline{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:clamp(56px,9vw,110px);
+    font-weight:900;line-height:.95;letter-spacing:-2px;text-transform:uppercase;
+    color:var(--ink);
+  }
+  .hero-headline em{font-style:italic;background:var(--lime);padding:0 8px 4px;display:inline;line-height:1;}
+  .hero-stat-row{display:flex;align-items:center;justify-content:center;gap:24px;margin:40px 0;flex-wrap:wrap;}
+  .hero-stat-num{
+    font-family:'Barlow Condensed',sans-serif;font-size:clamp(46px,6vw,68px);font-weight:900;
+    line-height:1;letter-spacing:-1px;background:var(--lime);padding:6px 18px;color:var(--ink);
+  }
+  .hero-stat-label{font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);max-width:230px;line-height:1.5;text-align:left;}
+  .hero-sub{font-size:15px;line-height:1.65;color:var(--muted);font-weight:300;max-width:540px;margin:0 auto 32px;}
+  .hero-btn{
+    background:var(--ink);color:var(--white);border:none;padding:18px 32px;
+    font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  }
+
+  /* ANTES BAR */
+  /* ANTES E DEPOIS */
+  .antes-depois{background:var(--ink);border-bottom:1.5px solid var(--ink);}
+  .antes-depois .section-kicker{color:rgba(255,255,255,.5);}
+  .antes-depois .section-kicker::before{background:var(--lime);}
+  .ad-header{padding:56px 48px 40px;border-bottom:1.5px solid rgba(255,255,255,.15);}
+  .ad-header h2{color:var(--white);}
+  .ad-header h2 em{font-style:italic;background:var(--lime);padding:0 8px 4px;display:inline;line-height:1;color:var(--ink);}
+  .ad-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .ad-col{position:relative;border-right:1.5px solid rgba(255,255,255,.15);padding:32px;display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .ad-col:last-child{border-right:none;}
+  .ad-tag{
+    font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;
+    padding:7px 20px;text-transform:uppercase;
+  }
+  .ad-tag-antes{background:var(--white);color:var(--ink);}
+  .ad-tag-depois{background:var(--lime);color:var(--ink);}
+  .ad-col img{width:100%;max-width:340px;border:1.5px solid rgba(255,255,255,.25);display:block;}
+  .ad-stat{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-.5px;color:var(--white);}
+  .ad-footer{
+    padding:26px 48px;border-top:1.5px solid rgba(255,255,255,.15);
+    font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;
+    text-align:center;letter-spacing:-.5px;background:var(--lime);color:var(--ink);
+  }
+
+  /* O QUE FIZEMOS */
+  .servicos{border-bottom:1.5px solid var(--ink);}
+  .servicos-header{padding:56px 48px 40px;border-bottom:1.5px solid var(--ink);}
+  .servicos-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+  .serv-card{padding:40px 32px;border-right:1.5px solid var(--ink);}
+  .serv-card:last-child{border-right:none;}
+  .serv-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);margin-bottom:20px;}
+  .serv-icon{width:44px;height:44px;background:var(--lime);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;}
+  .serv-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;line-height:.95;margin-bottom:14px;letter-spacing:-.5px;}
+  .serv-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+
+  /* GALERIA (placeholders) */
+  .galeria{border-bottom:1.5px solid var(--ink);}
+  .galeria-header{padding:56px 48px 40px;border-bottom:1.5px solid var(--ink);}
+  .galeria-note{font-size:12px;color:var(--muted);margin-top:8px;}
+  .galeria-grid-wrap{padding:48px;display:flex;justify-content:center;}
+  .galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);max-width:700px;width:100%;border:1.5px solid var(--ink);}
+  .gal-item{
+    aspect-ratio:4/5;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    background:repeating-linear-gradient(45deg, var(--gray), var(--gray) 10px, #ffffff 10px, #ffffff 20px);
+  }
+  .gal-item:nth-child(3n){border-right:none;}
+  .gal-item:nth-last-child(-n+3){border-bottom:none;}
+
+  .gal-item.gal-photo{position:relative;background:var(--ink);}
+  .gal-item.gal-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+
+  /* RESULTADOS */
+  .resultados{background:var(--ink);border-bottom:1.5px solid var(--ink);}
+  .resultados-header{padding:56px 48px 40px;}
+  .resultados-header .section-kicker{color:rgba(255,255,255,.5);}
+  .resultados-header .section-kicker::before{background:var(--lime);}
+  .resultados-header h2{color:var(--white);}
+  .resultados-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1.5px solid rgba(255,255,255,.15);}
+  .res-card{padding:36px 28px;border-right:1.5px solid rgba(255,255,255,.15);}
+  .res-card:last-child{border-right:none;}
+  .res-num{font-family:'Barlow Condensed',sans-serif;font-size:clamp(38px,4.5vw,54px);font-weight:900;color:var(--lime);line-height:1;letter-spacing:-1px;}
+  .res-label{font-size:12px;color:rgba(255,255,255,.55);margin-top:10px;text-transform:uppercase;letter-spacing:.5px;line-height:1.4;}
+
+  /* HISTÓRIAS EM VÍDEO */
+  .historias{border-bottom:1.5px solid var(--ink);}
+  .historias-header{padding:56px 48px 40px;border-bottom:1.5px solid var(--ink);}
+  .historias-header h2 em{font-style:italic;background:var(--lime);padding:0 8px 4px;display:inline;line-height:1;}
+  .historias-grid-wrap{padding:48px;display:flex;justify-content:center;}
+  .historias-grid{display:grid;grid-template-columns:repeat(3,1fr);max-width:700px;width:100%;border:1.5px solid var(--ink);}
+  .hist-item{
+    aspect-ratio:9/16;border-right:1.5px solid var(--ink);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    background:repeating-linear-gradient(45deg, var(--gray), var(--gray) 10px, #ffffff 10px, #ffffff 20px);
+  }
+  .hist-item:last-child{border-right:none;}
+  .hist-tag{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--muted);background:var(--white);padding:6px 14px;border:1.5px solid var(--ink);}
+  .hist-sub{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+  .hist-item.hist-video{position:relative;padding:0;background:var(--ink);cursor:pointer;overflow:hidden;}
+  .hist-thumb{width:100%;height:100%;object-fit:cover;display:block;}
+  .hist-play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:74px;height:74px;border-radius:50%;background:var(--lime);border:3px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.35);transition:transform .15s ease;
+  }
+  .hist-item.hist-video:hover .hist-play{transform:translate(-50%,-50%) scale(1.08);}
+  .hist-play svg{width:26px;height:26px;margin-left:4px;fill:var(--ink);}
+  .hist-item.hist-video iframe{width:100%;height:100%;border:0;display:block;}
+
+  /* DEPOIMENTO */
+  .depoimento{display:grid;grid-template-columns:1fr 1fr;border-bottom:1.5px solid var(--ink);}
+  .dep-left{padding:72px 48px;border-right:1.5px solid var(--ink);}
+  .dep-kicker{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;}
+  .dep-big{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;line-height:1.1;color:var(--ink);text-transform:uppercase;}
+  .dep-big span{color:var(--muted);}
+  .dep-right{padding:72px 48px;display:flex;flex-direction:column;justify-content:center;}
+  .dep-stars{color:var(--lime);font-size:20px;margin-bottom:16px;letter-spacing:4px;}
+  .dep-quote{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1.25;color:var(--ink);margin-bottom:28px;}
+  .dep-author{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+
+  /* CTA FINAL */
+  .cta-final{background:var(--lime);padding:72px 48px;display:flex;flex-direction:column;align-items:flex-start;border-bottom:1.5px solid var(--ink);}
+  .cta-final h2{font-size:clamp(44px,6.5vw,80px);max-width:700px;margin-bottom:16px;color:var(--ink);}
+  .cta-final .cta-sub{font-size:15px;color:rgba(0,0,0,.6);max-width:440px;margin-bottom:36px;line-height:1.6;}
+  .cta-btn{
+    background:var(--ink);color:var(--lime);border:2px solid var(--ink);
+    padding:18px 36px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  }
+
+  footer{background:var(--ink);padding:36px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .ft-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--white);}
+  .ft-logo span{color:var(--lime);}
+  .ft-info{font-size:12px;color:rgba(255,255,255,.4);text-align:right;}
+  .ft-info a{color:rgba(255,255,255,.6);text-decoration:none;}
+
+  @media(max-width:760px){
+    nav{padding:0 20px;}
+    .nav-tag{display:none;}
+    .depoimento,.ad-grid{grid-template-columns:1fr;}
+    .hero,nav,.ad-header,.ad-col,.servicos-header,.serv-card,.galeria-header,.historias-header,.resultados-header,.dep-left,.dep-right,.cta-final,footer{padding:40px 20px;}
+    .ad-col{border-right:none;border-bottom:1.5px solid rgba(255,255,255,.15);}
+    .ad-col:last-child{border-bottom:none;}
+    .servicos-grid{grid-template-columns:1fr;}
+    .serv-card{border-right:none;border-bottom:1.5px solid var(--ink);}
+    .galeria-grid{grid-template-columns:repeat(2,1fr);}
+    .gal-item:nth-child(3n){border-right:1.5px solid var(--ink);}
+    .gal-item:nth-child(2n){border-right:none;}
+    .historias-grid{grid-template-columns:1fr;}
+    .hist-item{border-right:none;border-bottom:1.5px solid var(--ink);aspect-ratio:9/12;}
+    .hist-item:last-child{border-bottom:none;}
+    .resultados-grid{grid-template-columns:1fr;}
+    .res-card{border-right:none;border-top:1.5px solid rgba(255,255,255,.15);}
+    .res-card:first-child{border-top:none;}
+    .hero-stat-big{font-size:70px;}
+    .dep-big{font-size:40px;}
+    footer{flex-direction:column;text-align:center;}
+    .ft-info{text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo" style="color:inherit;text-decoration:none">LEMON<div class="nav-logo-dot"></div></a>
+  <div class="nav-tag">Case Real — The Seven Burger</div>
+  <a class="nav-cta" href="https://wa.me/5561998889486" target="_blank">Falar no WhatsApp ↗</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Case de sucesso — Hamburgueria</div>
+  <div class="hero-headline">De quase<br>zero pra<br><em>70 mil.</em></div>
+  <div class="hero-stat-row">
+    <div class="hero-stat-num">70K</div>
+    <div class="hero-stat-label">seguidores</div>
+  </div>
+  <p class="hero-sub">A The Seven chegou até nós com menos de 100 seguidores e uma presença online que ainda não fazia justiça à experiência que entregava. O trabalho começou do zero: reestruturamos a comunicação, definimos uma identidade para a marca e acompanhamos cada etapa dessa construção até chegar ao perfil que existe hoje.</p>
+  <a class="hero-btn" href="https://wa.me/5561998889486" target="_blank">Quero um case assim ↗</a>
+</section>
+
+<!-- ANTES E DEPOIS -->
+<section class="antes-depois">
+  <div class="ad-header">
+    <div class="section-kicker">A prova, em print</div>
+    <h2>O perfil era<br>assim. Hoje é<br><em>desse jeito.</em></h2>
+  </div>
+  <div class="ad-grid">
+    <div class="ad-col">
+      <div class="ad-tag ad-tag-antes">ANTES</div>
+      <img loading="lazy" src="/restaurantes/img/antes.jpg" alt="Perfil antigo da The Seven">
+      <div class="ad-stat">&lt; 100 seguidores</div>
+    </div>
+    <div class="ad-col">
+      <div class="ad-tag ad-tag-depois">DEPOIS</div>
+      <img loading="lazy" src="/restaurantes/img/depois.jpg" alt="Perfil atual da The Seven">
+      <div class="ad-stat">70 mil seguidores</div>
+    </div>
+  </div>
+  <div class="ad-footer">Isso pode ser o case do seu negócio também.</div>
+</section>
+
+<!-- O QUE FIZEMOS -->
+<section class="servicos">
+  <div class="servicos-header">
+    <div class="section-kicker">O que fizemos</div>
+    <h2>O método<br>Lemon aplicado<br>na prática.</h2>
+  </div>
+  <div class="servicos-grid">
+    <div class="serv-card">
+      <div class="serv-num">01 / ETAPA</div>
+      <div class="serv-icon">🎯</div>
+      <div class="serv-title">Reposi<br>cionamento</div>
+      <div class="serv-desc">Nova identidade visual, novo tom de voz, novo jeito de mostrar o produto no feed.</div>
+    </div>
+    <div class="serv-card" style="background:var(--gray);">
+      <div class="serv-num">02 / ETAPA</div>
+      <div class="serv-icon">🎬</div>
+      <div class="serv-title">Produção<br>em 1 dia</div>
+      <div class="serv-desc">Um dia de filmagem com direção, luz e qualidade cinematográfica. 1 mês de conteúdo em 1 único dia.</div>
+    </div>
+    <div class="serv-card" style="background:var(--ink);">
+      <div class="serv-num" style="color:rgba(255,255,255,.35);">03 / ETAPA</div>
+      <div class="serv-icon">📈</div>
+      <div class="serv-title" style="color:var(--white);">Cresci<br>mento</div>
+      <div class="serv-desc" style="color:rgba(255,255,255,.5);">Publicação recorrente e storytelling de marca — o crescimento veio do conteúdo, não de anúncio.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA (placeholders para o Rerick substituir) -->
+<section class="galeria">
+  <div class="galeria-header">
+    <div class="section-kicker">Mais do nosso trabalho</div>
+    <h2>Peças que a<br>gente já produziu.</h2>
+    <div class="galeria-note">Conteúdo real produzido para a The Seven</div>
+  </div>
+  <div class="galeria-grid-wrap">
+  <div class="galeria-grid">
+    <div class="gal-item gal-photo">
+      <img loading="lazy" src="/restaurantes/img/burger-cebola.jpg" alt="Hambúrguer com cebola crispy">
+    </div>
+    <div class="gal-item gal-photo">
+      <img loading="lazy" src="/restaurantes/img/carne-de-sol.jpg" alt="Carne de sol">
+    </div>
+    <div class="gal-item gal-photo">
+      <img loading="lazy" src="/restaurantes/img/seven-master.jpg" alt="Seven Master">
+    </div>
+    <div class="gal-item gal-photo">
+      <img loading="lazy" src="/restaurantes/img/prato-executivo.jpg" alt="Prato executivo">
+    </div>
+    <div class="gal-item gal-photo">
+      <img loading="lazy" src="/restaurantes/img/costela.jpg" alt="Costela desfiada">
+    </div>
+    <div class="gal-item gal-photo">
+      <img loading="lazy" src="/restaurantes/img/risoto.jpg" alt="Risoto de carne">
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section class="resultados">
+  <div class="resultados-header">
+    <div class="section-kicker">Os números</div>
+    <h2>O resultado<br>fala por si.</h2>
+  </div>
+  <div class="resultados-grid">
+    <div class="res-card"><div class="res-num">70K</div><div class="res-label">Seguidores conquistados</div></div>
+    <div class="res-card"><div class="res-num">R$300K</div><div class="res-label">Faturamento médio por mês</div></div>
+    <div class="res-card"><div class="res-num">2</div><div class="res-label">Unidades abertas desde o início do trabalho</div></div>
+  </div>
+</section>
+
+<!-- HISTÓRIAS EM VÍDEO -->
+<section class="historias">
+  <div class="historias-header">
+    <div class="section-kicker">Prova em vídeo</div>
+    <h2>Não são apenas fotos<br>bonitas. São <em>histórias<br>bem contadas.</em></h2>
+  </div>
+  <div class="historias-grid-wrap">
+  <div class="historias-grid">
+    <div class="hist-item hist-video" data-video-id="4KR251jl36Q">
+      <img class="hist-thumb" src="https://img.youtube.com/vi/4KR251jl36Q/hqdefault.jpg" alt="Vídeo 1 — The Seven">
+      <div class="hist-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </div>
+    <div class="hist-item hist-video" data-video-id="Ap6tGBQxaVc">
+      <img class="hist-thumb" src="https://img.youtube.com/vi/Ap6tGBQxaVc/hqdefault.jpg" alt="Vídeo 2 — The Seven">
+      <div class="hist-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </div>
+    <div class="hist-item hist-video" data-video-id="-7ZU_SPM8_4">
+      <img class="hist-thumb" src="https://img.youtube.com/vi/-7ZU_SPM8_4/hqdefault.jpg" alt="Vídeo 3 — The Seven">
+      <div class="hist-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    </div>
+  </div>
+  </div>
+</section>
+<section class="depoimento">
+  <div class="dep-left">
+    <div class="dep-kicker">Depoimento</div>
+    <div class="dep-big">O que a<br><span>The Seven</span><br>diz sobre<br>o trabalho.</div>
+  </div>
+  <div class="dep-right">
+    <div class="dep-stars">★★★★★</div>
+    <div class="dep-quote">"A Lemon transformou nossa presença nas redes. Engajamento aumentou significativamente e os resultados são reais."</div>
+    <div class="dep-author">Priscila — @theseven.burguer</div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="section-kicker" style="color:rgba(0,0,0,.45);margin-bottom:20px;">Pronto pra ser o próximo case?</div>
+  <h2>Quer um<br>resultado<br>assim pro<br>seu negócio?</h2>
+  <p class="cta-sub">A gente já fez isso pra hamburgueria. Bora conversar 15 minutos e te mostrar exatamente como aplicaríamos o mesmo método no seu Instagram.</p>
+  <a class="cta-btn" href="https://wa.me/5561998889486" target="_blank">Falar com a Lemon ↗</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">LEMON <span>SOCIAL</span></div>
+  <div class="ft-info">© 2026 Lemon Social<br><a href="tel:61998889486">(61) 99888-9486</a></div>
+</footer>
+
+<script>
+  document.querySelectorAll('.hist-item.hist-video').forEach(function(item){
+    item.addEventListener('click', function(){
+      var videoId = item.getAttribute('data-video-id');
+      item.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    });
+  });
+</script>
+</body>
+</html>
