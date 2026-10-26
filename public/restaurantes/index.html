@@ -213,6 +213,25 @@
   .hero>*,.prob>*,.sys>*,.stages>*,.case-hero>*,.dep>*,.final>*,.ad-grid>*,.proof>*,.res>*,.gal>*,.who-grid>*{min-width:0}
   h1,h2,h3,h4{overflow-wrap:break-word}
 
+  /* SLIDE DE FEEDS */
+  .feeds{border-bottom:var(--line)}
+  .feeds-bar{display:flex;align-items:center;gap:16px;padding:14px 48px;border-bottom:var(--line);background:var(--ink);color:var(--white)}
+  .fb-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-right:auto}
+  .fb-tabs{display:flex;gap:6px}
+  .fb-tabs button,.fb-arrows button{font:900 18px 'Barlow Condensed';text-transform:uppercase;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:var(--white);padding:7px 16px;cursor:pointer}
+  .fb-tabs button.on{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+  .fb-arrows{display:flex;gap:6px}
+  .fb-arrows button{padding:7px 12px;font-family:'DM Sans';font-weight:700}
+  .feeds-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+  .feeds-track::-webkit-scrollbar{display:none}
+  .feeds .feed{flex:0 0 100%;scroll-snap-align:start;border-bottom:none}
+  .ig-av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:'Bebas Neue';font-size:24px;flex:none}
+  .ig-grid video{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:900px){
+    .feeds-bar{padding:12px 16px;flex-wrap:wrap}
+    .fb-label{width:100%}
+    .fb-arrows{margin-left:auto}
+  }
   /* FEED YASMINE */
   .feed{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--line)}
   .feed-l{padding:72px 48px;border-right:var(--line);display:flex;flex-direction:column;justify-content:center}
@@ -458,8 +477,15 @@
   </div>
 </section>
 
-<!-- FEED YASMINE -->
-<section class="feed" id="feed">
+<!-- FEEDS PLANEJADOS (slide) -->
+<section class="feeds" id="feed">
+  <div class="feeds-bar">
+    <span class="fb-label">Feeds planejados</span>
+    <div class="fb-tabs" role="tablist"><button class="on" data-i="0">Yasmine</button><button data-i="1">Juremê</button></div>
+    <div class="fb-arrows"><button class="prev" aria-label="Anterior">←</button><button class="next" aria-label="Próximo">→</button></div>
+  </div>
+  <div class="feeds-track">
+<div class="feed slide" data-name="Yasmine">
   <div class="feed-l">
     <div class="kicker">Feed planejado · Yasmine Culinária Árabe</div>
     <h2 class="bc">Um mês inteiro<br>de conteúdo,<br><span class="hl">pensado antes.</span></h2>
@@ -493,6 +519,41 @@
           <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/15.jpg" alt="Kibe cru"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
       </div>
     </div>
+  </div>
+</div>
+<div class="feed slide" data-name="Juremê">
+  <div class="feed-l">
+    <div class="kicker">Feed planejado · Juremê Gastrobar</div>
+    <h2 class="bc">Happy hour,<br>petisco e drink.<br><span class="hl">Com a cara da casa.</span></h2>
+    <p class="lead">Uma identidade com tipografia retrô e o azul da marca, aplicada em fotos de produto, artes de campanha e reels gravados no salão.</p>
+    <ul>
+      <li><b>Identidade</b>Tipografia e cores próprias em todas as artes, fáceis de reconhecer no feed.</li>
+      <li><b>Campanhas</b>Happy hour, onde e quando, sobremesa e drinks, sempre com chamada para visitar.</li>
+      <li><b>Produto</b>Fotos de petiscos e drinks feitas para dar vontade de pedir.</li>
+      <li><b>Reels</b>Vídeos curtos no salão e quadros fixos, como o Mesa do Juremê.</li>
+    </ul>
+    <a class="btn" href="#diagnostico" style="align-self:flex-start">Quero um feed assim ↗</a>
+  </div>
+  <div class="feed-r" style="background:#0B3A42">
+    <div class="ig" aria-label="Prévia do feed do Juremê">
+      <div class="ig-id"><span class="ig-av" style="background:#12A3B8">J</span><div><b>Juremê</b><span>Gastrobar</span></div></div>
+      <div class="ig-grid">
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/happy-hour.jpg" alt="Happy hour todos os dias"></div>
+          <div class="t"><video class="auto" muted loop playsinline preload="none" poster="/restaurantes/img/jureme/j07.jpg" data-src="/restaurantes/img/jureme/j07.mp4" aria-label="Reels de petiscos do Juremê"></video><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/onde-quando.jpg" alt="Onde e quando"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/sem-culpa.jpg" alt="Sobremesa sem culpa"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/mesa-do-jureme.jpg" alt="Quadro Mesa do Juremê"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/drink.jpg" alt="Que tal pedir um drink"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/frango-crocante.jpg" alt="Frango crocante"></div>
+          <div class="t"><video class="auto" muted loop playsinline preload="none" poster="/restaurantes/img/jureme/j02.jpg" data-src="/restaurantes/img/jureme/j02.mp4" aria-label="Reels de brinde no salão"></video><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/costelinha.jpg" alt="Costelinha com limão"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/drink-frutas.jpg" alt="Drink de frutas vermelhas"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/petisco.jpg" alt="Quem não arrisca não petisca"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/brinde.jpg" alt="Brinde de chopp"></div>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </section>
 
@@ -581,6 +642,30 @@ document.querySelectorAll('.vid').forEach(v => v.addEventListener('click', () =>
     ? `<video src="${v.dataset.mp4}" controls autoplay playsinline></video>`
     : `<iframe src="https://www.youtube.com/embed/${v.dataset.videoId}?autoplay=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
 }, {once:true}));
+
+// Slide de feeds
+(() => {
+  const track = document.querySelector('.feeds-track'); if (!track) return;
+  const tabs = [...document.querySelectorAll('.fb-tabs button')];
+  const n = track.children.length;
+  const cur = () => Math.round(track.scrollLeft / track.clientWidth);
+  const go = i => track.scrollTo({ left: ((i + n) % n) * track.clientWidth });
+  tabs.forEach(b => b.addEventListener('click', () => go(+b.dataset.i)));
+  document.querySelector('.fb-arrows .prev').addEventListener('click', () => go(cur() - 1));
+  document.querySelector('.fb-arrows .next').addEventListener('click', () => go(cur() + 1));
+  track.addEventListener('scroll', () => { const i = cur(); tabs.forEach((b, k) => b.classList.toggle('on', k === i)); }, { passive: true });
+})();
+
+// Reels do feed: tocam sem som só quando aparecem na tela
+(() => {
+  const vids = document.querySelectorAll('video.auto');
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
+    else v.pause();
+  }), { threshold: .4 });
+  vids.forEach(v => io.observe(v));
+})();
 
 // Máscara de telefone
 document.querySelectorAll('input[name=whats]').forEach(w => w.addEventListener('input', () => {
