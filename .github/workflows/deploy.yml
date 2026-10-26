@@ -20,7 +20,10 @@ jobs:
         with:
           node-version: 20
       - name: Deploy
-        run: npx --yes wrangler@4 deploy
+        run: |
+          # usa só a primeira linha do token, sem espaços (evita erro se foi colado com quebra de linha)
+          export CLOUDFLARE_API_TOKEN="$(printf '%s\n' "$RAW_TOKEN" | grep -m1 -v '^[[:space:]]*$' | tr -d '[:space:]')"
+          npx --yes wrangler@4 deploy
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          RAW_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: f7fcf62c641324619fc2aaf5546dff59
