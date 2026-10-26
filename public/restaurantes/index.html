@@ -141,6 +141,29 @@
     .sv{border-right:none;padding:26px 20px}
     .sv:has(.s1){order:1} .sv:has(.s2){order:2} .sv:has(.s3){order:3}
   }
+  /* ANTES E DEPOIS ANIMADO */
+  .flipwrap{display:grid;grid-template-columns:1fr minmax(0,460px);gap:48px;align-items:center;padding:56px 48px;border-bottom:var(--dline)}
+  .fw-txt{display:grid;gap:22px}
+  .fw-state{display:none;flex-direction:column;gap:12px}
+  .fw-state.on{display:flex;animation:fwin .5s ease both}
+  .fw-tag{align-self:flex-start;font-family:'Bebas Neue';font-size:15px;letter-spacing:3px;padding:6px 16px;background:var(--white);color:var(--ink)}
+  .fw-tag.on{background:var(--lime)}
+  .fw-state h3{font-size:clamp(40px,5vw,68px)}
+  .fw-n{font-family:'Barlow Condensed';font-weight:900;font-size:26px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .fw-q{display:none;flex-direction:column;gap:20px;border-top:var(--dline);padding-top:22px}
+  .fw-q.on{display:flex;animation:fwin .6s ease both}
+  .fw-q p{font-size:clamp(24px,2.6vw,34px);line-height:1.05;color:var(--lime)}
+  .fw-btns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn.ghost-d{background:transparent;color:var(--white);border-color:rgba(255,255,255,.4)}
+  @keyframes fwin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .flipgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;perspective:1200px;max-width:100%}
+  .fc{aspect-ratio:3/4;max-width:100%}
+  .fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.1,.2,1);transition-delay:calc(var(--d,0) * 1ms)}
+  .fi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .fi .fb{transform:rotateY(180deg)}
+  .flipgrid.flipped .fi{transform:rotateY(180deg)}
+  @media(prefers-reduced-motion:reduce){.fi{transition:none}.fw-state.on,.fw-q.on{animation:none}}
+  @media(max-width:900px){.flipwrap{grid-template-columns:1fr;padding:40px 20px;gap:24px}.fw-txt{display:contents}.fw-state{order:1}.flipgrid{order:2}.fw-q{order:3}}
   /* SISTEMA LEMON */
   .sys{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--line)}
   .sys-l{padding:72px 48px;border-right:var(--line)}
@@ -452,9 +475,34 @@
       <p>A The Seven chegou até nós com menos de 100 seguidores e uma presença online que ainda não fazia justiça à experiência que entregava. O trabalho começou do zero: reestruturamos a comunicação, definimos uma identidade para a marca e acompanhamos cada etapa dessa construção até chegar ao perfil que existe hoje.</p>
     </div>
   </div>
-  <div class="ad-grid">
-    <div class="ad-col"><div class="ad-tag">ANTES</div><img loading="lazy" src="/restaurantes/img/antes.jpg" alt="Perfil antigo da The Seven"><div class="ad-stat">&lt; 100 seguidores</div></div>
-    <div class="ad-col"><div class="ad-tag">DEPOIS</div><img loading="lazy" src="/restaurantes/img/depois.jpg" alt="Perfil atual da The Seven"><div class="ad-stat">70 mil seguidores</div></div>
+  <div class="flipwrap" id="antesdepois">
+    <div class="fw-txt">
+      <div class="fw-state fw-a">
+        <span class="fw-tag">Antes</span>
+        <h3 class="bc">Olha só como<br>era esse perfil.</h3>
+        <p class="fw-n">&lt; 100 seguidores</p>
+      </div>
+      <div class="fw-state fw-b">
+        <span class="fw-tag on">Hoje</span>
+        <h3 class="bc">E agora,<br><span class="hl">como é hoje.</span></h3>
+        <p class="fw-n">70 mil seguidores</p>
+      </div>
+      <div class="fw-q">
+        <p class="bc">E o seu perfil hoje?<br>Você acha que ele está atraindo clientes?</p>
+        <div class="fw-btns"><a class="btn lime" href="#diagnostico">Quero meu diagnóstico ↗</a><button type="button" class="btn ghost-d" id="fwAgain">Ver de novo</button></div>
+      </div>
+    </div>
+    <div class="flipgrid" aria-label="Perfil da The Seven antes e depois do trabalho da Lemon">
+      <div class="fc" style="--i:0"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a0.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d0.jpg" alt=""></div></div>
+      <div class="fc" style="--i:1"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a1.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d1.jpg" alt=""></div></div>
+      <div class="fc" style="--i:2"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a2.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d2.jpg" alt=""></div></div>
+      <div class="fc" style="--i:3"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a3.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d3.jpg" alt=""></div></div>
+      <div class="fc" style="--i:4"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a4.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d4.jpg" alt=""></div></div>
+      <div class="fc" style="--i:5"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a5.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d5.jpg" alt=""></div></div>
+      <div class="fc" style="--i:6"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a6.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d6.jpg" alt=""></div></div>
+      <div class="fc" style="--i:7"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a7.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d7.jpg" alt=""></div></div>
+      <div class="fc" style="--i:8"><div class="fi"><img class="fa" loading="lazy" src="/restaurantes/img/flip/a8.jpg" alt=""><img class="fb" loading="lazy" src="/restaurantes/img/flip/d8.jpg" alt=""></div></div>
+    </div>
   </div>
   <div class="res">
     <div><div class="n">70K</div><div class="l">Seguidores conquistados</div></div>
@@ -720,6 +768,27 @@ document.querySelectorAll('.vid').forEach(v => v.addEventListener('click', () =>
     else v.pause();
   }), { threshold: .4 });
   vids.forEach(v => io.observe(v));
+})();
+
+// Antes e depois: os quadrados viram quando a seção aparece
+(() => {
+  const wrap = document.getElementById('antesdepois'); if (!wrap) return;
+  const grid = wrap.querySelector('.flipgrid');
+  const A = wrap.querySelector('.fw-a'), B = wrap.querySelector('.fw-b'), Q = wrap.querySelector('.fw-q');
+  const order = [0,4,8,2,6,1,5,3,7];
+  wrap.querySelectorAll('.fi').forEach((f, k) => f.style.setProperty('--d', order.indexOf(k) * 160));
+  let timers = [];
+  const reset = () => { timers.forEach(clearTimeout); timers = []; grid.classList.remove('flipped'); A.classList.add('on'); B.classList.remove('on'); Q.classList.remove('on'); };
+  const play = () => {
+    reset();
+    timers.push(setTimeout(() => { grid.classList.add('flipped'); }, 1800));
+    timers.push(setTimeout(() => { A.classList.remove('on'); B.classList.add('on'); }, 2400));
+    timers.push(setTimeout(() => { Q.classList.add('on'); }, 4400));
+  };
+  reset();
+  let done = false;
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !done) { done = true; play(); } }), { threshold: .45 }).observe(grid);
+  document.getElementById('fwAgain').addEventListener('click', play);
 })();
 
 // Máscara de telefone
