@@ -217,7 +217,7 @@
   .feeds{border-bottom:var(--line)}
   .feeds-bar{display:flex;align-items:center;gap:16px;padding:14px 48px;border-bottom:var(--line);background:var(--ink);color:var(--white)}
   .fb-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-right:auto}
-  .fb-tabs{display:flex;gap:6px}
+  .fb-tabs{display:flex;gap:6px;flex-wrap:wrap}
   .fb-tabs button,.fb-arrows button{font:900 18px 'Barlow Condensed';text-transform:uppercase;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:var(--white);padding:7px 16px;cursor:pointer}
   .fb-tabs button.on{background:var(--lime);border-color:var(--lime);color:var(--ink)}
   .fb-arrows{display:flex;gap:6px}
@@ -482,7 +482,7 @@
 <section class="feeds" id="feed">
   <div class="feeds-bar">
     <span class="fb-label">Feeds planejados</span>
-    <div class="fb-tabs" role="tablist"><button class="on" data-i="0">Yasmine</button><button data-i="1">Juremê</button></div>
+    <div class="fb-tabs" role="tablist"><button class="on" data-i="0">Yasmine</button><button data-i="1">Juremê</button><button data-i="2">Marcas</button></div>
     <div class="fb-arrows"><button class="prev" aria-label="Anterior">←</button><button class="next" aria-label="Próximo">→</button></div>
   </div>
   <div class="feeds-track">
@@ -551,6 +551,36 @@
           <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/drink-frutas.jpg" alt="Drink de frutas vermelhas"></div>
           <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/petisco.jpg" alt="Quem não arrisca não petisca"></div>
           <div class="t"><img loading="lazy" src="/restaurantes/img/jureme/brinde.jpg" alt="Brinde de chopp"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="feed slide" data-name="Marcas">
+  <div class="feed-l">
+    <div class="kicker">Portfólio · grandes marcas</div>
+    <h2 class="bc">Outros conteúdos<br>que fizemos<br><span class="hl">para grandes marcas.</span></h2>
+    <p class="lead">Fotografia de produto com direção de arte e food styling. O mesmo cuidado que levamos para o feed do seu restaurante.</p>
+    <ul>
+      <li><b>Direção de arte</b>Cenário, louça e paleta escolhidos para cada produto.</li>
+      <li><b>Food styling</b>Calda escorrendo, textura e brilho no ponto certo para dar vontade.</li>
+      <li><b>Luz</b>Iluminação pensada para valorizar cor e textura do prato.</li>
+      <li><b>Pronto pra usar</b>Fotos no formato do feed, dos stories e dos anúncios.</li>
+    </ul>
+    <a class="btn" href="#diagnostico" style="align-self:flex-start">Quero fotos assim ↗</a>
+  </div>
+  <div class="feed-r" style="background:#3A2418">
+    <div class="ig" aria-label="Portfólio de fotos para grandes marcas">
+      <div class="ig-id"><span class="ig-av" style="background:var(--lime);color:var(--ink)">L</span><div><b>Lemon Social</b><span>Portfólio · grandes marcas</span></div></div>
+      <div class="ig-grid">
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/bolo-chocolate.jpg" alt="Bolo de chocolate com ganache"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/acai.jpg" alt="Açaí com morango"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/pudim.jpg" alt="Pudim de leite"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/bolinho-de-chuva.jpg" alt="Bolinho de chuva"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/manjar.jpg" alt="Manjar com calda de ameixa"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/sorvete-chocolate.jpg" alt="Sorvete de chocolate"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/churros.jpg" alt="Churros com doce de leite"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/creme.jpg" alt="Creme sendo servido"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/marcas/bolo-fatia.jpg" alt="Fatia de bolo de chocolate"></div>
       </div>
     </div>
   </div>
