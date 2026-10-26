@@ -159,7 +159,9 @@
   .gal img:last-child{border-right:none}
 
   .vids-wrap{padding:48px;display:flex;justify-content:center;border-bottom:var(--line)}
-  .vids{display:grid;grid-template-columns:repeat(3,1fr);max-width:720px;width:100%;border:var(--line)}
+  .vids{display:grid;grid-template-columns:repeat(5,1fr);max-width:1200px;width:100%;border:var(--line)}
+  .vtag{position:absolute;left:10px;bottom:10px;background:var(--lime);color:var(--ink);font-family:'Bebas Neue';font-size:13px;letter-spacing:1.5px;padding:4px 10px}
+  .vid video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
   .vid{aspect-ratio:9/16;border-right:var(--line);position:relative;background:var(--ink);cursor:pointer;overflow:hidden}
   .vid:last-child{border-right:none}
   .vid img{width:100%;height:100%;object-fit:cover}
@@ -265,7 +267,7 @@
     .ad-col{border-right:none;border-bottom:var(--dline)}
     .res{grid-template-columns:1fr} .res > div{border-right:none;border-bottom:var(--dline)}
     .gal{grid-template-columns:repeat(3,1fr)} .gal img:nth-child(3){border-right:none} .gal img:nth-child(-n+3){border-bottom:var(--line)}
-    .vids-wrap{padding:32px 20px} .vids{grid-template-columns:1fr} .vid{border-right:none;border-bottom:var(--line);aspect-ratio:9/12} .vid:last-child{border-bottom:none}
+    .vids-wrap{padding:32px 20px} .vids{grid-template-columns:1fr 1fr} .vid{aspect-ratio:9/16;border-bottom:var(--line)} .vid:nth-child(2n){border-right:none} .vid:last-child{grid-column:1/-1;aspect-ratio:4/5;border-bottom:none}
     .who-grid{grid-template-columns:repeat(2,1fr)} .who-grid div:nth-child(2n){border-right:none} .who-grid div:nth-child(-n+4){border-bottom:var(--line)}
     footer{padding:32px 20px 110px;flex-direction:column;text-align:center} footer small{text-align:center}
     .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:80;padding:10px 14px;background:var(--lime);border-top:var(--line)}
@@ -439,9 +441,11 @@
     <h2 class="bc">Não são só fotos bonitas.<br>São <span class="hl">histórias bem contadas.</span></h2>
   </div>
   <div class="vids-wrap"><div class="vids">
-    <div class="vid" data-video-id="4KR251jl36Q"><img loading="lazy" src="https://img.youtube.com/vi/4KR251jl36Q/hqdefault.jpg" alt="Vídeo 1 The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-    <div class="vid" data-video-id="Ap6tGBQxaVc"><img loading="lazy" src="https://img.youtube.com/vi/Ap6tGBQxaVc/hqdefault.jpg" alt="Vídeo 2 The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-    <div class="vid" data-video-id="-7ZU_SPM8_4"><img loading="lazy" src="https://img.youtube.com/vi/-7ZU_SPM8_4/hqdefault.jpg" alt="Vídeo 3 The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+    <div class="vid" data-video-id="4KR251jl36Q"><img loading="lazy" src="https://img.youtube.com/vi/4KR251jl36Q/hqdefault.jpg" alt="Vídeo 1 The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">The Seven</span></div>
+    <div class="vid" data-video-id="Ap6tGBQxaVc"><img loading="lazy" src="https://img.youtube.com/vi/Ap6tGBQxaVc/hqdefault.jpg" alt="Vídeo 2 The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">The Seven</span></div>
+    <div class="vid" data-video-id="-7ZU_SPM8_4"><img loading="lazy" src="https://img.youtube.com/vi/-7ZU_SPM8_4/hqdefault.jpg" alt="Vídeo 3 The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">The Seven</span></div>
+    <div class="vid" data-mp4="/restaurantes/vid/yasmine-001.mp4"><img loading="lazy" src="/restaurantes/vid/yasmine-001.jpg" alt="Vídeo Yasmine: chef Mohamad e os doces árabes"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">Yasmine</span></div>
+    <div class="vid" data-mp4="/restaurantes/vid/yasmine-06.mp4"><img loading="lazy" src="/restaurantes/vid/yasmine-06.jpg" alt="Vídeo Yasmine: o verdadeiro shawarma árabe"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">Yasmine</span></div>
   </div></div>
 </section>
 
@@ -573,7 +577,9 @@ document.getElementById('waFloat').href =
 
 // Vídeos
 document.querySelectorAll('.vid').forEach(v => v.addEventListener('click', () => {
-  v.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.dataset.videoId}?autoplay=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+  v.innerHTML = v.dataset.mp4
+    ? `<video src="${v.dataset.mp4}" controls autoplay playsinline></video>`
+    : `<iframe src="https://www.youtube.com/embed/${v.dataset.videoId}?autoplay=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
 }, {once:true}));
 
 // Máscara de telefone
