@@ -210,6 +210,39 @@
 
   .hero>*,.prob>*,.sys>*,.stages>*,.case-hero>*,.dep>*,.final>*,.ad-grid>*,.proof>*,.res>*,.gal>*,.who-grid>*{min-width:0}
   h1,h2,h3,h4{overflow-wrap:break-word}
+
+  /* FEED YASMINE */
+  .feed{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--line)}
+  .feed-l{padding:72px 48px;border-right:var(--line);display:flex;flex-direction:column;justify-content:center}
+  .feed-l p.lead{color:var(--muted);font-size:16px;margin:20px 0 26px;max-width:500px}
+  .feed-l ul{list-style:none;border-top:var(--line);margin-bottom:30px}
+  .feed-l li{padding:14px 0;border-bottom:var(--line);font-size:15px;display:flex;gap:12px;align-items:baseline}
+  .feed-l li b{font-family:'Barlow Condensed';font-weight:900;font-size:20px;text-transform:uppercase;min-width:120px}
+  .feed-r{background:#0F1B33;padding:56px 32px;display:flex;align-items:center;justify-content:center}
+  .ig{width:360px;max-width:100%;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);color:#111;font-size:13px}
+  .ig-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 8px;font-weight:700;font-size:15px}
+  .ig-head{display:flex;align-items:center;gap:18px;padding:6px 16px 10px}
+  .ig-head img{width:76px;height:76px;border-radius:50%;object-fit:cover;outline:2px solid #ddd;outline-offset:2px}
+  .ig-st{display:flex;flex:1;justify-content:space-around;text-align:center}
+  .ig-st b{display:block;font-size:16px}
+  .ig-st span{font-size:12px}
+  .ig-bio{padding:0 16px 12px;line-height:1.4;white-space:pre-line}
+  .ig-bio b{display:block}
+  .ig-btn{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 16px 12px}
+  .ig-btn span{background:#efefef;border-radius:8px;text-align:center;padding:7px 0;font-weight:700}
+  .ig-btn span:first-child{background:#0095F6;color:#fff}
+  .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-top:1px solid #eee;padding-top:2px}
+  .ig-grid .t{position:relative;aspect-ratio:3/4;overflow:hidden;background:#0F1B33}
+  .ig-grid img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .ig-grid .t:hover img{transform:scale(1.06)}
+  .ig-grid .ti{position:absolute;top:6px;right:6px;width:16px;height:16px}
+  .ig-grid .ti svg{width:16px;height:16px;fill:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+  @media(max-width:900px){
+    .feed{grid-template-columns:1fr}
+    .feed-l{padding:48px 20px;border-right:none;border-bottom:var(--line)}
+    .feed-r{padding:40px 14px}
+    .feed-l li{flex-direction:column;gap:2px}
+  }
   @media(max-width:900px){
     nav{padding:0 18px} nav ul,.logo small{display:none}
     .pad,.head,.hero-l,.hero-r,.prob-l,.sys-l,.sys-r,.case-hero > div,.dep > div,.final-l,.final-r,.faq{padding:48px 20px}
@@ -414,6 +447,52 @@
     <div><span class="st">★★★★★</span></div>
     <div class="q">"A Lemon transformou nossa presença nas redes. Engajamento aumentou significativamente e os resultados são reais."</div>
     <div class="a">Priscila · @theseven.burguer</div>
+  </div>
+</section>
+
+<!-- FEED YASMINE -->
+<section class="feed" id="feed">
+  <div class="feed-l">
+    <div class="kicker">Feed planejado · Yasmine Culinária Árabe</div>
+    <h2 class="bc">Um mês inteiro<br>de conteúdo,<br><span class="hl">pensado antes.</span></h2>
+    <p class="lead">Antes de postar, você vê o seu perfil pronto. Identidade, ordem dos posts, legendas e datas de publicação aprovadas num link, direto do celular.</p>
+    <ul>
+      <li><b>Identidade</b>Uma linha visual própria para o restaurante, reconhecível no meio do feed.</li>
+      <li><b>16 conteúdos</b>8 reels, 7 carrosséis e 1 post, gravados em uma única diária.</li>
+      <li><b>Estratégia</b>Localização e horários, reservas, história da casa e os pratos que vendem.</li>
+      <li><b>Aprovação</b>O cliente aprova ou pede ajuste em cada post antes de ir ao ar.</li>
+    </ul>
+    <a class="btn" href="#diagnostico" style="align-self:flex-start">Quero um feed assim ↗</a>
+  </div>
+  <div class="feed-r">
+    <div class="ig" aria-label="Prévia do perfil do Instagram do Yasmine">
+      <div class="ig-bar"><span>yasmineculinariaarabe</span><span>☰</span></div>
+      <div class="ig-head">
+        <img src="/restaurantes/img/yasmine/avatar.jpg" alt="Logo do Yasmine">
+        <div class="ig-st"><div><b>16</b><span>conteúdos</span></div><div><b>8</b><span>reels</span></div><div><b>1</b><span>diária</span></div></div>
+      </div>
+      <div class="ig-bio"><b>Yasmine</b>🥙 Culinária árabe
+🕓 Seg a Sáb 17h às 22h | Dom 17h às 21h
+📍 Sudoeste, Brasília DF</div>
+      <div class="ig-btn"><span>Seguir</span><span>Mensagem</span></div>
+      <div class="ig-grid">
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/01.jpg" alt="Onde estamos e horários"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/02.jpg" alt="Reserve sua mesa"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/03.jpg" alt="A história do Yasmine"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/04.jpg" alt="Doces árabes"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/05.jpg" alt="Kibe"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/06.jpg" alt="O verdadeiro shawarma árabe"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/07.jpg" alt="Batata libanesa"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/08.jpg" alt="Falafel"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/09.jpg" alt="Sua primeira vez no Yasmine"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/10.jpg" alt="Charuto de folha de uva"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/11.jpg" alt="Doce de pistache"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/12.jpg" alt="Doces árabes"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/13.jpg" alt="Baklawa de nozes"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/14.jpg" alt="Fornada de doces"></div>
+          <div class="t"><img loading="lazy" src="/restaurantes/img/yasmine/15.jpg" alt="Kibe cru"><span class="ti"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="13" height="13" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="#fff" stroke-width="2"/></svg></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
