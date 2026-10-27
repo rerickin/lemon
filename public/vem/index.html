@@ -88,7 +88,7 @@ a{color:inherit}
 .facts span{font-size:13px;color:var(--muted)}
 .facts div:first-child{background:var(--lime)}
 .who figure{position:relative}
-.who figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.who figure img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:left center}
 .who figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--lime);font-family:var(--f-label);letter-spacing:2px;padding:8px 14px;font-size:15px}
 
 /* 3 DOR */
@@ -203,7 +203,7 @@ a{color:inherit}
   .vrow{grid-template-columns:1fr 1fr}
   .mosaic{grid-template-columns:repeat(3,1fr)}
   .mosaic img:nth-child(n+10){display:none}
-  .who figure{display:none}
+  .who figure{order:-1}
   .who h2{font-size:clamp(38px,11vw,56px)}
   .facts b{font-size:24px}
   .facts div{padding:16px 14px}
@@ -252,8 +252,8 @@ a{color:inherit}
       </div>
     </div>
     <figure>
-      <img src="/restaurantes/vid/yasmine-06.jpg" alt="Gravação na cozinha de um restaurante cliente">
-      <figcaption>Bastidor de gravação</figcaption>
+      <img src="/vem/escritorio.jpg" alt="Escritório da Lemon Social">
+      <figcaption>Nosso escritório</figcaption>
     </figure>
   </div>
 </section>
