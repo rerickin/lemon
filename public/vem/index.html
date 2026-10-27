@@ -211,6 +211,19 @@ a{color:inherit}
 }
 .more{display:none;margin-top:14px;background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:10px 16px;font:700 12px var(--f-body);letter-spacing:1px;text-transform:uppercase;cursor:pointer}
 @media(max-width:900px){.more{display:inline-block}}
+
+/* AMPLIAR FOTO */
+.mosaic img,.feed .g img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(5,5,5,.94);display:flex;align-items:center;justify-content:center;
+  padding:calc(56px + env(safe-area-inset-top,0px)) max(64px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(64px,env(safe-area-inset-left,0px))}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb button{position:absolute;width:48px;height:48px;border:1.5px solid rgba(255,255,255,.4);background:rgba(10,10,10,.7);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.lb .x{top:calc(14px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.lb .lp{left:max(10px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .ln{right:max(10px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+.lb .lc{position:absolute;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-family:var(--f-label);letter-spacing:2px;color:rgba(255,255,255,.7)}
+@media(max-width:900px){.lb{padding-left:10px;padding-right:10px}.lb .lp,.lb .ln{top:auto;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:none}}
 </style>
 </head>
 <body>
@@ -384,18 +397,18 @@ a{color:inherit}
       <p>Direção de arte, food styling e luz pensados para cada produto. O mesmo padrão que entregamos para grandes marcas, aplicado ao seu cardápio.</p>
     </div>
     <div class="mosaic">
-      <img loading="lazy" src="/restaurantes/img/marcas/pizza.jpg" alt="Pizza">
-      <img loading="lazy" src="/restaurantes/img/marcas/bolo-chocolate.jpg" alt="Bolo de chocolate">
-      <img loading="lazy" src="/restaurantes/img/marcas/massa.jpg" alt="Massa com polvo">
-      <img loading="lazy" src="/restaurantes/img/marcas/acai.jpg" alt="Açaí">
-      <img loading="lazy" src="/restaurantes/img/marcas/frutos-do-mar.jpg" alt="Frutos do mar">
-      <img loading="lazy" src="/restaurantes/img/marcas/pudim.jpg" alt="Pudim">
-      <img loading="lazy" src="/restaurantes/img/marcas/prato-autoral.jpg" alt="Prato autoral">
-      <img loading="lazy" src="/restaurantes/img/marcas/churros.jpg" alt="Churros">
-      <img loading="lazy" src="/restaurantes/img/marcas/massa-drink.jpg" alt="Massa com drink">
-      <img loading="lazy" src="/restaurantes/img/carne-de-sol.jpg" alt="Carne de sol">
-      <img loading="lazy" src="/restaurantes/img/marcas/sorvete-chocolate.jpg" alt="Sorvete">
-      <img loading="lazy" src="/restaurantes/img/marcas/chef-panela.jpg" alt="Chef finalizando prato">
+      <img data-full="/restaurantes/img/marcas/full/pizza.jpg" loading="lazy" src="/restaurantes/img/marcas/pizza.jpg" alt="Pizza">
+      <img data-full="/restaurantes/img/marcas/full/bolo-chocolate.jpg" loading="lazy" src="/restaurantes/img/marcas/bolo-chocolate.jpg" alt="Bolo de chocolate">
+      <img data-full="/restaurantes/img/marcas/full/massa.jpg" loading="lazy" src="/restaurantes/img/marcas/massa.jpg" alt="Massa com polvo">
+      <img data-full="/restaurantes/img/marcas/full/acai.jpg" loading="lazy" src="/restaurantes/img/marcas/acai.jpg" alt="Açaí">
+      <img data-full="/restaurantes/img/marcas/full/frutos-do-mar.jpg" loading="lazy" src="/restaurantes/img/marcas/frutos-do-mar.jpg" alt="Frutos do mar">
+      <img data-full="/restaurantes/img/marcas/full/pudim.jpg" loading="lazy" src="/restaurantes/img/marcas/pudim.jpg" alt="Pudim">
+      <img data-full="/restaurantes/img/marcas/full/prato-autoral.jpg" loading="lazy" src="/restaurantes/img/marcas/prato-autoral.jpg" alt="Prato autoral">
+      <img data-full="/restaurantes/img/marcas/full/churros.jpg" loading="lazy" src="/restaurantes/img/marcas/churros.jpg" alt="Churros">
+      <img data-full="/restaurantes/img/marcas/full/massa-drink.jpg" loading="lazy" src="/restaurantes/img/marcas/massa-drink.jpg" alt="Massa com drink">
+      <img data-full="/restaurantes/img/marcas/full/carne-de-sol.jpg" loading="lazy" src="/restaurantes/img/carne-de-sol.jpg" alt="Carne de sol">
+      <img data-full="/restaurantes/img/marcas/full/sorvete-chocolate.jpg" loading="lazy" src="/restaurantes/img/marcas/sorvete-chocolate.jpg" alt="Sorvete">
+      <img data-full="/restaurantes/img/marcas/full/chef-panela.jpg" loading="lazy" src="/restaurantes/img/marcas/chef-panela.jpg" alt="Chef finalizando prato">
     </div>
   </div>
 </section>
@@ -442,6 +455,14 @@ a{color:inherit}
   <button class="nav prev" type="button" id="prev" aria-label="Tela anterior">←</button>
   <div class="prog" aria-hidden="true"><b id="prog" style="width:10%"></b></div>
   <button class="nav next" type="button" id="next" aria-label="Próxima tela">→</button>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <img id="lbImg" alt="">
+  <button class="x" type="button" id="lbX" aria-label="Fechar">✕</button>
+  <button class="lp" type="button" id="lbP" aria-label="Foto anterior">←</button>
+  <button class="ln" type="button" id="lbN" aria-label="Próxima foto">→</button>
+  <div class="lc" id="lbC"></div>
 </div>
 
 <script>
@@ -519,6 +540,33 @@ a{color:inherit}
   }));
 
   document.getElementById('moreFeeds').onclick = e => { document.getElementById('fgrid').classList.add('all'); e.target.remove(); };
+
+
+  // Ampliar fotos do portfólio e dos feeds
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbC = document.getElementById('lbC');
+  let group = [], gi = 0;
+  const showLb = () => { const im = group[gi]; lbImg.src = im.dataset.full || im.src; lbImg.alt = im.alt || ''; lbC.textContent = `${gi + 1} / ${group.length}`; };
+  const openLb = (list, k) => { group = list; gi = k; showLb(); lb.hidden = false; document.getElementById('lbX').focus(); };
+  const closeLb = () => { lb.hidden = true; lbImg.removeAttribute('src'); };
+  const step = d => { gi = (gi + d + group.length) % group.length; showLb(); };
+  document.querySelectorAll('.mosaic, .feed .g').forEach(box => {
+    const imgs = [...box.querySelectorAll('img')];
+    imgs.forEach((im, k) => im.addEventListener('click', () => openLb(imgs.filter(x => x.offsetParent !== null), imgs.filter(x => x.offsetParent !== null).indexOf(im))));
+  });
+  document.getElementById('lbX').onclick = closeLb;
+  document.getElementById('lbP').onclick = () => step(-1);
+  document.getElementById('lbN').onclick = () => step(1);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  addEventListener('keydown', e => {
+    if (lb.hidden) return;
+    e.stopImmediatePropagation(); e.preventDefault();
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  }, true);
+  let lx = 0;
+  lb.addEventListener('touchstart', e => { lx = e.touches[0].clientX; e.stopPropagation(); }, { passive: true });
+  lb.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - lx; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); e.stopPropagation(); }, { passive: true });
 
   const start = parseInt(location.hash.replace('#', ''), 10);
   go(start >= 1 && start <= N ? start - 1 : 0);
