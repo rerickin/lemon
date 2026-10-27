@@ -75,12 +75,12 @@ a{color:inherit}
 .stack{position:relative;height:min(70vh,620px)}
 .stack > *{position:absolute;width:40%;aspect-ratio:3/4;object-fit:cover;border:3px solid var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.5);background:#111}
 .stack video{aspect-ratio:9/16}
-.stack > :nth-child(1){left:0;top:4%;transform:rotate(-9deg)}
-.stack > :nth-child(2){left:58%;top:0;transform:rotate(7deg)}
-.stack > :nth-child(3){left:2%;top:46%;transform:rotate(-3deg);z-index:2}
-.stack > :nth-child(4){left:56%;top:44%;transform:rotate(5deg);z-index:2}
-.stack > :nth-child(5){left:30%;top:10%;transform:rotate(-2deg);z-index:3}
-.stack > :nth-child(6){left:28%;top:52%;transform:rotate(3deg);z-index:4;width:44%}
+.stack > :nth-child(1){left:0;top:6%;transform:rotate(-8deg);z-index:1}
+.stack > :nth-child(2){left:60%;top:4%;transform:rotate(8deg);z-index:1}
+.stack > :nth-child(3){left:30%;top:0;transform:rotate(-2deg);z-index:2}
+.stack > :nth-child(4){left:4%;top:30%;transform:rotate(5deg);z-index:5}
+.stack > :nth-child(5){left:58%;top:28%;transform:rotate(-6deg);z-index:5}
+.stack > :nth-child(6){left:31%;top:36%;transform:rotate(2deg);z-index:6;width:40%}
 
 /* 2 QUEM SOMOS */
 .who .in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -196,7 +196,7 @@ a{color:inherit}
   .cover .in,.who .in,.case .in,.photo .in,.cta .in{grid-template-columns:1fr;gap:28px}
   .stack{height:300px;order:-1}
   .stack > *{width:31%}
-  .stack > :nth-child(6){width:33%}
+  .stack > :nth-child(6){width:34%}
   .stack{height:330px}
   .cover h1{margin:12px 0 16px}
   .pains,.steps{grid-template-columns:1fr}
@@ -249,12 +249,12 @@ a{color:inherit}
       <button class="btn start" type="button" data-go="1">Começar a apresentação →</button>
     </div>
     <div class="stack" aria-hidden="true">
-      <video src="/vem/bastidor1.mp4" poster="/vem/bastidor1.jpg" muted autoplay loop playsinline></video>
-      <video src="/vem/bastidor2.mp4" poster="/vem/bastidor2.jpg" muted autoplay loop playsinline></video>
       <img src="/restaurantes/img/burger-cebola.jpg" alt="">
       <img src="/restaurantes/img/marcas/pizza.jpg" alt="">
-      <video src="/vem/bastidor3.mp4" poster="/vem/bastidor3.jpg" muted autoplay loop playsinline></video>
       <img src="/restaurantes/img/seven-master.jpg" alt="">
+      <video src="/vem/bastidor1.mp4" poster="/vem/bastidor1.jpg" muted autoplay loop playsinline></video>
+      <video src="/vem/bastidor3.mp4" poster="/vem/bastidor3.jpg" muted autoplay loop playsinline></video>
+      <video src="/vem/bastidor2.mp4" poster="/vem/bastidor2.jpg" muted autoplay loop playsinline></video>
     </div>
   </div>
 </section>
