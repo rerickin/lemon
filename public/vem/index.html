@@ -99,11 +99,11 @@ a{color:inherit}
 
 /* 3 DOR */
 .pain h2{font-size:clamp(44px,6vw,92px);margin:18px 0 36px}
-.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1.5px solid rgba(255,255,255,.18)}
-.pains div{padding:28px 26px 10px 0;margin-right:26px;border-right:1.5px solid rgba(255,255,255,.18)}
-.pains div:last-child{border-right:none;margin-right:0}
+.pains{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1.5px solid rgba(255,255,255,.18)}
+.pains > div{padding:28px 22px 10px 0;margin-right:22px;border-right:1.5px solid rgba(255,255,255,.18)}
+.pains > div:last-child{border-right:none;margin-right:0}
 .pains .x{font-family:var(--f-display);font-weight:900;font-size:40px;color:var(--pink);line-height:1}
-.pains h3{font-family:var(--f-display);font-weight:900;font-size:28px;text-transform:uppercase;line-height:1;margin:12px 0 10px}
+.pains h3{font-family:var(--f-display);font-weight:900;font-size:26px;text-transform:uppercase;line-height:1;margin:12px 0 10px}
 .pains p{font-size:15px;line-height:1.55;color:var(--mutel)}
 
 /* 4 O QUE FAZEMOS */
@@ -202,7 +202,7 @@ a{color:inherit}
   .stack{height:330px}
   .cover h1{margin:12px 0 16px}
   .pains,.steps{grid-template-columns:1fr}
-  .pains div{border-right:none;margin-right:0;border-bottom:1.5px solid rgba(255,255,255,.18);padding:20px 0}
+  .pains > div{border-right:none;margin-right:0;border-bottom:1.5px solid rgba(255,255,255,.18);padding:20px 0}
   .steps div{padding:20px 0;border-bottom:1.5px solid rgba(10,10,10,.15)}
   .flow{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr;max-width:380px}
@@ -288,7 +288,8 @@ a{color:inherit}
     <div class="kick">O desafio</div>
     <h2 class="bc">Seu restaurante<br>está passando<br><span class="hl">por isso?</span></h2>
     <div class="pains">
-      <div><div class="x">✕</div><h3>Ninguém te encontra</h3><p>Feed sem padrão, fotos que não dão fome e nenhum anúncio. O concorrente aparece primeiro e leva o cliente.</p></div>
+      <div><div class="x">✕</div><h3>Conteúdo que não vende</h3><p>Fotos e vídeos que não mostram o que a casa realmente é, e ninguém com tempo para produzir e postar com frequência.</p></div>
+      <div><div class="x">✕</div><h3>Ninguém te encontra</h3><p>Sem estratégia e sem anúncio. O concorrente aparece primeiro e leva o cliente.</p></div>
       <div><div class="x">✕</div><h3>Quem vem, não volta</h3><p>Você não tem o nome nem o WhatsApp de quem comeu aí ontem. Sem contato, não há como chamar de volta.</p></div>
       <div><div class="x">✕</div><h3>Movimento instável</h3><p>Fim de semana cheio, meio de semana vazio. Sem campanhas planejadas, o caixa depende da sorte.</p></div>
     </div>
