@@ -142,6 +142,16 @@ h2.bc{font-size:clamp(40px,5.6vw,72px)}
 .nota{font-size:11.5px;color:var(--mutel);margin-top:auto}
 @media(max-width:900px){.planos{grid-template-columns:1fr}}
 
+
+.receita{font-size:20px;max-width:520px;margin-top:20px;font-weight:500}
+.prox li strong{font-weight:700}
+.frase{margin-top:28px;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(24px,2.6vw,32px);line-height:1.05;max-width:560px}
+.frase span{background:var(--ink);color:var(--lime);padding:0 8px 2px;font-style:italic;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+body.em-lime .nav button{background:var(--ink);color:var(--lime)}
+body.em-lime .dots button{background:rgba(0,0,0,.25)}
+body.em-lime .dots button.on{background:var(--ink)}
+.passo{font-size:16px;max-width:340px;margin-bottom:22px}
+
 /* FEEDS */
 .feeds{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
 .feed{background:var(--white);color:#111;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(0,0,0,.45);border:1px solid #e6e6e6}
@@ -283,20 +293,23 @@ h2.bc{font-size:clamp(40px,5.6vw,72px)}
   </div>
 </section>
 
-<!-- 8 PRÓXIMOS PASSOS -->
-<section class="slide lime" aria-label="Próximos passos">
+<!-- PRÓXIMOS PASSOS -->
+<section class="slide lime" aria-label="A receita">
   <div class="in fim">
     <div>
-      <div class="kick">Próximos passos</div>
-      <h2 class="bc">Vamos colocar<br>o El Paso<br>no próximo nível?</h2>
+      <div class="kick">A receita</div>
+      <h2 class="bc">Não existe<br>segredo.</h2>
+      <p class="receita">Essa é a receita que funciona, e é a receita que vamos aplicar no El Paso.</p>
       <ul class="prox">
-        <li><b>01</b><span>Você escolhe o pacote que faz mais sentido agora.</span></li>
-        <li><b>02</b><span>Fazemos uma reunião de 30 minutos para entender a casa e os objetivos.</span></li>
-        <li><b>03</b><span>Marcamos a primeira diária de produção e começamos o primeiro mês.</span></li>
+        <li><b>01</b><span><strong>Atrair</strong> quem ainda não conhece a casa.</span></li>
+        <li><b>02</b><span><strong>Converter</strong> vontade em pedido, reserva e mesa ocupada.</span></li>
+        <li><b>03</b><span><strong>Fazer voltar</strong> quem já sentou à mesa.</span></li>
       </ul>
+      <p class="frase">Não são só posts bonitos. É estratégia bem feita, <span>e bonita.</span></p>
     </div>
     <div>
-      <a class="btn dark" href="https://wa.me/5561988889486?text=Ol%C3%A1!%20Vi%20a%20proposta%20da%20Lemon%20para%20o%20El%20Paso%20e%20quero%20conversar." target="_blank" rel="noopener">Falar no WhatsApp ↗</a>
+      <p class="passo">Próximo passo: uma conversa de 30 minutos para entender a casa e marcar a primeira diária de produção.</p>
+      <a class="btn dark" href="https://wa.me/5561988889486?text=Ol%C3%A1!%20Vi%20a%20proposta%20da%20Lemon%20para%20o%20El%20Paso%20e%20quero%20conversar." target="_blank" rel="noopener">Vamos conversar ↗</a>
       <p class="validade">Proposta válida por 15 dias.</p>
     </div>
   </div>
@@ -330,6 +343,7 @@ h2.bc{font-size:clamp(40px,5.6vw,72px)}
     prev.disabled = i === 0; next.disabled = i === total - 1;
     for (var d = 0; d < dots.children.length; d++) dots.children[d].classList.toggle('on', d === i);
     slides[i].scrollTop = 0;
+    document.body.classList.toggle('em-lime', slides[i].classList.contains('lime'));
     try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
   }
   prev.addEventListener('click', function(){ go(i - 1); });
