@@ -226,6 +226,27 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 .thanks p{font-size:clamp(18px,2.6vw,26px);color:#d6d6cc;margin:0;max-width:34ch}
 .calbtn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:transparent;color:var(--lime);border:1px solid var(--lime);border-radius:10px;padding:9px 16px;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.08em}
 .calbtn svg{width:18px;height:18px}
+.ytbtn.ok{background:var(--lime);color:var(--lime-ink)} .ytbtn.wn{border-color:var(--warn);color:var(--warn)}
+.yt{position:fixed;inset:0;z-index:26;background:rgba(5,5,4,.9);display:block;padding:16px;overflow:auto}
+.yt-in{width:min(960px,100%);margin:0 auto;background:var(--ink-2,#171714);border:1px solid #2e2e29;border-radius:18px;padding:18px;display:grid;gap:14px}
+.yt-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.yt-top small{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:#ff4d4d;font-weight:700}
+.yt-top h3{margin:4px 0 0;font-family:var(--f-display);font-weight:400;font-size:clamp(24px,4vw,34px);line-height:1.05;letter-spacing:.02em}
+.yt-top .x{background:#24241f;border:0;color:inherit;border-radius:50%;width:40px;height:40px;font-size:22px;flex:none}
+.yt-player{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+.yt-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-link{color:var(--lime);font-weight:600;font-size:15px}
+.yt-desc{border:1px solid #2e2e29;border-radius:10px;padding:0 12px}
+.yt-desc summary{cursor:pointer;padding:10px 0;font-weight:600;color:var(--mute,#9b9a90)}
+.yt-desc p{white-space:pre-wrap;margin:0 0 12px}
+.yt-acts{display:flex;flex-wrap:wrap;gap:10px}
+.yt-ok{flex:1 1 220px;background:var(--lime);color:var(--lime-ink);border:0;border-radius:12px;padding:14px;font-family:var(--f-display);font-size:24px;letter-spacing:.05em}
+.yt-ok[aria-pressed=true]{background:transparent;color:var(--lime);outline:2px solid var(--lime);outline-offset:-2px}
+.yt-wn{background:transparent;border:1px solid #2e2e29;color:var(--mute,#9b9a90);border-radius:12px;padding:10px 16px;font-weight:700}
+.yt-wn[aria-pressed=true]{border-color:var(--warn);color:var(--warn)}
+.yt-note textarea{width:100%;min-height:90px;background:var(--ink);border:1px solid var(--warn);border-radius:10px;color:inherit;padding:10px;font:inherit}
+.yt-note small{color:var(--mute,#9b9a90)}
+body.ro .yt-acts button:not([aria-pressed=true]){display:none}
 .calbtn:hover{background:var(--lime);color:var(--lime-ink)}
 .cal{position:fixed;inset:0;z-index:25;background:var(--ink);overflow:auto;padding:max(20px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(40px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .cal-in{max-width:1080px;margin:0 auto;display:grid;gap:28px}
@@ -371,6 +392,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       <div class="meta" id="period">Outubro 2026</div>
       <button class="calbtn" id="calBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>Calendário</button>
       <a class="calbtn" id="planBtn" hidden href="#" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>Planejamento</a>
+      <button class="calbtn ytbtn" id="ytBtn" hidden type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9l5.7 3.1z"/></svg><span id="ytBtnTx">Aprovar vídeo do YouTube</span></button>
     </div>
     <div class="tally" aria-live="polite">
       <div class="a"><b id="nA">0</b><span>Aprovados</span></div>
@@ -487,6 +509,16 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
+<div class="yt" id="yt" hidden role="dialog" aria-modal="true" aria-labelledby="ytTitle">
+  <div class="yt-in">
+    <div class="yt-top"><div><small>Vídeo do YouTube</small><h3 id="ytTitle"></h3></div><button class="x" id="ytClose" type="button" aria-label="Fechar">×</button></div>
+    <div class="yt-player"><iframe id="ytFrame" title="Vídeo do YouTube" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+    <a class="yt-link" id="ytLink" target="_blank" rel="noopener">Abrir o vídeo no Google Drive ↗</a>
+    <details class="yt-desc"><summary>Descrição do vídeo</summary><p id="ytDesc"></p></details>
+    <div class="yt-acts"><button type="button" class="yt-ok" id="ytOk">Aprovar</button><button type="button" class="yt-wn" id="ytWn">Apontar correção</button></div>
+    <div class="yt-note" id="ytNoteBox" hidden><textarea id="ytNote" maxlength="1500" placeholder="Escreva o que precisa corrigir no vídeo (ex: minuto e o que mudar)"></textarea><small>Salvo automaticamente</small></div>
+  </div>
+</div>
 <div class="cal" id="cal" hidden role="dialog" aria-modal="true" aria-labelledby="calTitle">
   <div class="cal-in">
     <div class="cal-top"><h2 id="calTitle">Calendário <em id="calMonth">outubro</em></h2><button class="x" id="calClose" aria-label="Fechar calendário">×</button></div>
@@ -507,7 +539,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   "agency": "Lemon Social",
   "client": "Premium Grass",
   "slug": "premiumgrass",
-  "drive": "",
+  "drive": "https://drive.google.com/drive/folders/1WxYKAmf6y8GoA3Ty5L1A227IRnT6LjCp?usp=sharing",
   "profile": {
     "handle": "gramapremiumgrass",
     "name": "Premium Grass Gramas",
@@ -528,108 +560,117 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       "posts": [
         {
           "id": "01",
-          "date": "",
+          "date": "2026-10-31",
           "format": "carrossel",
           "images": [
-            "img/01-1.jpg",
-            "img/01-2.jpg",
-            "img/01-3.jpg",
-            "img/01-4.jpg",
-            "img/01-5.jpg"
+            "img/01-1.jpg?v=3",
+            "img/01-2.jpg?v=3",
+            "img/01-3.jpg?v=3",
+            "img/01-4.jpg?v=3",
+            "img/01-5.jpg?v=3"
           ],
           "caption": "Já olhou para o jardim do vizinho e pensou: \"Por que a grama dele está tão bonita e a minha não?\"\nPois saiba que, mesmo usando a mesma variedade de grama, os resultados podem ser bem diferentes!\nA quantidade de sol, as condições do solo e até os hábitos de manutenção influenciam na aparência do gramado.\nSalve essas dicas quando tiver dúvidas de como manter o cuidado com o seu jardim."
         },
         {
           "id": "02",
-          "date": "",
-          "format": "carrossel",
-          "images": [
-            "img/02-1.jpg",
-            "img/02-2.jpg",
-            "img/02-3.jpg",
-            "img/02-4.jpg"
-          ],
-          "caption": "Você sabe quantos metros quadrados de grama precisa comprar para o seu projeto?\nCalcular a quantidade certa é um passo importante para evitar desperdícios e gastos desnecessários!\n\nMostramos como fazer essa conta, mesmo em terrenos com formatos irregulares.\nSalve para consultar quando precisar e, se tiver dúvidas, conte com a equipe da Premium Grass para te ajudar a planejar seu pedido!"
-        },
-        {
-          "id": "03",
-          "date": "",
-          "format": "carrossel",
-          "images": [
-            "img/03-1.jpg",
-            "vid/03-2.mp4"
-          ],
-          "caption": "Conta pra gente: qual espaço você gostaria de ver assim, bem verdinho?"
-        },
-        {
-          "id": "04",
-          "date": "",
+          "date": "2026-11-03",
           "format": "reels",
-          "video": "vid/r1.mp4",
+          "video": "vid/r1.mp4?v=3",
           "images": [
-            "img/04-1.jpg"
+            "img/02-1.jpg?v=3"
           ],
           "caption": "Você já imaginou a quantidade de grama necessária para atender as áreas comuns de um condomínio inteiro?\n\nAqui na Premium Grass, temos a oportunidade de participar de projetos desse porte. E cada empreendimento tem suas particularidades. Por isso, entender a demanda do cliente e planejar o fornecimento faz parte do nosso atendimento.\n\nSe você também está à frente de uma obra ou empreendimento que precisa de grama em grande quantidade, fale com a nossa equipe. Vamos conversar sobre o seu projeto!"
         },
         {
-          "id": "05",
-          "date": "",
-          "format": "reels",
-          "video": "vid/r2.mp4?v=2",
+          "id": "03",
+          "date": "2026-11-05",
+          "format": "carrossel",
           "images": [
-            "img/05-1.jpg?v=2"
+            "img/03-1.jpg?v=3",
+            "img/03-2.jpg?v=3",
+            "img/03-3.jpg?v=3",
+            "img/03-4.jpg?v=3"
+          ],
+          "caption": "Você sabe quantos metros quadrados de grama precisa comprar para o seu projeto?\nCalcular a quantidade certa é um passo importante para evitar desperdícios e gastos desnecessários!\n\nMostramos como fazer essa conta, mesmo em terrenos com formatos irregulares.\nSalve para consultar quando precisar e, se tiver dúvidas, conte com a equipe da Premium Grass para te ajudar a planejar seu pedido!"
+        },
+        {
+          "id": "04",
+          "date": "2026-11-09",
+          "format": "reels",
+          "video": "vid/r2.mp4?v=3",
+          "images": [
+            "img/04-1.jpg?v=3"
           ],
           "caption": "Já imaginou tudo o que acontece na fazenda antes de um pedido de milhares de metros quadrados de grama sair para entrega?\n\nPor aqui, cada pedido envolve uma equipe que trabalha desde a programação da colheita até o carregamento e o transporte.\nE quando falamos de grandes quantidades, essa organização faz ainda mais diferença. Afinal, a grama é um produto vivo e precisa chegar ao destino no tempo certo.\n\nTem uma obra ou empreendimento de grande porte? Converse com a nossa equipe e vamos planejar seu pedido!"
         },
         {
-          "id": "06",
-          "date": "",
-          "format": "reels",
-          "video": "vid/r3.mp4",
+          "id": "05",
+          "date": "2026-11-12",
+          "format": "carrossel",
           "images": [
-            "img/06-1.jpg"
+            "img/05-1.jpg?v=3",
+            "vid/05-2.mp4?v=3"
           ],
-          "caption": "Legenda em breve."
+          "caption": "Conta pra gente: qual espaço você gostaria de ver assim, bem verdinho?"
         },
         {
-          "id": "07",
-          "date": "",
+          "id": "06",
+          "date": "2026-11-17",
           "format": "reels",
-          "video": "vid/r4.mp4",
+          "video": "vid/r4.mp4?v=3",
           "images": [
-            "img/07-1.jpg"
+            "img/06-1.jpg?v=3"
           ],
           "caption": "Com a chegada do período de chuvas aqui em Brasília, essa é uma dúvida que pode aparecer bastante!\nA boa notícia é que a chuva não é necessariamente um problema para o plantio. O importante é observar as condições do terreno, principalmente se o solo estiver muito encharcado.\n\nAssista o vídeo até o final que eu explico quando a chuva pode ajudar e quando é melhor esperar um pouquinho.\nE você, tem alguma dúvida sobre o plantio ou os cuidados com a grama? Deixa aqui nos comentários!\nQuem sabe ela não vira o assunto do próximo vídeo?"
         },
         {
-          "id": "08",
-          "date": "",
+          "id": "07",
+          "date": "2026-11-20",
           "format": "reels",
-          "video": "vid/r5.mp4",
+          "video": "vid/r6.mp4?v=3",
           "images": [
-            "img/08-1.jpg"
+            "img/07-1.jpg?v=3"
+          ],
+          "caption": "Me chamaram pro administrativo e até hoje tô tentando descobrir onde fica minha mesa!"
+        },
+        {
+          "id": "08",
+          "date": "2026-11-23",
+          "format": "reels",
+          "video": "vid/r5.mp4?v=3",
+          "images": [
+            "img/08-1.jpg?v=3"
           ],
           "caption": "Tem transformação que a gente precisa mostrar por aqui!\nDessa vez, participamos de um projeto com uma área enorme para receber grama natural. E olha... quando a gente vê o antes e o depois, dá pra perceber a diferença que o gramado fez nesse espaço!\n\nE se você também tem uma área que precisa receber grama, seja para uma residência, condomínio, chácara ou empreendimento de grande porte, entre em contato com a nossa equipe. Vamos conversar sobre o seu projeto!"
         },
         {
           "id": "09",
-          "date": "",
+          "date": "2026-11-26",
           "format": "reels",
-          "video": "vid/r6.mp4",
+          "video": "vid/r7.mp4?v=3",
           "images": [
-            "img/09-1.jpg"
+            "img/09-1.jpg?v=3"
           ],
-          "caption": "Me chamaram pro administrativo e até hoje tô tentando descobrir onde fica minha mesa!"
+          "caption": "Já fez seu pedido de grama hoje?\nAqui na Premium Grass, temos produção própria, colheita programada e uma equipe pronta para te ajudar a escolher a grama ideal para o seu projeto!\nEntre em contato, solicite seu orçamento e programe sua entrega com a gente!"
         },
         {
           "id": "10",
-          "date": "",
+          "date": "2026-11-30",
           "format": "reels",
-          "video": "vid/r7.mp4",
+          "video": "vid/r3.mp4?v=3",
           "images": [
-            "img/10-1.jpg"
+            "img/10-1.jpg?v=3"
           ],
-          "caption": "Já fez seu pedido de grama hoje?\nAqui na Premium Grass, temos produção própria, colheita programada e uma equipe pronta para te ajudar a escolher a grama ideal para o seu projeto!\nEntre em contato, solicite seu orçamento e programe sua entrega com a gente!"
+          "caption": "Caminhão sendo carregado porque daqui a pouquinho tem casa nova ganhando um gramado verdinho!"
+        }
+      ],
+      "youtube": [
+        {
+          "id": "yt1",
+          "title": "Grama natural na época de chuva: quais cuidados são necessários?",
+          "embed": "https://drive.google.com/file/d/1sSViZ9IbRZGHUuD2wjFftxq90xotj1KU/preview",
+          "link": "https://drive.google.com/file/d/1sSViZ9IbRZGHUuD2wjFftxq90xotj1KU/view",
+          "caption": "Grama natural na época de chuva: quais cuidados são necessários?\nCom a chegada do período chuvoso, muita gente acredita que a grama não precisa de tantos cuidados. Mas será que é assim mesmo?\nApesar de a chuva ajudar no desenvolvimento do gramado, o excesso de umidade também pode trazer alguns problemas.\n\nNeste vídeo, explicamos como ajustar a irrigação, quais cuidados ter com o corte, como identificar possíveis problemas causados pelo excesso de água e o que observar antes de plantar grama nessa época do ano.\n\nAssista até o final e confira nossas dicas para manter seu gramado saudável durante o período de chuvas!\nGostou do conteúdo? Deixe seu like, inscreva-se no canal e compartilhe suas dúvidas nos comentários!\n\nSIGA NAS REDES SOCIAIS\nInstagram: @gramapremiumgrass\n\nPara mais orientações e orçamento, acesse:\n👉 www.premiumgrass.com.br"
         }
       ]
     }
@@ -709,9 +750,10 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     tally();
   }
 
+  const allItems = () => posts.concat((M && M.youtube) || []);
   function summary(){
     const a = [], w = [], pend = [];
-    posts.forEach(p => { const s = state[p.id] || {}; if (s.status === 'a') a.push(p); else if (s.status === 'w') w.push(p); else pend.push(p); });
+    allItems().forEach(p => { const s = state[p.id] || {}; if (s.status === 'a') a.push(p); else if (s.status === 'w') w.push(p); else pend.push(p); });
     return {a, w, pend};
   }
   function summaryText(){
@@ -723,11 +765,11 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     return t.trim();
   }
   function tally(){
-    const {a, w, pend} = summary(), n = posts.length || 1;
+    const {a, w, pend} = summary(), n = allItems().length || 1;
     $('nA').textContent = a.length; $('nW').textContent = w.length; $('nP').textContent = pend.length;
     $('barA').style.width = (a.length / n * 100) + '%'; $('barW').style.width = (w.length / n * 100) + '%';
     $('dockTxt').innerHTML = '';
-    const b = document.createElement('b'); b.textContent = (a.length + w.length) + ' de ' + posts.length;
+    const b = document.createElement('b'); b.textContent = (a.length + w.length) + ' de ' + allItems().length;
     $('dockTxt').append(b, document.createTextNode(readOnly ? ' revisados. Aprovação enviada.' : pend.length ? ' revisados. Faltam ' + pend.length + '.' : ' revisados. Pode finalizar!'));
   }
 
@@ -833,13 +875,13 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
   }
   function approvePending(){
     let n = 0;
-    posts.forEach(p => { const s = state[p.id] || {}; if (!s.status) { s.status = 'a'; state[p.id] = s; stamp(p.id); n++; } });
+    allItems().forEach(p => { const s = state[p.id] || {}; if (!s.status) { s.status = 'a'; state[p.id] = s; stamp(p.id); n++; } });
     return n;
   }
   $('approveAll').onclick = () => {
     if (readOnly) return;
     const n = approvePending();
-    save(); renderGrid(); toast(n ? n + ' conteúdos aprovados' : 'Nenhum pendente');
+    save(); renderGrid(); ytDraw(); toast(n ? n + ' conteúdos aprovados' : 'Nenhum pendente');
   };
   $('bAp').onclick = () => setStatus('a');
   $('bAj').onclick = () => setStatus('w');
@@ -886,6 +928,31 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     b.onclick = () => { $('cal').hidden = true; open(i); };
     return [b, im, s];
   }
+  function ytItem(){ return (M.youtube || [])[0]; }
+  function ytDraw(){
+    const y = ytItem(); if (!y) return;
+    const s = state[y.id] || {};
+    $('ytBtn').classList.toggle('ok', s.status === 'a'); $('ytBtn').classList.toggle('wn', s.status === 'w');
+    $('ytBtnTx').textContent = s.status === 'a' ? '✓ Vídeo do YouTube aprovado' : s.status === 'w' ? 'Vídeo do YouTube: correção' : 'Aprovar vídeo do YouTube';
+    if ($('yt').hidden) return;
+    $('ytOk').textContent = s.status === 'a' ? '✓ Aprovado' : 'Aprovar'; $('ytOk').setAttribute('aria-pressed', s.status === 'a');
+    $('ytWn').setAttribute('aria-pressed', s.status === 'w');
+    $('ytNoteBox').hidden = s.status !== 'w'; $('ytNote').value = s.note || ''; $('ytNote').readOnly = readOnly;
+  }
+  $('ytBtn').onclick = () => {
+    const y = ytItem(); if (!y) return;
+    $('ytTitle').textContent = y.title; $('ytDesc').textContent = y.caption || ''; $('ytLink').href = y.link || y.embed;
+    if ($('ytFrame').getAttribute('src') !== y.embed) $('ytFrame').src = y.embed;
+    $('yt').hidden = false; document.body.style.overflow = 'hidden'; ytDraw(); $('ytClose').focus();
+  };
+  const ytClose = () => { $('yt').hidden = true; document.body.style.overflow = ''; $('ytFrame').src = 'about:blank'; ytDraw(); $('ytBtn').focus(); };
+  $('ytClose').onclick = ytClose;
+  $('yt').addEventListener('click', e => { if (e.target === $('yt')) ytClose(); });
+  const ytSet = v => { if (readOnly) return; const y = ytItem(), s = state[y.id] || {}; s.status = s.status === v ? undefined : v; if (v === 'w' && s.status === 'w') s.type = 'Vídeo do YouTube'; state[y.id] = s; stamp(y.id); save(); ytDraw(); tally(); if (s.status === 'w') setTimeout(() => $('ytNote').focus(), 30); };
+  $('ytOk').onclick = () => ytSet('a'); $('ytWn').onclick = () => ytSet('w');
+  $('ytNote').oninput = () => { const y = ytItem(); state[y.id] = state[y.id] || {}; state[y.id].note = $('ytNote').value; save(); };
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !$('yt').hidden) ytClose(); });
+
   function renderCal(){
     const body = $('calBody'); body.textContent = '';
     $('calMonth').textContent = M.label.toLowerCase();
@@ -970,7 +1037,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     $('lock').hidden = !readOnly;
     if (readOnly) $('lock').textContent = '✓ Aprovação de ' + M.label.toLowerCase() + ' enviada em ' + fmtDate(finalizedAt) + '. Se precisar mudar algo, fale com a Lemon.';
     $('finish').hidden = readOnly; $('approveAll').hidden = readOnly;
-    renderGrid();
+    renderGrid(); ytDraw();
   }
 
   // welcome: month picker
@@ -1000,6 +1067,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     const first = box.querySelector('button'); if (first) first.focus();
   }
   async function enter(m){
+    $('ytBtn').hidden = !(m.youtube && m.youtube.length);
     $('planBtn').hidden = !m.plan; $('planBtn').href = '/' + D.slug + '/planejamento/?m=' + m.id;
     M = m; posts = m.posts; KEY = 'lemon-aprova:' + D.client + ':' + periodOf(m);
     try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }

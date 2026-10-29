@@ -166,7 +166,7 @@ a.btn{color:var(--paper)}
   let senha = '';
   try { senha = localStorage.getItem('lemon-painel') || ''; } catch(e) {}
   const cache = {};
-  const FMT = {post:'Post', carrossel:'Carrossel', reels:'Reels'};
+  const FMT = {post:'Post', carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'};
   const fmt = iso => iso ? new Date(iso).toLocaleString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'}) : '';
 
   async function loadPage(){
@@ -174,6 +174,7 @@ a.btn{color:var(--paper)}
     const html = await (await fetch('/' + CLIENT + '/', {cache:'no-store'})).text();
     const m = html.match(/<script type="application\/json" id="data">([\s\S]*?)<\/script>/);
     const data = JSON.parse(m[1]); cache[CLIENT] = data;
+    data.months.forEach(mo => (mo.youtube || []).forEach(y => mo.posts.push({id: y.id, format: 'youtube', images: [], date: '', title: 'YouTube · ' + y.title})));
     const FN = {reels:'Reels', carrossel:'Carrossel', youtube:'YouTube'};
     for (const mo of data.months.slice()) {
       if (!mo.plan) continue;
@@ -387,7 +388,7 @@ a.btn{color:var(--paper)}
       ordered.forEach(p => {
         const s = st[p.id] || {};
         const row = el('div', 'row' + (s.status === 'w' ? ' w' : ''));
-        const img = m.isPlan ? el('div') : el('img'); if (!m.isPlan) { img.alt = ''; img.loading = 'lazy'; img.src = '/' + CLIENT + '/' + ((p.images || [])[0] || ''); }
+        const img = (m.isPlan || !(p.images || []).length) ? el('div') : el('img'); if (img.tagName === 'IMG') { img.alt = ''; img.loading = 'lazy'; img.src = '/' + CLIENT + '/' + ((p.images || [])[0] || ''); }
         const d = el('div', 'd');
         const chipS = s.status === 'a' ? el('span', 'chip ok', 'Aprovado') : s.status === 'w' ? el('span', 'chip w', 'Correção') : el('span', 'chip open', 'Pendente');
         d.appendChild(chipS);
