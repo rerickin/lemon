@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Proposta Lemon Social · Restaurante Universal</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Proposta Lemon Social · Restaurante Universal">
+<meta property="og:description" content="Conteúdo, recorrência e tráfego pago para encher o salão e fazer o cliente voltar.">
+<meta property="og:image" content="https://www.agencialemonsocial.com.br/vem/og-escritorio.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#C8F20D; --ink:#0A0A0A; --ink2:#151515; --white:#FFFFFF; --paper:#F4F4F0;
+  --muted:#5C5C5C; --mutel:rgba(255,255,255,.62); --line:rgba(255,255,255,.14);
+  --f-display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  --f-label:'Bebas Neue',Impact,sans-serif;
+  --f-body:'DM Sans',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--white);font-family:var(--f-body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.bc{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-1px;text-wrap:balance}
+h2.bc{font-size:clamp(40px,5.6vw,72px)}
+.hl{font-style:italic;background:var(--lime);color:var(--ink);padding:0 10px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kick{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;color:var(--mutel);margin-bottom:20px}
+.kick::before{content:'';width:24px;height:1.5px;background:var(--lime)}
+.light .kick,.paper .kick,.lime .kick{color:var(--muted)}
+.light .kick::before,.paper .kick::before,.lime .kick::before{background:var(--ink)}
+.lead{font-size:17px;max-width:620px;margin-top:18px;color:var(--mutel)}
+.light .lead,.paper .lead{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:var(--ink);padding:17px 28px;font:700 13px var(--f-body);letter-spacing:1px;text-transform:uppercase;text-decoration:none}
+.btn.dark{background:var(--ink);color:var(--lime)}
+
+/* DECK */
+.deck{position:fixed;inset:0;overflow:hidden}
+.track{display:flex;height:100%;transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.slide{flex:0 0 100%;height:100%;overflow-y:auto;overflow-x:hidden;position:relative;display:flex;flex-direction:column;
+  padding:calc(78px + env(safe-area-inset-top,0px)) max(48px,env(safe-area-inset-right,0px)) calc(96px + env(safe-area-inset-bottom,0px)) max(48px,env(safe-area-inset-left,0px))}
+.slide > .in{margin:auto;width:100%;max-width:1180px}
+.light{background:var(--white);color:var(--ink)}
+.paper{background:var(--paper);color:var(--ink)}
+.lime{background:var(--lime);color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.track{transition:none}}
+
+.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(20px + env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px));pointer-events:none;mix-blend-mode:difference;color:#fff}
+.logo{font-family:var(--f-label);font-size:26px;letter-spacing:2px;display:flex;align-items:center;gap:6px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--lime);display:inline-block}
+.count{font-family:var(--f-label);font-size:16px;letter-spacing:2px;font-variant-numeric:tabular-nums}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:0 max(24px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(24px,env(safe-area-inset-left,0px));pointer-events:none}
+.nav button{pointer-events:auto;width:52px;height:52px;border:0;background:var(--lime);color:var(--ink);font-size:22px;font-weight:700;cursor:pointer;display:grid;place-items:center}
+.nav button:disabled{opacity:.25;cursor:default}
+.nav button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.dots{display:flex;gap:6px;pointer-events:auto;flex-wrap:wrap;justify-content:center}
+.dots button{width:26px;height:4px;background:rgba(128,128,128,.45);padding:0}
+.dots button.on{background:var(--lime);width:40px}
+
+/* CAPA */
+.capa{background:var(--ink)}
+.capa::before{content:'';position:absolute;inset:0;background:url('https://www.agencialemonsocial.com.br/vem/escritorio.jpg') center/cover;opacity:.3}
+.capa::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.25) 0%,rgba(10,10,10,.95) 85%)}
+.capa > .in{position:relative;z-index:2}
+.marca{display:flex;align-items:center;gap:16px;margin-bottom:30px;flex-wrap:wrap}
+.marca .lg{font-family:var(--f-label);font-size:clamp(54px,8vw,96px);letter-spacing:4px;line-height:.85;display:flex;align-items:center;gap:12px}
+.marca .lg i{width:clamp(16px,2vw,24px);height:clamp(16px,2vw,24px);border-radius:50%;background:var(--lime);display:inline-block}
+.marca small{font-family:var(--f-label);letter-spacing:3px;font-size:16px;color:var(--mutel);border-left:1.5px solid var(--line);padding-left:14px;line-height:1.25}
+.para{font-family:var(--f-label);font-size:20px;letter-spacing:3px;color:var(--lime);margin-bottom:12px}
+.capa h1{font-size:clamp(46px,7vw,96px)}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.meta span{border:1.5px solid var(--line);padding:9px 16px;font-family:var(--f-display);font-weight:900;font-size:17px;text-transform:uppercase}
+.meta span:first-child{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.dica{margin-top:34px;font-size:13px;color:var(--mutel)}
+
+/* MÉTODO */
+.etapas{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border:1.5px solid var(--line)}
+.etapa{padding:32px 28px;border-right:1.5px solid var(--line)}
+.etapa:last-child{border-right:none}
+.etapa .n{font-family:var(--f-label);letter-spacing:2px;color:var(--mutel);font-size:14px}
+.etapa h3{font-family:var(--f-display);font-weight:900;font-size:56px;text-transform:uppercase;line-height:.9;color:var(--lime);margin:8px 0 12px}
+.etapa p{color:var(--mutel);font-size:15px}
+
+/* COMO FUNCIONA */
+.passos{list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink)}
+.passos li{counter-increment:p;padding:24px 24px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.passos li::before{content:counter(p,decimal-leading-zero);display:inline-grid;place-items:center;width:44px;height:44px;background:var(--ink);color:var(--lime);font-family:var(--f-label);font-size:24px;margin-bottom:14px}
+.passos b{display:block;font-family:var(--f-display);font-weight:900;font-size:23px;text-transform:uppercase;line-height:1;margin-bottom:6px}
+.passos span{font-size:14px;color:var(--muted)}
+
+/* PACOTES */
+.pac{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.pac .num{font-family:var(--f-label);letter-spacing:3px;font-size:18px;color:var(--mutel)}
+.light .pac .num{color:var(--muted)}
+.pac h2{margin:10px 0 14px}
+.pac .desc{font-size:17px;color:var(--mutel);max-width:420px}
+.light .pac .desc{color:var(--muted)}
+.selo{display:inline-block;background:var(--lime);color:var(--ink);font-family:var(--f-label);letter-spacing:2px;font-size:16px;padding:5px 14px;margin-bottom:16px}
+.light .selo{background:var(--ink);color:var(--lime)}
+.preco{margin-top:30px;padding:24px 0;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.light .preco{border-color:rgba(0,0,0,.14)}
+.preco small{display:block;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mutel)}
+.light .preco small{color:var(--muted)}
+.preco b{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,8vw,104px);line-height:1;font-variant-numeric:tabular-nums}
+.preco b sup{font-size:.3em;vertical-align:top;margin-right:6px;position:relative;top:.5em}
+.preco b em{font-style:normal;font-size:.25em;color:var(--mutel);margin-left:6px}
+.light .preco b em{color:var(--muted)}
+.obs{margin-top:18px;font-size:13px;color:var(--mutel);max-width:440px}
+.grupos{display:grid;gap:26px}
+.grupos.duas{grid-template-columns:1fr 1fr}
+.grupo h4{font-family:var(--f-label);letter-spacing:2px;font-size:17px;display:inline-block;background:var(--lime);color:var(--ink);padding:3px 10px;margin-bottom:14px}
+.grupo ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.grupo li{position:relative;padding-left:30px;font-size:15.5px}
+.grupo li::before{content:'';position:absolute;left:0;top:2px;width:19px;height:19px;border-radius:50%;background:var(--lime)}
+.grupo li::after{content:'';position:absolute;left:6.5px;top:6px;width:6px;height:9px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg)}
+.light .grupo li::before{background:var(--ink)}
+.light .grupo li::after{border-color:var(--lime)}
+
+
+/* INVESTIMENTO */
+.inv-t{font-size:clamp(30px,3.6vw,46px)!important}
+.planos{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px;max-width:920px}
+.plano{background:#fff;border:1px solid #e3e3dc;padding:30px 30px 28px;display:flex;flex-direction:column;gap:20px}
+.plano.escuro{background:var(--ink);color:#fff;border-color:var(--ink)}
+.plano header{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pn{font-family:var(--f-label);letter-spacing:2px;font-size:17px}
+.tagp{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--lime);color:var(--ink);padding:4px 8px}
+.valor{font-family:var(--f-display);font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums;padding-bottom:20px;border-bottom:1px solid #e3e3dc}
+.escuro .valor{border-color:rgba(255,255,255,.15)}
+.valor small{font-size:16px;font-weight:700;margin-right:4px;vertical-align:top;position:relative;top:5px}
+.valor span{font-family:var(--f-body);font-size:13px;font-weight:500;color:var(--muted);margin-left:4px}
+.escuro .valor span{color:var(--mutel)}
+.bloco h5{font-size:10.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.escuro .bloco h5{color:var(--lime)}
+.bloco ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.bloco li{font-size:14px;padding-left:16px;position:relative;line-height:1.4}
+.bloco li::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.nota{font-size:11.5px;color:var(--mutel);margin-top:auto}
+@media(max-width:900px){.planos{grid-template-columns:1fr}}
+
+
+.receita{font-size:20px;max-width:520px;margin-top:20px;font-weight:500}
+.prox li strong{font-weight:700}
+.frase{margin-top:28px;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(24px,2.6vw,32px);line-height:1.05;max-width:560px}
+.frase span{background:var(--ink);color:var(--lime);padding:0 8px 2px;font-style:italic;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+body.em-lime .nav button{background:var(--ink);color:var(--lime)}
+body.em-lime .dots button{background:rgba(0,0,0,.25)}
+body.em-lime .dots button.on{background:var(--ink)}
+.passo{font-size:16px;max-width:340px;margin-bottom:22px}
+
+.unico{margin-top:30px;max-width:760px}
+.unico .plano{gap:22px}
+.contas{display:grid;gap:8px;font-size:14px}
+.contas div{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.15);padding-bottom:8px}
+.contas span{color:var(--mutel)} .contas em{font-style:normal;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--lime);margin-left:8px}
+.contas b{font-weight:500}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
+.galeria img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+@media(max-width:900px){.cols{grid-template-columns:1fr}.galeria{grid-template-columns:1fr 1fr}}
+
+
+.vids{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:30px}
+.vid{aspect-ratio:9/16;position:relative;background:#000;cursor:pointer;overflow:hidden}
+.vid img,.vid video,.vid iframe{width:100%;height:100%;object-fit:cover;display:block;border:0}
+.vid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:var(--lime);display:grid;place-items:center;transition:transform .15s}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.vid .play svg{width:20px;height:20px;margin-left:3px;fill:var(--ink)}
+.vtag{position:absolute;left:8px;bottom:8px;background:var(--lime);color:var(--ink);font-family:var(--f-label);font-size:12px;letter-spacing:1.5px;padding:3px 8px}
+@media(max-width:900px){.vids{grid-template-columns:repeat(3,1fr)}}
+
+
+/* FEEDS */
+.feeds{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.feed{background:var(--white);color:#111;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(0,0,0,.45);border:1px solid #e6e6e6}
+.feed .id{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.feed .av{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none;display:grid;place-items:center;font-family:var(--f-label);font-size:18px}
+.feed .id b{display:block;font-size:14px}
+.feed .id span{font-size:11px;color:#777}
+.feed .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.feed .gr img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.feed .ft{padding:10px 14px;font-size:12px;color:#555;border-top:1px solid #eee}
+.feed .ft b{color:#111}
+
+/* FIM */
+.fim{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.prox{list-style:none;border-top:1.5px solid var(--ink);margin-top:26px}
+.prox li{padding:16px 0;border-bottom:1.5px solid var(--ink);display:flex;gap:16px;align-items:baseline;font-size:16px}
+.prox li b{font-family:var(--f-label);font-size:26px;letter-spacing:1px;min-width:34px}
+.validade{margin-top:16px;font-size:13px;color:rgba(0,0,0,.6)}
+
+@media(max-width:900px){
+  .slide{padding-left:20px;padding-right:20px}
+  .etapas{grid-template-columns:1fr}
+  .etapa{border-right:none;border-bottom:1.5px solid var(--line);padding:22px 20px}
+  .etapa:last-child{border-bottom:none}
+  .etapa h3{font-size:44px}
+  .passos{grid-template-columns:1fr}
+  .pac,.fim{grid-template-columns:1fr;gap:28px}
+  .grupos.duas{grid-template-columns:1fr}
+  .feeds{grid-template-columns:1fr 1fr}
+  .dots{display:none}
+}
+@media print{
+  body{overflow:visible}
+  .deck{position:static}.track{display:block;transform:none!important}
+  .slide{height:auto;min-height:100vh;break-after:page;overflow:visible}
+  .nav,.top{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="logo">LEMON<i></i></div><div class="count" id="count">01 / 08</div></div>
+
+<main class="deck"><div class="track" id="track">
+
+<!-- 1 CAPA -->
+<section class="slide capa" aria-label="Capa">
+  <div class="in">
+    <div class="marca"><div class="lg">LEMON<i></i></div><small>SOCIAL<br>MARKETING PARA RESTAURANTES</small></div>
+    <div class="para">Proposta comercial</div>
+    <h1 class="bc">Restaurante <span class="hl">Universal</span></h1>
+    <div class="meta"><span>Atrair</span><span>Converter</span><span>Fazer voltar</span></div>
+    <p class="dica">Use as setas ou deslize para o lado para passar as páginas →</p>
+  </div>
+</section>
+
+<!-- 2 MÉTODO -->
+<section class="slide" aria-label="O método">
+  <div class="in">
+    <div class="kick">O método Lemon</div>
+    <h2 class="bc">Um método em<br><span class="hl">três etapas.</span></h2>
+    <p class="lead">A gente cuida da jornada inteira do cliente, do primeiro olhar no Instagram até a próxima visita.</p>
+    <div class="etapas">
+      <div class="etapa"><div class="n">ETAPA 01</div><h3>Atrair</h3><p>Conteúdo que dá fome e mostra o prato como ele realmente é, mais anúncios para quem está perto.</p></div>
+      <div class="etapa"><div class="n">ETAPA 02</div><h3>Converter</h3><p>Tags NFC no cardápio e links na bio que transformam vontade em pedido, reserva e mesa ocupada.</p></div>
+      <div class="etapa"><div class="n">ETAPA 03</div><h3>Fazer voltar</h3><p>Avaliação pós atendimento que capta o contato do cliente e um CRM com campanhas para ele voltar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 COMO FUNCIONA -->
+<section class="slide paper" aria-label="Como funciona o mês">
+  <div class="in">
+    <div class="kick">Como funciona o mês</div>
+    <h2 class="bc">Um mês de conteúdo,<br><span class="hl">pensado antes.</span></h2>
+    <ol class="passos">
+      <li><b>Estratégia</b><span>A social media define objetivos do mês, pratos em destaque e datas importantes.</span></li>
+      <li><b>Calendário e roteiros</b><span>Cada publicação é planejada: formato, roteiro, legenda e data.</span></li>
+      <li><b>Diária de produção</b><span>Uma gravação por mês no Universal, com fotos e vídeos definidos no roteiro.</span></li>
+      <li><b>Edição e design</b><span>Reels editados, carrosséis e artes prontos para o feed e os stories.</span></li>
+      <li><b>Aprovação</b><span>Você vê o perfil pronto num link e aprova ou pede ajuste antes de ir ao ar.</span></li>
+      <li><b>Publicação</b><span>Tudo agendado nos melhores horários, com acompanhamento dos resultados.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="slide paper" aria-label="Diferenciais">
+  <div class="in">
+    <div class="kick">Diferenciais</div>
+    <h2 class="bc inv-t">Por que a Lemon</h2>
+    <ol class="passos">
+      <li><b>Só restaurantes</b><span>Somos especializados em gastronomia. Entendemos o salão, a cozinha e o que faz o cliente sair de casa.</span></li>
+      <li><b>Qualidade de cinema</b><span>Nascemos como produtora. Fotos e vídeos com equipamento profissional, luz e direção de arte.</span></li>
+      <li><b>Equipe completa</b><span>Gestor de marketing, social media, videomaker, editor, designer e assistente dedicados à casa.</span></li>
+      <li><b>Histórias que vendem</b><span>Não são só posts bonitos. Cada conteúdo tem roteiro e estratégia por trás.</span></li>
+      <li><b>Você aprova antes</b><span>O mês inteiro aparece num link com o perfil pronto. Nada vai ao ar sem a sua aprovação.</span></li>
+      <li><b>Sistema próprio</b><span>Avaliação pós atendimento e CRM da Lemon para captar o contato e fazer o cliente voltar.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 4 INVESTIMENTO -->
+<section class="slide paper" aria-label="Investimento">
+  <div class="in">
+    <div class="kick">Investimento</div>
+    <h2 class="bc inv-t">Escolha o seu plano</h2>
+    <div class="planos">
+      <article class="plano">
+        <header><span class="pn">Conteúdo + recorrência</span><span class="tagp">Mais indicado</span></header>
+        <div class="valor"><small>R$</small>2.450<span>/mês</span></div>
+        <div class="bloco"><h5>Conteúdo</h5><ul>
+          <li>12 publicações por mês</li>
+          <li>Estratégia, calendário e roteiros</li>
+          <li>1 diária de produção mensal</li>
+          <li>Equipe completa dedicada à casa</li>
+        </ul></div>
+        <div class="bloco"><h5>Recorrência</h5><ul>
+          <li>Avaliação pós atendimento com captação de contatos</li>
+          <li>CRM para fazer o cliente voltar</li>
+          <li>Tags NFC no cardápio</li>
+          <li>Links na bio</li>
+          <li>Campanhas de recorrência: aniversário, saudade e retorno do cliente</li>
+        </ul></div>
+      </article>
+      <article class="plano escuro">
+        <header><span class="pn">Marketing completo</span></header>
+        <div class="valor"><small>R$</small>3.500<span>/mês</span></div>
+        <div class="bloco"><h5>Conteúdo e recorrência</h5><ul>
+          <li>Tudo do plano Conteúdo + recorrência</li>
+        </ul></div>
+        <div class="bloco"><h5>Tráfego e campanhas</h5><ul>
+          <li>Tráfego pago no Instagram, Facebook e Google</li>
+          <li>Campanhas para reservas, delivery e dias fracos</li>
+          <li>Relatório mensal de resultados</li>
+        </ul></div>
+        <p class="nota">Verba de anúncios paga direto às plataformas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOTOS -->
+<section class="slide light" aria-label="Portfólio de fotos">
+  <div class="in">
+    <div class="kick">Portfólio</div>
+    <h2 class="bc">O prato como ele<br><span class="hl">merece ser visto.</span></h2>
+    <div class="galeria"><img src="/proposta2026/fotos/n0.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/n1.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/n2.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/n3.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/n4.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/n5.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p00.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p01.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p02.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p19.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p12.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p05.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p23.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p03.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p09.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p20.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p25.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p06.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p15.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p04.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p10.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p07.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p08.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p11.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p14.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p18.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"><img src="/proposta2026/fotos/p24.jpg" alt="Foto de gastronomia produzida pela Lemon" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- VÍDEOS -->
+<section class="slide" aria-label="Vídeos">
+  <div class="in">
+    <div class="kick">Vídeos</div>
+    <h2 class="bc inv-t">A gente gosta mesmo é de<br><span class="hl">contar boas histórias.</span></h2>
+    <p class="lead">Histórias que vendem. Pessoas, bastidores e o prato saindo da cozinha, do jeito que faz o cliente querer estar ali.</p>
+    <div class="vids"><div class="vid" data-video-id="4KR251jl36Q"><img loading="lazy" src="https://img.youtube.com/vi/4KR251jl36Q/hqdefault.jpg" alt="Vídeo The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">The Seven</span></div><div class="vid" data-video-id="Ap6tGBQxaVc"><img loading="lazy" src="https://img.youtube.com/vi/Ap6tGBQxaVc/hqdefault.jpg" alt="Vídeo The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">The Seven</span></div><div class="vid" data-video-id="-7ZU_SPM8_4"><img loading="lazy" src="https://img.youtube.com/vi/-7ZU_SPM8_4/hqdefault.jpg" alt="Vídeo The Seven"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">The Seven</span></div><div class="vid" data-mp4="/restaurantes/vid/yasmine-001.mp4"><img loading="lazy" src="/restaurantes/vid/yasmine-001.jpg" alt="Vídeo Yasmine: chef Mohamad e os doces árabes"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">Yasmine</span></div><div class="vid" data-mp4="/restaurantes/vid/yasmine-06.mp4"><img loading="lazy" src="/restaurantes/vid/yasmine-06.jpg" alt="Vídeo Yasmine: o verdadeiro shawarma árabe"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">Yasmine</span></div><div class="vid" data-mp4="/restaurantes/vid/perdomo-maes.mp4"><img loading="lazy" src="/restaurantes/vid/perdomo-maes.jpg" alt="Vídeo Perdomo: Dia das Mães"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="vtag">Perdomo</span></div></div>
+  </div>
+</section>
+
+<!-- 7 FAÇA COMO ELES -->
+<section class="slide light" aria-label="Faça como eles">
+  <div class="in">
+    <div class="kick">Faça como eles</div>
+    <h2 class="bc">Restaurantes que<br><span class="hl">já confiam na Lemon.</span></h2>
+    <div class="feeds">
+      <div class="feed"><div class="id"><img class="av" src="https://www.agencialemonsocial.com.br/restaurantes/img/seven-master.jpg" alt=""><div><b>The Seven Burger</b><span>Hamburgueria</span></div></div><div class="gr"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/seven-master.jpg" alt="The Seven" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/burger-cebola.jpg" alt="The Seven" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/costela.jpg" alt="The Seven" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/carne-de-sol.jpg" alt="The Seven" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/prato-executivo.jpg" alt="The Seven" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/risoto.jpg" alt="The Seven" loading="lazy"></div><div class="ft"><b>70 mil seguidores</b>, saindo de menos de 100</div></div>
+      <div class="feed"><div class="id"><img class="av" src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/avatar.jpg" alt=""><div><b>Yasmine</b><span>Culinária árabe</span></div></div><div class="gr"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/01.jpg" alt="Yasmine" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/02.jpg" alt="Yasmine" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/03.jpg" alt="Yasmine" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/04.jpg" alt="Yasmine" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/05.jpg" alt="Yasmine" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/yasmine/06.jpg" alt="Yasmine" loading="lazy"></div><div class="ft"><b>16 conteúdos</b> gravados em uma única diária</div></div>
+      <div class="feed"><div class="id"><span class="av" style="background:#12A3B8;color:#fff">J</span><div><b>Juremê</b><span>Gastrobar</span></div></div><div class="gr"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/jureme/happy-hour.jpg" alt="Juremê" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/jureme/j07.jpg" alt="Juremê" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/jureme/onde-quando.jpg" alt="Juremê" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/jureme/drink.jpg" alt="Juremê" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/jureme/frango-crocante.jpg" alt="Juremê" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/jureme/costelinha.jpg" alt="Juremê" loading="lazy"></div><div class="ft"><b>Identidade própria</b> e campanhas de happy hour</div></div>
+      <div class="feed"><div class="id"><span class="av" style="background:#C8F20D;color:#0A0A0A">L</span><div><b>Grandes marcas</b><span>Food styling e fotografia</span></div></div><div class="gr"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/marcas/pizza.jpg" alt="Portfólio" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/marcas/bolo-chocolate.jpg" alt="Portfólio" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/marcas/prato-autoral.jpg" alt="Portfólio" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/marcas/frutos-do-mar.jpg" alt="Portfólio" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/marcas/massa-drink.jpg" alt="Portfólio" loading="lazy"><img src="https://www.agencialemonsocial.com.br/restaurantes/img/marcas/pudim.jpg" alt="Portfólio" loading="lazy"></div><div class="ft"><b>Direção de arte</b> e luz para o prato dar vontade</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="slide lime" aria-label="A receita">
+  <div class="in fim">
+    <div>
+      <div class="kick">A receita</div>
+      <h2 class="bc">Não existe<br>segredo.</h2>
+      <p class="receita">Essa é a receita que funciona, e é a receita que vamos aplicar no Universal.</p>
+      <ul class="prox">
+        <li><b>01</b><span><strong>Atrair</strong> quem ainda não conhece a casa.</span></li>
+        <li><b>02</b><span><strong>Converter</strong> vontade em pedido, reserva e mesa ocupada.</span></li>
+        <li><b>03</b><span><strong>Fazer voltar</strong> quem já sentou à mesa.</span></li>
+      </ul>
+      <p class="frase">Não são só posts bonitos. É estratégia bem feita, <span>e bonita.</span></p>
+    </div>
+    <div>
+      <p class="passo">Próximo passo: uma conversa de 30 minutos para entender a casa e marcar a primeira diária de produção.</p>
+      <a class="btn dark" href="https://wa.me/5561988889486?text=Ol%C3%A1!%20Vi%20a%20proposta%20da%20Lemon%20para%20o%20Universal%20e%20quero%20conversar." target="_blank" rel="noopener">Vamos conversar ↗</a>
+      <p class="validade">Proposta válida por 15 dias.</p>
+    </div>
+  </div>
+</section>
+
+</div></main>
+
+<nav class="nav" aria-label="Navegação das páginas">
+  <button id="prev" aria-label="Página anterior">←</button>
+  <div class="dots" id="dots"></div>
+  <button id="next" aria-label="Próxima página">→</button>
+</nav>
+
+<script>
+(function(){
+  var track = document.getElementById('track');
+  var slides = track.children, total = slides.length, i = 0;
+  var prev = document.getElementById('prev'), next = document.getElementById('next');
+  var count = document.getElementById('count'), dots = document.getElementById('dots');
+  var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+  for (var k = 0; k < total; k++) {
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Ir para a página ' + (k + 1));
+    b.addEventListener('click', (function(n){ return function(){ go(n); }; })(k));
+    dots.appendChild(b);
+  }
+  function go(n){
+    i = Math.max(0, Math.min(total - 1, n));
+    track.style.transform = 'translateX(' + (-100 * i) + '%)';
+    count.textContent = pad(i + 1) + ' / ' + pad(total);
+    prev.disabled = i === 0; next.disabled = i === total - 1;
+    for (var d = 0; d < dots.children.length; d++) dots.children[d].classList.toggle('on', d === i);
+    slides[i].scrollTop = 0;
+    document.querySelectorAll('.vid video').forEach(function(v){ v.pause(); });
+    document.querySelectorAll('.vid iframe').forEach(function(f){ if (!slides[i].contains(f)) f.src = 'about:blank'; });
+    document.body.classList.toggle('em-lime', slides[i].classList.contains('lime'));
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+  }
+  document.querySelectorAll('.vid').forEach(function(v){ v.addEventListener('click', function(){
+    v.innerHTML = v.dataset.mp4
+      ? '<video src="' + v.dataset.mp4 + '" controls autoplay playsinline></video>'
+      : '<iframe src="https://www.youtube.com/embed/' + v.dataset.videoId + '?autoplay=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+  }, {once:true}); });
+  prev.addEventListener('click', function(){ go(i - 1); });
+  next.addEventListener('click', function(){ go(i + 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') go(i + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') go(i - 1);
+  });
+  var x0 = null, y0 = null;
+  track.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) go(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  var h = parseInt((location.hash || '').slice(1), 10);
+  go(h > 0 ? h - 1 : 0);
+})();
+</script>
+</body>
+</html>
