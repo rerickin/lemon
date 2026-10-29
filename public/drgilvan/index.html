@@ -661,6 +661,11 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       slide = k; count.textContent = (k + 1) + '/' + imgs.length;
       dots.forEach((d, i) => d.classList.toggle('on', i === k));
       l.hidden = k === 0; r.hidden = k === imgs.length - 1;
+      [...track.children].forEach((m, i) => {
+        if (m.tagName !== 'VIDEO') return;
+        if (i === k) { if (m.paused) { m.muted = false; m.play().catch(() => { m.muted = true; m.play().catch(() => {}); }); } }
+        else if (!m.paused) { m.pause(); m.currentTime = 0; }
+      });
     };
     l.onclick = () => go(slide - 1); r.onclick = () => go(slide + 1);
     let raf; track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, {passive: true});
@@ -701,7 +706,7 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
     $('prev').disabled = cur === 0; $('next').disabled = cur === posts.length - 1;
   }
   function open(i){ lastFocus = document.activeElement; cur = i; slide = 0; drawMedia(); drawSide(); $('sheet').hidden = false; document.body.style.overflow = 'hidden'; $('close').focus(); }
-  function close(){ const v = $('media').querySelector('video'); if (v) v.pause(); $('sheet').hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+  function close(){ $('media').querySelectorAll('video').forEach(v => v.pause()); $('sheet').hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
   function setStatus(v){
     if (readOnly) return;
     const p = posts[cur], s = state[p.id] || {};
