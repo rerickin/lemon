@@ -266,7 +266,7 @@ a{color:inherit}
 .pain .pains > div.n0{background:var(--lime)}
 .pain .pains > div.n0 .x{opacity:1;color:var(--ink);transform:scale(1.8)}
 .pain .pains > div.n1{background:transparent}
-.pain .pains > div.n1 .x{opacity:1;transform:none}
+.pain .pains > div.n1 .x{opacity:1;transform:none;color:var(--pink)}
 .pain .pains > div.n2 h3.t,.pain .pains > div.n3 p.t{opacity:1}
 .pain.fast .pains > div,.pain.fast .pains > div > *{transition-duration:.3s}
 @media(prefers-reduced-motion:reduce){.pain .pains > div > *{opacity:1;transition:none}.pain .pains > div{transition:none}}
@@ -301,11 +301,58 @@ a{color:inherit}
 .reels{grid-template-columns:repeat(2,1fr)}
 .reels img{width:100%;aspect-ratio:1/1;object-fit:cover}
 @media(max-width:900px){.cover .stack > img{width:50%}}
+
+/* ===== LIMPEZA GERAL: fontes menores, menos informação por tela ===== */
+.slide{padding-top:calc(64px + env(safe-area-inset-top,0px));padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.in{max-width:1040px}
+.slide h2.bc{font-size:clamp(30px,3.7vw,54px)!important;line-height:.98;margin:12px 0 24px!important;letter-spacing:-.5px}
+.cover h1{font-size:clamp(40px,5vw,76px)!important}
+.kick{font-size:10.5px}
+.who p.lead,.hl-lead,.cover p,.cta p.lead,.work p{font-size:14.5px!important;line-height:1.65!important}
+.facts b{font-size:clamp(24px,2.6vw,34px)}
+.facts div{padding:16px 16px}
+.facts span{font-size:12px}
+.pains h3{font-size:22px}.pains p{font-size:13.5px}.pains .x{font-size:32px}
+.rule h4{font-size:20px}.rule li{font-size:13.5px}
+.next3 b{font-size:19px}.next3 span{font-size:13px}
+.steps h3{font-size:24px}
+.btn{padding:14px 22px;font-size:12px}
+/* novas telas */
+.thesis .in{max-width:860px}
+.thesis p{font-size:16px;line-height:1.65;color:var(--mutel);max-width:560px}
+.chips{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.chips span{border:1.5px solid rgba(255,255,255,.3);padding:9px 14px;font:700 11.5px var(--f-body);letter-spacing:1.2px;text-transform:uppercase}
+.chips span:first-child{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.c3{background:var(--ink2);padding:22px 22px 24px;border-top:3px solid var(--lime)}
+.back .c3{border-color:var(--pink)}
+.c3 em{font-style:normal;font-family:var(--f-label);letter-spacing:2px;font-size:13px;color:var(--lime)}
+.back .c3 em{color:var(--pink)}
+.c3 h3{font-family:var(--f-display);font-weight:900;font-size:24px;text-transform:uppercase;line-height:1;margin:10px 0 8px}
+.c3 p{font-size:13.5px;line-height:1.55;color:var(--mutel)}
+.hlk{font-style:italic;background:var(--ink);color:var(--lime);padding:0 10px 4px}
+.offer .in{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.offer ul{list-style:none;display:grid;gap:10px}
+.offer li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:center;font-size:14.5px;font-weight:500}
+.offer li::before{content:'✓';font-weight:900;background:var(--ink);color:var(--lime);width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+.bonus{background:var(--ink);color:var(--white);padding:26px 26px 22px}
+.bonus .tag{background:var(--lime);color:var(--ink);font-family:var(--f-label);letter-spacing:2px;padding:4px 10px;font-size:13px;display:inline-block}
+.bonus h3{font-family:var(--f-display);font-weight:900;font-size:26px;text-transform:uppercase;line-height:1.02;margin:14px 0 10px}
+.bonus p{font-size:13.5px;line-height:1.55;color:var(--mutel)}
+.bonus .guar{margin-top:14px;border:1.5px solid var(--lime);padding:12px 14px;font-size:13px;line-height:1.5;color:var(--white)}
+.bonus .guar b{color:var(--lime)}
+.bonus p.few{margin-top:12px;font-size:12px;letter-spacing:.5px;text-transform:uppercase}
+.const .cgrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink)}
+.const .cgrid div{padding:22px 18px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.const .cgrid b{display:block;font-family:var(--f-display);font-weight:900;font-size:26px;text-transform:uppercase;line-height:1}
+.const .cgrid span{font-size:13px;color:var(--muted)}
+.const .cgrid div:first-child{background:var(--lime)}
+@media(max-width:900px){.cards3,.offer .in,.const .cgrid{grid-template-columns:1fr}.const .cgrid{grid-template-columns:1fr 1fr}.slide h2.bc{font-size:clamp(28px,8.5vw,40px)!important}}
 </style>
 </head>
 <body>
 
-<div class="top" aria-hidden="true"><div class="logo">LEMON<i></i></div><div class="count" id="count">01 / 09</div></div>
+<div class="top" aria-hidden="true"><div class="logo">LEMON<i></i></div><div class="count" id="count">01 / 12</div></div>
 <main class="deck" aria-roledescription="apresentação">
 <div class="track" id="track">
 
@@ -344,6 +391,15 @@ a{color:inherit}
   </div>
 </section>
 
+<section class="slide thesis" aria-label="O que importa">
+  <div class="in">
+    <div class="kick">Antes de tudo</div>
+    <h2 class="bc">O que é mais importante<br>para a sua clínica?<br><span class="hl">Pacientes.</span></h2>
+    <p>Sem paciente não existe agenda, equipe, estrutura nem faturamento. Todo o resto é consequência. Por isso o nosso trabalho tem só duas missões.</p>
+    <div class="chips"><span>1 · Trazer pacientes novos</span><span>2 · Fazer voltar quem já veio</span></div>
+  </div>
+</section>
+
 <section class="slide pain" aria-label="O desafio">
   <div class="in">
     <div class="kick">O desafio</div>
@@ -357,26 +413,63 @@ a{color:inherit}
   </div>
 </section>
 
-<section class="slide what" aria-label="O que fazemos">
+<section class="slide method" aria-label="Método para pacientes novos">
   <div class="in">
-    <div class="kick">O que fazemos por você</div>
-    <h2 class="bc">Um método em<br><span class="hl">três etapas.</span></h2>
-    <div class="flow">
-      <div class="col">
-        <div class="stage"><span>01</span><b>Atrair</b></div>
-        <div class="svc"><h4>Conteúdo de autoridade</h4><p>Vídeos e posts que ensinam, tiram dúvidas e mostram o médico por trás do jaleco.</p></div>
-        <div class="svc"><h4>Tráfego pago</h4><p>Anúncios para quem busca o seu tratamento na sua região, com relatório mensal.</p></div>
-      </div>
-      <div class="col">
-        <div class="stage"><span>02</span><b>Converter</b></div>
-        <div class="svc"><h4>Atendimento no WhatsApp</h4><p>Roteiro de resposta rápida e organizada, para o interesse virar consulta marcada.</p></div>
-        <div class="svc"><h4>Página e link da bio</h4><p>Agendamento, localização e WhatsApp num só lugar, com contagem de cliques.</p></div>
-      </div>
-      <div class="col">
-        <div class="stage"><span>03</span><b>Fazer voltar</b></div>
-        <div class="svc"><h4>CRM Lemon</h4><p>Cada paciente vira um contato com nome, WhatsApp e aniversário, e uma avaliação no Google.</p></div>
-        <div class="svc"><h4>Campanhas de retorno</h4><p>Lembretes de revisão, check up e datas especiais, todo mês e de forma automática.</p></div>
-      </div>
+    <div class="kick">Missão 1 · Pacientes novos</div>
+    <h2 class="bc">O nosso método para<br>encher a sua <span class="hl">agenda.</span></h2>
+    <div class="cards3">
+      <div class="c3"><em>01 · ATRAIR</em><h3>Autoridade em vídeo</h3><p>Conteúdo que ensina e mostra o médico. O paciente chega já confiando.</p></div>
+      <div class="c3"><em>02 · ATRAIR</em><h3>Anúncios locais</h3><p>Tráfego pago para quem busca o seu tratamento, na sua região, agora.</p></div>
+      <div class="c3"><em>03 · CONVERTER</em><h3>Consulta marcada</h3><p>Atendimento rápido no WhatsApp para o interesse virar agendamento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide lime offer" aria-label="A oferta">
+  <div class="in">
+    <div>
+      <div class="kick" style="color:rgba(0,0,0,.6)">A oferta</div>
+      <h2 class="bc">Sistema completo<br>de pacientes no ar<br>em <span class="hlk">30 dias.</span></h2>
+      <ul>
+        <li>12 vídeos por mês, gravados em 1 dia</li>
+        <li>Anúncios locais rodando todo mês</li>
+        <li>Roteiro de atendimento no WhatsApp</li>
+        <li>CRM com a base dos seus pacientes</li>
+        <li>Campanhas de retorno e relatório mensal</li>
+      </ul>
+    </div>
+    <div class="bonus">
+      <span class="tag">BÔNUS DE ENTRADA</span>
+      <h3>Diagnóstico gratuito + primeira gravação com roteiro aprovado por você</h3>
+      <p>Mostramos onde a sua clínica perde paciente hoje, antes de você investir em qualquer coisa.</p>
+      <div class="guar"><b>Garantia Lemon:</b> se em 30 dias o sistema não estiver no ar, você não paga a segunda mensalidade.</div>
+      <a class="btn wa" href="https://wa.me/5561998889486" target="_blank" rel="noopener" style="margin-top:18px">Quero a oferta ↗</a>
+      <p class="few">Atendemos poucas clínicas por vez.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide back" aria-label="Pacientes que voltam">
+  <div class="in">
+    <div class="kick">Missão 2 · Quem já é seu paciente</div>
+    <h2 class="bc">Paciente que volta<br>é <span class="hl">lucro certo.</span></h2>
+    <div class="cards3">
+      <div class="c3"><em>01 · FAZER VOLTAR</em><h3>Cada atendimento vira contato</h3><p>Nome, WhatsApp e aniversário na sua base, no CRM Lemon.</p></div>
+      <div class="c3"><em>02 · FAZER VOLTAR</em><h3>Avaliações no Google</h3><p>Todo paciente satisfeito vira prova social para o próximo.</p></div>
+      <div class="c3"><em>03 · FAZER VOLTAR</em><h3>Campanhas de retorno</h3><p>Revisão, check up e datas especiais, de forma automática.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light const" aria-label="Constância">
+  <div class="in">
+    <div class="kick">O segredo</div>
+    <h2 class="bc">Constância.<br><span class="hl">Todo mês. Sem falhar.</span></h2>
+    <div class="cgrid">
+      <div><b>Gravação</b><span>1 dia por mês</span></div>
+      <div><b>Postagem</b><span>calendário sempre cheio</span></div>
+      <div><b>Anúncios</b><span>rodando o ano todo</span></div>
+      <div><b>Retorno</b><span>campanhas todo mês</span></div>
     </div>
   </div>
 </section>
@@ -384,10 +477,10 @@ a{color:inherit}
 <section class="slide ethics" aria-label="Dentro das regras do CFM">
   <div class="in">
     <div class="kick">Marketing médico do jeito certo</div>
-    <h2 class="bc" style="font-size:clamp(40px,5vw,72px);margin:16px 0 28px">Vender sem<br><span class="hl">infringir o CFM.</span></h2>
+    <h2 class="bc" style="margin:16px 0 28px">Vender sem<br><span class="hl">infringir o CFM.</span></h2>
     <div class="rules">
-      <div class="rule no"><h4>O que não fazemos</h4><ul><li>Promessa ou garantia de resultado</li><li>Antes e depois de pacientes como propaganda</li><li>Promoção, desconto ou preço de consulta</li><li>Sensacionalismo ou autopromoção exagerada</li></ul></div>
-      <div class="rule"><h4>O que fazemos</h4><ul><li>Conteúdo educativo que gera confiança</li><li>Imagem profissional do médico e da estrutura</li><li>Roteiro aprovado por você antes de gravar</li><li>Anúncios que informam e levam ao agendamento</li></ul></div>
+      <div class="rule no"><h4>O que não fazemos</h4><ul><li>Promessa ou garantia de resultado</li><li>Antes e depois de pacientes como propaganda</li><li>Promoção, desconto ou preço de consulta</li></ul></div>
+      <div class="rule"><h4>O que fazemos</h4><ul><li>Conteúdo educativo que gera confiança</li><li>Roteiro aprovado por você antes de gravar</li><li>Anúncios que informam e levam ao agendamento</li></ul></div>
     </div>
   </div>
 </section>
@@ -440,27 +533,14 @@ a{color:inherit}
   </div>
 </section>
 
-<section class="slide lime road" aria-label="Onde você vai chegar">
-  <div class="in">
-    <div class="kick" style="color:rgba(0,0,0,.6)">Onde você vai chegar</div>
-    <h2 class="bc">Os seus<br>próximos 90 dias.</h2>
-    <div class="steps">
-      <div><em>Mês 1</em><h3>Autoridade</h3><p>Posicionamento definido, primeira gravação e o conteúdo do mês aprovado por você antes de ir ao ar.</p></div>
-      <div><em>Mês 2</em><h3>Mais pacientes novos</h3><p>Anúncios rodando para o público certo da sua região e atendimento no WhatsApp afinado para agendar.</p></div>
-      <div><em>Mês 3</em><h3>Paciente que volta</h3><p>Base de pacientes organizada, avaliações subindo no Google e campanhas de retorno ativas.</p></div>
-    </div>
-    <p class="goal">Agenda mais cheia, mais retorno, mais faturamento.</p>
-  </div>
-</section>
-
 <section class="slide cta" aria-label="Próximo passo">
   <div class="in">
     <div>
       <div class="kick">Próximo passo</div>
       <h2 class="bc">Vamos<br>conversar<br><span class="hl">15 minutos?</span></h2>
-      <p class="lead">Fazemos um diagnóstico gratuito do seu Instagram, do seu Google e da jornada do paciente até o agendamento, e mostramos como aplicaríamos o método na sua clínica.</p>
+      <p class="lead">Diagnóstico gratuito do seu Instagram, do seu Google e da jornada do paciente, e a proposta pronta para a sua clínica.</p>
       <div class="ctas">
-        <a class="btn" id="waBtn" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Quero meu diagnóstico ↗</a>
+        <a class="btn wa" id="waBtn" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Quero meu diagnóstico ↗</a>
         <span class="phone">WhatsApp <b>(61) 99888 9486</b></span>
       </div>
     </div>
@@ -476,7 +556,7 @@ a{color:inherit}
 </main>
 <div class="bar">
   <button class="nav prev" type="button" id="prev" aria-label="Tela anterior">←</button>
-  <div class="prog" aria-hidden="true"><b id="prog" style="width:11%"></b></div>
+  <div class="prog" aria-hidden="true"><b id="prog" style="width:8.3%"></b></div>
   <button class="nav next" type="button" id="next" aria-label="Próxima tela">→</button>
 </div>
 <div class="md" id="md" hidden role="dialog" aria-modal="true" aria-label="Visualizar"><button type="button" id="mdX" aria-label="Fechar">✕</button><div id="mdBox"></div></div>
@@ -488,7 +568,7 @@ a{color:inherit}
   const para=(new URLSearchParams(location.search).get('para')||'').trim().slice(0,60);
   if(para) document.getElementById('para').textContent='Preparado para '+para;
   const msg=para?`Olá, Lemon! Vi a apresentação para ${para} e quero o diagnóstico gratuito.`:'Olá, Lemon! Vi a apresentação para clínicas e quero o diagnóstico gratuito.';
-  document.getElementById('waBtn').href=`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
+  document.querySelectorAll('.wa').forEach(a=>a.href=`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`);
   const autos=document.querySelectorAll('video.auto');
 
   // Dores: dentro de cada bloco o número entra grande, assenta, e vêm título e texto; cada item mais rápido
