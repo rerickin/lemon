@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lemon Social | Apresentação para clínicas</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Marketing para médicos e clínicas: mais pacientes agendados, dentro das regras do CFM.">
+<meta property="og:title" content="Lemon Social · Uma apresentação para sua clínica">
+<meta property="og:description" content="Atrair, converter e fazer o paciente voltar, com ética e dentro das regras do CFM.">
+<meta property="og:image" content="https://www.agencialemonsocial.com.br/vem/og-escritorio.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Apresentação em telas: uma ideia por tela, identidade Lemon (lima, tinta, branco) */
+:root{
+  --lime:#C8F20D; --ink:#0A0A0A; --ink2:#151515; --white:#FFFFFF; --paper:#F4F4F0;
+  --muted:#5C5C5C; --mutel:rgba(255,255,255,.62); --pink:#E8457A;
+  --f-display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  --f-label:'Bebas Neue',Impact,sans-serif;
+  --f-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--white);font-family:var(--f-body);overflow:hidden;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.bc{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-1px;text-wrap:balance}
+.hl{font-style:italic;background:var(--lime);color:var(--ink);padding:0 10px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kick{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;color:var(--mutel)}
+.kick::before{content:'';width:24px;height:1.5px;background:var(--lime)}
+.light .kick{color:var(--muted)} .light .kick::before{background:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:var(--ink);border:0;padding:16px 26px;font:700 13px var(--f-body);letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn.dark{background:var(--ink);color:var(--lime)}
+.btn:focus-visible,button:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+
+/* ESTRUTURA */
+.deck{position:fixed;inset:0;overflow:hidden}
+.track{display:flex;height:100%;transition:transform .65s cubic-bezier(.7,0,.2,1)}
+.slide{flex:0 0 100%;height:100%;overflow-y:auto;overflow-x:hidden;position:relative;
+  padding:calc(76px + env(safe-area-inset-top,0px)) max(48px,env(safe-area-inset-right,0px)) calc(96px + env(safe-area-inset-bottom,0px)) max(48px,env(safe-area-inset-left,0px));
+  display:flex;flex-direction:column}
+.slide > .in{margin:auto}
+.slide.light{background:var(--white);color:var(--ink)}
+.slide.lime{background:var(--lime);color:var(--ink)}
+.in{width:100%;max-width:1200px;margin:0 auto}
+.in > *,.in > * > *{min-width:0}
+@media(prefers-reduced-motion:reduce){.track{transition:none}}
+
+/* TOPO E CONTROLES */
+.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(18px + env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px));pointer-events:none;mix-blend-mode:difference;color:#fff}
+.logo{font-family:var(--f-label);font-size:26px;letter-spacing:2px;display:flex;align-items:center;gap:6px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--lime);display:inline-block}
+.count{font-family:var(--f-label);font-size:16px;letter-spacing:2px;font-variant-numeric:tabular-nums}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;gap:14px;
+  padding:14px max(24px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(24px,env(safe-area-inset-left,0px));
+  background:linear-gradient(to top,rgba(10,10,10,.92),rgba(10,10,10,0))}
+.prog{flex:1;height:3px;background:rgba(255,255,255,.18);position:relative;overflow:hidden}
+.prog b{position:absolute;inset:0 auto 0 0;background:var(--lime);transition:width .5s}
+.nav{width:48px;height:48px;border:1.5px solid rgba(255,255,255,.4);background:rgba(10,10,10,.6);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.nav.next{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.nav:disabled{opacity:.25;cursor:default}
+
+/* 1 CAPA */
+.cover{background:radial-gradient(120% 80% at 80% 20%,#1d1d1d 0,var(--ink) 60%)}
+.cover .in{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.for{font-family:var(--f-label);font-size:16px;letter-spacing:3px;color:var(--lime);min-height:20px}
+.cover h1{font-size:clamp(64px,9vw,140px);margin:18px 0 22px}
+.cover p{font-size:18px;line-height:1.6;color:var(--mutel);max-width:520px}
+.cover .start{margin-top:32px}
+.stack{position:relative;height:min(70vh,620px)}
+.stack > *{position:absolute;width:40%;aspect-ratio:3/4;object-fit:cover;border:3px solid var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.5);background:#111}
+.stack video{aspect-ratio:9/16}
+.stack > :nth-child(1){left:0;top:6%;transform:rotate(-8deg);z-index:1}
+.stack > :nth-child(2){left:60%;top:4%;transform:rotate(8deg);z-index:1}
+.stack > :nth-child(3){left:30%;top:0;transform:rotate(-2deg);z-index:2}
+.stack > :nth-child(4){left:4%;top:30%;transform:rotate(5deg);z-index:5}
+.stack > :nth-child(5){left:58%;top:28%;transform:rotate(-6deg);z-index:5}
+.stack > :nth-child(6){left:31%;top:36%;transform:rotate(2deg);z-index:6;width:40%}
+
+/* 2 QUEM SOMOS */
+.who .in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.who h2{font-size:clamp(44px,5.4vw,80px)}
+.who p.lead{font-size:17px;line-height:1.65;color:var(--muted);margin:22px 0 28px;max-width:520px}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink)}
+.facts div{padding:22px 20px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.facts b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(32px,3.6vw,48px);line-height:1;text-transform:uppercase}
+.facts span{font-size:13px;color:var(--muted)}
+.facts div:first-child{background:var(--lime)}
+.who figure{position:relative}
+.who figure img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:left center}
+.who figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--lime);font-family:var(--f-label);letter-spacing:2px;padding:8px 14px;font-size:15px}
+
+/* 3 DOR */
+.pain h2{font-size:clamp(44px,6vw,92px);margin:18px 0 36px}
+.pains{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1.5px solid rgba(255,255,255,.18)}
+.pains > div{padding:28px 22px 10px 0;margin-right:22px;border-right:1.5px solid rgba(255,255,255,.18)}
+.pains > div:last-child{border-right:none;margin-right:0}
+.pains .x{font-family:var(--f-display);font-weight:900;font-size:40px;color:var(--pink);line-height:1}
+.pains h3{font-family:var(--f-display);font-weight:900;font-size:26px;text-transform:uppercase;line-height:1;margin:12px 0 10px}
+.pains p{font-size:15px;line-height:1.55;color:var(--mutel)}
+
+/* 4 O QUE FAZEMOS */
+.what h2{font-size:clamp(40px,5vw,72px);margin:16px 0 30px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.col{display:flex;flex-direction:column;gap:10px}
+.col .stage{padding:18px 20px}
+.col .stage span{font-family:var(--f-label);letter-spacing:2px;font-size:14px;opacity:.6}
+.col .stage b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(30px,3vw,42px);text-transform:uppercase;line-height:.9}
+.col:nth-child(1) .stage{background:var(--lime);color:var(--ink)}
+.col:nth-child(2) .stage{background:var(--white);color:var(--ink)}
+.col:nth-child(3) .stage{background:var(--pink);color:var(--white)}
+.svc{background:var(--ink2);padding:18px 20px;border-left:3px solid transparent}
+.col:nth-child(1) .svc{border-color:var(--lime)} .col:nth-child(2) .svc{border-color:var(--white)} .col:nth-child(3) .svc{border-color:var(--pink)}
+.svc h4{font-family:var(--f-display);font-weight:900;font-size:22px;text-transform:uppercase;line-height:1;margin-bottom:6px}
+.svc p{font-size:13.5px;line-height:1.5;color:var(--mutel)}
+
+/* 5 CASE */
+.case .in{display:grid;grid-template-columns:1fr minmax(0,440px);gap:56px;align-items:center}
+.case h2{font-size:clamp(52px,7vw,110px);margin:16px 0 18px}
+.case p{font-size:16px;line-height:1.65;color:var(--muted);max-width:520px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:28px;border-top:1.5px solid var(--ink)}
+.nums div{padding:18px 14px 0 0}
+.nums b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(34px,4vw,56px);line-height:1}
+.nums span{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.flip{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;perspective:1200px}
+.fc{aspect-ratio:3/4}
+.fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.1,.2,1);transition-delay:calc(var(--d,0)*1ms)}
+.fi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fi .fb{transform:rotateY(180deg)}
+.flip.on .fi{transform:rotateY(180deg)}
+.flipcap{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--f-label);letter-spacing:2px;font-size:15px}
+.flipcap span{padding:4px 12px;background:var(--paper)}
+.flipcap span.on{background:var(--lime)}
+@media(prefers-reduced-motion:reduce){.fi{transition:none}}
+
+/* 6 FEEDS */
+.feeds h2{font-size:clamp(40px,5vw,72px);margin:16px 0 28px}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feed{background:var(--white);color:var(--ink);border-radius:20px;overflow:hidden}
+.feed header{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.feed header i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-label);font-size:18px;color:#fff;flex:none;background-size:cover;background-position:center}
+.feed header b{display:block;font-size:14px}
+.feed header span{font-size:11px;color:#737373}
+.feed .g{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.feed .g img,.feed .g video{width:100%;aspect-ratio:3/4;object-fit:cover}
+
+/* 7 VÍDEOS */
+.vids h2{font-size:clamp(40px,5vw,72px);margin:16px 0 26px}
+.vrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vid{position:relative;aspect-ratio:9/16;background:#000;cursor:pointer;overflow:hidden}
+.vid img,.vid video{width:100%;height:100%;object-fit:cover}
+.vid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--lime);border:3px solid var(--ink);display:grid;place-items:center;transition:transform .15s}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.vid .play svg{width:22px;height:22px;margin-left:4px;fill:var(--ink)}
+.vid .tag{position:absolute;left:10px;bottom:10px;background:var(--lime);color:var(--ink);font-family:var(--f-label);letter-spacing:1.5px;font-size:13px;padding:4px 10px}
+
+/* 8 FOTOGRAFIA */
+.photo .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.photo h2{font-size:clamp(40px,5vw,72px);margin:16px 0 18px}
+.photo p{font-size:16px;line-height:1.65;color:var(--muted);max-width:440px}
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.mosaic img{width:100%;aspect-ratio:3/4;object-fit:cover}
+
+/* 9 ONDE VOCÊ CHEGA */
+.road h2{font-size:clamp(44px,6vw,92px);margin:16px 0 32px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);border-top:1.5px solid var(--ink)}
+.steps div{padding:24px 26px 0 0}
+.steps em{font-style:normal;font-family:var(--f-label);font-size:16px;letter-spacing:2px;background:var(--ink);color:var(--lime);padding:4px 10px}
+.steps h3{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,2.6vw,36px);text-transform:uppercase;line-height:1;margin:14px 0 10px}
+.steps p{font-size:15px;line-height:1.55;color:rgba(10,10,10,.72)}
+.goal{margin-top:34px;font-family:var(--f-display);font-weight:900;font-size:clamp(24px,2.8vw,38px);text-transform:uppercase;line-height:1.05}
+
+/* 10 PRÓXIMO PASSO */
+.cta .in{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.cta h2{font-size:clamp(56px,8vw,120px);margin:16px 0 22px}
+.cta p.lead{font-size:17px;line-height:1.6;color:var(--mutel);max-width:520px}
+.next3{list-style:none;counter-reset:n;display:grid;gap:12px}
+.next3 li{counter-increment:n;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;background:var(--ink2);padding:18px}
+.next3 li::before{content:counter(n);font-family:var(--f-label);font-size:26px;background:var(--lime);color:var(--ink);display:grid;place-items:center;height:44px}
+.next3 b{display:block;font-family:var(--f-display);font-weight:900;font-size:22px;text-transform:uppercase;line-height:1.05}
+.next3 span{font-size:14px;color:var(--mutel)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;align-items:center}
+.phone{font-size:14px;color:var(--mutel)}
+.phone b{color:var(--white);user-select:all}
+.site{font-size:13px;color:var(--mutel);text-decoration:underline}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+  .slide{padding:calc(70px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(100px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+  .slide > .in{margin:0 auto auto}
+  .cover .in,.who .in,.case .in,.photo .in,.cta .in{grid-template-columns:1fr;gap:28px}
+  .stack{height:300px;order:-1}
+  .stack > *{width:31%}
+  .stack > :nth-child(6){width:34%}
+  .stack{height:330px}
+  .cover h1{margin:12px 0 16px}
+  .pains,.steps{grid-template-columns:1fr}
+  .pains > div{border-right:none;margin-right:0;border-bottom:1.5px solid rgba(255,255,255,.18);padding:20px 0}
+  .steps div{padding:20px 0;border-bottom:1.5px solid rgba(10,10,10,.15)}
+  .flow{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr;max-width:380px}
+  .fgrid .feed:nth-child(n+2){display:none}
+  .fgrid.all .feed{display:block}
+  .vrow{grid-template-columns:1fr 1fr}
+  .mosaic{grid-template-columns:repeat(3,1fr)}
+  .mosaic img:nth-child(n+10){display:none}
+  .who figure{order:-1}
+  .who h2{font-size:clamp(38px,11vw,56px)}
+  .facts b{font-size:24px}
+  .facts div{padding:16px 14px}
+  .nav{width:44px;height:44px}
+}
+.more{display:none;margin-top:14px;background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:10px 16px;font:700 12px var(--f-body);letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+@media(max-width:900px){.more{display:inline-block}}
+
+/* AMPLIAR FOTO */
+.mosaic img,.feed .g img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(5,5,5,.94);display:flex;align-items:center;justify-content:center;
+  padding:calc(56px + env(safe-area-inset-top,0px)) max(64px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(64px,env(safe-area-inset-left,0px))}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb button{position:absolute;width:48px;height:48px;border:1.5px solid rgba(255,255,255,.4);background:rgba(10,10,10,.7);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.lb .x{top:calc(14px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.lb .lp{left:max(10px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .ln{right:max(10px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+.lb .lc{position:absolute;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-family:var(--f-label);letter-spacing:2px;color:rgba(255,255,255,.7)}
+@media(max-width:900px){.lb{padding-left:10px;padding-right:10px}.lb .lp,.lb .ln{top:auto;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:none}}
+
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rule{background:var(--ink2);padding:20px 22px;border-left:3px solid var(--lime)}
+.rule.no{border-color:var(--pink)}
+.rule h4{font-family:var(--f-display);font-weight:900;font-size:24px;text-transform:uppercase;line-height:1;margin-bottom:8px}
+.rule li{font-size:14.5px;line-height:1.55;color:var(--mutel);margin:0 0 6px 18px}
+.what4{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.work .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.work .tags span{border:1.5px solid var(--ink);padding:8px 12px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.work .tags span:first-child{background:var(--lime)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.reels video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+@media(max-width:900px){.rules,.what4,.work{grid-template-columns:1fr;gap:20px}.reels{gap:6px}}
+
+/* CAPA: mais contida e elegante */
+.cover .in{grid-template-columns:1.1fr .9fr;gap:64px}
+.cover h1{font-size:clamp(44px,5.6vw,88px);letter-spacing:-.5px;line-height:.95;margin:14px 0 20px}
+.cover h1 .hl{padding:0 8px 2px}
+.cover .for{font-size:13px}
+.cover p{font-size:15.5px;line-height:1.7;max-width:440px;color:rgba(255,255,255,.58)}
+.cover .start{margin-top:28px;padding:13px 22px;font-size:12px;letter-spacing:1.4px}
+.cover .stack{height:min(60vh,520px)}
+.cover .stack > *{width:36%;border:0;box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.cover .stack > :nth-child(1){left:2%;top:10%;transform:rotate(-5deg)}
+.cover .stack > :nth-child(2){left:32%;top:0;transform:rotate(0)}
+.cover .stack > :nth-child(3){left:62%;top:12%;transform:rotate(5deg)}
+@media(max-width:900px){.cover h1{font-size:clamp(40px,12vw,58px)}.cover .stack{height:260px}.cover .stack > *{width:34%}}
+
+/* DORES: bloco acende em verde, depois tudo entra em fade */
+.pain .pains > div{transition:background-color .9s ease;padding-left:18px;margin-left:-18px}
+.pain .pains > div > *{opacity:0;transition:opacity .7s ease,transform .7s ease,color .7s ease}
+.pain .pains > div .x{transform-origin:left center}
+.pain .pains > div.n0{background:var(--lime)}
+.pain .pains > div.n0 .x{opacity:1;color:var(--ink);transform:scale(1.8)}
+.pain .pains > div.n1{background:transparent}
+.pain .pains > div.n1 .x{opacity:1;transform:none}
+.pain .pains > div.n2 h3.t,.pain .pains > div.n3 p.t{opacity:1}
+.pain.fast .pains > div,.pain.fast .pains > div > *{transition-duration:.3s}
+@media(prefers-reduced-motion:reduce){.pain .pains > div > *{opacity:1;transition:none}.pain .pains > div{transition:none}}
+.who figure img{aspect-ratio:4/5;max-height:70vh;width:100%;object-fit:cover;object-position:center 30%}
+@media(max-width:900px){.who figure img{aspect-ratio:4/5;max-height:46vh}}
+
+/* PORTFÓLIO SAÚDE */
+.health .in{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.health h2{font-size:clamp(40px,5vw,72px);margin:16px 0 18px}
+.hl-lead{font-size:16px;line-height:1.65;color:var(--mutel);max-width:440px}
+.hfeed{background:var(--white);color:var(--ink);border-radius:20px;overflow:hidden;max-width:560px;width:100%;justify-self:center}
+.hfeed header{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.hfeed header i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--f-label);font-size:18px;background:var(--ink);color:var(--lime);flex:none}
+.hfeed header b{display:block;font-size:14px}
+.hfeed header span{font-size:11px;color:#737373}
+.hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-height:min(62vh,560px);overflow-y:auto;overscroll-behavior:contain}
+.tile{position:relative;padding:0;border:0;background:#111;cursor:pointer;aspect-ratio:4/5;display:block}
+.tile img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.tile .pl{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:5px;background:rgba(10,10,10,.55)}
+.tile .pl::after{content:'';position:absolute;left:8px;top:6px;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.tile:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
+.md{position:fixed;inset:0;z-index:50;background:rgba(5,5,5,.94);display:flex;align-items:center;justify-content:center;padding:24px}
+.md[hidden]{display:none}
+.md video,.md img{max-height:100%;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#000}
+.md button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:48px;height:48px;border:0;background:var(--lime);color:var(--ink);font-size:20px;cursor:pointer}
+@media(max-width:900px){.health .in{grid-template-columns:1fr;gap:24px}.hgrid{max-height:52vh}}
+</style>
+</head>
+<body>
+
+<div class="top" aria-hidden="true"><div class="logo">LEMON<i></i></div><div class="count" id="count">01 / 09</div></div>
+<main class="deck" aria-roledescription="apresentação">
+<div class="track" id="track">
+
+<section class="slide cover" aria-label="Capa">
+  <div class="in">
+    <div>
+      <div class="for" id="para"></div>
+      <h1 class="bc">Prazer,<br>somos a<br><span class="hl">Lemon.</span></h1>
+      <p>Uma agência de conteúdo e marketing para médicos e clínicas. Preparamos esta apresentação para mostrar como levamos mais pacientes até a sua agenda, com ética e dentro das regras do CFM.</p>
+      <button class="btn start" type="button" data-go="1">Começar a apresentação →</button>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <video src="/vem/bastidor1.mp4" poster="/vem/bastidor1.jpg" muted autoplay loop playsinline></video>
+      <video src="/vem/bastidor2.mp4" poster="/vem/bastidor2.jpg" muted autoplay loop playsinline></video>
+      <video src="/vem/bastidor3.mp4" poster="/vem/bastidor3.jpg" muted autoplay loop playsinline></video>
+    </div>
+  </div>
+</section>
+
+<section class="slide light who" aria-label="Quem somos">
+  <div class="in">
+    <div>
+      <div class="kick">Quem somos</div>
+      <h2 class="bc" style="margin-top:16px;font-size:clamp(36px,4.6vw,68px)">Experiência em<br>conteúdo e marketing<br><span class="hl">que traz pacientes.</span></h2>
+      <p class="lead">Há mais de 10 anos criamos conteúdo para marcas. Hoje colocamos essa experiência a serviço de consultórios e clínicas: produção de vídeo, estratégia e anúncios trabalhando juntos para levar pacientes até a sua agenda.</p>
+      <div class="facts">
+        <div><b>10+ anos</b><span>criando conteúdo para marcas</span></div>
+        <div><b>1 dia</b><span>de gravação = 1 mês de conteúdo</span></div>
+        <div><b>Pacientes</b><span>o foco de todo o nosso marketing</span></div>
+        <div><b>Saúde</b><span>já atendemos médicos e clínicas</span></div>
+      </div>
+    </div>
+    <figure>
+      <img src="/clinicas/equipe.jpg" alt="Equipe da Lemon Social">
+      <figcaption>Lemon Social</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide pain" aria-label="O desafio">
+  <div class="in">
+    <div class="kick">O desafio</div>
+    <h2 class="bc">Sua clínica<br>está passando<br><span class="hl">por isso?</span></h2>
+    <div class="pains">
+      <div><div class="x">01</div><h3 class="t">Agenda com buracos</h3><p class="t">Horários vagos que não voltam, enquanto outros dias lotam. Cada cadeira vazia é receita perdida.</p></div>
+      <div><div class="x">02</div><h3 class="t">Dependência de indicação</h3><p class="t">O paciente novo só chega por boca a boca. Sem previsibilidade, não dá para crescer nem planejar.</p></div>
+      <div><div class="x">03</div><h3 class="t">Lead que esfria</h3><p class="t">O paciente chama no WhatsApp, demora a ser respondido e agenda com o concorrente.</p></div>
+      <div><div class="x">04</div><h3 class="t">Paciente que some</h3><p class="t">Fez a consulta ou o procedimento e nunca mais voltou. Sem retorno, sem recorrência.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide what" aria-label="O que fazemos">
+  <div class="in">
+    <div class="kick">O que fazemos por você</div>
+    <h2 class="bc">Um método em<br><span class="hl">três etapas.</span></h2>
+    <div class="flow">
+      <div class="col">
+        <div class="stage"><span>01</span><b>Atrair</b></div>
+        <div class="svc"><h4>Conteúdo de autoridade</h4><p>Vídeos e posts que ensinam, tiram dúvidas e mostram o médico por trás do jaleco.</p></div>
+        <div class="svc"><h4>Tráfego pago</h4><p>Anúncios para quem busca o seu tratamento na sua região, com relatório mensal.</p></div>
+      </div>
+      <div class="col">
+        <div class="stage"><span>02</span><b>Converter</b></div>
+        <div class="svc"><h4>Atendimento no WhatsApp</h4><p>Roteiro de resposta rápida e organizada, para o interesse virar consulta marcada.</p></div>
+        <div class="svc"><h4>Página e link da bio</h4><p>Agendamento, localização e WhatsApp num só lugar, com contagem de cliques.</p></div>
+      </div>
+      <div class="col">
+        <div class="stage"><span>03</span><b>Fazer voltar</b></div>
+        <div class="svc"><h4>CRM Lemon</h4><p>Cada paciente vira um contato com nome, WhatsApp e aniversário, e uma avaliação no Google.</p></div>
+        <div class="svc"><h4>Campanhas de retorno</h4><p>Lembretes de revisão, check up e datas especiais, todo mês e de forma automática.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide ethics" aria-label="Dentro das regras do CFM">
+  <div class="in">
+    <div class="kick">Marketing médico do jeito certo</div>
+    <h2 class="bc" style="font-size:clamp(40px,5vw,72px);margin:16px 0 28px">Vender sem<br><span class="hl">infringir o CFM.</span></h2>
+    <div class="rules">
+      <div class="rule no"><h4>O que não fazemos</h4><ul><li>Promessa ou garantia de resultado</li><li>Antes e depois de pacientes como propaganda</li><li>Promoção, desconto ou preço de consulta</li><li>Sensacionalismo ou autopromoção exagerada</li></ul></div>
+      <div class="rule"><h4>O que fazemos</h4><ul><li>Conteúdo educativo que gera confiança</li><li>Imagem profissional do médico e da estrutura</li><li>Roteiro aprovado por você antes de gravar</li><li>Anúncios que informam e levam ao agendamento</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" aria-label="Trabalho com clínicas">
+  <div class="in work">
+    <div>
+      <div class="kick">Na prática</div>
+      <h2 class="bc" style="font-size:clamp(44px,5.4vw,80px);margin:16px 0 18px">Como já<br>trabalhamos com<br><span class="hl">um médico.</span></h2>
+      <p style="font-size:16px;line-height:1.65;color:var(--muted);max-width:480px">Atendemos um dermatologista de Brasília com estratégia de redes sociais e produção mensal de vídeo. O médico grava em um dia e a equipe cuida de roteiro, edição, legenda e postagem.</p>
+      <div class="tags"><span>12 vídeos/mês para o Instagram</span><span>2 vídeos/mês para o YouTube</span><span>Roteiro, legenda e postagem</span></div>
+    </div>
+    <div class="reels" aria-label="Bastidores de gravação">
+      <video src="/vem/bastidor1.mp4" poster="/vem/bastidor1.jpg" muted loop playsinline class="auto"></video>
+      <video src="/vem/bastidor2.mp4" poster="/vem/bastidor2.jpg" muted loop playsinline class="auto"></video>
+      <video src="/vem/bastidor3.mp4" poster="/vem/bastidor3.jpg" muted loop playsinline class="auto"></video>
+    </div>
+  </div>
+</section>
+
+<section class="slide health" aria-label="Portfólio de saúde">
+  <div class="in">
+    <div>
+      <div class="kick">Portfólio · Saúde</div>
+      <h2 class="bc">Conteúdo que<br>passa <span class="hl">confiança.</span></h2>
+      <p class="hl-lead">Vídeos, posts e lives para médicos, clínicas e profissionais de saúde. Cada peça educa o paciente, mostra o profissional e respeita as regras do CFM. Toque em um item para ver.</p>
+    </div>
+    <div class="hfeed">
+      <header><i>L</i><div><b>Lemon Social</b><span>Médicos, clínicas e bem estar</span></div></header>
+      <div class="hgrid">
+<button class="tile" type="button" data-video="/clinicas/saude/v01.mp4"><img loading="lazy" src="/clinicas/saude/v01.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-img="/clinicas/saude/live.jpg"><img loading="lazy" src="/clinicas/saude/live.jpg" alt="Post"></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v02.mp4"><img loading="lazy" src="/clinicas/saude/v02.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v03.mp4"><img loading="lazy" src="/clinicas/saude/v03.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-img="/clinicas/saude/jaleco.jpg"><img loading="lazy" src="/clinicas/saude/jaleco.jpg" alt="Post"></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v04.mp4"><img loading="lazy" src="/clinicas/saude/v04.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-img="/clinicas/saude/famulus.jpg"><img loading="lazy" src="/clinicas/saude/famulus.jpg" alt="Post"></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v05.mp4"><img loading="lazy" src="/clinicas/saude/v05.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v06.mp4"><img loading="lazy" src="/clinicas/saude/v06.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-img="/clinicas/saude/inegociaveis.jpg"><img loading="lazy" src="/clinicas/saude/inegociaveis.jpg" alt="Post"></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v07.mp4"><img loading="lazy" src="/clinicas/saude/v07.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v08.mp4"><img loading="lazy" src="/clinicas/saude/v08.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-img="/clinicas/saude/calendario.jpg"><img loading="lazy" src="/clinicas/saude/calendario.jpg" alt="Post"></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v09.mp4"><img loading="lazy" src="/clinicas/saude/v09.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v10.mp4"><img loading="lazy" src="/clinicas/saude/v10.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v11.mp4"><img loading="lazy" src="/clinicas/saude/v11.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v12.mp4"><img loading="lazy" src="/clinicas/saude/v12.jpg" alt="Vídeo"><i class="pl"></i></button>
+<button class="tile" type="button" data-video="/clinicas/saude/v13.mp4"><img loading="lazy" src="/clinicas/saude/v13.jpg" alt="Vídeo"><i class="pl"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide lime road" aria-label="Onde você vai chegar">
+  <div class="in">
+    <div class="kick" style="color:rgba(0,0,0,.6)">Onde você vai chegar</div>
+    <h2 class="bc">Os seus<br>próximos 90 dias.</h2>
+    <div class="steps">
+      <div><em>Mês 1</em><h3>Autoridade</h3><p>Posicionamento definido, primeira gravação e o conteúdo do mês aprovado por você antes de ir ao ar.</p></div>
+      <div><em>Mês 2</em><h3>Mais pacientes novos</h3><p>Anúncios rodando para o público certo da sua região e atendimento no WhatsApp afinado para agendar.</p></div>
+      <div><em>Mês 3</em><h3>Paciente que volta</h3><p>Base de pacientes organizada, avaliações subindo no Google e campanhas de retorno ativas.</p></div>
+    </div>
+    <p class="goal">Agenda mais cheia, mais retorno, mais faturamento.</p>
+  </div>
+</section>
+
+<section class="slide cta" aria-label="Próximo passo">
+  <div class="in">
+    <div>
+      <div class="kick">Próximo passo</div>
+      <h2 class="bc">Vamos<br>conversar<br><span class="hl">15 minutos?</span></h2>
+      <p class="lead">Fazemos um diagnóstico gratuito do seu Instagram, do seu Google e da jornada do paciente até o agendamento, e mostramos como aplicaríamos o método na sua clínica.</p>
+      <div class="ctas">
+        <a class="btn" id="waBtn" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Quero meu diagnóstico ↗</a>
+        <span class="phone">WhatsApp <b>(61) 99888 9486</b></span>
+      </div>
+    </div>
+    <ol class="next3">
+      <li><div><b>Diagnóstico gratuito</b><span>Analisamos seu perfil, seu Google e como o paciente chega até você.</span></div></li>
+      <li><div><b>Proposta sob medida</b><span>Um plano com as etapas que fazem sentido para o seu momento.</span></div></li>
+      <li><div><b>Primeira gravação</b><span>Em 1 dia gravamos o mês inteiro e o seu conteúdo vai ao ar.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+</div>
+</main>
+<div class="bar">
+  <button class="nav prev" type="button" id="prev" aria-label="Tela anterior">←</button>
+  <div class="prog" aria-hidden="true"><b id="prog" style="width:11%"></b></div>
+  <button class="nav next" type="button" id="next" aria-label="Próxima tela">→</button>
+</div>
+<div class="md" id="md" hidden role="dialog" aria-modal="true" aria-label="Visualizar"><button type="button" id="mdX" aria-label="Fechar">✕</button><div id="mdBox"></div></div>
+<script>
+(() => {
+  const WHATS='5561998889486';
+  const track=document.getElementById('track'), slides=[...track.children], N=slides.length;
+  const pad=n=>String(n).padStart(2,'0'); let i=0;
+  const para=(new URLSearchParams(location.search).get('para')||'').trim().slice(0,60);
+  if(para) document.getElementById('para').textContent='Preparado para '+para;
+  const msg=para?`Olá, Lemon! Vi a apresentação para ${para} e quero o diagnóstico gratuito.`:'Olá, Lemon! Vi a apresentação para clínicas e quero o diagnóstico gratuito.';
+  document.getElementById('waBtn').href=`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
+  const autos=document.querySelectorAll('video.auto');
+
+  // Dores: dentro de cada bloco o número entra grande, assenta, e vêm título e texto; cada item mais rápido
+  const painSlide=document.querySelector('.slide.pain');
+  const painItems=[...painSlide.querySelectorAll('.pains > div')];
+  let pt=[];
+  const later=(f,ms)=>pt.push(setTimeout(f,ms));
+  const resetPain=()=>{pt.forEach(clearTimeout);pt=[];painSlide.classList.remove('fast');painItems.forEach(d=>d.className='');};
+  const playPain=()=>{
+    resetPain();
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const big=[1100,800,450,200], title=[600,450,250,110], text=[500,380,220,100], next=[250,180,100,40];
+    let t=400;
+    painItems.forEach((d,k)=>{
+      later(()=>{d.classList.add('n0');if(k>=2)painSlide.classList.add('fast');},t); t+=big[k];
+      later(()=>d.classList.add('n1'),t); t+=title[k];
+      later(()=>d.classList.add('n2'),t); t+=text[k];
+      later(()=>d.classList.add('n3'),t); t+=next[k];
+    });
+  };
+
+  // Portfólio de saúde: vídeos tocam com som, fotos ampliam
+  const md=document.getElementById('md'), mdBox=document.getElementById('mdBox');
+  const closeMd=()=>{md.hidden=true;mdBox.innerHTML='';};
+  document.querySelectorAll('.tile').forEach(t=>t.addEventListener('click',()=>{
+    mdBox.innerHTML=t.dataset.video?`<video src="${t.dataset.video}" controls autoplay playsinline style="max-height:88vh"></video>`:`<img src="${t.dataset.img}" alt="" style="max-height:88vh">`;
+    md.hidden=false;
+  }));
+  document.getElementById('mdX').onclick=closeMd;
+  md.addEventListener('click',e=>{if(e.target===md)closeMd();});
+  addEventListener('keydown',e=>{if(md.hidden)return;e.stopImmediatePropagation();e.preventDefault();if(e.key==='Escape')closeMd();},true);
+  const go=n=>{
+    i=Math.max(0,Math.min(N-1,n));
+    track.style.transform=`translateX(${-i*100}%)`;
+    document.getElementById('count').textContent=`${pad(i+1)} / ${pad(N)}`;
+    document.getElementById('prog').style.width=((i+1)/N*100)+'%';
+    document.getElementById('prev').disabled=i===0;
+    document.getElementById('next').disabled=i===N-1;
+    slides.forEach((s,k)=>{s.setAttribute('aria-hidden',k!==i);s.inert=k!==i;});
+    slides[i].scrollTop=0;
+    if(slides[i]===painSlide) playPain(); else resetPain();
+    closeMd();
+    const on=slides[i].querySelector('video.auto');
+    autos.forEach(v=>{ if(on) v.play().catch(()=>{}); else v.pause(); });
+  };
+  document.getElementById('prev').onclick=()=>go(i-1);
+  document.getElementById('next').onclick=()=>go(i+1);
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1);}
+    if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(i-1);}
+  });
+  let sx=0,sy=0;
+  track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4)go(i+(dx<0?1:-1));},{passive:true});
+  const start=parseInt(location.hash.replace('#',''),10);
+  go(start>=1&&start<=N?start-1:0);
+})();
+</script>
+</body>
+</html>
