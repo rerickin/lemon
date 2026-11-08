@@ -293,6 +293,14 @@ a{color:inherit}
 .md video,.md img{max-height:100%;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#000}
 .md button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:48px;height:48px;border:0;background:var(--lime);color:var(--ink);font-size:20px;cursor:pointer}
 @media(max-width:900px){.health .in{grid-template-columns:1fr;gap:24px}.hgrid{max-height:52vh}}
+
+/* bastidores de clínica */
+.cover .stack > img{width:52%;aspect-ratio:1/1;object-fit:cover}
+.cover .stack > :nth-child(1){left:0;top:16%;transform:rotate(-4deg);z-index:1}
+.cover .stack > :nth-child(2){left:44%;top:2%;transform:rotate(4deg);z-index:2}
+.reels{grid-template-columns:repeat(2,1fr)}
+.reels img{width:100%;aspect-ratio:1/1;object-fit:cover}
+@media(max-width:900px){.cover .stack > img{width:50%}}
 </style>
 </head>
 <body>
@@ -310,9 +318,8 @@ a{color:inherit}
       <button class="btn start" type="button" data-go="1">Começar a apresentação →</button>
     </div>
     <div class="stack" aria-hidden="true">
-      <video src="/vem/bastidor1.mp4" poster="/vem/bastidor1.jpg" muted autoplay loop playsinline></video>
-      <video src="/vem/bastidor2.mp4" poster="/vem/bastidor2.jpg" muted autoplay loop playsinline></video>
-      <video src="/vem/bastidor3.mp4" poster="/vem/bastidor3.jpg" muted autoplay loop playsinline></video>
+      <img src="/clinicas/saude/bastidor-a.jpg" alt="">
+      <img src="/clinicas/saude/bastidor-b.jpg" alt="">
     </div>
   </div>
 </section>
@@ -394,9 +401,8 @@ a{color:inherit}
       <div class="tags"><span>12 vídeos/mês para o Instagram</span><span>2 vídeos/mês para o YouTube</span><span>Roteiro, legenda e postagem</span></div>
     </div>
     <div class="reels" aria-label="Bastidores de gravação">
-      <video src="/vem/bastidor1.mp4" poster="/vem/bastidor1.jpg" muted loop playsinline class="auto"></video>
-      <video src="/vem/bastidor2.mp4" poster="/vem/bastidor2.jpg" muted loop playsinline class="auto"></video>
-      <video src="/vem/bastidor3.mp4" poster="/vem/bastidor3.jpg" muted loop playsinline class="auto"></video>
+      <img src="/clinicas/saude/bastidor-a.jpg" alt="Gravação no consultório">
+      <img src="/clinicas/saude/bastidor-b.jpg" alt="Equipe gravando no consultório">
     </div>
   </div>
 </section>
