@@ -348,6 +348,24 @@ a{color:inherit}
 .const .cgrid span{font-size:13px;color:var(--muted)}
 .const .cgrid div:first-child{background:var(--lime)}
 @media(max-width:900px){.cards3,.offer .in,.const .cgrid{grid-template-columns:1fr}.const .cgrid{grid-template-columns:1fr 1fr}.slide h2.bc{font-size:clamp(28px,8.5vw,40px)!important}}
+
+/* botão secundário e tela "só conteúdo" */
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+.btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.45);cursor:pointer}
+.btn.ghost:hover{border-color:var(--lime);color:var(--lime)}
+.ctas .btn.ghost{margin-left:0}
+.solo{position:fixed;inset:0;z-index:45;background:var(--ink);color:var(--white);overflow-y:auto;padding:72px 24px 48px}
+.solo[hidden]{display:none}
+.soloIn{max-width:960px;margin:0 auto}
+.soloIn h2.bc{font-size:clamp(30px,3.7vw,52px);line-height:.98;margin:12px 0 18px}
+.solo-lead{font-size:15px;line-height:1.65;color:var(--mutel);max-width:600px;margin-bottom:24px}
+.cards3.six{grid-template-columns:repeat(3,1fr)}
+.cards3.six .c3{padding:18px 18px 20px}
+.cards3.six .c3 h3{font-size:21px}
+.solo-note{margin-top:22px;font-size:14px;color:var(--mutel)}
+.soloX{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:46px;height:46px;border:0;background:var(--lime);color:var(--ink);font-size:18px;cursor:pointer;z-index:2}
+@media(max-width:900px){.cards3.six{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cards3.six{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -443,7 +461,7 @@ a{color:inherit}
       <h3>Diagnóstico gratuito + primeira gravação com roteiro aprovado por você</h3>
       <p>Mostramos onde a sua clínica perde paciente hoje, antes de você investir em qualquer coisa.</p>
       <div class="guar"><b>Garantia Lemon:</b> se em 30 dias o sistema não estiver no ar, você não paga a segunda mensalidade.</div>
-      <a class="btn wa" href="https://wa.me/5561998889486" target="_blank" rel="noopener" style="margin-top:18px">Quero a oferta ↗</a>
+      <div class="btnrow"><a class="btn wa" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Quero a oferta ↗</a><button class="btn ghost" type="button" data-solo>Só produção de conteúdo</button></div>
       <p class="few">Atendemos poucas clínicas por vez.</p>
     </div>
   </div>
@@ -530,6 +548,7 @@ a{color:inherit}
       <p class="lead">Diagnóstico gratuito do seu Instagram, do seu Google e da jornada do paciente, e a proposta pronta para a sua clínica.</p>
       <div class="ctas">
         <a class="btn wa" id="waBtn" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Quero meu diagnóstico ↗</a>
+        <button class="btn ghost" type="button" data-solo>Só produção de conteúdo</button>
         <span class="phone">WhatsApp <b>(61) 99888 9486</b></span>
       </div>
     </div>
@@ -547,6 +566,27 @@ a{color:inherit}
   <button class="nav prev" type="button" id="prev" aria-label="Tela anterior">←</button>
   <div class="prog" aria-hidden="true"><b id="prog" style="width:9.1%"></b></div>
   <button class="nav next" type="button" id="next" aria-label="Próxima tela">→</button>
+</div>
+<div class="solo" id="solo" hidden role="dialog" aria-modal="true" aria-label="Só produção de conteúdo">
+  <button type="button" class="soloX" id="soloX" aria-label="Fechar">✕</button>
+  <div class="soloIn">
+    <div class="kick">Só conteúdo</div>
+    <h2 class="bc">Sem problema.<br>Podemos fazer só <span class="hl">produção de conteúdo.</span></h2>
+    <p class="solo-lead">Se você ainda não quer anúncios, começamos pelo que a Lemon faz muito bem: transformar a rotina da sua clínica em conteúdo que gera confiança, todo mês, sem você se preocupar com nada.</p>
+    <div class="cards3 six">
+      <div class="c3"><em>01</em><h3>Estratégia</h3><p>Posicionamento e linha editorial pensados para o seu público.</p></div>
+      <div class="c3"><em>02</em><h3>Roteiros</h3><p>Planejamento mensal que você aprova antes de gravar.</p></div>
+      <div class="c3"><em>03</em><h3>Gravação</h3><p>1 dia de gravação rende o conteúdo do mês inteiro.</p></div>
+      <div class="c3"><em>04</em><h3>Edição e design</h3><p>Vídeos, capas e artes com acabamento profissional.</p></div>
+      <div class="c3"><em>05</em><h3>Publicação</h3><p>Legenda, agendamento e postagem por nossa conta.</p></div>
+      <div class="c3"><em>06</em><h3>Aprovação online</h3><p>Você vê cada peça num sistema visual e aprova antes de ir ao ar.</p></div>
+    </div>
+    <p class="solo-note">Quando você quiser, ligamos o tráfego pago e o CRM em cima desse conteúdo.</p>
+    <div class="btnrow">
+      <a class="btn wa2" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Vamos conversar 15 minutos? ↗</a>
+      <button class="btn ghost" type="button" id="soloBack">← Voltar</button>
+    </div>
+  </div>
 </div>
 <div class="md" id="md" hidden role="dialog" aria-modal="true" aria-label="Visualizar"><button type="button" id="mdX" aria-label="Fechar">✕</button><div id="mdBox"></div></div>
 <script>
@@ -589,6 +629,17 @@ a{color:inherit}
   document.getElementById('mdX').onclick=closeMd;
   md.addEventListener('click',e=>{if(e.target===md)closeMd();});
   addEventListener('keydown',e=>{if(md.hidden)return;e.stopImmediatePropagation();e.preventDefault();if(e.key==='Escape')closeMd();},true);
+
+  // Tela "só produção de conteúdo"
+  const solo=document.getElementById('solo');
+  const openSolo=()=>{solo.hidden=false;solo.scrollTop=0;};
+  const closeSolo=()=>{solo.hidden=true;};
+  document.querySelectorAll('[data-solo]').forEach(b=>b.addEventListener('click',openSolo));
+  document.getElementById('soloX').onclick=closeSolo;
+  document.getElementById('soloBack').onclick=closeSolo;
+  const msg2=para?`Olá, Lemon! Vi a apresentação para ${para} e quero conversar sobre produção de conteúdo.`:'Olá, Lemon! Vi a apresentação para clínicas e quero conversar sobre produção de conteúdo.';
+  document.querySelectorAll('.wa2').forEach(a=>a.href=`https://wa.me/${WHATS}?text=${encodeURIComponent(msg2)}`);
+  addEventListener('keydown',e=>{if(solo.hidden)return;if(e.key==='Escape'){closeSolo();}e.stopImmediatePropagation();},true);
   const go=n=>{
     i=Math.max(0,Math.min(N-1,n));
     track.style.transform=`translateX(${-i*100}%)`;
@@ -599,7 +650,7 @@ a{color:inherit}
     slides.forEach((s,k)=>{s.setAttribute('aria-hidden',k!==i);s.inert=k!==i;});
     slides[i].scrollTop=0;
     if(slides[i]===painSlide) playPain(); else resetPain();
-    closeMd();
+    closeMd(); closeSolo();
     const on=slides[i].querySelector('video.auto');
     autos.forEach(v=>{ if(on) v.play().catch(()=>{}); else v.pause(); });
   };
