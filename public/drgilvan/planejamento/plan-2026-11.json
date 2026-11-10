@@ -18,7 +18,7 @@
    "format": "reels",
    "n": 1,
    "title": "Coisas óbvias para mim, que sou dermatologista, mas que talvez sejam novidade para você",
-   "date": "2026-11-03",
+   "date": "2026-11-19",
    "record": true,
    "blocks": [
     {
@@ -62,7 +62,7 @@
    "format": "reels",
    "n": 2,
    "title": "React: O bronzeado não é sinal de pele saudável",
-   "date": "2026-11-05",
+   "date": "2026-11-21",
    "record": true,
    "blocks": [
     {
@@ -111,7 +111,7 @@
    "format": "reels",
    "n": 3,
    "title": "Verdades difíceis de engolir, mas que ficam mais fáceis com um café",
-   "date": "2026-11-10",
+   "date": "2026-11-26",
    "record": true,
    "blocks": [
     {
@@ -138,7 +138,7 @@
    "format": "reels",
    "n": 4,
    "title": "Produtos essenciais para uma pele 40+",
-   "date": "2026-11-07",
+   "date": "2026-11-27",
    "record": true,
    "blocks": [
     {
@@ -180,7 +180,7 @@
    "format": "reels",
    "n": 6,
    "title": "Passou dos 50? Uma aplicação de bioestimulador de colágeno não garante resultados para sempre!",
-   "date": "2026-11-17",
+   "date": "2026-11-16",
    "record": true,
    "blocks": [
     {
@@ -224,7 +224,7 @@
    "format": "reels",
    "n": 7,
    "title": "Os pés de galinha são sinais do envelhecimento da pele. Mas quem disse que não podemos tratar essas linhas?",
-   "date": "2026-11-26",
+   "date": "2026-11-10",
    "record": true,
    "blocks": [
     {
@@ -276,7 +276,7 @@
    "format": "reels",
    "n": 8,
    "title": "LinearZ: análise de caso real",
-   "date": "2026-11-14",
+   "date": "2026-11-12",
    "record": true,
    "blocks": [
     {
@@ -324,7 +324,7 @@
    "format": "reels",
    "n": 9,
    "title": "Coisas que eu jamais faria se tivesse ruguinhas abaixo dos olhos",
-   "date": "2026-11-19",
+   "date": "2026-11-17",
    "record": true,
    "blocks": [
     {
@@ -347,7 +347,7 @@
    "format": "reels",
    "n": 10,
    "title": "Remoção de tatuagem",
-   "date": "2026-11-12",
+   "date": "2026-11-13",
    "record": true,
    "blocks": [
     {
@@ -391,7 +391,7 @@
    "format": "reels",
    "n": 11,
    "title": "Tem uma cicatriz de cirurgia plástica que você gostaria de melhorar? Presta atenção nesse laser.",
-   "date": "2026-11-21",
+   "date": "2026-11-30",
    "record": true,
    "blocks": [
     {
@@ -470,7 +470,7 @@
    "format": "youtube",
    "n": 1,
    "title": "Quem tem pele sensível pode fazer laser?",
-   "date": "2026-11-09",
+   "date": "2026-11-11",
    "record": true,
    "blocks": [
     {
@@ -545,18 +545,6 @@
  "agenda": [
   {
    "date": "2026-11-04",
-   "label": "Live"
-  },
-  {
-   "date": "2026-11-11",
-   "label": "Live"
-  },
-  {
-   "date": "2026-11-18",
-   "label": "Live"
-  },
-  {
-   "date": "2026-11-25",
    "label": "Live"
   }
  ]
