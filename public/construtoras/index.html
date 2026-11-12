@@ -384,11 +384,38 @@ a{color:inherit}
 .prat{font-size:14.5px;line-height:1.65;color:var(--muted);max-width:620px;margin:16px 0 26px}
 @media(max-width:900px){.cover .in{grid-template-columns:minmax(0,1fr)!important}.steps3{justify-self:stretch;max-width:none;order:-1}.steps3 > div{padding:12px 14px}.steps3 em{font-size:34px}.steps3 b{font-size:26px}}
 .lightc .c3 h3{color:var(--white)}
+
+/* PORTFÓLIO dentro da apresentação */
+.port .in{max-width:1240px}
+.port .plead{max-width:640px;margin-top:20px;font-size:17px;line-height:1.6;color:var(--mutel)} .port .plead b{color:var(--lime)}
+.port .tile{aspect-ratio:auto;overflow:hidden;text-align:left;color:inherit;background:#151515}
+.port .tile img{object-position:center}
+.port .pvgrid,.port .ppgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.port .tile.pv{aspect-ratio:9/16} .port .tile.pf{aspect-ratio:4/5}
+.port .tile.pv::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.82))}
+.port .tile .cap{position:absolute;left:12px;right:12px;bottom:12px;z-index:2}
+.port .tile .cap b{display:block;font-family:var(--f-display);font-weight:900;font-size:20px;line-height:1;text-transform:uppercase}
+.port .tile .cap span{display:block;margin-top:6px;font-size:12px;color:var(--mutel);line-height:1.3}
+.port .tile .pp{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;background:var(--lime)}
+.port .tile .pp::before{content:'';position:absolute;left:15px;top:11px;border-left:11px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.port .pstage{position:relative;margin-top:28px;padding:clamp(18px,3vw,44px);background:radial-gradient(ellipse at 30% 20%,#1d2a05 0%,#0e1303 55%,#0A0A0A 100%);border:1px solid rgba(200,242,13,.18);overflow:hidden}
+.port .pgr{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,40px);align-items:center} .port .pgr>*{min-width:0}
+.port .pstack{position:relative;padding-bottom:24%}
+.port .dev{position:relative;background:#1a1a1a;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.port .dev.b{position:absolute;right:0;bottom:0;width:60%}
+.port .dbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#242424;border-radius:10px 10px 0 0}
+.port .dbar i{width:9px;height:9px;border-radius:50%;display:block;background:#ff5f57} .port .dbar i:nth-child(2){background:#febc2e} .port .dbar i:nth-child(3){background:#28c840}
+.port .dbar span{margin-left:10px;flex:1;max-width:340px;padding:3px 10px;border-radius:6px;background:#111;color:#9a9a9a;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.port .dev img{width:100%;aspect-ratio:1568/698;object-fit:cover;border-radius:0 0 10px 10px}
+.port .pcopy h3{font-size:clamp(28px,3.2vw,46px);margin-bottom:14px}
+.port .pcopy p{color:var(--mutel);line-height:1.6;font-size:15px}
+.port .prow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px} .port .prow .btn{padding:12px 16px;font-size:11px}
+@media(max-width:900px){.port .pvgrid,.port .ppgrid{grid-template-columns:repeat(2,1fr);gap:10px}.port .pgr{grid-template-columns:1fr}.port .pstack{padding-bottom:0}.port .dev.b{position:relative;width:100%;margin-top:16px}.port .tile .cap b{font-size:17px}}
 </style>
 </head>
 <body>
 
-<div class="top" aria-hidden="true"><div class="logo">LEMON<i></i></div><div class="count" id="count">01 / 10</div></div>
+<div class="top" aria-hidden="true"><div class="logo">LEMON<i></i></div><div class="count" id="count">01 / 11</div></div>
 <main class="deck" aria-roledescription="apresentação">
 <div class="track" id="track">
 
@@ -521,10 +548,32 @@ a{color:inherit}
       <div class="c3"><em>PÁGINAS</em><h3>Site e landing page</h3><p>Página para apresentar a empresa, mostrar obras entregues e captar pedidos de orçamento.</p></div>
       <div class="c3"><em>ROTINA</em><h3>Roteiro, legenda e postagem</h3><p>Planejamento aprovado por você antes de gravar. Nós cuidamos do resto.</p></div>
     </div>
-    <div style="margin-top:28px"><a class="btn dark" href="/construtoras/portfolio/" target="_blank" rel="noopener">Veja o que estamos fazendo ↗</a></div>
+    <div style="margin-top:28px"><button class="btn dark" type="button" data-go="9">Veja o que estamos fazendo →</button></div>
   </div>
 </section>
 
+<section class="slide port" aria-label="Portfólio">
+  <div class="in">
+    <div class="kick">Portfólio</div>
+    <h2 class="bc" style="margin-top:16px;font-size:clamp(40px,5.6vw,84px)">Veja o que<br>estamos <span class="hl">fazendo.</span></h2>
+    <p class="plead">Obras reais, de casas e edifícios a um hospital em execução, registradas em vídeo e foto. É assim que o cliente vê o seu trabalho, confia e contrata. Projeto: <b>Construtecn</b>.</p>
+    <div class="pstage"><div class="pgr">
+      <div class="pstack">
+        <div class="dev"><div class="dbar"><i></i><i></i><i></i><span>construtecn-2pi.pages.dev</span></div><img src="/construtoras/portfolio/img/site-construtecn.jpg" alt="Site institucional da Construtecn" loading="lazy"></div>
+        <div class="dev b"><div class="dbar"><i></i><i></i><i></i><span>construtecn-2pi.pages.dev/reserva-das-aguas</span></div><img src="/construtoras/portfolio/img/site-reserva.jpg" alt="Página de vendas Reserva das Águas" loading="lazy"></div>
+      </div>
+      <div class="pcopy">
+        <h3 class="bc">Mais moderna, mais clara, <span class="hl">pronta para vender.</span></h3>
+        <p>Além da nova identidade e do site institucional da Construtecn, construímos uma página de vendas do Reserva das Águas para a consultora de vendas dele. Visual atual, as informações da casa em destaque, visita agendada e WhatsApp direto, para o interessado ir do anúncio à conversa em poucos toques.</p>
+        <div class="prow"><a class="btn" href="https://construtecn-2pi.pages.dev/" target="_blank" rel="noopener">Ver o site ↗</a><a class="btn ghost" href="https://construtecn-2pi.pages.dev/reserva-das-aguas" target="_blank" rel="noopener">Ver a página de vendas ↗</a></div>
+      </div>
+    </div></div>
+    <div class="kick" style="margin-top:44px">Vídeos</div>
+    <div class="pvgrid"><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/reserva-casas.mp4"><img src="/construtoras/portfolio/vid/reserva-casas.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Reserva das Águas</b><span>Seu novo imóvel em construção</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/dona-branca.mp4"><img src="/construtoras/portfolio/vid/dona-branca.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Edifício Dona Branca</b><span>Concretagem e evolução da obra</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/casa-gilvan.mp4"><img src="/construtoras/portfolio/vid/casa-gilvan.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Casa Gilvan</b><span>Tour pela casa pronta</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/casa-alves.mp4"><img src="/construtoras/portfolio/vid/casa-alves.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Casa Alves</b><span>Casa com piscina</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/engenharia.mp4"><img src="/construtoras/portfolio/vid/engenharia.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Bastidores da engenharia</b><span>Do projeto ao canteiro</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/acompanhe-obra.mp4"><img src="/construtoras/portfolio/vid/acompanhe-obra.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Acompanhe a obra</b><span>Da planta à concretagem</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/obra-por-dentro.mp4"><img src="/construtoras/portfolio/vid/obra-por-dentro.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>A obra por dentro</b><span>Quem constrói de verdade</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/fundacao.mp4"><img src="/construtoras/portfolio/vid/fundacao.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Fundação</b><span>Onde tudo começa</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/reserva-lancamento.mp4"><img src="/construtoras/portfolio/vid/reserva-lancamento.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Reserva das Águas</b><span>As casas ganham forma</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/reserva-quintal.mp4"><img src="/construtoras/portfolio/vid/reserva-quintal.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Reserva das Águas</b><span>3 quartos, 1 suíte e quintal</span></span></button><button class="tile pv" type="button" data-video="/construtoras/portfolio/vid/reserva-embreve.mp4"><img src="/construtoras/portfolio/vid/reserva-embreve.jpg" alt="" loading="lazy"><span class="pp"></span><span class="cap"><b>Reserva das Águas</b><span>Novas histórias começam aqui</span></span></button></div>
+    <div class="kick" style="margin-top:44px">Fotos e artes</div>
+    <div class="ppgrid"><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/hospital.jpg"><img src="/construtoras/portfolio/img/hospital.jpg" alt="Hospital dermatológico em execução" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/dona-branca.jpg"><img src="/construtoras/portfolio/img/dona-branca.jpg" alt="Edifício Dona Branca" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/reserva-etapa.jpg"><img src="/construtoras/portfolio/img/reserva-etapa.jpg" alt="Reserva das Águas, cada etapa mais próxima da entrega" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/toda-grande-obra.jpg"><img src="/construtoras/portfolio/img/toda-grande-obra.jpg" alt="Toda grande obra começa com pessoas" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/canteiro-escada.jpg"><img src="/construtoras/portfolio/img/canteiro-escada.jpg" alt="Trabalhador no canteiro de obras" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/canteiro-pessoas.jpg"><img src="/construtoras/portfolio/img/canteiro-pessoas.jpg" alt="Retrato de trabalhador da obra" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/marca-obra.jpg"><img src="/construtoras/portfolio/img/marca-obra.jpg" alt="Marca Construtecn aplicada na obra" loading="lazy"></button><button class="tile pf" type="button" data-img="/construtoras/portfolio/img/happy-harry.jpg"><img src="/construtoras/portfolio/img/happy-harry.jpg" alt="Fachada Happy Harry" loading="lazy"></button></div>
+  </div>
+</section>
 <section class="slide cta" aria-label="Próximo passo">
   <div class="in">
     <div>
@@ -549,7 +598,7 @@ a{color:inherit}
 </main>
 <div class="bar">
   <button class="nav prev" type="button" id="prev" aria-label="Tela anterior">←</button>
-  <div class="prog" aria-hidden="true"><b id="prog" style="width:10%"></b></div>
+  <div class="prog" aria-hidden="true"><b id="prog" style="width:9%"></b></div>
   <button class="nav next" type="button" id="next" aria-label="Próxima tela">→</button>
 </div>
 <div class="solo" id="solo" hidden role="dialog" aria-modal="true" aria-label="Só produção de conteúdo">
