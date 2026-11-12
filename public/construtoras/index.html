@@ -269,6 +269,12 @@ a{color:inherit}
 .pain .pains > div.n1 .x{opacity:1;transform:none;color:var(--pink)}
 .pain .pains > div.n2 h3.t,.pain .pains > div.n3 p.t{opacity:1}
 .pain.fast .pains > div,.pain.fast .pains > div > *{transition-duration:.3s}
+.pain .pains > div:last-child{padding-right:18px}
+.pain .pains > div:last-child.n1,.pain .pains > div:last-child.n2,.pain .pains > div:last-child.n3{background:var(--lime)}
+.pain .pains > div:last-child.n1 .x,.pain .pains > div:last-child.n2 .x,.pain .pains > div:last-child.n3 .x{color:var(--ink)}
+.pain .pains > div:last-child.n2 h3.t,.pain .pains > div:last-child.n3 h3.t{color:var(--ink)}
+.pain .pains > div:last-child.n3 p.t{color:rgba(10,10,10,.78)}
+@media(prefers-reduced-motion:reduce){.pain .pains > div:last-child{background:var(--lime)}.pain .pains > div:last-child .x,.pain .pains > div:last-child h3.t{color:var(--ink)}.pain .pains > div:last-child p.t{color:rgba(10,10,10,.78)}}
 @media(prefers-reduced-motion:reduce){.pain .pains > div > *{opacity:1;transition:none}.pain .pains > div{transition:none}}
 .who figure img{aspect-ratio:4/5;max-height:70vh;width:100%;object-fit:cover;object-position:center 35%}
 @media(max-width:900px){.who figure img{aspect-ratio:4/5;max-height:46vh}}
@@ -515,6 +521,7 @@ a{color:inherit}
       <div class="c3"><em>PÁGINAS</em><h3>Site e landing page</h3><p>Página para apresentar a empresa, mostrar obras entregues e captar pedidos de orçamento.</p></div>
       <div class="c3"><em>ROTINA</em><h3>Roteiro, legenda e postagem</h3><p>Planejamento aprovado por você antes de gravar. Nós cuidamos do resto.</p></div>
     </div>
+    <div style="margin-top:28px"><a class="btn dark" href="/construtoras/portfolio/" target="_blank" rel="noopener">Veja o que estamos fazendo ↗</a></div>
   </div>
 </section>
 

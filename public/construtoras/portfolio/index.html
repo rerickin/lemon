@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Lemon Social | Veja o que estamos fazendo</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Portfólio de obras e construtoras da Lemon Social: vídeos e fotos que mostram o trabalho de quem constrói.">
+<meta property="og:title" content="Lemon Social · Veja o que estamos fazendo">
+<meta property="og:description" content="Vídeos e fotos de obras reais, para o cliente ver o seu trabalho e confiar.">
+<meta property="og:image" content="https://www.agencialemonsocial.com.br/construtoras/portfolio/img/hospital.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--lime:#C8F20D;--ink:#0A0A0A;--ink2:#151515;--white:#fff;--mutel:rgba(255,255,255,.62);
+  --f-display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;--f-label:'Bebas Neue',Impact,sans-serif;--f-body:'DM Sans',system-ui,-apple-system,sans-serif;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.bc{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-1px;text-wrap:balance}
+.hl{font-style:italic;background:var(--lime);color:var(--ink);padding:0 10px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kick{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;color:var(--mutel)}
+.kick::before{content:'';width:24px;height:1.5px;background:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:var(--ink);border:0;padding:16px 26px;font:700 13px var(--f-body);letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(24px,env(safe-area-inset-left)) 14px;background:rgba(10,10,10,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-family:var(--f-label);font-size:26px;letter-spacing:2px;display:flex;align-items:center;gap:6px;text-decoration:none}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--lime);display:inline-block}
+.top nav{display:flex;align-items:center;gap:18px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.top nav a{text-decoration:none;color:var(--mutel)}
+.top nav a:hover{color:var(--white)}
+.top .btn{padding:10px 16px;font-size:11px;color:var(--ink)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(24px,env(safe-area-inset-left))}
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(36px,5vw,64px)}
+.hero h1{font-size:clamp(48px,9vw,128px);margin-top:18px}
+.hero p{max-width:620px;margin-top:26px;font-size:clamp(16px,1.5vw,19px);line-height:1.6;color:var(--mutel)}
+.who{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mutel)}
+.who b{color:var(--lime)}
+section.sec{scroll-margin-top:60px;padding:clamp(40px,6vw,80px) 0;border-top:1px solid rgba(255,255,255,.08)}
+.sec h2{font-size:clamp(34px,5vw,64px);margin:14px 0 clamp(24px,3vw,40px)}
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{position:relative;border:0;padding:0;background:var(--ink2);cursor:pointer;aspect-ratio:9/16;overflow:hidden;text-align:left;color:inherit}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tile:hover img{transform:scale(1.04)}
+.tile::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.82))}
+.tile .cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2}
+.tile .cap b{display:block;font-family:var(--f-display);font-weight:900;font-size:22px;line-height:1;text-transform:uppercase}
+.tile .cap span{display:block;margin-top:6px;font-size:12px;color:var(--mutel);line-height:1.3}
+.tile .play{position:absolute;top:14px;right:14px;z-index:2;width:42px;height:42px;border-radius:50%;background:var(--lime);display:grid;place-items:center}
+.tile .play::before{content:'';border-left:12px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pgrid .tile{aspect-ratio:4/5}
+.cta{padding:clamp(56px,8vw,110px) 0 clamp(72px,9vw,130px);text-align:left}
+.cta h2{font-size:clamp(40px,7vw,100px);margin:16px 0 28px}
+.cta .row{display:flex;gap:14px;flex-wrap:wrap}
+footer{padding:28px 0 40px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:var(--mutel)}
+.md{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.92);display:grid;place-items:center;padding:20px}
+.md[hidden]{display:none}
+.md video,.md img{max-height:88vh;max-width:min(92vw,560px);width:auto;background:#000}
+.md img{max-width:min(92vw,900px)}
+#mdX{position:absolute;top:16px;right:16px;width:44px;height:44px;border:0;border-radius:50%;background:var(--lime);color:var(--ink);font-size:18px;font-weight:700;cursor:pointer}
+
+.stage{position:relative;margin-top:8px;padding:clamp(24px,4vw,56px);background:radial-gradient(ellipse at 30% 20%,#1d2a05 0%,#0e1303 55%,#0A0A0A 100%);border:1px solid rgba(200,242,13,.18);overflow:hidden}
+.stage::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 14px);pointer-events:none}
+.dev{position:relative;background:#1a1a1a;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.dev .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#242424;border-radius:10px 10px 0 0}
+.dev .bar i{width:9px;height:9px;border-radius:50%;background:#555;display:block}
+.dev .bar i:nth-child(1){background:#ff5f57}.dev .bar i:nth-child(2){background:#febc2e}.dev .bar i:nth-child(3){background:#28c840}
+.dev .bar span{margin-left:10px;flex:1;max-width:340px;padding:3px 10px;border-radius:6px;background:#111;color:#9a9a9a;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dev img{width:100%;aspect-ratio:1568/698;object-fit:cover;border-radius:0 0 10px 10px}
+.stage .grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(20px,3vw,44px);align-items:center}
+.stage .grid>*{min-width:0}
+.stage .stack{position:relative;padding-bottom:24%}
+.stage .stack .dev.b{position:absolute;right:0;bottom:0;width:60%}
+.lbl{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mutel)}
+.lbl b{color:var(--lime)}
+.sitecopy h3{font-size:clamp(30px,3.6vw,52px);margin-bottom:16px}
+.sitecopy p{color:var(--mutel);line-height:1.6;font-size:16px;margin-bottom:12px}
+.sitecopy .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.sitecopy .btn{padding:12px 18px;font-size:11px}
+@media(max-width:900px){.stage .grid{grid-template-columns:1fr}.stage .stack{padding-bottom:0}.stage .stack .dev.b{position:relative;right:auto;width:100%;margin-top:18px}}
+@media(max-width:900px){.vgrid,.pgrid{grid-template-columns:repeat(2,1fr);gap:10px}.top nav a.nl{display:none}.tile .cap b{font-size:18px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/construtoras/">LEMON<i></i></a>
+  <nav><a class="nl" href="/construtoras/">Apresentação</a><a class="nl" href="#sites">Sites</a><a class="nl" href="#videos">Vídeos</a><a class="nl" href="#fotos">Fotos</a><a class="btn wa" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Conversar ↗</a></nav>
+</header>
+<main>
+<div class="wrap hero">
+  <div class="kick">Portfólio</div>
+  <h1 class="bc">Veja o que<br>estamos <span class="hl">fazendo.</span></h1>
+  <p>Obras reais, de casas e edifícios a um hospital em execução, registradas em vídeo e foto. É assim que o cliente vê o seu trabalho, confia e contrata.</p>
+  <div class="who">Projeto: <b>Construtecn</b></div>
+</div>
+
+<section class="sec" id="sites"><div class="wrap">
+  <div class="kick">Sites</div>
+  <h2 class="bc">Site da empresa e<br><span class="hl">página de vendas.</span></h2>
+  <div class="stage"><div class="grid">
+    <div class="stack">
+      <div class="dev"><div class="bar"><i></i><i></i><i></i><span>construtecn-2pi.pages.dev</span></div><img src="img/site-construtecn.jpg" alt="Site institucional da Construtecn" loading="lazy"></div>
+      <div class="dev b"><div class="bar"><i></i><i></i><i></i><span>construtecn-2pi.pages.dev/reserva-das-aguas</span></div><img src="img/site-reserva.jpg" alt="Página de vendas Reserva das Águas" loading="lazy"></div>
+    </div>
+    <div class="sitecopy">
+      <h3 class="bc">Mais moderna, mais clara, <span class="hl">pronta para vender.</span></h3>
+      <p>Além da nova identidade e do site institucional da Construtecn, construímos uma página de vendas do Reserva das Águas para a consultora de vendas dele. Visual atual, as informações da casa em destaque, visita agendada e WhatsApp direto, para o interessado ir do anúncio à conversa em poucos toques.</p>
+      <div class="row"><a class="btn" href="https://construtecn-2pi.pages.dev/" target="_blank" rel="noopener">Ver o site ↗</a><a class="btn ghost" href="https://construtecn-2pi.pages.dev/reserva-das-aguas" target="_blank" rel="noopener">Ver a página de vendas ↗</a></div>
+    </div>
+  </div></div>
+</div></section>
+
+<section class="sec" id="videos"><div class="wrap">
+  <div class="kick">Vídeos</div>
+  <h2 class="bc">A obra <span class="hl">em movimento.</span></h2>
+  <div class="vgrid">
+    <button class="tile" data-video="vid/reserva-casas.mp4"><img src="vid/reserva-casas.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Reserva das Águas</b><span>Seu novo imóvel em construção</span></span></button>
+    <button class="tile" data-video="vid/dona-branca.mp4"><img src="vid/dona-branca.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Edifício Dona Branca</b><span>Concretagem e evolução da obra</span></span></button>
+    <button class="tile" data-video="vid/casa-gilvan.mp4"><img src="vid/casa-gilvan.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Casa Gilvan</b><span>Tour pela casa pronta</span></span></button>
+    <button class="tile" data-video="vid/casa-alves.mp4"><img src="vid/casa-alves.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Casa Alves</b><span>Casa com piscina</span></span></button>
+    <button class="tile" data-video="vid/engenharia.mp4"><img src="vid/engenharia.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Bastidores da engenharia</b><span>Do projeto ao canteiro</span></span></button>
+    <button class="tile" data-video="vid/acompanhe-obra.mp4"><img src="vid/acompanhe-obra.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Acompanhe a obra</b><span>Da planta à concretagem</span></span></button>
+    <button class="tile" data-video="vid/obra-por-dentro.mp4"><img src="vid/obra-por-dentro.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>A obra por dentro</b><span>Quem constrói de verdade</span></span></button>
+    <button class="tile" data-video="vid/fundacao.mp4"><img src="vid/fundacao.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Fundação</b><span>Onde tudo começa</span></span></button>
+    <button class="tile" data-video="vid/reserva-lancamento.mp4"><img src="vid/reserva-lancamento.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Reserva das Águas</b><span>As casas ganham forma</span></span></button>
+    <button class="tile" data-video="vid/reserva-quintal.mp4"><img src="vid/reserva-quintal.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Reserva das Águas</b><span>3 quartos, 1 suíte e quintal</span></span></button>
+    <button class="tile" data-video="vid/reserva-embreve.mp4"><img src="vid/reserva-embreve.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap"><b>Reserva das Águas</b><span>Novas histórias começam aqui</span></span></button>
+  </div>
+</div></section>
+
+<section class="sec" id="fotos"><div class="wrap">
+  <div class="kick">Fotos e artes</div>
+  <h2 class="bc">O canteiro <span class="hl">com olhar de marca.</span></h2>
+  <div class="pgrid">
+    <button class="tile" data-img="img/hospital.jpg"><img src="img/hospital.jpg" alt="Hospital dermatológico em execução" loading="lazy"></button>
+    <button class="tile" data-img="img/dona-branca.jpg"><img src="img/dona-branca.jpg" alt="Edifício Dona Branca" loading="lazy"></button>
+    <button class="tile" data-img="img/reserva-etapa.jpg"><img src="img/reserva-etapa.jpg" alt="Reserva das Águas, cada etapa mais próxima da entrega" loading="lazy"></button>
+    <button class="tile" data-img="img/toda-grande-obra.jpg"><img src="img/toda-grande-obra.jpg" alt="Toda grande obra começa com pessoas" loading="lazy"></button>
+    <button class="tile" data-img="img/canteiro-escada.jpg"><img src="img/canteiro-escada.jpg" alt="Trabalhador no canteiro de obras" loading="lazy"></button>
+    <button class="tile" data-img="img/canteiro-pessoas.jpg"><img src="img/canteiro-pessoas.jpg" alt="Retrato de trabalhador da obra" loading="lazy"></button>
+    <button class="tile" data-img="img/marca-obra.jpg"><img src="img/marca-obra.jpg" alt="Marca Construtecn aplicada na obra" loading="lazy"></button>
+    <button class="tile" data-img="img/happy-harry.jpg"><img src="img/happy-harry.jpg" alt="Fachada Happy Harry" loading="lazy"></button>
+  </div>
+</div></section>
+
+<div class="wrap cta">
+  <div class="kick">Próximo passo</div>
+  <h2 class="bc">A sua obra<br>pode <span class="hl">aparecer assim.</span></h2>
+  <div class="row"><a class="btn wa" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Quero meu diagnóstico ↗</a><a class="btn ghost" href="/construtoras/">← Ver a apresentação</a></div>
+</div>
+</main>
+<footer><div class="wrap">Lemon Social · agencialemonsocial.com.br</div></footer>
+<div class="md" id="md" hidden role="dialog" aria-modal="true" aria-label="Visualizar"><button type="button" id="mdX" aria-label="Fechar">✕</button><div id="mdBox"></div></div>
+<script>
+(()=>{
+  const md=document.getElementById('md'),box=document.getElementById('mdBox');
+  const close=()=>{md.hidden=true;box.innerHTML='';};
+  document.querySelectorAll('.tile').forEach(t=>t.addEventListener('click',()=>{
+    box.innerHTML=t.dataset.video?`<video src="${t.dataset.video}" controls autoplay playsinline></video>`:`<img src="${t.dataset.img}" alt="">`;
+    md.hidden=false;
+  }));
+  document.getElementById('mdX').onclick=close;
+  md.addEventListener('click',e=>{if(e.target===md)close();});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!md.hidden)close();});
+  const para=(new URLSearchParams(location.search).get('para')||'').trim().slice(0,60);
+  const msg=para?`Olá, Lemon! Vi o portfólio para ${para} e quero o diagnóstico gratuito.`:'Olá, Lemon! Vi o portfólio para construtoras e quero o diagnóstico gratuito.';
+  document.querySelectorAll('.wa').forEach(a=>a.href='https://wa.me/5561998889486?text='+encodeURIComponent(msg));
+})();
+</script>
+</body>
+</html>
