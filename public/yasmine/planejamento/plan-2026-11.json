@@ -341,5 +341,10 @@
    "caption": "Já está organizando a confraternização com o pessoal do trabalho, os amigos ou a família?\n\nAqui no Yasmine, vocês podem reunir todo mundo para aproveitar uma boa comida árabe e colocar a conversa em dia.\n\nPara consultar a disponibilidade e fazer sua reserva, é só entrar em contato com a gente pelo link da bio."
   }
  ],
- "agenda": []
+ "agenda": [],
+ "formatOrder": [
+  "reels",
+  "carrossel",
+  "youtube"
+ ]
 }

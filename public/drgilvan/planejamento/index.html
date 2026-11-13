@@ -294,7 +294,7 @@ details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
   try { const r = await fetch('plan-' + MID + '.json', {cache:'no-store'}); if (!r.ok) throw 0; P = await r.json(); document.title = P.client + ' · Planejamento ' + P.label + ' · Lemon Social'; }
   catch (e) { $('list').textContent = 'Planejamento ainda não disponível. Volte em breve.'; return; }
 
-  const ORD = {carrossel:0, reels:1, youtube:2};
+  const ORD = Object.fromEntries((P.formatOrder || ['carrossel','reels','youtube']).map((f, k) => [f, k]));
   const items = P.items.slice().sort((a, b) => ((b.v || 0) - (a.v || 0)) || ((ORD[a.format] ?? 9) - (ORD[b.format] ?? 9)) || (a.date || '9999').localeCompare(b.date || '9999') || (a.n - b.n));
   const byId = Object.fromEntries(items.map(i => [i.id, i]));
   const API = '/api/aprova/' + P.slug + '/' + P.id;
@@ -373,7 +373,7 @@ details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
   const match = (i, k) => k === 'all' || (k === 'v2' ? !!i.v : i.format === k);
   function renderFilt() {
     const f = $('filt'); f.textContent = '';
-    [['all','Todos'], ...(items.some(i => i.v) ? [['v2','Ajustados V2']] : []), ...Object.entries({carrossel:'Carrossel', reels:'Reels', youtube:'YouTube'}).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
+    [['all','Todos'], ...(items.some(i => i.v) ? [['v2','Ajustados V2']] : []), ...Object.keys(ORD).map(k => [k, FMT[k]]).filter(([k]) => items.some(i => i.format === k))].forEach(([k, l]) => {
       const n = k === 'all' ? items.length : items.filter(i => match(i, k)).length;
       const b = el('button', '', l + ' (' + n + ')'); b.type = 'button'; b.setAttribute('aria-pressed', filter === k);
       b.onclick = () => { filter = k; renderFilt(); renderList(); }; f.appendChild(b);
