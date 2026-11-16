@@ -215,6 +215,8 @@ details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
 .v2note button{justify-self:start;background:#ff9b4a;color:#2a1300;border:0;border-radius:10px;padding:9px 16px;font-weight:700}
 @media (max-width:720px){.v2box,details.v1{margin-left:18px;margin-right:18px}}
 @media print{.v2note{display:none!important}}
+.tag.post,.chip.post{background:#3a2a4a;color:#e3c8ff}
+.card .tag.post{background:#ece0fb;color:#4a2a6a}
 </style>
 </head>
 <body>
@@ -286,7 +288,7 @@ details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
   const $ = id => document.getElementById(id);
   const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const DIAS = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
-  const FMT = {reels:'Reels', carrossel:'Carrossel', youtube:'YouTube'};
+  const FMT = {reels:'Reels', carrossel:'Carrossel', youtube:'YouTube', post:'Estático'};
   let P;
   const SLUG = location.pathname.split('/')[1];
   const MID = (new URLSearchParams(location.search).get('m') || '').replace(/[^0-9-]/g, '');
