@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Lemon Social | Proposta para o Santé</title>
+<meta name="description" content="Apresentação da Lemon Social para o Santé: conteúdo, tráfego, CRM e campanhas para encher o salão e fazer o cliente voltar.">
+<meta property="og:title" content="Proposta Lemon Social para o Santé">
+<meta property="og:image" content="https://www.agencialemonsocial.com.br/restaurantes/img/seven-master.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,600;0,700;0,900;1,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--lime:#C8F20D;--ink:#0A0A0A;--ink2:#151515;--paper:#F4F4F0;--white:#fff;--muted:#6a6a6a}
+html,body{height:100%;background:#000;overflow:hidden;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center;overflow:hidden;background:var(--ink)}
+img{display:block}
+
+/* slides */
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s;padding:110px 120px 120px}
+.slide.on{opacity:1;visibility:visible;transition:opacity .55s ease}
+.s-ink{background:var(--ink);color:#fff}
+.s-lime{background:var(--lime);color:var(--ink)}
+.s-paper{background:var(--paper);color:var(--ink)}
+
+/* type */
+.tag{font-family:'Bebas Neue';font-size:30px;letter-spacing:5px;display:inline-flex;align-items:center;gap:14px}
+.tag::before{content:"";width:46px;height:3px;background:currentColor}
+.s-ink .tag{color:var(--lime)}
+h1,h2,h3{font-family:'Barlow Condensed';font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.5px}
+h2{font-size:150px;margin-top:26px}
+h2 em,h1 em{font-style:normal;background:var(--lime);color:var(--ink);padding:0 .12em;display:inline-block;transform:skew(-4deg)}
+.s-lime h2 em{background:var(--ink);color:var(--lime)}
+p.lead{font-size:38px;line-height:1.38;max-width:900px;margin-top:34px;font-weight:400}
+.s-ink p.lead{color:#d6d6d6}
+.s-paper p.lead,.s-lime p.lead{color:#222}
+
+/* chrome */
+.chrome{position:absolute;left:120px;right:120px;bottom:44px;display:flex;justify-content:space-between;align-items:center;font-family:'Bebas Neue';letter-spacing:3px;font-size:24px;z-index:5}
+.chrome .lg{display:flex;align-items:center;gap:8px}
+.chrome .lg i{width:11px;height:11px;border-radius:50%;background:var(--lime)}
+.s-lime .chrome .lg i{background:var(--ink)}
+.chrome .n{opacity:.55}
+.s-ink .chrome{color:#fff}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.on .rv{opacity:1;transform:none}
+.on .d1{transition-delay:.15s}.on .d2{transition-delay:.3s}.on .d3{transition-delay:.45s}.on .d4{transition-delay:.6s}.on .d5{transition-delay:.75s}.on .d6{transition-delay:.9s}
+
+/* photos */
+.ph{background-size:cover;background-position:center;border-radius:6px;box-shadow:0 22px 60px rgba(0,0,0,.28)}
+.ph video{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
+
+/* 1 cover */
+#s1 h1{font-size:178px;margin-top:34px}
+#s1 .sub{font-size:36px;color:#cfcfcf;margin-top:34px;max-width:900px;line-height:1.35}
+#s1 .col{position:absolute;right:100px;top:90px;width:600px;height:900px}
+#s1 .col .ph{position:absolute;width:330px;height:440px}
+#s1 .col .a{right:0;top:0;transform:rotate(4deg)}
+#s1 .col .b{left:0;top:230px;transform:rotate(-5deg);z-index:2}
+#s1 .col .c{right:30px;bottom:0;transform:rotate(2deg);z-index:3;width:300px;height:400px}
+#s1 .badge{position:absolute;left:120px;top:96px}
+.wm{font-family:'Bebas Neue';font-size:44px;letter-spacing:4px;display:flex;align-items:center;gap:10px}
+.wm i{width:16px;height:16px;border-radius:50%;background:var(--lime)}
+
+/* 2 quem somos */
+#s2 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;width:1080px}
+.card{border:2px solid var(--ink);padding:24px 28px;background:#fff;min-height:170px}
+.card b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:44px;text-transform:uppercase;line-height:1}
+.card span{display:block;font-size:24px;line-height:1.4;color:#444;margin-top:14px}
+#s2 .photos{position:absolute;right:120px;top:110px;width:560px;height:830px}
+#s2 .photos .ph{position:absolute;width:420px;height:540px}
+#s2 .photos .p1{right:0;top:0}
+#s2 .photos .p2{left:0;bottom:0;width:380px;height:480px;border:10px solid var(--paper)}
+
+/* 3 histórias */
+#s3 h2{font-size:200px;line-height:.85}
+#s3 p.lead{max-width:1100px}
+.strip{position:absolute;left:0;right:0;bottom:108px;height:220px;overflow:hidden}
+.strip .tr{display:flex;gap:18px;width:max-content;animation:mq 60s linear infinite}
+.strip .ph{width:170px;height:220px;flex:none;border-radius:4px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* 4 o que fazemos */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:2px solid rgba(255,255,255,.2)}
+.tri>div{padding:36px 40px 0 0;border-right:2px solid rgba(255,255,255,.12);padding-left:40px}
+.tri>div:first-child{padding-left:0}.tri>div:last-child{border-right:0}
+.tri .no{font-family:'Bebas Neue';font-size:30px;color:var(--lime);letter-spacing:4px}
+.tri h3{font-size:104px;margin:10px 0 26px}
+.tri li{list-style:none;font-size:30px;line-height:1.3;padding:14px 0;border-top:1px solid rgba(255,255,255,.14);color:#ddd}
+.tri li b{color:#fff;font-weight:700}
+.eq{position:absolute;left:120px;right:120px;bottom:120px;font-family:'Barlow Condensed';font-weight:900;text-transform:uppercase;font-size:50px;color:var(--lime);letter-spacing:.5px}
+
+/* 5 conteudo */
+#s5 .left{width:760px}
+#s5 .mos{position:absolute;right:120px;top:90px;width:900px;height:880px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+#s5 .mos .ph{width:100%;height:100%;border-radius:4px;box-shadow:none}
+#s5 .mos .w2{grid-row:span 2}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;width:780px}
+.chip{font-size:25px;font-weight:700;border:2px solid var(--ink);padding:10px 22px;border-radius:99px;background:#fff}
+.chip.l{background:var(--lime)}
+
+/* 6 parede */
+#s6{padding-left:0;padding-right:0}
+#s6 .hd{padding:0 120px}
+#s6 .rows{position:absolute;left:0;right:0;top:440px;display:flex;flex-direction:column;gap:18px}
+#s6 .rows .tr{display:flex;gap:18px;width:max-content}
+#s6 .rows .r1 .tr{animation:mq 80s linear infinite}
+#s6 .rows .r2 .tr{animation:mqr 90s linear infinite}
+#s6 .ph{width:200px;height:260px;flex:none;border-radius:4px;box-shadow:none}
+@keyframes mqr{from{transform:translateX(-50%)}to{transform:none}}
+#s6 .rows>div{overflow:hidden}
+
+/* 7 case */
+#s7 .cmp{display:flex;align-items:flex-end;gap:36px;margin-top:40px}
+#s7 .cmp figure{position:relative}
+#s7 .cmp .ph{width:330px;height:430px;background-position:top center}
+#s7 figcaption{position:absolute;left:0;right:0;bottom:-58px;font-family:'Bebas Neue';font-size:34px;letter-spacing:3px}
+#s7 .ar{font-family:'Barlow Condensed';font-weight:900;font-size:120px;color:var(--ink);align-self:center;margin-bottom:60px}
+#s7 .nums{position:absolute;right:120px;top:130px;width:620px}
+#s7 .nums div{border-top:3px solid var(--ink);padding:20px 0 34px}
+#s7 .nums b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:190px;line-height:.85}
+#s7 .nums span{font-size:30px;font-weight:500}
+
+/* 8 trafego */
+#s8 .ul{margin-top:44px;width:900px}
+#s8 .ul div{display:flex;gap:22px;align-items:center;font-size:36px;font-weight:500;padding:20px 0;border-top:2px solid var(--ink)}
+#s8 .ul div:last-child{border-bottom:2px solid var(--ink)}
+#s8 .ul i{width:44px;height:44px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);flex:none;display:grid;place-items:center;font-style:normal;font-weight:900;font-size:24px}
+.ad{position:absolute;right:150px;top:100px;width:520px;background:#fff;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.25);overflow:hidden;transform:rotate(2.5deg);color:var(--ink)}
+.ad .t{display:flex;align-items:center;gap:14px;padding:18px 22px}
+.ad .av{width:54px;height:54px;border-radius:50%;background:var(--ink);display:grid;place-items:center;color:var(--lime);font-family:'Bebas Neue';font-size:26px}
+.ad .t b{display:block;font-size:24px}.ad .t small{font-size:18px;color:#777}
+.ad .im{height:520px;background-size:cover;background-position:center}
+.ad .f{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:#f1f1ee}
+.ad .f span{font-size:21px;font-weight:500}
+.ad .f em{font-style:normal;background:var(--ink);color:var(--lime);font-weight:700;font-size:21px;padding:12px 24px;border-radius:8px}
+.ex{position:absolute;right:150px;top:830px;width:520px;text-align:center;font-size:20px;color:#666;transform:rotate(2.5deg)}
+
+/* 9 crm */
+.steps{margin-top:46px;width:980px}
+.steps div{display:grid;grid-template-columns:90px 1fr;align-items:start;padding:20px 0;border-top:1px solid rgba(255,255,255,.18)}
+.steps b{font-family:'Barlow Condensed';font-weight:900;font-size:64px;color:var(--lime);line-height:.9}
+.steps strong{display:block;font-size:34px;font-weight:700}
+.steps span{font-size:25px;color:#bbb;line-height:1.35;display:block;margin-top:4px}
+.wa{position:absolute;right:140px;top:100px;width:500px;height:840px;background:#0b141a;border-radius:44px;border:10px solid #2a2a2a;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.wa .hd{background:#202c33;padding:26px 24px;display:flex;align-items:center;gap:14px;color:#fff}
+.wa .hd i{width:46px;height:46px;border-radius:50%;background:var(--lime);display:grid;place-items:center;color:var(--ink);font-style:normal;font-family:'Bebas Neue';font-size:24px}
+.wa .hd b{font-size:22px}.wa .hd small{display:block;font-size:15px;color:#8696a0}
+.wa .bd{padding:24px 20px;display:flex;flex-direction:column;gap:14px;background:#0b141a}
+.m{max-width:82%;padding:14px 18px;border-radius:14px;font-size:21px;line-height:1.35;color:#e9edef}
+.m.in{background:#202c33;align-self:flex-start;border-top-left-radius:2px}
+.m.out{background:#005c4b;align-self:flex-end;border-top-right-radius:2px}
+.m .bt{margin-top:10px;border-top:1px solid rgba(255,255,255,.18);padding-top:10px;text-align:center;color:#53bdeb;font-weight:700;font-size:20px}
+.m small{display:block;text-align:right;font-size:14px;color:#8696a0;margin-top:4px}
+
+/* 10 campanhas */
+.camp{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px;width:1680px}
+.camp div{background:var(--ink);color:#fff;padding:34px 36px;min-height:210px}
+.camp b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:56px;text-transform:uppercase;line-height:.95;color:var(--lime)}
+.camp span{display:block;font-size:26px;margin-top:14px;color:#ddd;line-height:1.35}
+#s10 h2{font-size:130px}
+
+/* 11 pacotes */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px;width:1680px}
+.pk .c{background:#fff;border:2px solid var(--ink);padding:28px 32px;min-height:218px;position:relative}
+.pk .c small{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;color:var(--muted)}
+.pk .c b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:56px;text-transform:uppercase;line-height:.95;margin:6px 0 10px}
+.pk .c span{font-size:24px;color:#444;line-height:1.35}
+.pk .c.hl{background:var(--lime)}
+.pk .c.hl small{color:var(--ink)}
+.pk .c i{position:absolute;right:20px;top:20px;font-style:normal;background:var(--ink);color:var(--lime);font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;padding:5px 12px}
+#s11 h2{font-size:130px}
+
+/* 12 plano */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:96px;position:relative}
+.tl::before{content:"";position:absolute;left:0;right:0;top:19px;height:3px;background:rgba(255,255,255,.25)}
+.tl>div{position:relative;padding:62px 36px 0 0}
+.tl>div::before{content:"";position:absolute;left:0;top:6px;width:30px;height:30px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 8px rgba(200,242,13,.18)}
+.tl small{font-family:'Bebas Neue';font-size:28px;letter-spacing:4px;color:var(--lime)}
+.tl b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:76px;text-transform:uppercase;line-height:.95;margin:6px 0 16px}
+.tl span{font-size:29px;line-height:1.4;color:#cfcfcf;display:block}
+.note{position:absolute;left:120px;right:120px;bottom:118px;font-size:30px;color:#e8e8e8;border-left:6px solid var(--lime);padding-left:26px}
+#s12 h2{font-size:130px}
+
+/* 13 fim */
+#s13 h2{font-size:182px;line-height:.86}
+#s13 .cta{display:inline-flex;align-items:center;gap:16px;margin-top:44px;background:var(--ink);color:var(--lime);font-family:'Barlow Condensed';font-weight:900;font-size:56px;text-transform:uppercase;padding:22px 46px;text-decoration:none}
+#s13 .lnk{margin-top:26px;font-size:30px;font-weight:500}
+#s13 .ph{position:absolute;right:120px;top:110px;width:440px;height:620px;transform:rotate(3deg)}
+#s13 .ph.b{right:410px;top:520px;width:300px;height:400px;transform:rotate(-5deg);z-index:2}
+
+/* nav */
+#bar{position:fixed;left:0;top:0;height:5px;background:var(--lime);width:0;z-index:20;transition:width .4s}
+#hint{position:fixed;right:18px;bottom:14px;z-index:20;display:flex;gap:8px;opacity:.0;transition:opacity .3s}
+body:hover #hint{opacity:1}
+#hint button{background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.3);width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer}
+#hint button:hover{background:var(--lime);color:#000}
+#hint span{align-self:center;color:#fff;font-size:13px;opacity:.7;margin-right:6px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:99px}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="viewport"><div id="stage">
+
+<!-- 1 CAPA -->
+<section class="slide s-ink" id="s1">
+  <div class="badge wm rv">LEMON<i></i>SOCIAL</div>
+  <div style="position:absolute;left:120px;top:250px">
+    <span class="tag rv d1">PROPOSTA PARA O SANTÉ</span>
+    <h1 class="rv d2">Vamos encher<br>o <em>Santé</em><br>de histórias<br>e de gente.</h1>
+  </div>
+  <div class="col rv d3">
+    <div class="ph a" style="background-image:url(/restaurantes/img/yasmine/06.jpg)"></div>
+    <div class="ph b" style="background-image:url(/restaurantes/img/seven-master.jpg)"></div>
+    <div class="ph c" style="background-image:url(/restaurantes/img/marcas/pizza.jpg)"></div>
+  </div>
+</section>
+
+<!-- 2 QUEM SOMOS -->
+<section class="slide s-paper" id="s2">
+  <span class="tag rv">01 · QUEM SOMOS</span>
+  <h2 class="rv d1">Uma agência<br>feita para<br><em>restaurantes.</em></h2>
+  <p class="lead rv d2" style="max-width:1150px">Cuidamos do marketing inteiro de bares, restaurantes e hamburguerias: conteúdo, anúncios e sistema, num só time.</p>
+  <div class="grid rv d3">
+    <div class="card"><b>Contamos<br>histórias</b><span>Cada prato tem alguém por trás.</span></div>
+    <div class="card"><b>Fazemos<br>voltar</b><span>Cliente fiel vale mais que post bonito.</span></div>
+    <div class="card"><b>Medimos<br>tudo</b><span>Relatório claro, todo mês.</span></div>
+  </div>
+  <div class="photos rv d4">
+    <div class="ph p1" style="background-image:url(/restaurantes/img/yasmine/03.jpg)"></div>
+    <div class="ph p2" style="background-image:url(/restaurantes/img/marcas/frutos-do-mar.jpg)"></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">02</div></div>
+</section>
+
+<!-- 3 HISTÓRIAS -->
+<section class="slide s-lime" id="s3">
+  <span class="tag rv">NOSSO MAIOR TALENTO</span>
+  <h2 class="rv d1">Contar<br>histórias.</h2>
+  <p class="lead rv d2">Qualquer um posta um prato bonito. A gente conta quem faz, por que faz e por que vale a mesa. É isso que faz alguém querer ir.</p>
+  <div class="strip rv d3"><div class="tr" id="strip3"></div></div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">03</div></div>
+</section>
+
+<!-- 4 O QUE FAZEMOS -->
+<section class="slide s-ink" id="s4">
+  <span class="tag rv">02 · O QUE FAZEMOS</span>
+  <h2 class="rv d1" style="font-size:130px">Um método em <em>três etapas.</em></h2>
+  <div class="tri rv d2">
+    <div><div class="no">ETAPA 01</div><h3>Atrair</h3><ul><li><b>Produção de conteúdo</b></li><li><b>Tráfego pago</b></li></ul></div>
+    <div><div class="no">ETAPA 02</div><h3>Converter</h3><ul><li><b>Cardápio digital</b></li><li><b>Sistema de links</b></li></ul></div>
+    <div><div class="no">ETAPA 03</div><h3>Fazer voltar</h3><ul><li><b>CRM Lemon</b></li><li><b>Campanhas para a base</b></li></ul></div>
+  </div>
+  <div class="eq rv d4">Conteúdo + tráfego + sistema = salão cheio todo mês.</div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">04</div></div>
+</section>
+
+<!-- 5 PRODUÇÃO DE CONTEÚDO -->
+<section class="slide s-paper" id="s5">
+  <div class="left">
+    <span class="tag rv">PACOTE 01 · CARRO CHEFE</span>
+    <h2 class="rv d1">Produção de<br><em>conteúdo.</em></h2>
+    <p class="lead rv d2">Um dia de gravação rende o mês inteiro. Roteiro, direção, fotos, vídeos, edição e legenda. Você cozinha, a gente conta.</p>
+    <div class="chips rv d3"><span class="chip l">Fotos de cardápio</span><span class="chip">Reels</span><span class="chip">Stories</span><span class="chip">Carrosséis</span><span class="chip">Feed planejado</span></div>
+  </div>
+  <div class="mos rv d2">
+    <div class="ph w2" data-vid="/restaurantes/vid/yasmine-001.mp4" style="background-image:url(/restaurantes/vid/yasmine-001.jpg)"></div>
+    <div class="ph" style="background-image:url(/restaurantes/img/marcas/massa-drink.jpg)"></div>
+    <div class="ph" style="background-image:url(/restaurantes/img/yasmine/05.jpg)"></div>
+    <div class="ph" style="background-image:url(/restaurantes/img/jureme/costelinha.jpg)"></div>
+    <div class="ph w2" data-vid="/restaurantes/img/jureme/j07.mp4" style="background-image:url(/restaurantes/img/jureme/j07.jpg)"></div>
+    <div class="ph" style="background-image:url(/restaurantes/img/seven-master.jpg)"></div>
+    <div class="ph" style="background-image:url(/restaurantes/img/marcas/sorvete-chocolate.jpg)"></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">05</div></div>
+</section>
+
+<!-- 6 PAREDE -->
+<section class="slide s-ink" id="s6">
+  <div class="hd">
+    <span class="tag rv">O QUE JÁ CRIAMOS</span>
+    <h2 class="rv d1" style="font-size:130px">Cada foto,<br>uma <em>história.</em></h2>
+  </div>
+  <div class="rows rv d2">
+    <div class="r1"><div class="tr" id="r1"></div></div>
+    <div class="r2"><div class="tr" id="r2"></div></div>
+  </div>
+  <div class="chrome" style="z-index:6"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">06</div></div>
+</section>
+
+<!-- 7 CASE -->
+<section class="slide s-lime" id="s7">
+  <span class="tag rv">CASE REAL · HAMBURGUERIA</span>
+  <h2 class="rv d1">De quase zero<br>a <em>70 mil.</em></h2>
+  <div class="cmp rv d2">
+    <figure><div class="ph" style="background-image:url(/restaurantes/img/antes.jpg)"></div><figcaption>ANTES · MENOS DE 100</figcaption></figure>
+    <div class="ar">→</div>
+    <figure><div class="ph" style="background-image:url(/restaurantes/img/depois.jpg)"></div><figcaption>HOJE · 70 MIL</figcaption></figure>
+  </div>
+  <div class="nums rv d3">
+    <div><b>70K</b><span>seguidores conquistados</span></div>
+    <div><b>R$300K</b><span>de faturamento médio por mês</span></div>
+    <div><b>2</b><span>unidades abertas desde o início</span></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">07</div></div>
+</section>
+
+<!-- 8 TRÁFEGO -->
+<section class="slide s-paper" id="s8">
+  <span class="tag rv">ATRAIR · TRÁFEGO PAGO</span>
+  <h2 class="rv d1">Anúncio que<br>traz gente<br>para a <em>mesa.</em></h2>
+  <div class="ul rv d2">
+    <div><i>1</i>Quem está perto e com fome</div>
+    <div><i>2</i>Campanhas de reserva, delivery e lançamento</div>
+    <div><i>3</i>Relatório mensal, simples e sem enrolação</div>
+  </div>
+  <div class="ad rv d3">
+    <div class="t"><div class="av">S</div><div><b>Seu restaurante</b><small>Patrocinado</small></div></div>
+    <div class="im" style="background-image:url(/restaurantes/img/marcas/pizza-fatia.jpg)"></div>
+    <div class="f"><span>Reserve sua mesa hoje</span><em>Reservar</em></div>
+  </div>
+  <div class="ex rv d4">Exemplo ilustrativo de anúncio</div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">08</div></div>
+</section>
+
+<!-- 9 CRM -->
+<section class="slide s-ink" id="s9">
+  <span class="tag rv">FAZER VOLTAR · CRM LEMON</span>
+  <h2 class="rv d1" style="font-size:128px">Quem é o<br>cliente do <em>Santé?</em></h2>
+  <div class="steps rv d2" style="width:980px">
+    <div><b>1</b><p><strong>O garçom registra</strong><span>Nome, WhatsApp e aniversário, em segundos.</span></p></div>
+    <div><b>2</b><p><strong>O cliente avalia</strong><span>Nota da comida, do atendimento e da experiência.</span></p></div>
+    <div><b>3</b><p><strong>Nota alta vira Google</strong><span>Quem amou leva sua avaliação para o Google.</span></p></div>
+    <div><b>4</b><p><strong>A base vira faturamento</strong><span>Você enxerga quem vem, quem some e quem volta.</span></p></div>
+  </div>
+  <div class="wa rv d3">
+    <div class="hd"><i>S</i><div><b>Seu Restaurante</b><small>conta comercial</small></div></div>
+    <div class="bd">
+      <div class="m in">Oi, Ana! Obrigado pela visita hoje 🧡 Como foi sua experiência? Leva 30 segundos.<div class="bt">Avaliar minha visita</div><small>21:42</small></div>
+      <div class="m out">★★★★★ Comida incrível, atendimento do Lucas nota 10!<small>21:45</small></div>
+      <div class="m in">Que bom! Deixa essa avaliação no Google pra gente? 🙏<div class="bt">Avaliar no Google</div><small>21:45</small></div>
+      <div class="m in">🎂 Ana, seu aniversário está chegando! Sua sobremesa é por nossa conta esse mês.<div class="bt">Reservar mesa</div><small>15 dias depois</small></div>
+    </div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">09</div></div>
+</section>
+
+<!-- 10 CAMPANHAS -->
+<section class="slide s-lime" id="s10">
+  <span class="tag rv">FAZER VOLTAR · CAMPANHAS</span>
+  <h2 class="rv d1">Cliente que volta<br>é <em>lucro.</em></h2>
+  <div class="camp rv d2">
+    <div><b>Aniversariantes</b><span>Um motivo para comemorar na sua mesa.</span></div>
+    <div><b>Quem sumiu</b><span>Chamamos de volta quem não aparece há tempo.</span></div>
+    <div><b>Dia mais fraco</b><span>Oferta certa para encher a terça.</span></div>
+    <div><b>Prato novo</b><span>A base é a primeira a saber.</span></div>
+    <div><b>Datas especiais</b><span>Dia das Mães, Natal, fim de ano.</span></div>
+    <div><b>Reserva e delivery</b><span>Um toque no WhatsApp e está feito.</span></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">10</div></div>
+</section>
+
+<!-- 11 PACOTES -->
+<section class="slide s-paper" id="s11">
+  <span class="tag rv">03 · NOSSOS PACOTES</span>
+  <h2 class="rv d1">Tudo num <em>só lugar.</em></h2>
+  <div class="pk rv d2">
+    <div class="c hl"><i>CARRO CHEFE</i><small>01</small><b>Produção de conteúdo</b><span>Fotos, vídeos, roteiro, edição e legenda.</span></div>
+    <div class="c"><small>02</small><b>Tráfego pago</b><span>Instagram, Facebook e Google para quem está perto.</span></div>
+    <div class="c"><small>03</small><b>CRM Lemon</b><span>Seus clientes, notas e aniversários num só painel.</span></div>
+    <div class="c"><small>04</small><b>Campanhas</b><span>Ações todo mês para a base voltar.</span></div>
+    <div class="c"><small>05</small><b>Cardápio digital</b><span>Bonito, rápido, com QR code e fotos que vendem.</span></div>
+    <div class="c"><small>06</small><b>Sistema de links</b><span>Reserva, delivery e WhatsApp numa página, com NFC.</span></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">11</div></div>
+</section>
+
+<!-- 12 PLANO -->
+<section class="slide s-ink" id="s12">
+  <span class="tag rv">04 · O QUE VAMOS FAZER PELO SANTÉ</span>
+  <h2 class="rv d1">Primeiros <em>90 dias.</em></h2>
+  <div class="tl rv d2">
+    <div><small>SEMANA 1</small><b>Diagnóstico</b><span>Instagram, Google, jornada de pedido e quem é o cliente do Santé.</span></div>
+    <div><small>MÊS 1</small><b>Conteúdo</b><span>Dia de gravação, calendário do mês e primeiras histórias no ar.</span></div>
+    <div><small>MÊS 2</small><b>Sistema</b><span>CRM implantado, cardápio e links, e o tráfego começa a rodar.</span></div>
+    <div><small>MÊS 3</small><b>Retorno</b><span>Primeiras campanhas para a base, relatório e ajustes.</span></div>
+  </div>
+  <div class="note rv d4">Podemos começar por uma frente e crescer aos poucos, até cuidar de tudo.</div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">12</div></div>
+</section>
+
+<!-- 13 FIM -->
+<section class="slide s-lime" id="s13">
+  <span class="tag rv">PRÓXIMO PASSO</span>
+  <h2 class="rv d1">Bora contar<br>a história<br>do <em>Santé?</em></h2>
+  <a class="cta rv d2" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Falar com a Lemon ↗</a>
+  <div class="lnk rv d3">agencialemonsocial.com.br</div>
+  <div class="ph b rv d3" style="background-image:url(/restaurantes/img/marcas/prato-autoral.jpg)"></div>
+  <div class="ph rv d4" style="background-image:url(/restaurantes/img/yasmine/11.jpg)"></div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">13</div></div>
+</section>
+
+</div></div>
+
+<div id="hint"><span>← → navegar · F tela cheia</span><button id="pv" aria-label="Anterior">‹</button><button id="nx" aria-label="Próximo">›</button><button id="fs" aria-label="Tela cheia">⛶</button></div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'),slides=[].slice.call(document.querySelectorAll('.slide')),bar=document.getElementById('bar'),cur=-1;
+  function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='scale('+s+')';}
+  addEventListener('resize',fit);fit();
+
+  // fotos das paredes
+  var A='/restaurantes/img/';
+  var wall=['yasmine/06','seven-master','marcas/pizza','jureme/costelinha','marcas/frutos-do-mar','yasmine/05','jureme/drink','marcas/massa-drink','flip/d3','yasmine/11','marcas/prato-autoral','jureme/frango-crocante','yasmine/13','flip/d6','marcas/churros','jureme/petisco','marcas/pudim','yasmine/08','flip/d5','marcas/manjar','yasmine/12','jureme/happy-hour','marcas/bolo-chocolate','yasmine/10','marcas/acai','flip/d4','jureme/brinde','marcas/chef-panela','yasmine/07','risoto'];
+  function fill(id,list,h){var el=document.getElementById(id),t='';list.concat(list).forEach(function(p){t+='<div class="ph" style="background-image:url('+A+p+'.jpg)"></div>';});el.innerHTML=t;}
+  fill('strip3',wall.slice(0,14));
+  fill('r1',wall.slice(0,15));
+  fill('r2',wall.slice(15));
+
+  // vídeos só no slide ativo
+  function vids(sl,on){[].forEach.call(sl.querySelectorAll('[data-vid]'),function(d){
+    var v=d.querySelector('video');
+    if(on){ if(!v){v=document.createElement('video');v.src=d.dataset.vid;v.muted=true;v.loop=true;v.playsInline=true;v.setAttribute('playsinline','');d.appendChild(v);} v.play&&v.play().catch(function(){}); }
+    else if(v){v.pause();}
+  });}
+
+  function go(n){
+    n=Math.max(0,Math.min(slides.length-1,n));if(n===cur)return;
+    if(cur>=0){slides[cur].classList.remove('on');vids(slides[cur],false);}
+    cur=n;slides[cur].classList.add('on');vids(slides[cur],true);
+    bar.style.width=((cur+1)/slides.length*100)+'%';
+    try{history.replaceState(null,'','#'+(cur+1));}catch(e){}
+  }
+  function nx(){go(cur+1)}function pv(){go(cur-1)}
+  addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '||k==='Enter'){e.preventDefault();nx();}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'||k==='Backspace'){e.preventDefault();pv();}
+    else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);
+    else if(k==='f'||k==='F')fs();
+  });
+  function fs(){var d=document;if(!d.fullscreenElement){(d.documentElement.requestFullscreen||function(){}).call(d.documentElement);}else{d.exitFullscreen();}}
+  document.getElementById('nx').onclick=nx;document.getElementById('pv').onclick=pv;document.getElementById('fs').onclick=fs;
+  // toque
+  var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?nx():pv();}x0=null;},{passive:true});
+  // clique no palco avança (exceto links)
+  stage.addEventListener('click',function(e){if(e.target.closest('a'))return;var r=stage.getBoundingClientRect();(e.clientX-r.left)<r.width*0.25?pv():nx();});
+
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  go(isNaN(h)?0:h-1);
+})();
+</script>
+</body>
+</html>
