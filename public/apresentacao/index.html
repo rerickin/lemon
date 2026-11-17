@@ -57,26 +57,28 @@ p.lead{font-size:38px;line-height:1.38;max-width:900px;margin-top:34px;font-weig
 .ph video{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
 
 /* 1 cover */
-#s1 h1{font-size:178px;margin-top:34px}
-#s1 .sub{font-size:36px;color:#cfcfcf;margin-top:34px;max-width:900px;line-height:1.35}
-#s1 .col{position:absolute;right:100px;top:90px;width:600px;height:900px}
-#s1 .col .ph{position:absolute;width:330px;height:440px}
-#s1 .col .a{right:0;top:0;transform:rotate(4deg)}
-#s1 .col .b{left:0;top:230px;transform:rotate(-5deg);z-index:2}
-#s1 .col .c{right:30px;bottom:0;transform:rotate(2deg);z-index:3;width:300px;height:400px}
-#s1 .badge{position:absolute;left:120px;top:96px}
+#s1{display:flex;align-items:center;justify-content:center;padding:0}
+#s1 .big{font-family:'Bebas Neue';font-size:300px;letter-spacing:14px;line-height:1;display:flex;align-items:center;gap:26px;color:#fff}
+#s1 .big i{width:64px;height:64px;border-radius:50%;background:var(--lime);display:inline-block;margin-top:34px}
 .wm{font-family:'Bebas Neue';font-size:44px;letter-spacing:4px;display:flex;align-items:center;gap:10px}
 .wm i{width:16px;height:16px;border-radius:50%;background:var(--lime)}
 
 /* 2 quem somos */
-#s2 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;width:1080px}
-.card{border:2px solid var(--ink);padding:24px 28px;background:#fff;min-height:170px}
-.card b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:44px;text-transform:uppercase;line-height:1}
-.card span{display:block;font-size:24px;line-height:1.4;color:#444;margin-top:14px}
-#s2 .photos{position:absolute;right:120px;top:110px;width:560px;height:830px}
-#s2 .photos .ph{position:absolute;width:420px;height:540px}
-#s2 .photos .p1{right:0;top:0}
-#s2 .photos .p2{left:0;bottom:0;width:380px;height:480px;border:10px solid var(--paper)}
+#s2 .l2{position:absolute;left:120px;top:100px;width:960px}
+#s2 h2{font-size:112px}
+.hist{margin-top:28px}
+.hist div{display:grid;grid-template-columns:300px 1fr;align-items:baseline;gap:20px;padding:12px 0;border-top:2px solid var(--ink)}
+.hist div:last-child{border-bottom:2px solid var(--ink)}
+.hist b{font-family:'Barlow Condensed';font-weight:900;font-size:46px;text-transform:uppercase;line-height:1}
+.hist div:nth-child(3) b{background:var(--lime);display:inline-block;padding:2px 12px;transform:skew(-4deg);width:max-content}
+.hist span{font-size:25px;line-height:1.35;color:#222}
+.cl{margin-top:24px;font-size:22px;line-height:1.5;color:#333;font-weight:500}
+.cl small{display:block;font-family:'Bebas Neue';font-size:26px;letter-spacing:4px;margin-bottom:6px;color:var(--ink)}
+#s2 .gr{position:absolute;right:120px;top:100px;width:660px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+#s2 .th{position:relative;height:205px;background-size:cover;background-position:center;border-radius:4px;overflow:hidden}
+#s2 .th span{position:absolute;left:8px;bottom:8px;background:var(--ink);color:#fff;font-size:15px;font-weight:700;padding:4px 9px;border-radius:99px;letter-spacing:.3px}
+#s2 .th .pl{position:absolute;right:9px;top:9px;width:34px;height:34px;border-radius:50%;background:rgba(10,10,10,.65)}
+#s2 .th .pl::after{content:"";position:absolute;left:13px;top:9px;border-left:12px solid var(--lime);border-top:8px solid transparent;border-bottom:8px solid transparent}
 
 /* 3 histórias */
 #s3 h2{font-size:200px;line-height:.85}
@@ -210,32 +212,21 @@ body:hover #hint{opacity:1}
 
 <!-- 1 CAPA -->
 <section class="slide s-ink" id="s1">
-  <div class="badge wm rv">LEMON<i></i>SOCIAL</div>
-  <div style="position:absolute;left:120px;top:250px">
-    <span class="tag rv d1">PROPOSTA PARA O SANTÉ</span>
-    <h1 class="rv d2">Vamos encher<br>o <em>Santé</em><br>de histórias<br>e de gente.</h1>
-  </div>
-  <div class="col rv d3">
-    <div class="ph a" style="background-image:url(/restaurantes/img/yasmine/06.jpg)"></div>
-    <div class="ph b" style="background-image:url(/restaurantes/img/seven-master.jpg)"></div>
-    <div class="ph c" style="background-image:url(/restaurantes/img/marcas/pizza.jpg)"></div>
-  </div>
+  <div class="big rv d1">LEMON<i></i>SOCIAL</div>
 </section>
 
-<!-- 2 QUEM SOMOS -->
 <section class="slide s-paper" id="s2">
-  <span class="tag rv">01 · QUEM SOMOS</span>
-  <h2 class="rv d1">Uma agência<br>feita para<br><em>restaurantes.</em></h2>
-  <p class="lead rv d2" style="max-width:1150px">Cuidamos do marketing inteiro de bares, restaurantes e hamburguerias: conteúdo, anúncios e sistema, num só time.</p>
-  <div class="grid rv d3">
-    <div class="card"><b>Contamos<br>histórias</b><span>Cada prato tem alguém por trás.</span></div>
-    <div class="card"><b>Fazemos<br>voltar</b><span>Cliente fiel vale mais que post bonito.</span></div>
-    <div class="card"><b>Medimos<br>tudo</b><span>Relatório claro, todo mês.</span></div>
+  <div class="l2">
+    <span class="tag rv">QUEM SOMOS</span>
+    <h2 class="rv d1">Mais de <em>15 anos</em><br>contando<br>histórias.</h2>
+    <div class="hist rv d2">
+      <div><b>Publicidade</b><span>Conteúdo e vídeo para grandes marcas.</span></div>
+      <div><b>Gastronomia</b><span>Nos adaptamos e nos encontramos na produção gastronômica.</span></div>
+      <div><b>Método Lemon</b><span>Por isso criamos o nosso método, feito só para restaurantes.</span></div>
+    </div>
+    <div class="cl rv d3"><small>JÁ PASSARAM POR NÓS</small>Rio Quente Resorts · Hot Park · Panasonic · Unicred · IHARA · AgroBrasília · The Seven · Yasmine · Dr. Gilvan · Premium Grass · Construtecn</div>
   </div>
-  <div class="photos rv d4">
-    <div class="ph p1" style="background-image:url(/restaurantes/img/yasmine/03.jpg)"></div>
-    <div class="ph p2" style="background-image:url(/restaurantes/img/marcas/frutos-do-mar.jpg)"></div>
-  </div>
+  <div class="gr rv d2"><div class="th" style="background-image:url(/restaurantes/vid/yasmine-001.jpg)"><i class="pl"></i><span>Yasmine</span></div><div class="th" style="background-image:url(/restaurantes/vid/perdomo-maes.jpg)"><i class="pl"></i><span>Perdomo</span></div><div class="th" style="background-image:url(/drgilvan/img/r03.jpg)"><i class="pl"></i><span>Dr. Gilvan</span></div><div class="th" style="background-image:url(/restaurantes/img/seven-master.jpg)"><span>The Seven</span></div><div class="th" style="background-image:url(/premiumgrass/img/10-1.jpg)"><span>Premium Grass</span></div><div class="th" style="background-image:url(/construtoras/portfolio/vid/engenharia.jpg)"><i class="pl"></i><span>Construtecn</span></div><div class="th" style="background-image:url(/restaurantes/img/jureme/costelinha.jpg)"><span>Juremê</span></div><div class="th" style="background-image:url(/drgilvan/img/r01.jpg)"><i class="pl"></i><span>Dr. Gilvan</span></div><div class="th" style="background-image:url(/restaurantes/vid/yasmine-06.jpg)"><i class="pl"></i><span>Yasmine</span></div><div class="th" style="background-image:url(/premiumgrass/img/08-1.jpg)"><span>Premium Grass</span></div><div class="th" style="background-image:url(/construtoras/portfolio/vid/obra-por-dentro.jpg)"><i class="pl"></i><span>Construtecn</span></div><div class="th" style="background-image:url(/restaurantes/img/marcas/pizza.jpg)"><span>Cozinha autoral</span></div></div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">02</div></div>
 </section>
 
