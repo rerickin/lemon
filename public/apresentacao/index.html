@@ -193,10 +193,184 @@ p.lead{font-size:38px;line-height:1.38;max-width:900px;margin-top:34px;font-weig
 /* 13 fim */
 #s13 h2{font-size:182px;line-height:.86}
 #s13 .cta{display:inline-flex;align-items:center;gap:16px;margin-top:44px;background:var(--ink);color:var(--lime);font-family:'Barlow Condensed';font-weight:900;font-size:56px;text-transform:uppercase;padding:22px 46px;text-decoration:none}
-#s13 .lnk{margin-top:26px;font-size:30px;font-weight:500}
+#s13 .lnk{margin-top:14px;font-size:30px;font-weight:500}
 #s13 .ph{position:absolute;right:120px;top:110px;width:440px;height:620px;transform:rotate(3deg)}
 #s13 .ph.b{right:410px;top:520px;width:300px;height:400px;transform:rotate(-5deg);z-index:2}
 
+@keyframes fdScroll{0.000%{transform:translateY(0);animation-timing-function:ease-in-out}7.143%{transform:translateY(0);animation-timing-function:cubic-bezier(.5,0,.2,1)}21.429%{transform:translateY(-580px);animation-timing-function:linear}28.571%{transform:translateY(-580px);animation-timing-function:cubic-bezier(.5,0,.2,1)}42.857%{transform:translateY(-1160px)}100.000%{transform:translateY(-1160px)}}
+@keyframes fdFinger{0.000%{opacity:0;transform:translate(470px,880px) scale(1);animation-timing-function:ease}48.571%{opacity:0;transform:translate(470px,880px) scale(1);animation-timing-function:ease}50.714%{opacity:1;transform:translate(470px,800px) scale(1);animation-timing-function:ease-in-out}56.429%{opacity:1;transform:translate(326px,600px) scale(1);animation-timing-function:ease}57.500%{opacity:1;transform:translate(326px,600px) scale(.8);animation-timing-function:ease}58.929%{opacity:1;transform:translate(326px,600px) scale(1);animation-timing-function:ease}67.143%{opacity:1;transform:translate(326px,600px) scale(1);animation-timing-function:ease-in-out}71.429%{opacity:1;transform:translate(205px,800px) scale(1);animation-timing-function:ease}72.500%{opacity:1;transform:translate(205px,800px) scale(.8);animation-timing-function:ease}73.929%{opacity:1;transform:translate(205px,800px) scale(1);animation-timing-function:ease}76.429%{opacity:0;transform:translate(205px,800px) scale(1)}100.000%{opacity:0}}
+@keyframes fdBtn{0.000%{background:#0a0a0a;color:#C8F20D}56.786%{background:#0a0a0a;color:#C8F20D}57.500%{background:#C8F20D;color:#0a0a0a;transform:scale(.94)}60.000%{background:#C8F20D;color:#0a0a0a;transform:scale(1)}100.000%{background:#C8F20D;color:#0a0a0a}}
+@keyframes fdSheet{0.000%{transform:translateY(105%);animation-timing-function:ease}57.857%{transform:translateY(105%);animation-timing-function:cubic-bezier(.2,.8,.2,1)}62.857%{transform:translateY(0)}100.000%{transform:translateY(0)}}
+@keyframes fdConf{0.000%{opacity:0}72.857%{opacity:0}76.429%{opacity:1}100.000%{opacity:1}}
+@keyframes fdChk{0.000%{transform:scale(0)}75.000%{transform:scale(0);animation-timing-function:cubic-bezier(.3,1.6,.5,1)}79.286%{transform:scale(1)}100.000%{transform:scale(1)}}
+@keyframes fdFade{0.000%{opacity:1;animation-timing-function:ease}3.571%{opacity:0}95.000%{opacity:0;animation-timing-function:ease}99.286%{opacity:1}100.000%{opacity:1}}
+@keyframes fdDim{0.000%{opacity:0}57.857%{opacity:0}61.429%{opacity:.45}100.000%{opacity:.45}}
+@keyframes fdChip{0.000%{background:#fff;color:#0a0a0a}64.286%{background:#fff;color:#0a0a0a}65.357%{background:#C8F20D;color:#0a0a0a}100.000%{background:#C8F20D;color:#0a0a0a}}
+@keyframes fdConfBtn{0.000%{transform:scale(1)}72.143%{transform:scale(1)}72.857%{transform:scale(.95)}74.286%{transform:scale(1)}100.000%{transform:scale(1)}}
+
+.on .fd-feed{animation:fdScroll 14s linear infinite}
+.on .fd-finger{animation:fdFinger 14s linear infinite}
+.on .fd-btn{animation:fdBtn 14s linear infinite}
+.on .fd-sheet{animation:fdSheet 14s linear infinite}
+.on .fd-conf{animation:fdConf 14s linear infinite}
+.on .fd-chk{animation:fdChk 14s linear infinite}
+.on .fd-fade{animation:fdFade 14s linear infinite}
+.on .fd-dim{animation:fdDim 14s linear infinite}
+.on .fd-chip3{animation:fdChip 14s linear infinite}
+.on .fd-cbtn{animation:fdConfBtn 14s linear infinite}
+.phone{position:absolute;right:170px;top:100px;width:440px;height:880px;border-radius:58px;background:#1d1d1d;border:10px solid #2c2c2c;box-shadow:0 40px 90px rgba(0,0,0,.3);overflow:hidden}
+.phone .scr{position:absolute;inset:0;background:#fff;overflow:hidden;border-radius:48px;color:#0a0a0a}
+.sb{position:absolute;left:0;right:0;top:0;height:92px;background:#fff;z-index:5;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 12px;border-bottom:1px solid #eee}
+.sb b{font-family:'Bebas Neue';font-size:34px;letter-spacing:3px}
+.sb span{font-size:20px;color:#666}
+.fd-feed{position:absolute;left:0;right:0;top:92px;z-index:1}
+.post{height:580px;background:#fff}
+.post .h{height:66px;display:flex;align-items:center;gap:12px;padding:0 16px}
+.post .av{width:40px;height:40px;border-radius:50%;background:#bbb;flex:none}
+.post .h b{font-size:19px;display:block;line-height:1.1}
+.post .h small{font-size:14px;color:#777}
+.post .im{height:420px;background-size:cover;background-position:center}
+.post .a{height:48px;display:flex;gap:18px;align-items:center;padding:0 16px;font-size:26px}
+.post .c{font-size:17px;padding:0 16px;color:#333;line-height:1.3}
+.post.adx .cta{height:60px;background:#f1f1ee;display:flex;justify-content:space-between;align-items:center;padding:0 16px;font-size:18px;font-weight:500}
+.post.adx .cta em{font-style:normal;font-weight:700;padding:10px 22px;border-radius:8px;font-size:19px;background:#0a0a0a;color:#C8F20D}
+.post.adx .im{height:400px}
+.fd-dim{position:absolute;inset:0;background:#000;z-index:6;opacity:0}
+.fd-sheet{position:absolute;left:0;right:0;bottom:0;height:400px;background:#fff;border-radius:28px 28px 0 0;z-index:7;padding:26px 26px;transform:translateY(105%);box-shadow:0 -10px 40px rgba(0,0,0,.2)}
+.fd-sheet h4{font-family:'Barlow Condensed';font-weight:900;font-size:44px;text-transform:uppercase;line-height:1}
+.fd-sheet p{font-size:18px;color:#666;margin:6px 0 20px}
+.fd-sheet .ch{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.fd-sheet .ch span{border:2px solid #0a0a0a;border-radius:99px;padding:9px 18px;font-size:19px;font-weight:700;background:#fff}
+.fd-sheet .ch span.on2{background:#C8F20D}
+.fd-sheet .cb{position:absolute;left:26px;right:26px;bottom:28px;height:64px;border-radius:12px;background:#0a0a0a;color:#C8F20D;font-weight:700;font-size:22px;display:grid;place-items:center}
+.fd-conf{position:absolute;inset:0;background:#0a0a0a;z-index:8;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#fff;text-align:center;padding:30px}
+.fd-chk{width:130px;height:130px;border-radius:50%;background:#C8F20D;display:grid;place-items:center;font-size:76px;color:#0a0a0a;transform:scale(0)}
+.fd-conf b{font-family:'Barlow Condensed';font-weight:900;font-size:62px;text-transform:uppercase;line-height:.95}
+.fd-conf span{font-size:23px;color:#ccc;line-height:1.4}
+.fd-fade{position:absolute;inset:0;background:#fff;z-index:20;opacity:1;pointer-events:none}
+.fd-finger{position:absolute;left:-28px;top:-28px;width:56px;height:56px;border-radius:50%;background:rgba(200,242,13,.6);border:3px solid #0a0a0a;z-index:30;opacity:0;pointer-events:none}
+@keyframes crW{0.000%{transform:translateX(-300px);animation-timing-function:ease}1.579%{transform:translateX(-300px);animation-timing-function:cubic-bezier(.2,.8,.2,1)}10.000%{transform:translateX(0)}100.000%{transform:translateX(0)}}
+@keyframes crBob{0.000%{transform:translateY(0);animation-timing-function:ease-in-out}5.263%{transform:translateY(-4px);animation-timing-function:ease-in-out}10.526%{transform:translateY(0)}100.000%{transform:translateY(0)}}
+@keyframes crT1{0.000%{opacity:0}11.579%{opacity:0}12.632%{opacity:1}18.947%{opacity:1}19.474%{opacity:0}100.000%{opacity:0}}
+@keyframes crT2{0.000%{opacity:0}18.947%{opacity:0}19.474%{opacity:1}100.000%{opacity:1}}
+@keyframes crBA{0.000%{opacity:0;transform:translateY(10px) scale(.96);animation-timing-function:ease}21.053%{opacity:0;transform:translateY(10px) scale(.96);animation-timing-function:cubic-bezier(.2,.8,.2,1)}22.895%{opacity:1;transform:none;animation-timing-function:ease}35.789%{opacity:1;transform:none;animation-timing-function:ease}37.368%{opacity:0;transform:translateY(-6px)}100.000%{opacity:0}}
+@keyframes crBB{0.000%{opacity:0;transform:translateY(10px) scale(.96);animation-timing-function:ease}36.842%{opacity:0;transform:translateY(10px) scale(.96);animation-timing-function:cubic-bezier(.2,.8,.2,1)}38.684%{opacity:1;transform:none;animation-timing-function:ease}62.632%{opacity:1;transform:none;animation-timing-function:ease}64.211%{opacity:0;transform:translateY(-6px)}100.000%{opacity:0}}
+@keyframes crPh{0.000%{transform:rotate(0)}55.263%{transform:rotate(0);animation-timing-function:ease}55.789%{transform:rotate(-6deg);animation-timing-function:ease}56.316%{transform:rotate(6deg);animation-timing-function:ease}56.842%{transform:rotate(-6deg);animation-timing-function:ease}57.368%{transform:rotate(6deg);animation-timing-function:ease}57.895%{transform:rotate(-5deg);animation-timing-function:ease}58.421%{transform:rotate(4deg);animation-timing-function:ease}58.947%{transform:rotate(0)}100.000%{transform:rotate(0)}}
+@keyframes crGlow{0.000%{opacity:0}55.263%{opacity:0}56.316%{opacity:1}66.316%{opacity:1}68.421%{opacity:0}100.000%{opacity:0}}
+@keyframes crNot{0.000%{opacity:0;transform:translateY(16px) scale(.9)}55.789%{opacity:0;transform:translateY(16px) scale(.9);animation-timing-function:cubic-bezier(.2,.9,.3,1.3)}58.421%{opacity:1;transform:none}65.263%{opacity:1;transform:none;animation-timing-function:ease}67.368%{opacity:0;transform:translateY(-8px)}100.000%{opacity:0}}
+@keyframes crM1{0.000%{opacity:0;transform:translateY(14px) scale(.97)}63.158%{opacity:0;transform:translateY(14px) scale(.97);animation-timing-function:cubic-bezier(.2,.8,.2,1)}65.263%{opacity:1;transform:none}95.789%{opacity:1;transform:none}97.895%{opacity:1}100.000%{opacity:1}}
+@keyframes crM2{0.000%{opacity:0;transform:translateY(14px) scale(.97)}73.158%{opacity:0;transform:translateY(14px) scale(.97);animation-timing-function:cubic-bezier(.2,.8,.2,1)}75.263%{opacity:1;transform:none}95.789%{opacity:1;transform:none}97.895%{opacity:1}100.000%{opacity:1}}
+@keyframes crM3{0.000%{opacity:0;transform:translateY(14px) scale(.97)}81.053%{opacity:0;transform:translateY(14px) scale(.97);animation-timing-function:cubic-bezier(.2,.8,.2,1)}83.158%{opacity:1;transform:none}95.789%{opacity:1;transform:none}97.895%{opacity:1}100.000%{opacity:1}}
+@keyframes crM4{0.000%{opacity:0;transform:translateY(14px) scale(.97)}88.947%{opacity:0;transform:translateY(14px) scale(.97);animation-timing-function:cubic-bezier(.2,.8,.2,1)}91.053%{opacity:1;transform:none}95.789%{opacity:1;transform:none}97.895%{opacity:1}100.000%{opacity:1}}
+@keyframes crFade{0.000%{opacity:1;animation-timing-function:ease}2.632%{opacity:0}96.316%{opacity:0;animation-timing-function:ease}99.474%{opacity:1}100.000%{opacity:1}}
+
+.on .cr-w{animation:crW 19s linear infinite}
+.on .cr-bob{animation:crBob 2.4s ease-in-out infinite}
+.on .cr-t1{animation:crT1 19s linear infinite}
+.on .cr-t2{animation:crT2 19s linear infinite}
+.on .cr-ba{animation:crBA 19s linear infinite}
+.on .cr-bb{animation:crBB 19s linear infinite}
+.on .cr-ph{animation:crPh 19s linear infinite}
+.on .cr-gl{animation:crGlow 19s linear infinite}
+.on .cr-nt{animation:crNot 19s linear infinite}
+.on .cr-m1{animation:crM1 19s linear infinite}
+.on .cr-m2{animation:crM2 19s linear infinite}
+.on .cr-m3{animation:crM3 19s linear infinite}
+.on .cr-m4{animation:crM4 19s linear infinite}
+.on .cr-fade{animation:crFade 19s linear infinite}
+.scene{position:absolute;right:110px;top:100px;width:800px;height:490px;border-radius:20px;overflow:hidden;border:2px solid #262626;background:#121212}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.bub{position:absolute;left:34px;top:26px;width:350px;background:#fff;color:#0a0a0a;border-radius:20px;border-bottom-left-radius:4px;padding:16px 20px;font-size:25px;font-weight:500;line-height:1.3;opacity:0;z-index:4;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.bub b{font-weight:700}
+.not{position:absolute;right:30px;top:120px;width:330px;background:rgba(255,255,255,.96);color:#0a0a0a;border-radius:16px;padding:12px 16px;font-size:19px;line-height:1.3;z-index:5;opacity:0;box-shadow:0 14px 34px rgba(0,0,0,.4);display:flex;gap:12px;align-items:center}
+.not i{width:40px;height:40px;border-radius:10px;background:#25D366;display:grid;place-items:center;font-style:normal;font-size:22px;flex:none}
+.not small{display:block;color:#666;font-size:15px}
+.cr-fade{position:absolute;inset:0;background:#121212;z-index:9;pointer-events:none}
+.wchat{position:absolute;right:110px;top:616px;width:800px;height:390px;background:#0b141a;border-radius:20px;overflow:hidden;border:2px solid #262626}
+.wchat .hd{background:#202c33;padding:14px 22px;display:flex;align-items:center;gap:14px;color:#fff}
+.wchat .hd i{width:40px;height:40px;border-radius:50%;background:var(--lime);display:grid;place-items:center;color:var(--ink);font-style:normal;font-family:'Bebas Neue';font-size:22px}
+.wchat .hd b{font-size:20px}.wchat .hd small{display:block;font-size:14px;color:#8696a0}
+.wchat .bd{padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.wchat .m{font-size:20px;padding:11px 16px;max-width:76%;opacity:0}
+
+.pills{position:absolute;right:120px;top:104px;display:flex;gap:10px;z-index:3}
+.pills span{font-family:'Bebas Neue';font-size:24px;letter-spacing:3px;padding:8px 18px;border:2px solid currentColor;border-radius:99px;opacity:.45}
+.pills span.me{opacity:1;background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.s-lime .pills span.me{background:var(--ink);color:var(--lime);border-color:var(--ink)}
+.stg h2{font-size:300px;line-height:.82;margin-top:34px;letter-spacing:-2px}
+.stg h2.sm{font-size:230px}
+.stg .sub{font-size:42px;margin-top:34px;max-width:760px;line-height:1.25;font-weight:500}
+.s-ink.stg h2{color:var(--lime)}
+.stg .items{position:absolute;right:120px;top:210px;width:780px;display:flex;flex-direction:column;gap:22px}
+.stg .it{border:2px solid rgba(255,255,255,.22);padding:34px 38px;position:relative}
+.stg .it small{font-family:'Bebas Neue';font-size:28px;letter-spacing:4px;color:var(--lime)}
+.stg .it b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:76px;text-transform:uppercase;line-height:.95;margin:6px 0 12px;color:#fff}
+.stg .it span{font-size:28px;line-height:1.4;color:#d0d0d0;display:block}
+.stg .it.hl{background:var(--lime);border-color:var(--lime)}
+.stg .it.hl small,.stg .it.hl b,.stg .it.hl span{color:var(--ink)}
+.stg .it i{position:absolute;right:20px;top:20px;font-style:normal;background:var(--ink);color:var(--lime);font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;padding:5px 12px}
+/* converter */
+#e2 .l{position:absolute;left:120px;top:200px;width:800px}
+#e2 .it2{margin-top:30px}
+#e2 .it2 div{border-top:3px solid var(--ink);padding:22px 0}
+#e2 .it2 div:last-child{border-bottom:3px solid var(--ink)}
+#e2 .it2 small{font-family:'Bebas Neue';font-size:26px;letter-spacing:4px}
+#e2 .it2 b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:62px;text-transform:uppercase;line-height:.95;margin:4px 0 8px}
+#e2 .it2 span{font-size:26px;line-height:1.35;display:block;color:#222}
+.mini{position:absolute;top:180px;width:310px;height:650px;border-radius:46px;background:#1d1d1d;border:9px solid #2c2c2c;box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden}
+.mini .scr{position:absolute;inset:0;border-radius:38px;overflow:hidden}
+.mini.m1{right:470px;top:190px;transform:rotate(-3deg)}
+.mini.m2{right:110px;top:160px;transform:rotate(2.5deg)}
+.lk{background:#E8530E;color:#fff;text-align:center;padding:50px 22px 0;height:100%}
+.lk .lg{width:84px;height:84px;border-radius:50%;background:#fff;margin:0 auto 14px;display:grid;place-items:center;color:#E8530E;font-family:'Bebas Neue';font-size:40px}
+.lk b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:36px;text-transform:uppercase}
+.lk small{display:block;font-size:14px;opacity:.85;margin-bottom:22px}
+.lk div.bt{background:#fff;color:#0a0a0a;border-radius:12px;padding:15px;font-size:18px;font-weight:700;margin-bottom:11px}
+.lk div.bt.dk{background:#0a0a0a;color:#fff}
+.mn{background:#fff;color:#0a0a0a;height:100%}
+.mn .tp{background:#0a0a0a;color:#fff;padding:36px 18px 12px;font-family:'Bebas Neue';font-size:26px;letter-spacing:3px}
+.mn .tb{display:flex;gap:8px;padding:12px 14px;overflow:hidden}
+.mn .tb span{font-size:13px;font-weight:700;padding:6px 12px;border-radius:99px;border:1.5px solid #0a0a0a;white-space:nowrap}
+.mn .tb span.on3{background:#C8F20D}
+.mn .row{display:flex;gap:12px;padding:10px 14px;border-top:1px solid #eee;align-items:center}
+.mn .row i{width:76px;height:76px;border-radius:10px;background-size:cover;background-position:center;flex:none}
+.mn .row b{font-size:16px;display:block}
+.mn .row small{font-size:12.5px;color:#666;display:block;line-height:1.3;margin:2px 0}
+.mn .row em{font-style:normal;font-weight:700;font-size:15px}
+.exm{position:absolute;right:120px;top:880px;width:700px;text-align:right;font-size:20px;color:#444}
+/* mes */
+#m .cx{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border:2px solid var(--ink);width:1680px}
+#m .cx div{padding:30px 34px;background:#fff;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);min-height:0;padding:22px 30px!important}
+#m .cx div:nth-child(3n){border-right:0}
+#m .cx div:nth-child(n+4){border-bottom:0}
+#m .cx i{display:grid;place-items:center;width:48px;height:48px;background:var(--ink);color:var(--lime);font-style:normal;font-family:'Bebas Neue';font-size:34px}
+#m .cx b{display:block;font-family:'Barlow Condensed';font-weight:900;font-size:44px;text-transform:uppercase;line-height:1;margin:10px 0 6px}
+#m .cx span{font-size:23px;line-height:1.4;color:#444;display:block}
+#m h2{font-size:104px}
+/* investimento */
+#inv h2{font-size:100px}
+#inv .card2{position:absolute;left:120px;top:250px;width:1680px;background:var(--ink);color:#fff;padding:26px 56px 26px}
+#inv .tp{display:flex;justify-content:space-between;align-items:center;font-family:'Bebas Neue';font-size:30px;letter-spacing:4px}
+#inv .tp em{font-style:normal;background:var(--lime);color:var(--ink);padding:8px 18px;font-size:26px}
+#inv .rw{display:flex;justify-content:space-between;align-items:baseline;font-size:32px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.25);color:#cfcfcf}
+#inv .rw small{font-family:'Bebas Neue';font-size:26px;letter-spacing:3px;color:var(--lime);margin-left:14px}
+#inv .rw b{color:#fff;font-weight:700}
+#inv .tt{display:flex;align-items:baseline;gap:18px;margin:14px 0 14px;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:16px}
+#inv .tt b{font-family:'Barlow Condensed';font-weight:900;font-size:150px;line-height:.85}
+#inv .tt sup{font-family:'Barlow Condensed';font-weight:900;font-size:60px;align-self:flex-start;margin-top:10px}
+#inv .tt span{font-size:32px;color:#bbb}
+#inv .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+#inv h5{font-family:'Bebas Neue';font-size:28px;letter-spacing:4px;color:var(--lime);margin-bottom:12px;font-weight:400}
+#inv li{list-style:none;font-size:25px;line-height:1.25;padding:5px 0 5px 34px;position:relative;color:#eee}
+#inv li::before{content:"";position:absolute;left:0;top:15px;width:14px;height:14px;border-radius:50%;background:var(--lime)}
+#inv .val{position:absolute;left:120px;bottom:100px;font-size:26px;font-weight:700}
+
+#s13 h2{font-size:128px}
+#s13 .nx{margin-top:18px;font-size:25px;max-width:900px;line-height:1.4;font-weight:500}
+#s6 h2.one{font-size:150px}
+#s6 .sub6{font-size:34px;margin-top:20px;color:#d6d6d6;max-width:1300px}
+
+#s8 .ex{position:absolute;left:120px;right:auto;top:auto;bottom:130px;width:auto;text-align:left}
 /* nav */
 #bar{position:fixed;left:0;top:0;height:5px;background:var(--lime);width:0;z-index:20;transition:width .4s}
 #hint{position:fixed;right:18px;bottom:14px;z-index:20;display:flex;gap:8px;opacity:.0;transition:opacity .3s}
@@ -210,11 +384,9 @@ body:hover #hint{opacity:1}
 <div id="bar"></div>
 <div id="viewport"><div id="stage">
 
-<!-- 1 CAPA -->
 <section class="slide s-ink" id="s1">
   <div class="big rv d1">LEMON<i></i>SOCIAL</div>
 </section>
-
 <section class="slide s-paper" id="s2">
   <div class="l2">
     <span class="tag rv">QUEM SOMOS</span>
@@ -229,19 +401,8 @@ body:hover #hint{opacity:1}
   <div class="gr rv d2"><div class="th" style="background-image:url(/restaurantes/vid/yasmine-001.jpg)"><i class="pl"></i><span>Yasmine</span></div><div class="th" style="background-image:url(/restaurantes/vid/perdomo-maes.jpg)"><i class="pl"></i><span>Perdomo</span></div><div class="th" style="background-image:url(/drgilvan/img/r03.jpg)"><i class="pl"></i><span>Dr. Gilvan</span></div><div class="th" style="background-image:url(/restaurantes/img/seven-master.jpg)"><span>The Seven</span></div><div class="th" style="background-image:url(/premiumgrass/img/10-1.jpg)"><span>Premium Grass</span></div><div class="th" style="background-image:url(/construtoras/portfolio/vid/engenharia.jpg)"><i class="pl"></i><span>Construtecn</span></div><div class="th" style="background-image:url(/restaurantes/img/jureme/costelinha.jpg)"><span>Juremê</span></div><div class="th" style="background-image:url(/drgilvan/img/r01.jpg)"><i class="pl"></i><span>Dr. Gilvan</span></div><div class="th" style="background-image:url(/restaurantes/vid/yasmine-06.jpg)"><i class="pl"></i><span>Yasmine</span></div><div class="th" style="background-image:url(/premiumgrass/img/08-1.jpg)"><span>Premium Grass</span></div><div class="th" style="background-image:url(/construtoras/portfolio/vid/obra-por-dentro.jpg)"><i class="pl"></i><span>Construtecn</span></div><div class="th" style="background-image:url(/restaurantes/img/marcas/pizza.jpg)"><span>Cozinha autoral</span></div></div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">02</div></div>
 </section>
-
-<!-- 3 HISTÓRIAS -->
-<section class="slide s-lime" id="s3">
-  <span class="tag rv">NOSSO MAIOR TALENTO</span>
-  <h2 class="rv d1">Contar<br>histórias.</h2>
-  <p class="lead rv d2">Qualquer um posta um prato bonito. A gente conta quem faz, por que faz e por que vale a mesa. É isso que faz alguém querer ir.</p>
-  <div class="strip rv d3"><div class="tr" id="strip3"></div></div>
-  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">03</div></div>
-</section>
-
-<!-- 4 O QUE FAZEMOS -->
 <section class="slide s-ink" id="s4">
-  <span class="tag rv">02 · O QUE FAZEMOS</span>
+  <span class="tag rv">NOSSO MÉTODO</span>
   <h2 class="rv d1" style="font-size:130px">Um método em <em>três etapas.</em></h2>
   <div class="tri rv d2">
     <div><div class="no">ETAPA 01</div><h3>Atrair</h3><ul><li><b>Produção de conteúdo</b></li><li><b>Tráfego pago</b></li></ul></div>
@@ -251,11 +412,19 @@ body:hover #hint{opacity:1}
   <div class="eq rv d4">Conteúdo + tráfego + sistema = salão cheio todo mês.</div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">04</div></div>
 </section>
-
-<!-- 5 PRODUÇÃO DE CONTEÚDO -->
+<section class="slide s-ink stg" id="e1">
+  <span class="tag rv">ETAPA 01 DE 03</span><div class="pills rv"><span class="me">01 ATRAIR</span><span>02 CONVERTER</span><span>03 FAZER VOLTAR</span></div>
+  <h2 class="rv d1">Atrair</h2>
+  <p class="sub rv d2">O cliente certo descobre o seu restaurante.</p>
+  <div class="items rv d3">
+    <div class="it hl"><i>CARRO CHEFE</i><small>01</small><b>Produção de conteúdo</b><span>Fotos, vídeos, roteiro, edição e legenda. Um dia de gravação rende o mês inteiro.</span></div>
+    <div class="it"><small>02</small><b>Tráfego pago</b><span>Anúncios no Instagram, Facebook e Google para quem está perto e com fome.</span></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
+</section>
 <section class="slide s-paper" id="s5">
   <div class="left">
-    <span class="tag rv">PACOTE 01 · CARRO CHEFE</span>
+    <span class="tag rv">ATRAIR · PRODUÇÃO DE CONTEÚDO</span>
     <h2 class="rv d1">Produção de<br><em>conteúdo.</em></h2>
     <p class="lead rv d2">Um dia de gravação rende o mês inteiro. Roteiro, direção, fotos, vídeos, edição e legenda. Você cozinha, a gente conta.</p>
     <div class="chips rv d3"><span class="chip l">Fotos de cardápio</span><span class="chip">Reels</span><span class="chip">Stories</span><span class="chip">Carrosséis</span><span class="chip">Feed planejado</span></div>
@@ -271,12 +440,11 @@ body:hover #hint{opacity:1}
   </div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">05</div></div>
 </section>
-
-<!-- 6 PAREDE -->
 <section class="slide s-ink" id="s6">
   <div class="hd">
-    <span class="tag rv">O QUE JÁ CRIAMOS</span>
-    <h2 class="rv d1" style="font-size:130px">Cada foto,<br>uma <em>história.</em></h2>
+    <span class="tag rv">NOSSO MAIOR TALENTO</span>
+    <h2 class="rv d1 one">Contar <em>histórias.</em></h2>
+    <p class="sub6 rv d1">Qualquer um posta um prato bonito. A gente conta quem faz, por que faz e por que vale a mesa.</p>
   </div>
   <div class="rows rv d2">
     <div class="r1"><div class="tr" id="r1"></div></div>
@@ -284,10 +452,21 @@ body:hover #hint{opacity:1}
   </div>
   <div class="chrome" style="z-index:6"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">06</div></div>
 </section>
-
-<!-- 7 CASE -->
+<section class="slide s-paper" id="m">
+  <span class="tag rv">ATRAIR · PRODUÇÃO DE CONTEÚDO</span>
+  <h2 class="rv d1">Um mês de conteúdo,<br><em>pensado antes.</em></h2>
+  <div class="cx rv d2">
+    <div><i>01</i><b>Estratégia</b><span>A social media define objetivos, pratos em destaque, datas e o que entra em collab entre as casas.</span></div>
+    <div><i>02</i><b>Calendário e roteiros</b><span>Cada publicação é planejada: formato, roteiro, legenda e data.</span></div>
+    <div><i>03</i><b>Diária de produção</b><span>Produção em cada casa, com fotos e vídeos definidos no roteiro.</span></div>
+    <div><i>04</i><b>Edição e design</b><span>Reels editados, carrosséis e artes prontos para o feed e os stories.</span></div>
+    <div><i>05</i><b>Aprovação</b><span>Você vê o perfil pronto num link e aprova ou pede ajuste antes de ir ao ar.</span></div>
+    <div><i>06</i><b>Publicação</b><span>Tudo agendado nos melhores horários, com acompanhamento dos resultados.</span></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
+</section>
 <section class="slide s-lime" id="s7">
-  <span class="tag rv">CASE REAL · HAMBURGUERIA</span>
+  <span class="tag rv">ATRAIR · CASE REAL</span>
   <h2 class="rv d1">De quase zero<br>a <em>70 mil.</em></h2>
   <div class="cmp rv d2">
     <figure><div class="ph" style="background-image:url(/restaurantes/img/antes.jpg)"></div><figcaption>ANTES · MENOS DE 100</figcaption></figure>
@@ -301,8 +480,6 @@ body:hover #hint{opacity:1}
   </div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">07</div></div>
 </section>
-
-<!-- 8 TRÁFEGO -->
 <section class="slide s-paper" id="s8">
   <span class="tag rv">ATRAIR · TRÁFEGO PAGO</span>
   <h2 class="rv d1">Anúncio que<br>traz gente<br>para a <em>mesa.</em></h2>
@@ -311,38 +488,111 @@ body:hover #hint{opacity:1}
     <div><i>2</i>Campanhas de reserva, delivery e lançamento</div>
     <div><i>3</i>Relatório mensal, simples e sem enrolação</div>
   </div>
-  <div class="ad rv d3">
-    <div class="t"><div class="av">S</div><div><b>Seu restaurante</b><small>Patrocinado</small></div></div>
-    <div class="im" style="background-image:url(/restaurantes/img/marcas/pizza-fatia.jpg)"></div>
-    <div class="f"><span>Reserve sua mesa hoje</span><em>Reservar</em></div>
-  </div>
+  <div class="phone rv d3"><div class="scr">
+    <div class="sb"><b>FEED</b><span>9:41</span></div>
+    <div class="fd-feed">
+      <div class="post"><div class="h"><div class="av" style="background:#e8a0b4"></div><div><b>marina.lopes</b><small>Brasília</small></div></div><div class="im" style="background-image:url(/restaurantes/img/marcas/acai.jpg)"></div><div class="a">♡ &nbsp;💬 &nbsp;➤</div><div class="c"><b>marina.lopes</b> sábado de sol e açaí ☀️</div></div>
+      <div class="post"><div class="h"><div class="av" style="background:#9ab8e0"></div><div><b>pedro.viaja</b><small>Águas Claras</small></div></div><div class="im" style="background-image:url(/restaurantes/img/marcas/bolinho-de-chuva.jpg)"></div><div class="a">♡ &nbsp;💬 &nbsp;➤</div><div class="c"><b>pedro.viaja</b> café da tarde em família</div></div>
+      <div class="post adx"><div class="h"><div class="av" style="background:#0a0a0a;color:#C8F20D;display:grid;place-items:center;font-family:'Bebas Neue';font-size:22px">S</div><div><b>Seu restaurante</b><small>Patrocinado</small></div></div><div class="im" style="background-image:url(/restaurantes/img/marcas/pizza-fatia.jpg)"></div><div class="cta"><span>Reserve sua mesa hoje</span><em class="fd-btn">Reservar</em></div><div class="c" style="padding-top:12px"><b>Seu restaurante</b> Pizza no forno a lenha, mesa te esperando.</div></div>
+    </div>
+    <div class="fd-dim"></div>
+    <div class="fd-sheet"><h4>Reservar mesa</h4><p>Seu restaurante · hoje</p><div class="ch"><span class="on2">Hoje</span><span class="fd-chip3">20h</span><span>2 pessoas</span></div><div class="cb fd-cbtn">Confirmar reserva</div></div>
+    <div class="fd-conf"><div class="fd-chk">✓</div><b>Mesa reservada!</b><span>Te esperamos hoje às 20h.<br>2 pessoas · Seu restaurante</span></div>
+    <div class="fd-finger"></div>
+    <div class="fd-fade"></div>
+  </div></div>
   <div class="ex rv d4">Exemplo ilustrativo de anúncio</div>
-  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">08</div></div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
 </section>
-
-<!-- 9 CRM -->
+<section class="slide s-lime stg" id="e2">
+  <span class="tag rv">ETAPA 02 DE 03</span><div class="pills rv"><span>01 ATRAIR</span><span class="me">02 CONVERTER</span><span>03 FAZER VOLTAR</span></div>
+  <div class="l">
+    <h2 class="rv d1" style="font-size:170px;line-height:.82">Converter</h2>
+    <p class="sub rv d2" style="font-size:38px;margin-top:26px">O interesse vira pedido e reserva.</p>
+    <div class="it2 rv d3">
+      <div><small>01</small><b>Cardápio digital</b><span>Bonito, rápido e fácil de atualizar, com QR code na mesa.</span></div>
+      <div><small>02</small><b>Sistema de links</b><span>Reserva, delivery, WhatsApp e localização numa página só.</span></div>
+    </div>
+  </div>
+  <div class="mini m1 rv d3"><div class="scr"><div class="lk"><div class="lg">S</div><b>Seu restaurante</b><small>Aberto agora · Brasília</small><div class="bt">🍽  Ver cardápio</div><div class="bt">📅  Reservar mesa</div><div class="bt">🛵  Pedir no delivery</div><div class="bt dk">💬  Falar no WhatsApp</div><div class="bt dk">📍  Como chegar</div></div></div></div>
+  <div class="mini m2 rv d4"><div class="scr"><div class="mn"><div class="tp">CARDÁPIO</div><div class="tb"><span class="on3">Entradas</span><span>Pratos</span><span>Sobremesas</span><span>Drinks</span></div>
+    <div class="row"><i style="background-image:url(/restaurantes/img/marcas/massa-drink.jpg)"></i><div><b>Massa da casa</b><small>Receita autoral, molho do dia</small><em>R$ 54</em></div></div>
+    <div class="row"><i style="background-image:url(/restaurantes/img/jureme/frango-crocante.jpg)"></i><div><b>Petisco crocante</b><small>Para compartilhar na mesa</small><em>R$ 42</em></div></div>
+    <div class="row"><i style="background-image:url(/restaurantes/img/marcas/prato-autoral.jpg)"></i><div><b>Prato do chef</b><small>Ingredientes da estação</small><em>R$ 68</em></div></div>
+    <div class="row"><i style="background-image:url(/restaurantes/img/marcas/pudim.jpg)"></i><div><b>Pudim de leite</b><small>Calda de caramelo</small><em>R$ 24</em></div></div>
+    <div class="row"><i style="background-image:url(/restaurantes/img/jureme/drink.jpg)"></i><div><b>Drink autoral</b><small>Cítrico e refrescante</small><em>R$ 36</em></div></div></div></div></div>
+  <div class="exm rv d5">Exemplos ilustrativos. Também funciona com tag NFC na mesa.</div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
+</section>
+<section class="slide s-ink stg" id="e3">
+  <span class="tag rv">ETAPA 03 DE 03</span><div class="pills rv"><span>01 ATRAIR</span><span>02 CONVERTER</span><span class="me">03 FAZER VOLTAR</span></div>
+  <h2 class="rv d1 sm">Fazer<br>voltar</h2>
+  <p class="sub rv d2">Quem veio, volta mais vezes.</p>
+  <div class="items rv d3">
+    <div class="it hl"><i>SISTEMA PRÓPRIO</i><small>01</small><b>CRM Lemon</b><span>Cada cliente vira contato: nome, WhatsApp, aniversário e avaliação da visita.</span></div>
+    <div class="it"><small>02</small><b>Campanhas para a base</b><span>Ações todo mês: aniversários, datas especiais, prato novo e dia fraco.</span></div>
+  </div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
+</section>
 <section class="slide s-ink" id="s9">
   <span class="tag rv">FAZER VOLTAR · CRM LEMON</span>
-  <h2 class="rv d1" style="font-size:128px">Quem é o<br>cliente do <em>Santé?</em></h2>
-  <div class="steps rv d2" style="width:980px">
+  <h2 class="rv d1" style="font-size:100px">Quem é o<br>cliente do <em>Santé?</em></h2>
+  <div class="steps rv d2" style="width:860px;margin-top:36px">
     <div><b>1</b><p><strong>O garçom registra</strong><span>Nome, WhatsApp e aniversário, em segundos.</span></p></div>
     <div><b>2</b><p><strong>O cliente avalia</strong><span>Nota da comida, do atendimento e da experiência.</span></p></div>
     <div><b>3</b><p><strong>Nota alta vira Google</strong><span>Quem amou leva sua avaliação para o Google.</span></p></div>
     <div><b>4</b><p><strong>A base vira faturamento</strong><span>Você enxerga quem vem, quem some e quem volta.</span></p></div>
   </div>
-  <div class="wa rv d3">
+  <div class="scene rv d3"><svg viewBox="0 0 800 490" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="gl" cx="50%" cy="0%" r="80%"><stop offset="0" stop-color="#C8F20D" stop-opacity=".35"/><stop offset="1" stop-color="#C8F20D" stop-opacity="0"/></radialGradient>
+<linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c1c"/><stop offset="1" stop-color="#101010"/></linearGradient></defs>
+<rect width="800" height="490" fill="url(#wall)"/>
+<rect x="0" y="430" width="800" height="60" fill="#0b0b0b"/>
+<g><line x1="400" y1="0" x2="400" y2="52" stroke="#444" stroke-width="3"/><path d="M370 52 h60 l-10 26 h-40z" fill="#C8F20D"/><ellipse cx="400" cy="80" rx="30" ry="6" fill="#fff" opacity=".9"/><ellipse cx="400" cy="230" rx="260" ry="190" fill="url(#gl)" opacity=".5"/></g>
+<!-- clientes -->
+<g><rect x="545" y="236" width="104" height="150" rx="38" fill="#3E7CB1"/><circle cx="597" cy="200" r="36" fill="#8d5a3b"/><path d="M562 196 q4 -40 35 -40 q33 0 35 40 q-14 -22 -35 -20 q-22 0 -35 20z" fill="#111"/><circle cx="584" cy="203" r="3.4" fill="#222"/><circle cx="610" cy="203" r="3.4" fill="#222"/><path d="M586 217 q11 8 22 0" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+<g><rect x="338" y="238" width="104" height="150" rx="38" fill="#E8457A"/><circle cx="390" cy="202" r="36" fill="#f2c9a5"/><path d="M352 206 q-4 -52 38 -52 q42 0 38 52 q-6 -28 -38 -28 q-32 0 -38 28z" fill="#5a3416"/><circle cx="377" cy="205" r="3.4" fill="#222"/><circle cx="403" cy="205" r="3.4" fill="#222"/><path d="M379 219 q11 8 22 0" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+<!-- mesa -->
+<ellipse cx="450" cy="392" rx="300" ry="50" fill="#4a3526" stroke="#5f4633" stroke-width="3"/>
+<rect x="440" y="440" width="22" height="42" fill="#2c1f16"/><ellipse cx="451" cy="484" rx="96" ry="9" fill="#2c1f16"/>
+<ellipse cx="385" cy="396" rx="48" ry="12" fill="#f4f4f0"/><ellipse cx="385" cy="394" rx="30" ry="7" fill="#ddd"/>
+<ellipse cx="560" cy="400" rx="48" ry="12" fill="#f4f4f0"/><ellipse cx="560" cy="398" rx="30" ry="7" fill="#ddd"/>
+<rect x="452" y="366" width="18" height="36" rx="4" fill="#cfe9ff" opacity=".55"/><rect x="480" y="372" width="16" height="30" rx="4" fill="#ffd9a0" opacity=".6"/>
+<!-- celular na mesa -->
+<ellipse class="cr-gl" cx="650" cy="396" rx="60" ry="18" fill="#25D366" opacity="0"/>
+<g class="cr-ph" style="transform-origin:650px 398px;transform-box:view-box"><rect x="628" y="384" width="44" height="24" rx="5" fill="#111" stroke="#555" stroke-width="2"/><rect x="632" y="387" width="36" height="18" rx="3" fill="#2a3b44"/></g>
+<!-- garcom -->
+<g class="cr-w"><g class="cr-bob" style="transform-box:fill-box">
+<rect x="70" y="238" width="118" height="236" rx="44" fill="#0a0a0a" stroke="#2c2c2c" stroke-width="3"/>
+<rect x="92" y="338" width="74" height="136" rx="12" fill="#C8F20D"/>
+<path d="M112 238 l17 30 l17 -30z" fill="#f4f4f0"/><path d="M121 262 l8 8 l8 -8 l-8 -6z" fill="#C8F20D"/>
+<circle cx="129" cy="196" r="38" fill="#d9a67f"/>
+<path d="M92 192 q-2 -44 38 -44 q40 0 38 44 q-10 -20 -38 -20 q-28 0 -38 20z" fill="#1a1a1a"/>
+<circle cx="116" cy="198" r="3.6" fill="#222"/><circle cx="142" cy="198" r="3.6" fill="#222"/><path d="M118 212 q11 9 22 0" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M172 268 q56 6 82 56" stroke="#0a0a0a" stroke-width="30" fill="none" stroke-linecap="round"/>
+<circle cx="258" cy="330" r="15" fill="#d9a67f"/>
+<rect x="238" y="278" width="62" height="86" rx="10" fill="#222" stroke="#555" stroke-width="2"/>
+<rect x="245" y="286" width="48" height="36" rx="4" fill="#0f1a10"/>
+<text class="cr-t1" x="269" y="311" font-family="Barlow Condensed,sans-serif" font-weight="900" font-size="18" fill="#fff" text-anchor="middle" opacity="0">R$ 186</text>
+<text class="cr-t2" x="269" y="311" font-family="Barlow Condensed,sans-serif" font-weight="900" font-size="18" fill="#C8F20D" text-anchor="middle" opacity="0">PAGO ✓</text>
+<rect x="246" y="330" width="46" height="26" rx="3" fill="#333"/>
+</g></g>
+</svg>
+    <div class="bub cr-ba"><b>Conta fechada!</b> Obrigado pela visita 🙂</div>
+    <div class="bub cr-bb">Daqui a pouco você recebe uma mensagem no <b>WhatsApp</b> para avaliar o seu dia 😊</div>
+    <div class="not cr-nt"><i>💬</i><div><b>Seu Restaurante</b><small>Como foi sua experiência hoje? Leva 30 segundos.</small></div></div>
+    <div class="cr-fade"></div>
+  </div>
+  <div class="wchat rv d4">
     <div class="hd"><i>S</i><div><b>Seu Restaurante</b><small>conta comercial</small></div></div>
     <div class="bd">
-      <div class="m in">Oi, Ana! Obrigado pela visita hoje 🧡 Como foi sua experiência? Leva 30 segundos.<div class="bt">Avaliar minha visita</div><small>21:42</small></div>
-      <div class="m out">★★★★★ Comida incrível, atendimento do Lucas nota 10!<small>21:45</small></div>
-      <div class="m in">Que bom! Deixa essa avaliação no Google pra gente? 🙏<div class="bt">Avaliar no Google</div><small>21:45</small></div>
-      <div class="m in">🎂 Ana, seu aniversário está chegando! Sua sobremesa é por nossa conta esse mês.<div class="bt">Reservar mesa</div><small>15 dias depois</small></div>
+      <div class="m in cr-m1">Oi, Ana! Obrigado pela visita hoje 🧡 Como foi sua experiência?</div>
+      <div class="m out cr-m2">★★★★★ Comida incrível, atendimento nota 10!</div>
+      <div class="m in cr-m3">Que bom! Deixa essa avaliação no Google pra gente? 🙏</div>
     </div>
   </div>
-  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">09</div></div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
 </section>
-
-<!-- 10 CAMPANHAS -->
 <section class="slide s-lime" id="s10">
   <span class="tag rv">FAZER VOLTAR · CAMPANHAS</span>
   <h2 class="rv d1">Cliente que volta<br>é <em>lucro.</em></h2>
@@ -356,41 +606,27 @@ body:hover #hint{opacity:1}
   </div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">10</div></div>
 </section>
-
-<!-- 11 PACOTES -->
-<section class="slide s-paper" id="s11">
-  <span class="tag rv">03 · NOSSOS PACOTES</span>
-  <h2 class="rv d1">Tudo num <em>só lugar.</em></h2>
-  <div class="pk rv d2">
-    <div class="c hl"><i>CARRO CHEFE</i><small>01</small><b>Produção de conteúdo</b><span>Fotos, vídeos, roteiro, edição e legenda.</span></div>
-    <div class="c"><small>02</small><b>Tráfego pago</b><span>Instagram, Facebook e Google para quem está perto.</span></div>
-    <div class="c"><small>03</small><b>CRM Lemon</b><span>Seus clientes, notas e aniversários num só painel.</span></div>
-    <div class="c"><small>04</small><b>Campanhas</b><span>Ações todo mês para a base voltar.</span></div>
-    <div class="c"><small>05</small><b>Cardápio digital</b><span>Bonito, rápido, com QR code e fotos que vendem.</span></div>
-    <div class="c"><small>06</small><b>Sistema de links</b><span>Reserva, delivery e WhatsApp numa página, com NFC.</span></div>
+<section class="slide s-lime" id="inv">
+  <span class="tag rv">INVESTIMENTO</span>
+  <h2 class="rv d1">Proposta para as <em>duas casas.</em></h2>
+  <div class="card2 rv d2">
+    <div class="tp"><span>PRODUÇÃO DE CONTEÚDO · DUAS CASAS</span><em>PROPOSTA SANTÉ</em></div>
+    <div class="rw" style="margin-top:14px"><span>Santé Lago</span><b>R$ 2.300</b></div>
+    <div class="rw"><span>Santé 13 <small>50% DO VALOR</small></span><b>R$ 1.150</b></div>
+    <div class="tt"><sup>R$</sup><b>3.450</b><span>/mês para as duas casas</span></div>
+    <div class="cols">
+      <div><h5>PRODUÇÃO</h5><ul><li>12 publicações por mês em cada perfil</li><li>Diária de produção em cada casa</li><li>Fotos de pratos, drinks e ambiente</li><li>Reels, carrosséis e criativos</li></ul></div>
+      <div><h5>GESTÃO DAS REDES</h5><ul><li>Estratégia para os dois perfis</li><li>Cronograma, roteiros e legendas</li><li>Conteúdo próprio e collabs entre as casas</li><li>Integração com o tráfego e o conteúdo orgânico de vocês</li></ul></div>
+    </div>
   </div>
-  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">11</div></div>
+  <div class="val rv d3">Proposta válida por 15 dias.</div>
+  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
 </section>
-
-<!-- 12 PLANO -->
-<section class="slide s-ink" id="s12">
-  <span class="tag rv">04 · O QUE VAMOS FAZER PELO SANTÉ</span>
-  <h2 class="rv d1">Primeiros <em>90 dias.</em></h2>
-  <div class="tl rv d2">
-    <div><small>SEMANA 1</small><b>Diagnóstico</b><span>Instagram, Google, jornada de pedido e quem é o cliente do Santé.</span></div>
-    <div><small>MÊS 1</small><b>Conteúdo</b><span>Dia de gravação, calendário do mês e primeiras histórias no ar.</span></div>
-    <div><small>MÊS 2</small><b>Sistema</b><span>CRM implantado, cardápio e links, e o tráfego começa a rodar.</span></div>
-    <div><small>MÊS 3</small><b>Retorno</b><span>Primeiras campanhas para a base, relatório e ajustes.</span></div>
-  </div>
-  <div class="note rv d4">Podemos começar por uma frente e crescer aos poucos, até cuidar de tudo.</div>
-  <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">12</div></div>
-</section>
-
-<!-- 13 FIM -->
 <section class="slide s-lime" id="s13">
   <span class="tag rv">PRÓXIMO PASSO</span>
-  <h2 class="rv d1">Bora contar<br>a história<br>do <em>Santé?</em></h2>
+  <h2 class="rv d1">Bora contar<br>a história do<br><em>Santé Lago</em><br>e do <em>Santé 13?</em></h2>
   <a class="cta rv d2" href="https://wa.me/5561998889486" target="_blank" rel="noopener">Falar com a Lemon ↗</a>
+  <div class="nx rv d3">Próximo passo: uma conversa de 30 minutos para alinhar a estratégia das duas casas e marcar as primeiras diárias de produção.</div>
   <div class="lnk rv d3">agencialemonsocial.com.br</div>
   <div class="ph b rv d3" style="background-image:url(/restaurantes/img/marcas/prato-autoral.jpg)"></div>
   <div class="ph rv d4" style="background-image:url(/restaurantes/img/yasmine/11.jpg)"></div>
@@ -410,7 +646,7 @@ body:hover #hint{opacity:1}
   // fotos das paredes
   var A='/restaurantes/img/';
   var wall=['yasmine/06','seven-master','marcas/pizza','jureme/costelinha','marcas/frutos-do-mar','yasmine/05','jureme/drink','marcas/massa-drink','flip/d3','yasmine/11','marcas/prato-autoral','jureme/frango-crocante','yasmine/13','flip/d6','marcas/churros','jureme/petisco','marcas/pudim','yasmine/08','flip/d5','marcas/manjar','yasmine/12','jureme/happy-hour','marcas/bolo-chocolate','yasmine/10','marcas/acai','flip/d4','jureme/brinde','marcas/chef-panela','yasmine/07','risoto'];
-  function fill(id,list,h){var el=document.getElementById(id),t='';list.concat(list).forEach(function(p){t+='<div class="ph" style="background-image:url('+A+p+'.jpg)"></div>';});el.innerHTML=t;}
+  function fill(id,list,h){var el=document.getElementById(id),t='';if(!el)return;list.concat(list).forEach(function(p){t+='<div class="ph" style="background-image:url('+A+p+'.jpg)"></div>';});el.innerHTML=t;}
   fill('strip3',wall.slice(0,14));
   fill('r1',wall.slice(0,15));
   fill('r2',wall.slice(15));
@@ -440,6 +676,7 @@ body:hover #hint{opacity:1}
   function fs(){var d=document;if(!d.fullscreenElement){(d.documentElement.requestFullscreen||function(){}).call(d.documentElement);}else{d.exitFullscreen();}}
   document.getElementById('nx').onclick=nx;document.getElementById('pv').onclick=pv;document.getElementById('fs').onclick=fs;
   // toque
+  slides.forEach(function(sl,i){var n=sl.querySelector('.chrome .n');if(n)n.textContent=('0'+(i+1)).slice(-2);});
   var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
   addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?nx():pv();}x0=null;},{passive:true});
   // clique no palco avança (exceto links)
