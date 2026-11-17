@@ -389,6 +389,21 @@ p.lead{font-size:38px;line-height:1.38;max-width:900px;margin-top:34px;font-weig
 #inv li::before{content:"";position:absolute;left:0;top:12px;width:12px;height:12px;border-radius:50%;background:var(--lime)}
 #inv .pc.hi li::before{background:var(--ink)}
 #inv .val{position:absolute;left:120px;bottom:100px;font-size:24px;font-weight:700}
+.post .im.il{display:grid;place-items:center}
+.post .im.il span{font-size:150px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.2))}
+.adil{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
+.adil span{font-size:130px;line-height:1}
+.adil b{font-family:'Barlow Condensed';font-weight:900;font-size:50px;text-transform:uppercase;color:#C8F20D;margin-top:14px}
+.adil small{font-size:17px;color:#bbb;margin-top:4px}
+.mn .row i.emi{display:grid;place-items:center;font-size:40px;font-style:normal}
+.ask{position:absolute;left:120px;top:690px;width:720px;border:2px solid rgba(255,255,255,.22);padding:28px 32px}
+.ask small{font-family:'Bebas Neue';font-size:24px;letter-spacing:4px;color:var(--lime)}
+.ask p{font-size:30px;line-height:1.35;color:#fff;margin:8px 0 20px;font-weight:500}
+.yn{display:flex;gap:16px}
+.yn button{flex:1;cursor:pointer;font-family:'Barlow Condensed';font-weight:900;font-size:48px;padding:14px 20px;border:3px solid var(--lime);background:transparent;color:var(--lime);display:flex;align-items:baseline;justify-content:center;gap:14px;transition:.2s}
+.yn button span{font-family:'DM Sans';font-weight:500;font-size:20px;color:#bbb}
+.yn button:hover{background:var(--lime);color:var(--ink)}
+.yn button:hover span{color:var(--ink)}
 /* nav */
 #bar{position:fixed;left:0;top:0;height:5px;background:var(--lime);width:0;z-index:20;transition:width .4s}
 #hint{position:fixed;right:18px;bottom:14px;z-index:20;display:flex;gap:8px;opacity:.0;transition:opacity .3s}
@@ -500,7 +515,7 @@ body:hover #hint{opacity:1}
   </div>
   <div class="nums rv d3">
     <div><b>70K</b><span>seguidores conquistados</span></div>
-    <div><b>R$300K</b><span>de faturamento médio por mês</span></div>
+    <div><b>R$500K+</b><span>de faturamento por mês somando as duas unidades</span></div>
     <div><b>2</b><span>unidades abertas desde o início</span></div>
   </div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">07</div></div>
@@ -516,9 +531,9 @@ body:hover #hint{opacity:1}
   <div class="phone rv d3"><div class="scr">
     <div class="sb"><b>FEED</b><span>9:41</span></div>
     <div class="fd-feed">
-      <div class="post"><div class="h"><div class="av" style="background:#e8a0b4"></div><div><b>marina.lopes</b><small>Brasília</small></div></div><div class="im" style="background-image:url(/restaurantes/img/marcas/acai.jpg)"></div><div class="a">♡ &nbsp;💬 &nbsp;➤</div><div class="c"><b>marina.lopes</b> sábado de sol e açaí ☀️</div></div>
-      <div class="post"><div class="h"><div class="av" style="background:#9ab8e0"></div><div><b>pedro.viaja</b><small>Águas Claras</small></div></div><div class="im" style="background-image:url(/restaurantes/img/marcas/bolinho-de-chuva.jpg)"></div><div class="a">♡ &nbsp;💬 &nbsp;➤</div><div class="c"><b>pedro.viaja</b> café da tarde em família</div></div>
-      <div class="post adx"><div class="h"><div class="av" style="background:#0a0a0a;color:#C8F20D;display:grid;place-items:center;font-family:'Bebas Neue';font-size:22px">S</div><div><b>Seu restaurante</b><small>Patrocinado</small></div></div><div class="im" style="background-image:url(/restaurantes/img/marcas/pizza-fatia.jpg)"></div><div class="cta"><span>Reserve sua mesa hoje</span><em class="fd-btn">Reservar</em></div><div class="c" style="padding-top:12px"><b>Seu restaurante</b> Pizza no forno a lenha, mesa te esperando.</div></div>
+      <div class="post"><div class="h"><div class="av" style="background:#e8a0b4"></div><div><b>marina.lopes</b><small>Brasília</small></div></div><div class="im il" style="background:linear-gradient(160deg,#ffb36b,#ff6f91 60%,#845ec2)"><span>🌅</span></div><div class="a">♡ &nbsp;💬 &nbsp;➤</div><div class="c"><b>marina.lopes</b> fim de tarde perfeito 🌅</div></div>
+      <div class="post"><div class="h"><div class="av" style="background:#9ab8e0"></div><div><b>pedro.viaja</b><small>Águas Claras</small></div></div><div class="im il" style="background:linear-gradient(160deg,#cfe3f5,#8fb4d9)"><span>🐶</span></div><div class="a">♡ &nbsp;💬 &nbsp;➤</div><div class="c"><b>pedro.viaja</b> o novo integrante da família</div></div>
+      <div class="post adx"><div class="h"><div class="av" style="background:#0a0a0a;color:#C8F20D;display:grid;place-items:center;font-family:'Bebas Neue';font-size:22px">S</div><div><b>Seu restaurante</b><small>Patrocinado</small></div></div><div class="im" style="background:radial-gradient(circle at 50% 40%,#2a2a2a,#0a0a0a)"><div class="adil"><span>🍕</span><b>Mesa pra hoje?</b><small>Forno a lenha · Asa Sul</small></div></div><div class="cta"><span>Reserve sua mesa hoje</span><em class="fd-btn">Reservar</em></div><div class="c" style="padding-top:12px"><b>Seu restaurante</b> Pizza no forno a lenha, mesa te esperando.</div></div>
     </div>
     <div class="fd-dim"></div>
     <div class="fd-sheet"><h4>Reservar mesa</h4><p>Seu restaurante · hoje</p><div class="ch"><span class="on2">Hoje</span><span class="fd-chip3">20h</span><span>2 pessoas</span></div><div class="cb fd-cbtn">Confirmar reserva</div></div>
@@ -541,11 +556,11 @@ body:hover #hint{opacity:1}
   </div>
   <div class="mini m1 rv d3"><div class="scr"><div class="lk"><div class="lg">S</div><b>Seu restaurante</b><small>Aberto agora · Brasília</small><div class="bt">🍽  Ver cardápio</div><div class="bt">📅  Reservar mesa</div><div class="bt">🛵  Pedir no delivery</div><div class="bt dk">💬  Falar no WhatsApp</div><div class="bt dk">📍  Como chegar</div></div></div></div>
   <div class="mini m2 rv d4"><div class="scr"><div class="mn"><div class="tp">CARDÁPIO</div><div class="tb"><span class="on3">Entradas</span><span>Pratos</span><span>Sobremesas</span><span>Drinks</span></div>
-    <div class="row"><i style="background-image:url(/restaurantes/img/marcas/massa-drink.jpg)"></i><div><b>Massa da casa</b><small>Receita autoral, molho do dia</small><em>R$ 54</em></div></div>
-    <div class="row"><i style="background-image:url(/restaurantes/img/jureme/frango-crocante.jpg)"></i><div><b>Petisco crocante</b><small>Para compartilhar na mesa</small><em>R$ 42</em></div></div>
-    <div class="row"><i style="background-image:url(/restaurantes/img/marcas/prato-autoral.jpg)"></i><div><b>Prato do chef</b><small>Ingredientes da estação</small><em>R$ 68</em></div></div>
-    <div class="row"><i style="background-image:url(/restaurantes/img/marcas/pudim.jpg)"></i><div><b>Pudim de leite</b><small>Calda de caramelo</small><em>R$ 24</em></div></div>
-    <div class="row"><i style="background-image:url(/restaurantes/img/jureme/drink.jpg)"></i><div><b>Drink autoral</b><small>Cítrico e refrescante</small><em>R$ 36</em></div></div></div></div></div>
+    <div class="row"><i class="emi" style="background:#ffe0b2">🍝</i><div><b>Massa da casa</b><small>Receita autoral, molho do dia</small><em>R$ 54</em></div></div>
+    <div class="row"><i class="emi" style="background:#ffd6d6">🍗</i><div><b>Petisco crocante</b><small>Para compartilhar na mesa</small><em>R$ 42</em></div></div>
+    <div class="row"><i class="emi" style="background:#e3d5ff">🥩</i><div><b>Prato do chef</b><small>Ingredientes da estação</small><em>R$ 68</em></div></div>
+    <div class="row"><i class="emi" style="background:#fff3b0">🍮</i><div><b>Pudim de leite</b><small>Calda de caramelo</small><em>R$ 24</em></div></div>
+    <div class="row"><i class="emi" style="background:#d4f5e4">🍹</i><div><b>Drink autoral</b><small>Cítrico e refrescante</small><em>R$ 36</em></div></div></div></div></div>
   <div class="exm rv d5">Exemplos ilustrativos. Também funciona com tag NFC na mesa.</div>
   <div class="chrome"><div class="lg">LEMON<i></i>SOCIAL</div><div class="n">00</div></div>
 </section>
@@ -553,6 +568,8 @@ body:hover #hint{opacity:1}
   <span class="tag rv">ETAPA 03 DE 03</span><div class="pills rv"><span>01 ATRAIR</span><span>02 CONVERTER</span><span class="me">03 FAZER VOLTAR</span></div>
   <h2 class="rv d1 sm">Fazer<br>voltar</h2>
   <p class="sub rv d2">Quem veio, volta mais vezes.</p>
+  <div class="ask rv d4"><small>PERGUNTA RÁPIDA</small><p>Vocês já usam algum sistema de CRM, controle de clientes ou avaliação?</p>
+    <div class="yn"><button data-to="s10" class="y">SIM<span>já temos</span></button><button data-to="s9" class="n2">NÃO<span>ainda não</span></button></div></div>
   <div class="items rv d3">
     <div class="it hl"><i>SISTEMA PRÓPRIO</i><small>01</small><b>CRM Lemon</b><span>Cada cliente vira contato: nome, WhatsApp, aniversário e avaliação da visita.</span></div>
     <div class="it"><small>02</small><b>Campanhas para a base</b><span>Ações todo mês: aniversários, datas especiais, prato novo e dia fraco.</span></div>
@@ -712,7 +729,7 @@ body:hover #hint{opacity:1}
   var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
   addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?nx():pv();}x0=null;},{passive:true});
   // clique no palco avança (exceto links)
-  stage.addEventListener('click',function(e){if(e.target.closest('a'))return;var r=stage.getBoundingClientRect();(e.clientX-r.left)<r.width*0.25?pv():nx();});
+  stage.addEventListener('click',function(e){var t=e.target.closest('[data-to]');if(t){var el=document.getElementById(t.getAttribute('data-to'));go(slides.indexOf(el));return;}if(e.target.closest('a'))return;var r=stage.getBoundingClientRect();(e.clientX-r.left)<r.width*0.25?pv():nx();});
 
   var h=parseInt((location.hash||'').replace('#',''),10);
   go(isNaN(h)?0:h-1);
