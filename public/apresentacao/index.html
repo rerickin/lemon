@@ -381,7 +381,7 @@ p.lead{font-size:38px;line-height:1.38;max-width:900px;margin-top:34px;font-weig
 #inv .tt{display:flex;align-items:baseline;gap:12px;margin:14px 0 6px}
 #inv .tt b{font-family:'Barlow Condensed';font-weight:900;font-size:128px;line-height:.85}
 #inv .tt sup{font-family:'Barlow Condensed';font-weight:900;font-size:50px;align-self:flex-start;margin-top:6px}
-#inv .tt span{font-size:28px;opacity:.7}
+#inv .tt>span{font-size:28px;opacity:.7}
 #inv .of{background:var(--lime);padding:12px 18px;margin:8px 0 10px;font-size:24px;line-height:1.3}
 #inv .of small{display:block;font-family:'Bebas Neue';font-size:22px;letter-spacing:3px}
 #inv ul{margin-top:10px}
@@ -404,6 +404,17 @@ p.lead{font-size:38px;line-height:1.38;max-width:900px;margin-top:34px;font-weig
 .yn button span{font-family:'DM Sans';font-weight:500;font-size:20px;color:#bbb}
 .yn button:hover{background:var(--lime);color:var(--ink)}
 .yn button:hover span{color:var(--ink)}
+#inv .po,#inv .ox{display:none}
+#inv.offer .pn{display:none}
+#inv.offer .po{display:inline}
+#inv.offer .ox{display:inline;color:#999;font-weight:500;margin-right:8px}
+#inv.offer .hi .tt b{color:var(--ink);animation:ofpop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes ofpop{0%{transform:scale(.8);opacity:0}100%{transform:none;opacity:1}}
+#inv .ofb{display:block;width:100%;text-align:left;cursor:pointer;background:var(--ink);color:var(--lime);border:0;padding:14px 18px;margin:8px 0 10px;font-family:'DM Sans';font-size:24px;font-weight:700;line-height:1.3;animation:ofpulse 1.8s ease-in-out infinite}
+#inv .ofb small{display:block;font-family:'Bebas Neue';font-size:22px;letter-spacing:3px;color:#fff;font-weight:400}
+#inv.offer .ofb{background:var(--lime);color:var(--ink);animation:none}
+#inv.offer .ofb small{color:var(--ink)}
+@keyframes ofpulse{0%,100%{box-shadow:0 0 0 0 rgba(10,10,10,.35)}50%{box-shadow:0 0 0 10px rgba(10,10,10,0)}}
 /* nav */
 #bar{position:fixed;left:0;top:0;height:5px;background:var(--lime);width:0;z-index:20;transition:width .4s}
 #hint{position:fixed;right:18px;bottom:14px;z-index:20;display:flex;gap:8px;opacity:.0;transition:opacity .3s}
@@ -662,9 +673,9 @@ body:hover #hint{opacity:1}
     <div class="pc hi">
       <div class="tp">PLANO 02 · CONTEÚDO + TRÁFEGO PAGO<em>RECOMENDADO</em></div>
       <div class="rw"><span>Conteúdo das duas casas</span><b>R$ 3.450</b></div>
-      <div class="rw"><span>Gestão de tráfego pago</span><b>+ R$ 1.500</b></div>
-      <div class="tt"><sup>R$</sup><b>4.950</b><span>/mês</span></div>
-      <div class="of"><small>FECHANDO AGORA</small><div>Tráfego por <b>R$ 1.000</b> nos 3 primeiros meses: <b>R$ 4.450/mês</b></div></div>
+      <div class="rw"><span>Gestão de tráfego pago</span><b><s class="ox">R$ 1.500</s> <span class="pn">+ R$ 1.500</span><span class="po">+ R$ 1.000</span></b></div>
+      <div class="tt"><sup>R$</sup><b><span class="pn">4.950</span><span class="po">4.450</span></b><span class="pn">/mês</span><span class="po">/mês nos 3 primeiros meses</span></div>
+      <button class="ofb" data-offer><small>OFERTA · FECHANDO ATÉ AMANHÃ</small><span class="pn">Toque para ver a condição especial ➜</span><span class="po">Tráfego por R$ 1.000 nos 3 primeiros meses. Depois, R$ 4.950/mês.</span></button>
       <ul><li>Tudo do Plano 01</li><li>Campanhas no Instagram, Facebook e Google</li><li>Reserva, delivery e lançamentos</li><li>Relatório mensal de resultados</li></ul>
     </div>
   </div>
@@ -729,7 +740,7 @@ body:hover #hint{opacity:1}
   var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
   addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?nx():pv();}x0=null;},{passive:true});
   // clique no palco avança (exceto links)
-  stage.addEventListener('click',function(e){var t=e.target.closest('[data-to]');if(t){var el=document.getElementById(t.getAttribute('data-to'));go(slides.indexOf(el));return;}if(e.target.closest('a'))return;var r=stage.getBoundingClientRect();(e.clientX-r.left)<r.width*0.25?pv():nx();});
+  stage.addEventListener('click',function(e){var o=e.target.closest('[data-offer]');if(o){document.getElementById('inv').classList.toggle('offer');return;}var t=e.target.closest('[data-to]');if(t){var el=document.getElementById(t.getAttribute('data-to'));go(slides.indexOf(el));return;}if(e.target.closest('a'))return;var r=stage.getBoundingClientRect();(e.clientX-r.left)<r.width*0.25?pv():nx();});
 
   var h=parseInt((location.hash||'').replace('#',''),10);
   go(isNaN(h)?0:h-1);
