@@ -297,7 +297,7 @@ details.v1 p{margin:6px 0 0;white-space:pre-wrap;color:#77735f;line-height:1.5}
   catch (e) { $('list').textContent = 'Planejamento ainda não disponível. Volte em breve.'; return; }
 
   const ORD = Object.fromEntries((P.formatOrder || ['carrossel','reels','youtube']).map((f, k) => [f, k]));
-  const items = P.items.slice().sort((a, b) => ((b.v || 0) - (a.v || 0)) || ((ORD[a.format] ?? 9) - (ORD[b.format] ?? 9)) || (a.date || '9999').localeCompare(b.date || '9999') || (a.n - b.n));
+  const items = P.items.slice().sort((a, b) => ((b.v || 0) - (a.v || 0)) || ((ORD[a.format] ?? 9) - (ORD[b.format] ?? 9)) || (P.sortBy === 'n' ? (a.n - b.n) : ((a.date || '9999').localeCompare(b.date || '9999') || (a.n - b.n))));
   const byId = Object.fromEntries(items.map(i => [i.id, i]));
   const API = '/api/aprova/' + P.slug + '/' + P.id;
   const KEY = 'lemon-plano:' + P.slug + ':' + P.id;
