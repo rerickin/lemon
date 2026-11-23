@@ -214,6 +214,11 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
 .mbtn:hover .ar{transform:translateX(4px)}
 .mbtn.done{background:var(--ink-3);color:var(--paper);border:1px solid var(--line)}
 .mbtn.done .ms{color:var(--lime);opacity:1}
+.mbtn .mk{display:table;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:99px;margin-bottom:8px;background:var(--lime-ink);color:var(--lime)}
+.mbtn.plan{background:transparent;color:var(--lime);border:2px dashed var(--lime)}
+.mbtn.plan .mk{background:var(--lime);color:var(--lime-ink)}
+.mbtn.plan .ms{color:var(--lime);opacity:.85}
+.mbtn.done .mk{background:var(--line);color:var(--paper)}
 .sync{font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;margin-left:10px}
 .confirm{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .confirm p{margin:0;font-size:16px;max-width:52ch}
@@ -1012,9 +1017,10 @@ textarea{width:100%;min-height:70px;resize:vertical;background:var(--ink);color:
       const empty = !m.posts.length;
       const pr = recs['plano-' + m.id], pdone = pr && pr.finalizedAt;
       st.textContent = done ? '✓ Aprovação enviada' : !empty ? m.posts.length + ' conteúdos para aprovar' : m.plan ? (pdone ? '✓ Planejamento enviado' : 'Planejamento para aprovar') : 'Conteúdos em produção';
-      if (empty && m.plan) { if (pdone) b.classList.add('done'); }
+      const isPlan = empty && m.plan; const mk = document.createElement('span'); mk.className = 'mk'; mk.textContent = isPlan ? 'Planejamento' : 'Conteúdo pronto'; if (empty && !m.plan) mk.textContent = 'Em produção';
+      if (isPlan) { b.classList.add(pdone ? 'done' : 'plan'); }
       else if (empty && !done) { b.disabled = true; b.classList.add('done'); b.style.opacity = '.65'; b.style.cursor = 'default'; }
-      l.append(t, st);
+      l.append(mk, t, st);
       const ar = document.createElement('span'); ar.className = 'ar'; ar.textContent = '→';
       b.append(l, ar); b.onclick = () => { if (b.disabled) return; if (empty && m.plan) location.href = '/' + D.slug + '/planejamento/?m=' + m.id; else enter(m); };
       box.appendChild(b);
