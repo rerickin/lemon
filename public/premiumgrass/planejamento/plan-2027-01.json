@@ -1,0 +1,361 @@
+{
+ "client": "Premium Grass",
+ "slug": "premiumgrass",
+ "id": "plano-2027-01",
+ "label": "Janeiro",
+ "year": "2027",
+ "month": "2027-01",
+ "signature": "",
+ "frequency": [],
+ "formatOrder": [
+  "reels",
+  "carrossel",
+  "youtube"
+ ],
+ "sortBy": "n",
+ "items": [
+  {
+   "id": "r1",
+   "format": "reels",
+   "n": 1,
+   "title": "Ano novo, quintal novo!",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena 1",
+     "text": "Mari sentada, escrevendo suas metas para 2027 em um caderno.\nNa lista: “Academia”, “Alimentação saudável”, “Guardar dinheiro”..."
+    },
+    {
+     "label": "Cena 2",
+     "text": "Mari vira a página e encontra: “Colocar grama no quintal”.\nMari: Ué… mas essa aqui não era a meta de 2026?\nEla folheia o caderno novamente.\nE de 2025 também?!"
+    },
+    {
+     "label": "Cena 3 · A constatação",
+     "text": "Mari fecha o caderno e olha para a câmera.\nMari: Gente, tem meta que já passou da hora de sair do papel, né?"
+    },
+    {
+     "label": "Cena 4 · Chamada comercial",
+     "text": "Mari na fazenda.\nMari: Se colocar grama no quintal tá na sua lista há anos, chama a Premium Grass e vamos resolver isso em 2027!"
+    }
+   ],
+   "caption": "Tem meta de Ano-Novo que entra na lista todo ano, né?\n\nSe colocar grama no quintal é uma delas, que tal fazer diferente em 2027?\n\nA Premium Grass tem diferentes variedades de grama natural para você escolher a mais adequada para o seu espaço.\n\nChega de deixar pra depois! Entre em contato com a gente, peça seu orçamento e tire essa meta do papel!"
+  },
+  {
+   "id": "r2",
+   "format": "reels",
+   "n": 2,
+   "title": "Qual grama você escolheria para esse espaço?",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena 1",
+     "text": "Mari aparece em frente a uma imagem de jardim, usando o recurso de tela verde. O jardim deve apresentar áreas com sol e meia-sombra.\nMari: Olha esse jardim aqui. Se você fosse colocar grama nesse espaço, qual escolheria: Esmeralda ou São Carlos?\nTexto na tela: “ESMERALDA OU SÃO CARLOS?”"
+    },
+    {
+     "label": "Cena 2 · Interação",
+     "text": "Mari dá uma pausa para o público pensar ou responder.\nMari: Já escolheu? Então presta atenção num detalhe importante desse espaço."
+    },
+    {
+     "label": "Cena 3",
+     "text": "Mari aponta para as partes do jardim que recebem menos sol.\nMari: A quantidade de sol faz diferença na escolha da grama. A Esmeralda prefere bastante luz solar direta, enquanto a São Carlos costuma tolerar melhor a meia-sombra."
+    },
+    {
+     "label": "Cena 4",
+     "text": "Mari: Agora eu quero ver o seu jardim! Deixa uma foto aqui nos comentários. Quem sabe eu não analiso o seu espaço em um próximo vídeo?"
+    }
+   ],
+   "caption": "Esmeralda ou São Carlos: qual você escolheria para esse jardim?\n\nCada variedade de grama tem características diferentes, e a quantidade de sol que o espaço recebe é um dos fatores importantes na hora da escolha.\n\nQuer que eu analise o seu espaço? Deixa uma foto aqui nos comentários! Quem sabe ele não aparece em um próximo vídeo?"
+  },
+  {
+   "id": "r3",
+   "format": "reels",
+   "n": 3,
+   "title": "Fornecimento e instalação de grama para grandes obras",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena 1",
+     "text": "Imagens de uma área grande recebendo grama e da equipe realizando a instalação.\nMari: Sua obra precisa de milhares de metros quadrados de grama? E se você pudesse resolver o fornecimento e a instalação com uma equipe só?\nTexto na tela: “MILHARES DE M² DE GRAMA + INSTALAÇÃO”"
+    },
+    {
+     "label": "Cena 2 · Contexto",
+     "text": "Imagens de obras e empreendimentos em fase de paisagismo.\nMari (voz em off): Quem trabalha com obra sabe como é bom chegar naquela fase em que tudo começa a ganhar cara de pronto. E a área verde faz uma diferença enorme nesse resultado, principalmente em condomínios, empreendimentos e espaços maiores."
+    },
+    {
+     "label": "Cena 3 · Solução Premium Grass",
+     "text": "Mari na fazenda, com imagens dos volumes de grama.\nMari: Agora, pensa no trabalho que dá organizar toda essa etapa. É muita grama, tem prazo pra cumprir e ainda tem toda a instalação.\nÉ justamente pra atender esse tipo de demanda que a Premium Grass trabalha com fornecimento em grandes quantidades e também conta com equipe para fazer a instalação."
+    },
+    {
+     "label": "Cena 4",
+     "text": "Imagens de antes e depois de uma área atendida.\nMari (voz em off): E é muito legal acompanhar essa transformação. Ver uma área enorme, que antes era só terra, ganhando aquele verde que muda completamente a aparência do empreendimento."
+    },
+    {
+     "label": "Cena 5",
+     "text": "Mari: Então, se você tem uma obra em Brasília ou região e precisa de grama em grande quantidade, a Premium Grass pode cuidar do fornecimento e da instalação pra você. Chama nossa equipe e conta pra gente o que o seu projeto precisa!\nTexto na tela: “Premium Grass | Fornecimento e instalação de grama em Brasília e região”"
+    }
+   ],
+   "caption": "Sua obra precisa de grama em grande quantidade?\n\nEm projetos de grande porte, organizar o fornecimento e a instalação faz toda a diferença para manter o andamento da obra.\n\nA Premium Grass atende condomínios, construtoras e empreendimentos em Brasília e região, com fornecimento de grama natural em grandes quantidades e equipe para instalação.\n\nTem um projeto em andamento? Entre em contato com a nossa equipe, conte o que você precisa e solicite seu orçamento!"
+  },
+  {
+   "id": "r4",
+   "format": "reels",
+   "n": 4,
+   "title": "Ah, então você trabalha com grama? Posso ver o seu trabalho?",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Formato",
+     "text": "Montagem com música, sem narração. Cortes sincronizados com a batida."
+    },
+    {
+     "label": "Cena 1 · Abertura",
+     "text": "Mari aparece espontaneamente na fazenda.\nTexto na tela: “Ah, então você trabalha com grama? Posso ver o seu trabalho?”\nA música muda ou a batida entra."
+    },
+    {
+     "label": "Cena 2 · Produção",
+     "text": "Sequência rápida de imagens:\n• Vista aérea da fazenda.\n• Campos verdes.\n• Tapetes de grama.\n• Processo de colheita."
+    },
+    {
+     "label": "Cena 3 · Logística",
+     "text": "• Empilhamento dos tapetes.\n• Carregamento do caminhão.\n• Caminhão cheio saindo para entrega."
+    },
+    {
+     "label": "Cena 4 · Resultados",
+     "text": "Mostrar os melhores registros de jardins, condomínios e empreendimentos com grama instalada."
+    },
+    {
+     "label": "Cena 5 · Encerramento",
+     "text": "Usar uma das imagens mais bonitas de projeto finalizado.\nTexto na tela: “Esse é o nosso trabalho.”"
+    }
+   ],
+   "caption": "Da nossa fazenda até o seu projeto, tem muito trabalho envolvido!\n\nPor trás de cada gramado, tem uma equipe que cuida de tudo, desde a produção até a entrega.\n\nE o resultado desse trabalho? Você acabou de ver!"
+  },
+  {
+   "id": "r5",
+   "format": "reels",
+   "n": 5,
+   "title": "Vocês vão trabalhar em janeiro?",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Formato",
+     "text": "Montagem de fotos editadas, sincronizadas com música."
+    },
+    {
+     "label": "Cena 1 · Pergunta",
+     "text": "Mari ou um funcionário trabalhando, carregando grama.\nTexto na tela: “Vocês vão trabalhar em janeiro?”\nO vídeo congela, transformando a pessoa em uma foto."
+    },
+    {
+     "label": "Cena 2 · Enchente",
+     "text": "A mesma pessoa aparece trabalhando em meio a uma enchente fictícia.\nTexto na tela: “Na enchente”"
+    },
+    {
+     "label": "Cena 3 · Furacão",
+     "text": "A pessoa aparece em um cenário fictício de furacão.\nTexto na tela: “No furacão”"
+    },
+    {
+     "label": "Cena 4 · Terceira guerra mundial",
+     "text": "A mesma pessoa em um cenário fictício e exagerado de guerra.\nTexto na tela: “Na terceira guerra mundial”"
+    },
+    {
+     "label": "Cena 5 · Invasão alienígena",
+     "text": "A pessoa aparece abraçando um alienígena durante uma invasão fictícia.\nTexto na tela: “Na invasão alienígena”\n\nObservação de edição: não incluir frase final ou slogan. Encerrar diretamente na última imagem."
+    }
+   ],
+   "caption": "A rotina de quem trabalha na fazenda não é pra qualquer um.\n\nE sim, estamos trabalhando normalmente em janeiro! Pode chamar a gente, viu? rsrsrs"
+  },
+  {
+   "id": "r6",
+   "format": "reels",
+   "n": 6,
+   "title": "Tá procurando grama natural em Brasília ou região?",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena 1",
+     "text": "Mari na fazenda, com grama ao fundo.\nMari: Tá procurando grama natural em Brasília ou região? Então deixa eu te mostrar onde você pode encontrar!"
+    },
+    {
+     "label": "Cena 2",
+     "text": "Mostrar a produção da fazenda.\nMari: Aqui na Premium Grass, a gente produz grama Esmeralda, São Carlos e Batatais, com colheitas programadas conforme os pedidos dos nossos clientes."
+    },
+    {
+     "label": "Cena 3",
+     "text": "Imagens de colheita e carregamento.\nMari (voz em off): Seja pra um quintal, um jardim ou um projeto maior, nossa equipe te ajuda a escolher a variedade mais adequada e a programar sua entrega."
+    },
+    {
+     "label": "Cena 4",
+     "text": "Mari olhando para a câmera.\nMari: Então, se você precisa de grama natural, chama a Premium Grass, conta pra gente o que você precisa e peça seu orçamento!"
+    }
+   ],
+   "caption": "Procurando grama natural em Brasília ou região? A Premium Grass pode te ajudar!\n\nProduzimos grama Esmeralda, São Carlos e Batatais, com colheitas programadas e entregas para jardins, condomínios e grandes projetos.\n\nNossa equipe te ajuda a escolher a variedade mais adequada para o seu espaço.\n\nEntre em contato com a gente, peça seu orçamento e programe sua entrega!"
+  },
+  {
+   "id": "r7",
+   "format": "reels",
+   "n": 7,
+   "title": "Bião no bate-bola com Marília Gabriela",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Formato",
+     "text": "Montagem alternando trechos da entrevista original de Marília Gabriela e respostas gravadas com o Bião."
+    },
+    {
+     "label": "Cena 1 · Abertura",
+     "text": "Iniciar com a pergunta original da entrevistadora e alternar para o Bião respondendo."
+    },
+    {
+     "label": "Cena 2 · Perguntas e respostas",
+     "text": "Marília Gabriela: Um sonho?\nBião: Chegar no cliente e o endereço estar certo.\n\nMarília Gabriela: O maior medo?\nBião: O cliente mandar a localização errada.\n\nMarília Gabriela: Um arrependimento?\nBião: Chegar no endereço e ele não estar lá."
+    },
+    {
+     "label": "Observação de edição",
+     "text": "Manter apenas as três perguntas, com cortes rápidos. Conferir os trechos das perguntas no vídeo original antes da montagem."
+    }
+   ],
+   "caption": "A entrega é uma parte importante do nosso trabalho. Por isso, a gente cuida de cada etapa pra sua grama chegar certinha até você!\n\nE o Bião? Bom, ele queria fazer uma entrega sem passar por um perrengue com o endereço do cliente! Será que é pedir demais? HAHAHA"
+  },
+  {
+   "id": "c1",
+   "format": "carrossel",
+   "n": 1,
+   "title": "Sua grama está recebendo água demais?",
+   "date": "",
+   "record": false,
+   "blocks": [
+    {
+     "label": "Objetivo",
+     "text": "Orientar o público sobre excesso de umidade no gramado durante o período de chuvas."
+    },
+    {
+     "label": "Slide 1 · Capa",
+     "text": "Sua grama está recebendo água demais?\nVeja os sinais de alerta, principalmente no período de chuvas!\nImagem: gramado com solo muito úmido ou água acumulada."
+    },
+    {
+     "label": "Slide 2",
+     "text": "• Água empoçada por muito tempo.\n• Solo constantemente encharcado.\n• Partes da grama começando a amarelar.\nAtenção: o excesso de água pode prejudicar as raízes do gramado."
+    },
+    {
+     "label": "Slide 3",
+     "text": "• Está chovendo muito? Ajuste ou suspenda a irrigação automática.\n• Confira se a água está escoando corretamente.\n• Evite pisar na grama enquanto o solo estiver encharcado."
+    },
+    {
+     "label": "Slide 4 · E se a água não escoar?",
+     "text": "O problema pode estar na drenagem do terreno!\nSe a água fica acumulada com frequência, pode ser necessário corrigir o nivelamento ou instalar um sistema de drenagem para ajudar a escoar o excesso."
+    },
+    {
+     "label": "Slide 5 · Encerramento",
+     "text": "Não deixe o excesso de água prejudicar seu gramado!\nProcure orientação profissional para avaliar a drenagem e identificar a melhor solução para o seu espaço.\nSalve este post para consultar no período de chuvas!"
+    }
+   ],
+   "caption": "Nessa época de chuvas, é importante ficar de olho no seu gramado!\n\nA grama precisa de água para se manter saudável, mas o excesso de umidade também pode causar problemas, principalmente quando a água fica acumulada no terreno.\n\nPor isso, vale observar como o seu jardim reage depois das chuvas e conferir se a água está escoando corretamente.\n\nNo carrossel, separamos alguns sinais de alerta e dicas para cuidar melhor da sua grama nesse período.\n\nSalve este post para consultar quando precisar!"
+  },
+  {
+   "id": "c2",
+   "format": "carrossel",
+   "n": 2,
+   "title": "Vai colocar grama na sua casa este ano?",
+   "date": "",
+   "record": false,
+   "blocks": [
+    {
+     "label": "Objetivo",
+     "text": "Orientar potenciais clientes sobre os fatores a avaliar antes de comprar grama natural."
+    },
+    {
+     "label": "Slide 1 · Capa",
+     "text": "Vai colocar grama na sua casa este ano?\nVeja o que você precisa saber antes de começar!\nImagem: quintal com grama natural bem cuidada."
+    },
+    {
+     "label": "Slide 2",
+     "text": "Seu quintal recebe sol o dia todo ou tem bastante sombra?\nA quantidade de luz é um dos fatores que ajudam a definir qual variedade de grama é mais adequada para o espaço."
+    },
+    {
+     "label": "Slide 3",
+     "text": "Vai ser um jardim decorativo ou uma área de circulação e lazer?\nO uso do quintal também faz diferença na escolha da grama."
+    },
+    {
+     "label": "Slide 4",
+     "text": "• O nivelamento do solo.\n• O escoamento da água.\n• A necessidade de preparar o terreno.\nUma boa preparação ajuda no estabelecimento da grama."
+    },
+    {
+     "label": "Slide 5",
+     "text": "Já sabe como é o seu espaço? Então vamos conversar!\nA Premium Grass te ajuda a escolher a variedade mais adequada e a programar a entrega da sua grama natural.\nEntre em contato e peça seu orçamento!"
+    }
+   ],
+   "caption": "Quer colocar grama natural na sua casa em 2027, mas não sabe por onde começar?\n\nAntes de escolher a grama, vale conhecer melhor o seu espaço. A quantidade de sol, o uso que você pretende fazer da área e as condições do terreno fazem diferença no resultado.\n\nE você não precisa decidir tudo sozinho!\n\nA equipe da Premium Grass pode te orientar na escolha da variedade mais adequada para o seu projeto.\n\nEntre em contato com a gente, conte como é o seu espaço e peça seu orçamento!"
+  },
+  {
+   "id": "c3",
+   "format": "carrossel",
+   "n": 3,
+   "title": "Antes e depois",
+   "date": "",
+   "record": false,
+   "blocks": [
+    {
+     "label": "Objetivo",
+     "text": "Mostrar visualmente a transformação de um espaço após a instalação da grama natural."
+    },
+    {
+     "label": "Slide 1 · Antes",
+     "text": "Tá difícil imaginar como esse espaço pode ficar?\nImagem: foto do espaço antes da instalação da grama."
+    },
+    {
+     "label": "Slide 2 · Depois",
+     "text": "Olha a diferença que a grama natural faz!\nImagem: foto do mesmo espaço depois da instalação, de preferência no mesmo ângulo."
+    }
+   ],
+   "caption": "Tem coisa que a gente só consegue entender vendo o antes e depois!\n\nOlha como a grama natural fez diferença nesse espaço. O resultado fala por si, né?\n\nQuer transformar uma área da sua casa ou do seu projeto também?\n\nEntre em contato com a Premium Grass e peça seu orçamento!"
+  },
+  {
+   "id": "y1",
+   "format": "youtube",
+   "n": 1,
+   "title": "Grama São Carlos ou Esmeralda: qual escolher?",
+   "date": "",
+   "record": true,
+   "blocks": [
+    {
+     "label": "Cena 1 · Abertura",
+     "text": "Mari na fazenda, com imagens das duas variedades.\nVocê está pensando em colocar grama natural no seu jardim, mas ficou na dúvida entre a São Carlos e a Esmeralda?\nEssa é uma dúvida bem comum aqui na Premium Grass. E as duas são ótimas opções, só que têm características diferentes.\nEntão, hoje eu vou te mostrar o que muda de uma pra outra e o que você precisa observar antes de escolher."
+    },
+    {
+     "label": "Cena 2 · Diferenças na aparência",
+     "text": "Mostrar imagens próximas das folhas das duas variedades, de preferência lado a lado.\nVamos começar pelo visual, porque essa é uma diferença que dá pra perceber facilmente.\nA grama Esmeralda tem folhas mais finas e estreitas. Ela forma um gramado com aparência mais delicada e uniforme.\nJá a São Carlos tem folhas mais largas, com um aspecto diferente, mais encorpado.\nEntão, se você gosta de um gramado com folhas bem fininhas, provavelmente vai se interessar mais pela Esmeralda. Se prefere folhas mais largas, vale conhecer a São Carlos de perto."
+    },
+    {
+     "label": "Cena 3 · Sol ou sombra?",
+     "text": "Mari em uma área da fazenda. Inserir imagens de jardins com diferentes condições de luz.\nAgora vem um dos pontos mais importantes: quanto sol esse espaço recebe?\nA Esmeralda se desenvolve melhor em locais com bastante luz solar direta.\nA São Carlos, por outro lado, costuma ter uma tolerância maior à meia-sombra. Por isso, pode ser uma opção interessante para jardins que recebem sol só durante parte do dia.\nMas atenção: tolerar meia-sombra não significa que a grama vai crescer bem em um lugar que não recebe luz nenhuma.\nAntes de escolher, observe em quais horários o sol bate no seu jardim e por quanto tempo."
+    },
+    {
+     "label": "Cena 4 · E quanto ao uso do espaço?",
+     "text": "Mostrar gramados residenciais, jardins e áreas de lazer.\nOutra coisa que eu sempre recomendo avaliar é como você pretende usar essa área.\nÉ um jardim mais decorativo? Um quintal onde a família passa bastante tempo? Um espaço que recebe circulação de pessoas?\nTudo isso precisa entrar na escolha.\nE não é só a variedade que importa. O preparo do terreno, a quantidade de sol e os cuidados depois da instalação também fazem diferença para o gramado ficar bonito.\nPor isso, não vale escolher só pela foto ou porque você viu uma grama bonita na casa de alguém. O que funciona bem em um jardim pode não ser a melhor opção para outro."
+    },
+    {
+     "label": "Cena 5 · Qual delas dá menos trabalho?",
+     "text": "Mari na fazenda. Inserir imagens de irrigação e manutenção de gramados.\nE qual das duas dá menos trabalho?\nNa verdade, as duas precisam de cuidados, como irrigação e podas regulares.\nA frequência desses cuidados depende do clima, do solo e das condições do seu jardim.\nPor isso, o ideal é escolher uma grama que combine com o seu espaço e com a manutenção que você consegue fazer."
+    },
+    {
+     "label": "Cena 6 · Afinal, qual escolher?",
+     "text": "Mari com imagens das duas variedades aparecendo na edição.\nResumindo: a Esmeralda gosta de bastante sol e tem folhas mais fininhas. Já a São Carlos tem folhas mais largas e tolera melhor a meia-sombra.\nMas lembre: a melhor escolha é aquela que combina com as condições do seu espaço!"
+    },
+    {
+     "label": "Cena 7 · Encerramento",
+     "text": "Mari na fazenda, falando diretamente para a câmera.\nE aí, conseguiu entender melhor a diferença entre a São Carlos e a Esmeralda?\nAqui na Premium Grass, a gente produz as duas variedades e pode te ajudar a avaliar qual faz mais sentido para o seu projeto.\nAté o próximo vídeo!"
+    }
+   ],
+   "caption": "Grama São Carlos ou Esmeralda: qual escolher para o seu jardim?\n\nAs duas são ótimas opções de grama natural, mas têm características diferentes. E entender essas diferenças é importante para escolher a variedade mais adequada para o seu espaço!\n\nNeste vídeo, explico as diferenças na aparência, na necessidade de luz solar e nos cuidados de manutenção da grama São Carlos e da Esmeralda.\n\nEstá planejando colocar grama natural na sua casa ou em um projeto maior?\n\nA Premium Grass produz grama São Carlos, Esmeralda e Batatais, atendendo Brasília e região.\n\nEntre em contato com nossa equipe, tire suas dúvidas e solicite seu orçamento!\n\nE conta pra gente nos comentários: você prefere a São Carlos ou a Esmeralda?",
+   "captionLabel": "Descrição do vídeo"
+  }
+ ],
+ "agenda": []
+}
