@@ -1079,14 +1079,14 @@ body.ro .yt-acts button:not([aria-pressed=true]){display:none}
   function monthButtons(){
     const box = $('wMonths'); box.textContent = '';
     D.months.slice().reverse().forEach(m => {
-      const r = recs[m.id], done = r && r.finalizedAt;
+      const r = recs[m.id], _n = new Date(), curYM = _n.getFullYear() + '-' + String(_n.getMonth() + 1).padStart(2, '0'), past = m.posts.length && (m.closed || m.id < curYM), done = (r && r.finalizedAt) || past;
       const b = document.createElement('button'); b.className = 'mbtn' + (done ? ' done' : '');
       const l = document.createElement('span'); const t = document.createElement('span'); t.className = 'ml'; t.textContent = 'Mês de ' + m.label.toLowerCase();
       const st = document.createElement('span'); st.className = 'ms'; st.style.display = 'block';
       const empty = !m.posts.length;
       const pr = recs['plano-' + m.id], pdone = pr && pr.finalizedAt;
-      st.textContent = done ? '✓ Aprovação enviada' : !empty ? m.posts.length + ' conteúdos para aprovar' : m.plan ? (pdone ? '✓ Planejamento enviado' : 'Planejamento para aprovar') : 'Conteúdos em produção';
-      const isPlan = empty && m.plan; const mk = document.createElement('span'); mk.className = 'mk'; mk.textContent = isPlan ? 'Planejamento' : 'Conteúdo pronto'; if (empty && !m.plan) mk.textContent = 'Em produção';
+      st.textContent = done ? '✓ Conteúdo aprovado' : !empty ? m.posts.length + ' conteúdos para aprovar' : m.plan ? (pdone ? '✓ Planejamento enviado' : 'Planejamento para aprovar') : 'Conteúdos em produção';
+      const isPlan = empty && m.plan; const mk = document.createElement('span'); mk.className = 'mk'; mk.textContent = isPlan ? 'Planejamento' : 'Conteúdo pronto'; if (empty && !m.plan) mk.textContent = 'Em produção'; if (done) mk.textContent = 'Aprovado';
       if (isPlan) { b.classList.add(pdone ? 'done' : 'plan'); }
       else if (empty && !done) { b.disabled = true; b.classList.add('done'); b.style.opacity = '.65'; b.style.cursor = 'default'; }
       l.append(mk, t, st);
