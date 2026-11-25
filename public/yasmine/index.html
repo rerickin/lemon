@@ -121,7 +121,8 @@ h1 em{font-style:normal;color:var(--lime)}
 .post-h b{font-weight:600}
 .post-h small{display:block;color:var(--ig-mute);font-size:12px}
 .media{position:relative;aspect-ratio:4/5;max-width:100%;background:#eee;overflow:hidden}
-.media.reel{aspect-ratio:9/16;max-height:70vh;margin:0 auto}
+.media.reel{aspect-ratio:9/16;width:min(100%,calc(70vh*9/16));max-height:none;margin:0 auto;background:#000}
+.media.reel video,.media.reel img{object-fit:contain!important}
 .media img,.media video{width:100%;height:100%;object-fit:cover;display:block}
 .media .ph{font-size:56px}
 .track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x pan-y;cursor:grab}
