@@ -283,6 +283,10 @@ body.ro .yt-acts button:not([aria-pressed=true]){display:none}
 .ag .tx b{font-weight:700}
 .ag .tx i{font-style:normal;color:var(--mute);font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .nodate{color:var(--mute);font-size:15px}
+.ctabs{display:flex;flex-wrap:wrap;gap:8px}
+.ctab{background:transparent;color:var(--paper);border:1px solid var(--line);border-radius:99px;padding:8px 18px;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+.ctab:hover{border-color:var(--lime)}
+.ctab.on{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
 @media (max-width:720px){.cm .cg{display:none}.agenda{display:grid}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -951,11 +955,12 @@ body.ro .yt-acts button:not([aria-pressed=true]){display:none}
   const parseD = iso => { const [y,m,d] = iso.split('-').map(Number); return new Date(y, m-1, d); };
   function fmtDay(iso){ const d = parseD(iso); return WD[d.getDay()] + ', ' + String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0'); }
   const TITLE = p => { const c = (p.caption || '').split('\n')[0]; return c && c !== 'Legenda em breve.' ? c : (FMT[p.format] || 'Post'); };
+  let CM = null;
   function calItem(p, i, cls){
-    const s = state[p.id] || {};
+    const s = (CM === M ? state : ((recs[CM.id] || {}).state || {}))[p.id] || {};
     const b = document.createElement('button'); b.className = cls;
     const im = document.createElement('img'); im.src = (p.images || [])[0] || ''; im.alt = ''; im.loading = 'lazy';
-    b.onclick = () => { $('cal').hidden = true; open(i); };
+    b.onclick = () => { $('cal').hidden = true; if (CM !== M) enter(CM); open(i); };
     return [b, im, s];
   }
   function ytItem(){ return (M.youtube || [])[0]; }
@@ -985,8 +990,14 @@ body.ro .yt-acts button:not([aria-pressed=true]){display:none}
 
   function renderCal(){
     const body = $('calBody'); body.textContent = '';
-    $('calMonth').textContent = M.label.toLowerCase();
-    const dated = posts.map((p, i) => ({p, i})).filter(x => x.p.date).sort((a, b) => a.p.date.localeCompare(b.p.date));
+    $('calMonth').textContent = CM.label.toLowerCase();
+    const tabsM = D.months.filter(m => m.posts.length);
+    if (tabsM.length > 1) {
+      const tb = document.createElement('div'); tb.className = 'ctabs'; tb.setAttribute('role', 'tablist');
+      tabsM.forEach(m => { const t = document.createElement('button'); t.type = 'button'; t.className = 'ctab' + (m === CM ? ' on' : ''); t.setAttribute('role', 'tab'); t.setAttribute('aria-selected', m === CM); t.textContent = m.label; t.onclick = () => { CM = m; renderCal(); }; tb.appendChild(t); });
+      body.appendChild(tb);
+    }
+    const dated = CM.posts.map((p, i) => ({p, i})).filter(x => x.p.date).sort((a, b) => a.p.date.localeCompare(b.p.date));
     const months = [...new Set(dated.map(x => x.p.date.slice(0, 7)))];
     months.forEach(ym => {
       const [y, m] = ym.split('-').map(Number);
@@ -1022,10 +1033,10 @@ body.ro .yt-acts button:not([aria-pressed=true]){display:none}
       sec.appendChild(ag);
       body.appendChild(sec);
     });
-    const nd = posts.filter(p => !p.date);
+    const nd = CM.posts.filter(p => !p.date);
     if (nd.length) { const q = document.createElement('p'); q.className = 'nodate'; q.textContent = 'Sem data definida ainda: ' + nd.map(p => p.id).join(', ') + '.'; body.appendChild(q); }
   }
-  $('calBtn').onclick = () => { renderCal(); $('cal').hidden = false; $('calClose').focus(); };
+  $('calBtn').onclick = () => { CM = M; renderCal(); $('cal').hidden = false; $('calClose').focus(); };
   $('calClose').onclick = () => { $('cal').hidden = true; $('calBtn').focus(); };
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('cal').hidden) $('cal').hidden = true; });
 
